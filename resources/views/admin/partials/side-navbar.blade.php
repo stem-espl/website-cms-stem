@@ -164,9 +164,9 @@ $data = \App\Models\BasicExtra::first();
         @endcanany
 
         {{-- Content Management --}}
-        @if (empty($admin->role) || (!empty($permissions) && in_array('Content Management', $permissions)))
+        @canany(['sections-customization','partners-section','blog-section','team-section','testimonials-section','portfolio-section','call-to-action-section','statistics-section','approach-section','service-section','intro-section','features','hero-section','logo-text','useful-links', 'settings-services','category-services','services','portfolios','category-blog','blogs','archives','settings-gallery','categories-gallery','galleries','settings-faq','categories-faq','faqs','categories-career','post-job','job-management'])
         @includeIf('admin.partials.content-management')
-        @endif
+        @endcanany
 
         @canany(['settings-page','create-page','pages'])
         {{-- Dynamic Pages --}}
