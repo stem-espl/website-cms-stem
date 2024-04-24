@@ -212,9 +212,9 @@ $data = \App\Models\BasicExtra::first();
             </ul>
           </div>
         </li>
-        @endif
+        @endcanany
 
-        @if (empty($admin->role) || (!empty($permissions) && in_array('Event Calendar', $permissions)))
+        @can('calendars')
         {{-- Event Calendar --}}
         <li class="nav-item
           @if(request()->path() == 'admin/calendars') active
@@ -224,10 +224,13 @@ $data = \App\Models\BasicExtra::first();
             <p>Event Calendar</p>
           </a>
         </li>
-        @endif
+        @endcan
 
-        @if (empty($admin->role) || (!empty($permissions) && in_array('Package Management', $permissions)))
+    
         {{-- Package Management --}}
+        @canany(['settings-package','categories-package','form-builder-package','packages','subscriptions','subscription-request'])
+
+        
         <li class="nav-item
           @if(request()->path() == 'admin/packages') active
           @elseif(request()->routeIs('admin.package.edit')) active
@@ -266,11 +269,14 @@ $data = \App\Models\BasicExtra::first();
             @endif" id="packages"
             >
             <ul class="nav nav-collapse">
+              @can('settings-package')
               <li class="@if(request()->path() == 'admin/package/settings') active @endif">
                 <a href="{{route('admin.package.settings')}}">
                 <span class="sub-item">Settings</span>
                 </a>
               </li>
+              @endcan
+              @can('categories-package')
               @if ($data->package_category_status == 1)
               <li class="@if(request()->path() == 'admin/package/categories') active @endif">
                 <a href="{{route('admin.package.categories') . '?language=' . $default->code}}">
@@ -278,6 +284,9 @@ $data = \App\Models\BasicExtra::first();
                 </a>
               </li>
               @endif
+              @endcan
+
+              @can('form-builder-package')
               <li class="@if(request()->path() == 'admin/package/form') active
                 @elseif(request()->is('admin/package/*/inputEdit')) active
                 @endif"
@@ -286,6 +295,8 @@ $data = \App\Models\BasicExtra::first();
                 <span class="sub-item">Form Builder</span>
                 </a>
               </li>
+              @endcan
+              @can('packages')
               <li class="@if(request()->path() == 'admin/packages') active
                 @elseif(request()->routeIs('admin.package.edit')) active
                 @endif"
@@ -294,7 +305,11 @@ $data = \App\Models\BasicExtra::first();
                 <span class="sub-item">Packages</span>
                 </a>
               </li>
+              @endcan
+           
+
               @if ($bex->recurring_billing == 1)
+              @can('subscriptions')
               <li class="submenu">
                 <a data-toggle="collapse" href="#manageSubscriptions"
                   aria-expanded="{{((request()->routeIs('admin.subscriptions') && request()->input('type') != 'request')) ? 'true' : 'false' }}">
@@ -321,11 +336,14 @@ $data = \App\Models\BasicExtra::first();
                   </ul>
                 </div>
               </li>
+              @endcan
+              @can('subscription-request')
               <li class="@if(request()->routeIs('admin.subscriptions') && request()->input('type') == 'request') active @endif">
                 <a href="{{route('admin.subscriptions', ['type' => 'request'])}}">
                 <span class="sub-item">Subscription Requests</span>
                 </a>
               </li>
+              @endcan
               @endif
               @if ($bex->recurring_billing == 0)
               <li class="submenu">
@@ -373,9 +391,11 @@ $data = \App\Models\BasicExtra::first();
             </ul>
           </div>
         </li>
-        @endif
+        @endcanany
 
-        @if (empty($admin->role) || (!empty($permissions) && in_array('Quote Management', $permissions)))
+        @canany(['visibility','form-builder-quote','all-quotes','pending-quotes','processing-quotes','completed-quotes','rejected-quotes'])
+
+
         {{-- Quotes --}}
         <li class="nav-item
           @if(request()->path() == 'admin/quote/form') active
@@ -403,6 +423,7 @@ $data = \App\Models\BasicExtra::first();
             @elseif(request()->path() == 'admin/quote/visibility') show
             @endif" id="quote">
             <ul class="nav nav-collapse">
+              @can('visibility')
               <li class="
                 @if(request()->path() == 'admin/quote/visibility') active
                 @endif">
@@ -410,6 +431,8 @@ $data = \App\Models\BasicExtra::first();
                 <span class="sub-item">Visibility</span>
                 </a>
               </li>
+              @endcan
+              @can('form-builder-quote')
               <li class="
                 @if(request()->path() == 'admin/quote/form') active
                 @elseif(request()->is('admin/quote/*/inputEdit')) active
@@ -418,36 +441,49 @@ $data = \App\Models\BasicExtra::first();
                 <span class="sub-item">Form Builder</span>
                 </a>
               </li>
+              @endcan
+              @can('all-quotes')
               <li class="@if(request()->path() == 'admin/all/quotes') active @endif">
                 <a href="{{route('admin.all.quotes')}}">
                 <span class="sub-item">All Quotes</span>
                 </a>
               </li>
+              @endcan
+              @can('pending-quotes')
               <li class="@if(request()->path() == 'admin/pending/quotes') active @endif">
                 <a href="{{route('admin.pending.quotes')}}">
                 <span class="sub-item">Pending Quotes</span>
                 </a>
               </li>
+              @endcan
+              @can('processing-quotes')
               <li class="@if(request()->path() == 'admin/processing/quotes') active @endif">
                 <a href="{{route('admin.processing.quotes')}}">
                 <span class="sub-item">Processing Quotes</span>
                 </a>
               </li>
+              @endcan
+              @can('completed-quotes')
               <li class="@if(request()->path() == 'admin/completed/quotes') active @endif">
                 <a href="{{route('admin.completed.quotes')}}">
                 <span class="sub-item">Completed Quotes</span>
                 </a>
               </li>
+              @endcan
+              @can('rejected-quotes')
               <li class="@if(request()->path() == 'admin/rejected/quotes') active @endif">
                 <a href="{{route('admin.rejected.quotes')}}">
                 <span class="sub-item">Rejected Quotes</span>
                 </a>
               </li>
+              @endcan
             </ul>
           </div>
         </li>
-        @endif
-        @if (empty($admin->role) || (!empty($permissions) && in_array('Shop Management', $permissions)))
+        @endcanany
+
+
+       @canany(['settings-shop', 'popular-tags', 'shipping-charges','coupons'])
         {{-- Product --}}
         <li class="nav-item
           @if(request()->path() == 'admin/category') active
@@ -497,17 +533,22 @@ $data = \App\Models\BasicExtra::first();
             @elseif(request()->path() == 'admin/product/orders/report') show
             @endif" id="category">
             <ul class="nav nav-collapse">
+              @can('settings-shop')
               <li class="@if(request()->routeIs('admin.product.settings')) active @endif">
                 <a href="{{route('admin.product.settings')}}">
                 <span class="sub-item">Settings</span>
                 </a>
               </li>
+              @endcan
+              @can('popular-tags')
               <li class="@if(request()->routeIs('admin.product.tags')) active @endif">
                 <a href="{{route('admin.product.tags'). '?language=' . $default->code}}">
                 <span class="sub-item">Popular Tags</span>
                 </a>
               </li>
+              @endcan
               @if ($bex->catalog_mode == 0)
+              @can('shipping-charges')
               <li class="
                 @if(request()->path() == 'admin/shipping') active
                 @elseif(request()->routeIs('admin.shipping.edit')) active
@@ -516,8 +557,10 @@ $data = \App\Models\BasicExtra::first();
                 <span class="sub-item">Shipping Charges</span>
                 </a>
               </li>
+              @endcan
               @endif
               @if ($bex->catalog_mode == 0)
+              @can('coupons')
               <li class="
                 @if(request()->path() == 'admin/coupon') active
                 @elseif(request()->routeIs('admin.coupon.edit')) active
@@ -526,7 +569,9 @@ $data = \App\Models\BasicExtra::first();
                 <span class="sub-item">Coupons</span>
                 </a>
               </li>
+              @endcan
               @endif
+              @canany(['category-product', 'products'])
               <li class="submenu">
                 <a data-toggle="collapse" href="#productManagement"
                   aria-expanded="{{(request()->path() == 'admin/category' || request()->is('admin/category/*/edit') || request()->routeIs('admin.product.type') || request()->routeIs('admin.product.create') || request()->routeIs('admin.product.index') || request()->routeIs('admin.product.edit')) ? 'true' : 'false' }}">
@@ -542,6 +587,7 @@ $data = \App\Models\BasicExtra::first();
                   @elseif(request()->routeIs('admin.product.edit')) show
                   @endif" id="productManagement" style="">
                   <ul class="nav nav-collapse subnav">
+                    @can('category-product')
                     <li class="
                       @if(request()->path() == 'admin/category') active
                       @elseif(request()->is('admin/category/*/edit')) active
@@ -550,6 +596,8 @@ $data = \App\Models\BasicExtra::first();
                       <span class="sub-item">Category</span>
                       </a>
                     </li>
+                    @endcan
+                    
                     <li class="
                       @if(request()->routeIs('admin.product.type')) active
                       @elseif(request()->routeIs('admin.product.create')) active
@@ -558,6 +606,7 @@ $data = \App\Models\BasicExtra::first();
                       <span class="sub-item">Add Product</span>
                       </a>
                     </li>
+                    @can('products')
                     <li class="
                       @if(request()->path() == 'admin/product') active
                       @elseif(request()->is('admin/product/*/edit')) active
@@ -566,9 +615,13 @@ $data = \App\Models\BasicExtra::first();
                       <span class="sub-item">Products</span>
                       </a>
                     </li>
+                    @endcan
                   </ul>
                 </div>
               </li>
+              @endcanany
+
+              @canany(['all-orders', 'pending-orders', 'processing-orders','completed-orders','rejected-orders','report-order'])
               @if ($bex->catalog_mode == 0)
               <li class="submenu">
                 <a data-toggle="collapse" href="#manageOrders"
@@ -586,45 +639,64 @@ $data = \App\Models\BasicExtra::first();
                   @elseif(request()->path() == 'admin/product/orders/report') show
                   @endif" id="manageOrders" style="">
                   <ul class="nav nav-collapse subnav">
+                    @can('all-orders')
                     <li class="@if(request()->path() == 'admin/product/all/orders') active @endif">
                       <a href="{{route('admin.all.product.orders')}}">
                       <span class="sub-item">All Orders</span>
                       </a>
                     </li>
+                    @endcan
+                    @can('pending-orders')
                     <li class="@if(request()->path() == 'admin/product/pending/orders') active @endif">
                       <a href="{{route('admin.pending.product.orders')}}">
                       <span class="sub-item">Pending Orders</span>
                       </a>
                     </li>
+                    @endcan
+                    @can('processing-orders')
                     <li class="@if(request()->path() == 'admin/product/processing/orders') active @endif">
                       <a href="{{route('admin.processing.product.orders')}}">
                       <span class="sub-item">Processing Orders</span>
                       </a>
                     </li>
+                    @endcan
+                    @can('completed-orders')
                     <li class="@if(request()->path() == 'admin/product/completed/orders') active @endif">
                       <a href="{{route('admin.completed.product.orders')}}">
                       <span class="sub-item">Completed Orders</span>
                       </a>
                     </li>
+                    @endcan
+                    @can('rejected-orders')
                     <li class="@if(request()->path() == 'admin/product/rejected/orders') active @endif">
                       <a href="{{route('admin.rejected.product.orders')}}">
                       <span class="sub-item">Rejected Orders</span>
                       </a>
                     </li>
+                    @endcan
+                    @can('report-order')
                     <li class="@if(request()->path() == 'admin/product/orders/report') active @endif">
                       <a href="{{route('admin.orders.report')}}">
                       <span class="sub-item">Report</span>
                       </a>
                     </li>
+                    @endcan
                   </ul>
                 </div>
               </li>
               @endif
+              @endcanany
             </ul>
           </div>
         </li>
-        @endif
-        @if (empty($admin->role) || (!empty($permissions) && in_array('Course Management', $permissions)))
+        @endcanany
+
+
+
+
+
+
+      @canany(['settings-course', 'categories-course', 'courses','enrolls','report-course'])
         {{-- Courses --}}
         <li class="nav-item
           @if(request()->path() == 'admin/course_categories') active
@@ -656,22 +728,29 @@ $data = \App\Models\BasicExtra::first();
             id="course"
             >
             <ul class="nav nav-collapse">
+              @can('settings-course')
               <li class="@if(request()->path() == 'admin/course/settings') active @endif">
                 <a href="{{route('admin.course.settings')}}">
                 <span class="sub-item">Settings</span>
                 </a>
               </li>
+              @endcan
+              @can('categories-course')
               <li class="@if(request()->path() == 'admin/course_categories') active @endif">
                 <a href="{{route('admin.course_category.index') . '?language=' . $default->code}}">
                 <span class="sub-item">Category</span>
                 </a>
               </li>
+              @endcan
+              
               <li class="@if(request()->path() == 'admin/course/create') active
                 @endif">
                 <a href="{{route('admin.course.create') . '?language=' . $default->code}}">
                 <span class="sub-item">Add Course</span>
                 </a>
               </li>
+   
+              @can('courses')
               <li class="@if(request()->path() == 'admin/courses') active
                 @elseif(request()->is('admin/course/*/edit')) active
                 @elseif(request()->is('admin/course/*/modules')) active
@@ -681,22 +760,30 @@ $data = \App\Models\BasicExtra::first();
                 <span class="sub-item">Courses</span>
                 </a>
               </li>
+              @endcan
+              @can('enrolls')
               <li class="@if(request()->path() == 'admin/course/purchase-log') active @endif">
                 <a href="{{route('admin.course.purchaseLog')}}">
                 <span class="sub-item">Enrolls</span>
                 </a>
               </li>
+              @endcan
+              @can('report-course')
               <li class="@if(request()->path() == 'admin/course/enrolls/report') active @endif">
                 <a href="{{route('admin.enrolls.report')}}">
                 <span class="sub-item">Report</span>
                 </a>
               </li>
+              @endcan
             </ul>
           </div>
         </li>
-        @endif
+       @endcanany
+
+
+
         {{-- Events Manage --}}
-        @if (empty($admin->role) || (!empty($permissions) && in_array('Events Management', $permissions)))
+        @canany(['settings-event', 'categories-event', 'all-events','booking','report-event'])
         <li class="nav-item
           @if(request()->path() == 'admin/event/categories') active
           @elseif(request()->path() == 'admin/event/settings') active
@@ -719,16 +806,21 @@ $data = \App\Models\BasicExtra::first();
             @elseif(request()->path() == 'admin/events/report') show
             @endif" id="event_manage">
             <ul class="nav nav-collapse">
+              @can('settings-event')
               <li class="@if(request()->path() == 'admin/event/settings') active @endif">
                 <a href="{{route('admin.event.settings')}}">
                 <span class="sub-item">Settings</span>
                 </a>
               </li>
+              @endcan
+              @can('categories-event')
               <li class="@if(request()->path() == 'admin/event/categories') active @endif">
                 <a href="{{route('admin.event.category.index') . '?language=' . $default->code}}">
                 <span class="sub-item">Category</span>
                 </a>
               </li>
+              @endcan
+              @can('all-events')
               <li class="
                 @if(request()->path() == 'admin/events') active
                 @elseif(request()->is('admin/event/*/edit')) active
@@ -737,21 +829,28 @@ $data = \App\Models\BasicExtra::first();
                 <span class="sub-item">All Events</span>
                 </a>
               </li>
+              @endcan
+              @can('booking')
               <li class="@if(request()->path() == 'admin/events/payment-log') active @endif">
                 <a href="{{route('admin.event.payment.log') . '?language=' . $default->code}}">
                 <span class="sub-item">Bookings</span>
                 </a>
               </li>
+              @endcan
+              @can('report-event')
               <li class="@if(request()->path() == 'admin/events/report') active @endif">
                 <a href="{{route('admin.event.report')}}">
                 <span class="sub-item">Report</span>
                 </a>
               </li>
+              @endcan
             </ul>
           </div>
         </li>
-        @endif
-        @if (empty($admin->role) || (!empty($permissions) && in_array('Donation Management', $permissions)))
+        @endcanany
+
+
+        @canany(['settings-donation', 'all-cause', 'donations','report-donation'])
         <li class="nav-item
           @if(request()->path() == 'admin/donations') active
           @elseif(request()->path() == 'admin/donations/payment-log') active
@@ -772,11 +871,14 @@ $data = \App\Models\BasicExtra::first();
             @elseif(request()->path() == 'admin/donation/report') show
             @endif" id="donation_manage">
             <ul class="nav nav-collapse">
+              @can('settings-donation')
               <li class="@if(request()->path() == 'admin/donation/settings') active @endif">
                 <a href="{{route('admin.donation.settings')}}">
                 <span class="sub-item">Settings</span>
                 </a>
               </li>
+              @endcan
+              @can('all-cause')
               <li class="
                 @if(request()->path() == 'admin/donations') active
                 @elseif(request()->is('admin/donation/*/edit')) active
@@ -785,22 +887,30 @@ $data = \App\Models\BasicExtra::first();
                 <span class="sub-item">All Causes</span>
                 </a>
               </li>
+              @endcan
+              @can('donations')
               <li class="@if(request()->path() == 'admin/donations/payment-log') active @endif">
                 <a href="{{route('admin.donation.payment.log') . '?language=' . $default->code}}">
                 <span class="sub-item">Donations</span>
                 </a>
               </li>
+              @endcan
+              @can('report-donation')
               <li class="@if(request()->path() == 'admin/donation/report') active @endif">
                 <a href="{{route('admin.donation.report')}}">
                 <span class="sub-item">Report</span>
                 </a>
               </li>
+              @endcan
             </ul>
           </div>
         </li>
-        @endif
+        @endcanany
+
+
+
         {{-- Knowledgebase --}}
-        @if (empty($admin->role) || (!empty($permissions) && in_array('Knowledgebase', $permissions)))
+      @canany(['categories-acknowledged', 'articles'])
         {{-- Articles --}}
         <li class="nav-item
           @if(request()->path() == 'admin/article_categories') active
@@ -820,11 +930,14 @@ $data = \App\Models\BasicExtra::first();
             @elseif(request()->is('admin/article/*/edit')) show
             @endif" id="article">
             <ul class="nav nav-collapse">
+              @can('categories-acknowledged')
               <li class="@if(request()->path() == 'admin/article_categories') active @endif">
                 <a href="{{route('admin.article_category.index') . '?language=' . $default->code}}">
                 <span class="sub-item">Category</span>
                 </a>
               </li>
+              @endcan
+              @can('articles')
               <li class="@if(request()->path() == 'admin/articles') active
                 @elseif(request()->is('admin/articles/*/edit')) active
                 @endif">
@@ -832,11 +945,15 @@ $data = \App\Models\BasicExtra::first();
                 <span class="sub-item">Articles</span>
                 </a>
               </li>
+              @endcan
             </ul>
           </div>
         </li>
-        @endif
-        @if (empty($admin->role) || (!empty($permissions) && in_array('Tickets', $permissions)))
+        @endcanany
+
+
+
+        @canany(['settings-tickets', 'all-tickets', 'pending-tickets','open-tickets','close-tickets'])
         {{-- Tickets --}}
         <li class="nav-item
           @if(request()->path() == 'admin/all/tickets') active
@@ -860,36 +977,48 @@ $data = \App\Models\BasicExtra::first();
             @elseif(request()->routeIs('admin.ticket.settings')) show
             @endif" id="tickets">
             <ul class="nav nav-collapse">
+              @can('settings-tickets')
               <li class="@if(request()->path() == 'admin/ticket/settings') active @endif">
                 <a href="{{route('admin.ticket.settings')}}">
                 <span class="sub-item">Settings</span>
                 </a>
               </li>
+              @endcan
+              @can('all-tickets')
               <li class="@if(request()->path() == 'admin/all/tickets') active @endif">
                 <a href="{{route('admin.tickets.all')}}">
                 <span class="sub-item">All Tickets</span>
                 </a>
               </li>
+              @endcan
+              @can('pending-tickets')
               <li class="@if(request()->path() == 'admin/pending/tickets') active @endif">
                 <a href="{{route('admin.tickets.pending')}}">
                 <span class="sub-item">Pending Tickets</span>
                 </a>
               </li>
+              @endcan
+              @can('open-tickets')
               <li class="@if(request()->path() == 'admin/open/tickets') active @endif">
                 <a href="{{route('admin.tickets.open')}}">
                 <span class="sub-item">Open Tickets</span>
                 </a>
               </li>
+              @endcan
+              @can('close-tickets')
               <li class="@if(request()->path() == 'admin/closed/tickets') active @endif">
                 <a href="{{route('admin.tickets.closed')}}">
                 <span class="sub-item">Closed Tickets</span>
                 </a>
               </li>
+              @endcan
             </ul>
           </div>
         </li>
-        @endif
-        @if (empty($admin->role) || (!empty($permissions) && in_array('RSS Feeds', $permissions)))
+        @endcanany
+
+        
+        @canany(['import-rss', 'rss-feeds', 'rss-posts'])
         {{-- RSS --}}
         <li class="nav-item
           @if(request()->path() == 'admin/rss/create') active
@@ -909,27 +1038,35 @@ $data = \App\Models\BasicExtra::first();
             @elseif(request()->is('admin/rss/edit/*')) show
             @endif" id="rss">
             <ul class="nav nav-collapse">
+              @can('import-rss')
               <li class="@if(request()->path() == 'admin/rss/create') active @endif">
                 <a href="{{route('admin.rss.create')}}">
                 <span class="sub-item">Import RSS Feeds</span>
                 </a>
               </li>
+              @endcan
+              @can('rss-feeds')
               <li class="@if(request()->path() == 'admin/rss/feeds') active @endif">
                 <a href="{{route('admin.rss.feed'). '?language=' . $default->code}}">
                 <span class="sub-item">RSS Feeds</span>
                 </a>
               </li>
+              @endcan
+              @can('rss-posts')
               <li class="@if(request()->path() == 'admin/rss') active @endif">
                 <a href="{{route('admin.rss.index'). '?language=' . $default->code}}">
                 <span class="sub-item">RSS Posts</span>
                 </a>
               </li>
+              @endcan
             </ul>
           </div>
         </li>
-        @endif
+        @endcanany
+
+
         {{-- Users Management --}}
-        @if (empty($admin->role) || (!empty($permissions) && in_array('Users Management', $permissions)))
+       @canany(['register-users', 'push-notification', 'subscribers'])
         <li class="nav-item
           @if(request()->routeIs('admin.register.user')) active
           @elseif(request()->routeIs('register.user.view')) active
@@ -955,6 +1092,7 @@ $data = \App\Models\BasicExtra::first();
             @endif" id="usersManagement">
             <ul class="nav nav-collapse">
               {{-- Registered Users --}}
+              @can('register-users')
               <li class="
                 @if(request()->routeIs('admin.register.user')) active
                 @elseif(request()->routeIs('register.user.view')) active
@@ -964,7 +1102,9 @@ $data = \App\Models\BasicExtra::first();
                 <span class="sub-item">Registered Users</span>
                 </a>
               </li>
+              @endcan
               {{-- Push Notification --}}
+              @can('push-notification')
               <li class="
                 @if(request()->path() == 'admin/pushnotification/settings') selected
                 @elseif(request()->path() == 'admin/pushnotification/send') selected
@@ -991,7 +1131,9 @@ $data = \App\Models\BasicExtra::first();
                   </ul>
                 </div>
               </li>
+              @endcan
               {{-- Subscribers --}}
+              @can('subscribers')
               <li class="
                 @if(request()->path() == 'admin/subscribers') selected
                 @elseif(request()->path() == 'admin/mailsubscriber') selected
@@ -1018,10 +1160,13 @@ $data = \App\Models\BasicExtra::first();
                   </ul>
                 </div>
               </li>
+              @endcan
             </ul>
           </div>
         </li>
-        @endif
+        @endcanany
+
+
         {{-- Announcement Popup--}}
         @if (empty($admin->role) || (!empty($permissions) && in_array('Announcement Popup', $permissions)))
         <li class="nav-item
@@ -1049,6 +1194,7 @@ $data = \App\Models\BasicExtra::first();
                 <span class="sub-item">Add Popup</span>
                 </a>
               </li>
+              @can('popups')
               <li class="@if(request()->path() == 'admin/popups') active
                 @elseif(request()->is('admin/popup/*/edit')) active
                 @endif">
@@ -1056,11 +1202,14 @@ $data = \App\Models\BasicExtra::first();
                 <span class="sub-item">Popups</span>
                 </a>
               </li>
+              @endcan
             </ul>
           </div>
         </li>
         @endif
-        @if (empty($admin->role) || (!empty($permissions) && in_array('Basic Settings', $permissions)))
+
+
+        @canany(['general-settings', 'file-manager', 'logo-text-header','preloader','preferences','support-information','social-links','page-headings','language','payment-gateways','email-settings','plugins','seo-information','maintenance-mode','cookies-alert','misc'])
         {{-- Basic Settings --}}
         <li class="nav-item
           @if(request()->path() == 'admin/logo') active
@@ -1120,11 +1269,14 @@ $data = \App\Models\BasicExtra::first();
             @elseif(request()->path() == 'admin/sitemap') show
             @endif" id="basic">
             <ul class="nav nav-collapse">
+              @can('general-settings')
               <li class="@if(request()->path() == 'admin/basicinfo') active @endif">
                 <a href="{{route('admin.basicinfo')}}">
                 <span class="sub-item">General Settings</span>
                 </a>
               </li>
+              @endcan
+              @can('email-settings')
               <li class="submenu">
                 <a data-toggle="collapse" href="#emailset" aria-expanded="{{(request()->path() == 'admin/mail-from-admin' || request()->path() == 'admin/mail-to-admin' || request()->path() == 'admin/email-templates' || request()->routeIs('admin.email.editTemplate')) ? 'true' : 'false' }}">
                 <span class="sub-item">Email Settings</span>
@@ -1152,42 +1304,58 @@ $data = \App\Models\BasicExtra::first();
                   </ul>
                 </div>
               </li>
+              @endcan
+              @can('file-manager')
               <li class="@if(request()->path() == 'admin/file-manager') active @endif">
                 <a href="{{route('admin.file-manager')}}">
                 <span class="sub-item">File Manager</span>
                 </a>
               </li>
+              @endcan
+              @can('logo-text-header')
               <li class="@if(request()->path() == 'admin/logo') active @endif">
                 <a href="{{route('admin.logo')}}">
                 <span class="sub-item">Logo & Images</span>
                 </a>
               </li>
+              @endcan
+              @can('preloader')
               <li class="@if(request()->path() == 'admin/preloader') active @endif">
                 <a href="{{route('admin.preloader')}}">
                 <span class="sub-item">Preloader</span>
                 </a>
               </li>
+              @endcan
+              @can('preferences')
               <li class="@if(request()->routeIs('admin.featuresettings')) active @endif">
                 <a href="{{route('admin.featuresettings') . '?language=' . $default->code}}">
                 <span class="sub-item">Preferences</span>
                 </a>
               </li>
+              @endcan
+              @can('support-information')
               <li class="@if(request()->path() == 'admin/support') active @endif">
                 <a href="{{route('admin.support') . '?language=' . $default->code}}">
                 <span class="sub-item">Support Informations</span>
                 </a>
               </li>
+              @endcan
+              @can('social-links')
               <li class="@if(request()->path() == 'admin/social') active
                 @elseif(request()->is('admin/social/*')) active @endif">
                 <a href="{{route('admin.social.index')}}">
                 <span class="sub-item">Social Links</span>
                 </a>
               </li>
+              @endcan
+              @can('page-headings')
               <li class="@if(request()->path() == 'admin/heading') active @endif">
                 <a href="{{route('admin.heading') . '?language=' . $default->code}}">
                 <span class="sub-item">Page Headings</span>
                 </a>
               </li>
+              @endcan
+              @can('payment-gateways')
               <li class="
                 @if(request()->path() == 'admin/gateways') selected
                 @elseif(request()->path() == 'admin/offline/gateways') selected
@@ -1214,6 +1382,8 @@ $data = \App\Models\BasicExtra::first();
                   </ul>
                 </div>
               </li>
+              @endcan
+              @can('language')
               <li class="
                 @if(request()->path() == 'admin/languages') active
                 @elseif(request()->is('admin/language/*/edit')) active
@@ -1223,26 +1393,36 @@ $data = \App\Models\BasicExtra::first();
                 <span class="sub-item">Language</span>
                 </a>
               </li>
+              @endcan
+              @can('plugins')
               <li class="@if(request()->path() == 'admin/script') active @endif">
                 <a href="{{route('admin.script')}}">
                 <span class="sub-item">Plugins</span>
                 </a>
               </li>
+              @endcan
+              @can('seo-information')
               <li class="@if(request()->path() == 'admin/seo') active @endif">
                 <a href="{{route('admin.seo') . '?language=' . $default->code}}">
                 <span class="sub-item">SEO Information</span>
                 </a>
               </li>
+              @endcan
+              @can('maintenance-mode')
               <li class="@if(request()->path() == 'admin/maintainance') active @endif">
                 <a href="{{route('admin.maintainance')}}">
                 <span class="sub-item">Maintenance Mode</span>
                 </a>
               </li>
+              @endcan
+              @can('cookies-alert')
               <li class="@if(request()->path() == 'admin/cookie-alert') active @endif">
                 <a href="{{route('admin.cookie.alert') . '?language=' . $default->code}}">
                 <span class="sub-item">Cookie Alert</span>
                 </a>
               </li>
+              @endcan
+              @can('misc')
               <li class="
                 @if(request()->path() == 'admin/backup') selected
                 @elseif(request()->path() == 'admin/sitemap') selected
@@ -1278,11 +1458,14 @@ $data = \App\Models\BasicExtra::first();
                   </ul>
                 </div>
               </li>
+              @endcan
             </ul>
           </div>
         </li>
-        @endif
-        @if (empty($admin->role) || (!empty($permissions) && in_array('Admins Management', $permissions)))
+        @endcanany
+
+
+      @canany(['admin', 'admin'])
         {{-- Admins Management --}}
         <li class="nav-item
           @if(request()->path() == 'admin/roles') active
@@ -1302,6 +1485,7 @@ $data = \App\Models\BasicExtra::first();
             @elseif(request()->is('admin/user/*/edit')) show
             @endif" id="adminsManagement">
             <ul class="nav nav-collapse">
+              @can('admin')
               <li class="
                 @if(request()->path() == 'admin/roles') active
                 @elseif(request()->is('admin/role/*/permissions/manage')) active
@@ -1310,6 +1494,8 @@ $data = \App\Models\BasicExtra::first();
                 <span class="sub-item">Role Management</span>
                 </a>
               </li>
+              @endcan
+              @can('admin')
               <li class="
                 @if(request()->path() == 'admin/users') active
                 @elseif(request()->is('admin/user/*/edit')) active
@@ -1318,18 +1504,21 @@ $data = \App\Models\BasicExtra::first();
                 <span class="sub-item">Admins</span>
                 </a>
               </li>
+              @endcan
             </ul>
           </div>
         </li>
-        @endif
+        @endcanany
         @if (empty($admin->role) || (!empty($permissions) && in_array('Client Feedbacks', $permissions)))
         {{-- Client Feedbacks --}}
+        @can('admin')
         <li class="nav-item @if(request()->path() == 'admin/feedbacks') active @endif">
           <a href="{{route('admin.client_feedbacks')}}">
             <i class="fas fa-pen-fancy"></i>
             <p>Client Feedbacks</p>
           </a>
         </li>
+        @endcan
         @endif
       </ul>
     </div>

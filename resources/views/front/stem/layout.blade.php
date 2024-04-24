@@ -14,7 +14,6 @@
     <link rel="stylesheet" href="{{asset('assets/stem/css/responsive.css')}}">
   </head>
   <body>
-    <div class="preloader"></div>
     @includeIf('front.stem.header')
         {{-- @includeIf('front.stem.header') --}}
         <div id="skip-content-div">
