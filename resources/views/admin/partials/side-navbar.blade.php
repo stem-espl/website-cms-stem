@@ -547,8 +547,8 @@ $data = \App\Models\BasicExtra::first();
                 </a>
               </li>
               @endcan
-              @if ($bex->catalog_mode == 0)
               @can('shipping-charges')
+              @if ($bex->catalog_mode == 0)
               <li class="
                 @if(request()->path() == 'admin/shipping') active
                 @elseif(request()->routeIs('admin.shipping.edit')) active
@@ -557,10 +557,10 @@ $data = \App\Models\BasicExtra::first();
                 <span class="sub-item">Shipping Charges</span>
                 </a>
               </li>
-              @endcan
               @endif
-              @if ($bex->catalog_mode == 0)
+              @endcan
               @can('coupons')
+              @if ($bex->catalog_mode == 0)
               <li class="
                 @if(request()->path() == 'admin/coupon') active
                 @elseif(request()->routeIs('admin.coupon.edit')) active
@@ -569,8 +569,8 @@ $data = \App\Models\BasicExtra::first();
                 <span class="sub-item">Coupons</span>
                 </a>
               </li>
-              @endcan
               @endif
+              @endcan
               @canany(['category-product', 'products'])
               <li class="submenu">
                 <a data-toggle="collapse" href="#productManagement"
@@ -596,7 +596,6 @@ $data = \App\Models\BasicExtra::first();
                       <span class="sub-item">Category</span>
                       </a>
                     </li>
-                    @endcan
                     
                     <li class="
                       @if(request()->routeIs('admin.product.type')) active
@@ -606,6 +605,7 @@ $data = \App\Models\BasicExtra::first();
                       <span class="sub-item">Add Product</span>
                       </a>
                     </li>
+                    @endcan
                     @can('products')
                     <li class="
                       @if(request()->path() == 'admin/product') active
@@ -692,10 +692,6 @@ $data = \App\Models\BasicExtra::first();
         @endcanany
 
 
-
-
-
-
       @canany(['settings-course', 'categories-course', 'courses','enrolls','report-course'])
         {{-- Courses --}}
         <li class="nav-item
@@ -741,7 +737,6 @@ $data = \App\Models\BasicExtra::first();
                 <span class="sub-item">Category</span>
                 </a>
               </li>
-              @endcan
               
               <li class="@if(request()->path() == 'admin/course/create') active
                 @endif">
@@ -749,6 +744,7 @@ $data = \App\Models\BasicExtra::first();
                 <span class="sub-item">Add Course</span>
                 </a>
               </li>
+              @endcan
    
               @can('courses')
               <li class="@if(request()->path() == 'admin/courses') active
@@ -1168,7 +1164,7 @@ $data = \App\Models\BasicExtra::first();
 
 
         {{-- Announcement Popup--}}
-        @if (empty($admin->role) || (!empty($permissions) && in_array('Announcement Popup', $permissions)))
+        @can('popups')
         <li class="nav-item
           @if(request()->path() == 'admin/popup/create') active
           @elseif(request()->path() == 'admin/popup/types') active
@@ -1194,7 +1190,7 @@ $data = \App\Models\BasicExtra::first();
                 <span class="sub-item">Add Popup</span>
                 </a>
               </li>
-              @can('popups')
+              
               <li class="@if(request()->path() == 'admin/popups') active
                 @elseif(request()->is('admin/popup/*/edit')) active
                 @endif">
@@ -1202,11 +1198,10 @@ $data = \App\Models\BasicExtra::first();
                 <span class="sub-item">Popups</span>
                 </a>
               </li>
-              @endcan
             </ul>
           </div>
         </li>
-        @endif
+        @endcan
 
 
         @canany(['general-settings', 'file-manager', 'logo-text-header','preloader','preferences','support-information','social-links','page-headings','language','payment-gateways','email-settings','plugins','seo-information','maintenance-mode','cookies-alert','misc'])
@@ -1465,7 +1460,7 @@ $data = \App\Models\BasicExtra::first();
         @endcanany
 
 
-      @canany(['admin', 'admin'])
+        @canany(['admin', 'admin'])
         {{-- Admins Management --}}
         <li class="nav-item
           @if(request()->path() == 'admin/roles') active
