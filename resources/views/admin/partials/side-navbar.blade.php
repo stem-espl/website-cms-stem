@@ -53,6 +53,7 @@ $data = \App\Models\BasicExtra::first();
           </div>
         </div>
       </div>
+
       <ul class="nav nav-primary mt-0">
         <div class="row mb-2">
           <div class="col-12">
@@ -63,7 +64,9 @@ $data = \App\Models\BasicExtra::first();
             </form>
           </div>
         </div>
-        @if (empty($admin->role) || (!empty($permissions) && in_array('Dashboard', $permissions)))
+
+
+        @can('dashboard')
         {{-- Dashboard --}}
         <li class="nav-item @if(request()->path() == 'admin/dashboard') active @endif">
           <a href="{{route('admin.dashboard')}}">
@@ -71,8 +74,9 @@ $data = \App\Models\BasicExtra::first();
             <p>Dashboard</p>
           </a>
         </li>
-        @endif
-        @if (empty($admin->role) || (!empty($permissions) && in_array('Theme & Home', $permissions)))
+        @endcan
+
+        @can('theme-setting')
         {{-- Dynamic Pages --}}
         <li class="nav-item
           @if(request()->path() == 'admin/home-settings') active
@@ -107,8 +111,11 @@ $data = \App\Models\BasicExtra::first();
             </ul>
           </div>
         </li>
-        @endif
-        @if (empty($admin->role) || (!empty($permissions) && in_array('Menu Builder', $permissions)))
+        @endcan
+
+
+
+        @canany(['mega-menus','main-menus','permalinks'])
         {{-- Menu Builder--}}
         <li class="nav-item
           @if(request()->path() == 'admin/menu-builder') active
@@ -128,6 +135,7 @@ $data = \App\Models\BasicExtra::first();
             @elseif(request()->path() == 'admin/megamenus/edit') show
             @endif" id="websiteMenu">
             <ul class="nav nav-collapse">
+              @can('mega-menus')
               <li class="@if(request()->path() == 'admin/megamenus') active
                 @elseif(request()->path() == 'admin/megamenus/edit') active
                 @endif">
@@ -135,25 +143,32 @@ $data = \App\Models\BasicExtra::first();
                 <span class="sub-item">Mega Menus</span>
                 </a>
               </li>
+              @endcan
+              @can('main-menus')
               <li class="@if(request()->path() == 'admin/menu-builder') active @endif">
                 <a href="{{route('admin.menu_builder.index') . '?language=' . $default->code}}">
                 <span class="sub-item">Main Menu</span>
                 </a>
               </li>
+              @endcan
+              @can('permalinks')
               <li class="@if(request()->path() == 'admin/permalinks') active @endif">
                 <a href="{{route('admin.permalinks.index')}}">
                 <span class="sub-item">Permalinks</span>
                 </a>
               </li>
+              @endcan
             </ul>
           </div>
         </li>
-        @endif
+        @endcanany
+
         {{-- Content Management --}}
         @if (empty($admin->role) || (!empty($permissions) && in_array('Content Management', $permissions)))
         @includeIf('admin.partials.content-management')
         @endif
-        @if (empty($admin->role) || (!empty($permissions) && in_array('Pages', $permissions)))
+
+        @canany(['settings-page','create-page','pages'])
         {{-- Dynamic Pages --}}
         <li class="nav-item
           @if(request()->path() == 'admin/page/create') active
@@ -173,25 +188,32 @@ $data = \App\Models\BasicExtra::first();
             @elseif(request()->is('admin/page/*/edit')) show
             @endif" id="pages">
             <ul class="nav nav-collapse">
+              @can('create-page')
               <li class="@if(request()->path() == 'admin/page/settings') active @endif">
                 <a href="{{route('admin.page.settings')}}">
                 <span class="sub-item">Settings</span>
                 </a>
               </li>
+              @endcan
+              @can('pages')
               <li class="@if(request()->path() == 'admin/page/create') active @endif">
                 <a href="{{route('admin.page.create') . '?language=' . $default->code}}">
                 <span class="sub-item">Create Page</span>
                 </a>
               </li>
+              @endcan
+              @can('settings-page')
               <li class="@if(request()->path() == 'admin/pages') active @endif">
                 <a href="{{route('admin.page.index') . '?language=' . $default->code}}">
                 <span class="sub-item">Pages</span>
                 </a>
               </li>
+              @endcan
             </ul>
           </div>
         </li>
         @endif
+
         @if (empty($admin->role) || (!empty($permissions) && in_array('Event Calendar', $permissions)))
         {{-- Event Calendar --}}
         <li class="nav-item
@@ -203,6 +225,7 @@ $data = \App\Models\BasicExtra::first();
           </a>
         </li>
         @endif
+
         @if (empty($admin->role) || (!empty($permissions) && in_array('Package Management', $permissions)))
         {{-- Package Management --}}
         <li class="nav-item
@@ -351,6 +374,7 @@ $data = \App\Models\BasicExtra::first();
           </div>
         </li>
         @endif
+
         @if (empty($admin->role) || (!empty($permissions) && in_array('Quote Management', $permissions)))
         {{-- Quotes --}}
         <li class="nav-item
