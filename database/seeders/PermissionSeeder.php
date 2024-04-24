@@ -30,8 +30,8 @@ class PermissionSeeder extends Seeder
         Permission::create(['name' => 'approach-section','guard_name' => 'admin', 'group_name' => 'home_page_section_management']);
         Permission::create(['name' => 'statistics-section','guard_name' => 'admin', 'group_name' => 'home_page_section_management']);
         Permission::create(['name' => 'call-to-action-section','guard_name' => 'admin', 'group_name' => 'home_page_section_management']);
-        Permission::create(['name' => 'portfolio -section','guard_name' => 'admin', 'group_name' => 'home_page_section_management']);
-        Permission::create(['name' => 'testimonials -section','guard_name' => 'admin', 'group_name' => 'home_page_section_management']);
+        Permission::create(['name' => 'portfolio-section','guard_name' => 'admin', 'group_name' => 'home_page_section_management']);
+        Permission::create(['name' => 'testimonials-section','guard_name' => 'admin', 'group_name' => 'home_page_section_management']);
         Permission::create(['name' => 'team-section','guard_name' => 'admin', 'group_name' => 'home_page_section_management']);
         Permission::create(['name' => 'blog-section','guard_name' => 'admin', 'group_name' => 'home_page_section_management']);
         Permission::create(['name' => 'partners-section','guard_name' => 'admin', 'group_name' => 'home_page_section_management']);
@@ -193,8 +193,8 @@ class PermissionSeeder extends Seeder
             'approach-section',
             'statistics-section',
             'call-to-action-section',
-            'portfolio -section',
-            'testimonials -section',
+            'portfolio-section',
+            'testimonials-section',
             'team-section',
             'blog-section',
             'partners-section',
