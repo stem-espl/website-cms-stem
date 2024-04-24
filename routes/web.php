@@ -388,7 +388,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin', 'checkstatus',
   // Admin logout Route
   Route::get('/logout', 'Admin\LoginController@logout')->name('admin.logout');
 
-  Route::group(['middleware' => 'checkpermission:Dashboard'], function () {
+  Route::group(['middleware' => []], function () {
     // Admin Dashboard Routes
     Route::get('/dashboard', 'Admin\DashboardController@dashboard')->name('admin.dashboard');
   });
@@ -402,14 +402,14 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin', 'checkstatus',
   Route::post('/profile/update', 'Admin\ProfileController@updateProfile')->name('admin.updateProfile');
 
 
-  Route::group(['middleware' => 'checkpermission:Theme & Home'], function () {
+  Route::group(['middleware' => []], function () {
     // Admin Home Version Setting Routes
     Route::get('/home-settings', 'Admin\BasicController@homeSettings')->name('admin.homeSettings');
     Route::post('/homeSettings/post', 'Admin\BasicController@updateHomeSettings')->name('admin.homeSettings.update');
   });
 
 
-  Route::group(['middleware' => 'checkpermission:Basic Settings'], function () {
+  Route::group(['middleware' => []], function () {
 
     // Admin File Manager Routes
     Route::get('/file-manager', 'Admin\BasicController@fileManager')->name('admin.file-manager');
@@ -557,7 +557,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin', 'checkstatus',
   });
 
 
-  Route::group(['middleware' => 'checkpermission:Content Management'], function () {
+  Route::group(['middleware' => []], function () {
         // Admin Hero Section (Static Version) Routes
         Route::get('/herosection/static', 'Admin\HerosectionController@static')->name('admin.herosection.static');
         Route::post('/herosection/{langid}/update', 'Admin\HerosectionController@update')->name('admin.herosection.update');
@@ -808,7 +808,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin', 'checkstatus',
 
 
 
-    Route::group(['middleware' => 'checkpermission:Menu Builder'], function () {
+  Route::group(['middleware' => []], function () {
         // Mega Menus Management Routes
         Route::get('/megamenus', 'Admin\MenuBuilderController@megamenus')->name('admin.megamenus');
         Route::get('/megamenus/edit', 'Admin\MenuBuilderController@megaMenuEdit')->name('admin.megamenu.edit');
@@ -824,7 +824,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin', 'checkstatus',
     });
 
 
-    Route::group(['middleware' => 'checkpermission:Announcement Popup'], function () {
+    Route::group(['middleware' => []], function () {
         Route::get('popups', 'Admin\PopupController@index')->name('admin.popup.index');
         Route::get('popup/types', 'Admin\PopupController@types')->name('admin.popup.types');
         Route::get('popup/{id}/edit', 'Admin\PopupController@edit')->name('admin.popup.edit');
@@ -842,7 +842,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin', 'checkstatus',
 
 
 
-    Route::group(['middleware' => 'checkpermission:Pages'], function () {
+    Route::group(['middleware' => []], function () {
         // Menu Manager Routes
         Route::get('/pages', 'Admin\PageController@index')->name('admin.page.index');
         Route::get('/page/settings', 'Admin\PageController@settings')->name('admin.page.settings');
@@ -865,7 +865,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin', 'checkstatus',
 
 
 
-    Route::group(['middleware' => 'checkpermission:Shop Management'], function () {
+    Route::group(['middleware' => []], function () {
         Route::get('/category', 'Admin\ProductCategory@index')->name('admin.category.index');
         Route::post('/category/store', 'Admin\ProductCategory@store')->name('admin.category.store');
         Route::get('/category/{id}/edit', 'Admin\ProductCategory@edit')->name('admin.category.edit');
@@ -933,7 +933,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin', 'checkstatus',
 
 
     //Event Manage Routes
-    Route::group(['middleware' => 'checkpermission:Events Management'], function () {
+    Route::group(['middleware' => []], function () {
         Route::get('/event/categories', 'Admin\EventCategoryController@index')->name('admin.event.category.index');
         Route::post('/event/category/store', 'Admin\EventCategoryController@store')->name('admin.event.category.store');
         Route::post('/event/category/update', 'Admin\EventCategoryController@update')->name('admin.event.category.update');
@@ -963,7 +963,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin', 'checkstatus',
         Route::get('/events/export', 'Admin\EventController@exportReport')->name('admin.event.export');
     });
     //Donation Manage Routes
-    Route::group(['middleware' => 'checkpermission:Donation Management'], function () {
+    Route::group(['middleware' => []], function () {
         Route::get('/donations', 'Admin\DonationController@index')->name('admin.donation.index');
         Route::get('/donation/settings', 'Admin\DonationController@settings')->name('admin.donation.settings');
         Route::post('/donation/settings', 'Admin\DonationController@updateSettings')->name('admin.donation.settings');
@@ -983,7 +983,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin', 'checkstatus',
 
 
     // Admin Event Calendar Routes
-    Route::group(['middleware' => 'checkpermission:Event Calendar'], function () {
+    Route::group(['middleware' => []], function () {
         Route::get('/calendars', 'Admin\CalendarController@index')->name('admin.calendar.index');
         Route::post('/calendar/store', 'Admin\CalendarController@store')->name('admin.calendar.store');
         Route::post('/calendar/update', 'Admin\CalendarController@update')->name('admin.calendar.update');
@@ -992,7 +992,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin', 'checkstatus',
     });
 
 
-    Route::group(['middleware' => 'checkpermission:Knowledgebase'], function () {
+    Route::group(['middleware' => []], function () {
         // Admin Article Category Routes
         Route::get('/article_categories', 'Admin\ArticleCategoryController@index')->name('admin.article_category.index');
         Route::post('/article_category/store', 'Admin\ArticleCategoryController@store')->name('admin.article_category.store');
@@ -1011,7 +1011,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin', 'checkstatus',
     });
 
 
-    Route::group(['middleware' => 'checkpermission:Course Management'], function () {
+    Route::group(['middleware' => []], function () {
         // Admin Course Category Routes
         Route::get('/course_categories', 'Admin\CourseCategoryController@index')->name('admin.course_category.index');
         Route::post('/course_category/store', 'Admin\CourseCategoryController@store')->name('admin.course_category.store');
@@ -1058,7 +1058,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin', 'checkstatus',
     });
 
 
-    Route::group(['middleware' => 'checkpermission:RSS Feeds'], function () {
+    Route::group(['middleware' => []], function () {
         // Admin RSS feed Routes
         Route::get('/rss', 'Admin\RssFeedsController@index')->name('admin.rss.index');
         Route::get('/rss/feeds', 'Admin\RssFeedsController@feed')->name('admin.rss.feed');
@@ -1075,7 +1075,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin', 'checkstatus',
     });
 
 
-    Route::group(['middleware' => 'checkpermission:Users Management'], function () {
+    Route::group(['middleware' => []], function () {
         // Register User start
         Route::get('register/users', 'Admin\RegisterUserController@index')->name('admin.register.user');
         Route::post('register/users/ban', 'Admin\RegisterUserController@userban')->name('register.user.ban');
@@ -1103,7 +1103,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin', 'checkstatus',
     });
 
 
-    Route::group(['middleware' => 'checkpermission:Tickets'], function () {
+    Route::group(['middleware' => []], function () {
         // Admin Support Ticket Routes
         Route::get('/all/tickets', 'Admin\TicketController@all')->name('admin.tickets.all');
         Route::get('/pending/tickets', 'Admin\TicketController@pending')->name('admin.tickets.pending');
@@ -1119,7 +1119,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin', 'checkstatus',
     });
 
 
-    Route::group(['middleware' => 'checkpermission:Package Management'], function () {
+    Route::group(['middleware' => []], function () {
 
         // Admin Package Form Builder Routes
         Route::get('/package/settings', 'Admin\PackageController@settings')->name('admin.package.settings');
@@ -1176,7 +1176,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin', 'checkstatus',
 
 
 
-    Route::group(['middleware' => 'checkpermission:Quote Management'], function () {
+    Route::group(['middleware' => []], function () {
 
         // Admin Quote Form Builder Routes
         Route::get('/quote/visibility', 'Admin\QuoteController@visibility')->name('admin.quote.visibility');
@@ -1201,7 +1201,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin', 'checkstatus',
         Route::post('/quote/mail', 'Admin\QuoteController@mail')->name('admin.quotes.mail');
     });
 
-    Route::group(['middleware' => 'checkpermission:Quote Management'], function () {
+    Route::group(['middleware' => []], function () {
 
         // Admin Quote Form Builder Routes
         Route::get('/quote/visibility', 'Admin\QuoteController@visibility')->name('admin.quote.visibility');
@@ -1227,7 +1227,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin', 'checkstatus',
     });
 
 
-      Route::group(['middleware' => 'checkpermission:Role Management'], function () {
+    Route::group(['middleware' => []], function () {
         // Admin Roles Routes
         Route::get('/roles', 'Admin\RoleController@index')->name('admin.role.index');
         Route::post('/role/store', 'Admin\RoleController@store')->name('admin.role.store');
@@ -1237,7 +1237,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin', 'checkstatus',
         Route::post('role/permissions/update', 'Admin\RoleController@updatePermissions')->name('admin.role.permissions.update');
       });
 
-      Route::group(['middleware' => 'checkpermission:Users Management'], function () {
+      Route::group(['middleware' => []], function () {
         // Admin Users Routes
         Route::get('/users', 'Admin\UserController@index')->name('admin.user.index');
         Route::post('/user/store', 'Admin\UserController@store')->name('admin.user.store');
@@ -1248,7 +1248,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin', 'checkstatus',
 
 
 
-      Route::group(['middleware' => 'checkpermission:Client Feedbacks'], function () {
+      Route::group(['middleware' => []], function () {
         // Admin View Client Feedbacks Routes
         Route::get('/feedbacks', 'Admin\FeedbackController@feedbacks')->name('admin.client_feedbacks');
         Route::post('/delete_feedback', 'Admin\FeedbackController@deleteFeedback')->name('admin.delete_feedback');
