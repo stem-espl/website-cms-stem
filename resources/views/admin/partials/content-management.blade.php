@@ -309,6 +309,7 @@
             @endcan
             
             @if ($be->theme_version == 'car' && $bex->home_page_pagebuilder == 0)
+            @can('package-background')
             <li class="
               @if(request()->path() == 'admin/package/background') active
               @endif">
@@ -316,6 +317,7 @@
               <span class="sub-item">Package Background</span>
               </a>
             </li>
+            @endcan
             @endif
 
             @can('blog-section')
@@ -684,12 +686,14 @@
       @endcan
 
       {{-- Contact Page --}}
+      @can('contact')
       <li class="
         @if(request()->path() == 'admin/contact') active @endif">
         <a href="{{route('admin.contact.index') . '?language=' . $default->code}}">
         <span class="sub-item">Contact Page</span>
         </a>
       </li>
+      @endcan
 
     </ul>
   </div>
