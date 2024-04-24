@@ -1,10 +1,5 @@
 @php
 $default = \App\Models\Language::where('is_default', 1)->first();
-$admin = Auth::guard('admin')->user();
-if (!empty($admin->role)) {
-$permissions = $admin->role->permissions;
-$permissions = json_decode($permissions, true);
-}
 $data = \App\Models\BasicExtra::first();
 @endphp
 <div class="sidebar sidebar-style-2" data-background-color="light2">
