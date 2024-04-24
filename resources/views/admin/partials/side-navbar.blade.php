@@ -1168,7 +1168,7 @@ $data = \App\Models\BasicExtra::first();
 
 
         {{-- Announcement Popup--}}
-        @if (empty($admin->role) || (!empty($permissions) && in_array('Announcement Popup', $permissions)))
+    
         <li class="nav-item
           @if(request()->path() == 'admin/popup/create') active
           @elseif(request()->path() == 'admin/popup/types') active
@@ -1206,7 +1206,7 @@ $data = \App\Models\BasicExtra::first();
             </ul>
           </div>
         </li>
-        @endif
+  
 
 
         @canany(['general-settings', 'file-manager', 'logo-text-header','preloader','preferences','support-information','social-links','page-headings','language','payment-gateways','email-settings','plugins','seo-information','maintenance-mode','cookies-alert','misc'])
@@ -1465,7 +1465,7 @@ $data = \App\Models\BasicExtra::first();
         @endcanany
 
 
-      @canany(['admin', 'admin'])
+      @canany(['admins', 'roles'])
         {{-- Admins Management --}}
         <li class="nav-item
           @if(request()->path() == 'admin/roles') active
@@ -1485,7 +1485,7 @@ $data = \App\Models\BasicExtra::first();
             @elseif(request()->is('admin/user/*/edit')) show
             @endif" id="adminsManagement">
             <ul class="nav nav-collapse">
-              @can('admin')
+              @can('roles')
               <li class="
                 @if(request()->path() == 'admin/roles') active
                 @elseif(request()->is('admin/role/*/permissions/manage')) active
@@ -1495,7 +1495,7 @@ $data = \App\Models\BasicExtra::first();
                 </a>
               </li>
               @endcan
-              @can('admin')
+              @can('admins')
               <li class="
                 @if(request()->path() == 'admin/users') active
                 @elseif(request()->is('admin/user/*/edit')) active
@@ -1509,7 +1509,7 @@ $data = \App\Models\BasicExtra::first();
           </div>
         </li>
         @endcanany
-        @if (empty($admin->role) || (!empty($permissions) && in_array('Client Feedbacks', $permissions)))
+  
         {{-- Client Feedbacks --}}
         @can('admin')
         <li class="nav-item @if(request()->path() == 'admin/feedbacks') active @endif">
@@ -1519,7 +1519,16 @@ $data = \App\Models\BasicExtra::first();
           </a>
         </li>
         @endcan
-        @endif
+  
+        @can('audit-trail')
+
+        <li class="nav-item">
+          <a href="javascript:void(0)">
+            <i class="fas fa-pen-fancy"></i>
+            <p>Audit Trail</p>
+          </a>
+        </li>
+        @endcan
       </ul>
     </div>
   </div>
