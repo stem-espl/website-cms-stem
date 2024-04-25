@@ -6,14 +6,22 @@
             <div class="widget footer-widget">
               <img src="{{asset('assets/stem/images/logo-footer.png')}}" alt="" class="mrb-20">
               <address class="mrb-25">
-                <p class="text-light-gray">Thane, Maharashtra</p>
+                <p class="text-light-gray">
+                  @php
+              $addresses = explode(PHP_EOL, $bex->contact_addresses);
+              @endphp
+              @foreach ($addresses as $address)
+              <p class="float-left w-md-75 mb-0">{{$address}}</p>
+              @endforeach
+                </p>
+                <br>
                 <div class="mrb-10"><a href="#" class="text-light-gray"><i class="fas fa-phone-alt mrr-10"></i>(022) 2541 4739</a></div>
                 <div class="mrb-10"><a href="#" class="text-light-gray"><i class="fas fa-envelope mrr-10"></i>support@stemwater.org</a></div>
                 <div class="mrb-0"><a href="#" class="text-light-gray"><i class="fas fa-globe mrr-10"></i>www.stemwater.org</a></div>
                 <div class="mrb-0 mt-3">
-                  <a href="#" class="text-light-gray">
-                    <p>Designed And Developed By EncureIT Systems Private Limited.</p>
-                  </a>
+           
+                    <p>{{convertUtf8($bs->contact_form_title)}}</p>
+             
                 </div>
               </address>
               <!-- <ul class="social-list">
@@ -24,19 +32,18 @@
                 </ul> -->
             </div>
           </div>
+
           <div class="col-xl-3 col-lg-6 col-md-6">
             <div class="widget footer-widget">
               <h5 class="widget-title text-white mrb-30">Useful Links</h5>
               <ul class="footer-widget-list">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="#">Department</a></li>
-                <li><a href="egoverance.html">e-Governance</a></li>
-                <li><a href="tender.html">Tender & Advertisement</a></li>
-                <li><a href="contact-us.html">Contact Us</a></li>
+                @foreach ($ulinks as $manu)
+                <li><a href="{{ $manu['url'] }}">{{ $manu['name'] }}</a></li>
+               @endforeach
               </ul>
             </div>
           </div>
+
           <div class="col-xl-3 col-lg-6 col-md-6">
             <div class="widget footer-widget">
               <h5 class="widget-title text-white mrb-30">About Us</h5>
@@ -71,7 +78,7 @@
         <div class="row">
           <div class="col-xl-12">
             <div class="text-center">
-              <span class="text-light-gray">Copyright © 2023 by <a class="text-primary-color" target="_blank" href=""> STEM</a> | All rights reserved </span>
+              <span class="text-light-gray">  {!! replaceBaseUrl($bs->copyright_text) !!}</a></span>
             </div>
           </div>
         </div>
