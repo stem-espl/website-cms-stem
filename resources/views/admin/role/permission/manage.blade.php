@@ -38,7 +38,7 @@
         </div>
         <div class="card-body">
           <div class="row">
-            <div class="col-lg-8 offset-lg-2">
+            <div class="col-lg-10 offset-lg-2">
               {{--  onsubmit="return false;" --}}
 			  <form id="permissionsForm" class="" action="{{route('admin.role.permissions.update')}}" method="post">
                 {{csrf_field()}}

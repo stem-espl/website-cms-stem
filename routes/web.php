@@ -363,6 +363,7 @@ Route::group(['prefix' => 'user', 'middleware' => ['auth', 'userstatus', 'setlan
   Route::post('/digital/download', 'User\OrderController@digitalDownload')->name('user-digital-download');
   Route::get('/package/orders', 'User\PackageController@index')->name('user-package-orders');
   Route::get('/package/order/{id}', 'User\PackageController@orderdetails')->name('user-package-order-details');
+
 });
 
 /*=======================================================
@@ -406,6 +407,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin', 'checkstatus',
     // Admin Home Version Setting Routes
     Route::get('/home-settings', 'Admin\BasicController@homeSettings')->name('admin.homeSettings');
     Route::post('/homeSettings/post', 'Admin\BasicController@updateHomeSettings')->name('admin.homeSettings.update');
+    Route::get('/audit', 'AuditReportController@index')->name('audit-from'); 
+
   });
 
 
