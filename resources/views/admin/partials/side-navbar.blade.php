@@ -1512,7 +1512,7 @@ $data = \App\Models\BasicExtra::first();
         </li>
         @endcan
   
-        @can('audit-trail')
+        {{-- @can('audit-trail')
 
         <li class="nav-item">
           <a href="javascript:void(0)">
@@ -1521,7 +1521,18 @@ $data = \App\Models\BasicExtra::first();
           </a>
         </li>
         @endcan
-      </ul>
+      </ul> --}}
+
+      @can('audit-trail')
+      {{-- Dashboard --}}
+      <li class="nav-item">
+        <a href="{{route('audit-from')}}">
+          <i class="la flaticon-paint-palette"></i>
+          <p>Audit Trail</p>
+        </a>
+      </li>
+      @endcan
+
     </div>
   </div>
 </div>
