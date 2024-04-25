@@ -38,7 +38,15 @@
                     <div class="col-lg-6 offset-lg-3">
                         <form id="imageForm" action="{{route('admin.logo.update')}}" method="POST">
                             @csrf
+                            <div class="form-group">
+                  <label>Website Heading **</label>
+                  <input class="form-control" name="website_heading" value="{{$abs->website_heading}}" placeholder="Enter Titlte">
+                  @if ($errors->has('website_heading'))
+                    <p class="mb-0 text-danger">{{$errors->first('website_heading')}}</p>
+                  @endif
+                </div>
                             {{-- Logo Part --}}
+                            
                             <div class="form-group">
                                 <label for="">Logo ** </label>
                                 <br>

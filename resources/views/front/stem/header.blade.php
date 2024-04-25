@@ -29,10 +29,10 @@
               <div class="containerNew">
                 <div class="col-sm-12 col-md-5 col-lg-9 img_padding">
                   <a class="navbar-brand logo f-left mrt-5 mrt-md-0 mrb-5 mrb-md-0 pdt-10 pdb-10 padding_right"  href="index.html" id="logo_1" style="border-right: 1px solid #000; padding-right: 12px;">
-                  <img id="logo-image" class="img-center img-width" src="{{asset('assets/stem/images/logo.png')}}" alt="" loading="lazy">
+                  <img id="logo-image" class="img-center img-width" src="{{asset('assets/front/img/'.$bs->logo)}}" alt="" loading="lazy">
                   </a>
                   <div class="title-full topText" >
-                    <p><span>Stem Water Distribution And Infrastructure Company <br> Private  Limited</span><br><span>स्टेम वॉटर डिस्ट्रिब्युशन अँड इन्फ्रास्ट्रक्चर कंपनी प्रायव्हेट लिमिटेड</span></p>
+                    <p><span>{{$bs->website_heading}}</span></p>
                   </div>
                 </div>
                 <div class="col-sm-12 col-md-5 col-lg-3 img_padding">
