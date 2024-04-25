@@ -1,9 +1,7 @@
 <?php
 namespace App\Helper;
-use App\Models\Project;
 use App\Models\Language;
-use App\Models\Datasets;
-use App\Models\SubProject;
+
 
 class CommonHelper
 {
@@ -28,64 +26,6 @@ class CommonHelper
             $str = str_replace(" Id"," ",$str);
         }
         return $str;
-    }
-
-    static function total_dataset_count($lang = null)
-    {
-        $dataset_cnt = 0;
-        $datasetArr = [];
-        $project = Project::select('id');
-        // if(!empty($lang))
-        // {
-        //     $project = $project->where('language_id', $lang);
-        // }
-        $project = $project->where('status',1)->where('is_active',1)->get();
-
-        foreach ($project as $key => $value) {
-            if(!empty($lang))
-            {
-                $datasetArr[] = Datasets::where('project_id',$value->id)->where('active',1)->count();
-            }else{
-                $datasetArr[] = Datasets::where('project_id',$value->id)->count();
-            }
-        }
-
-        $dataset_cnt = array_sum($datasetArr);
-        return $dataset_cnt;
-    }
-
-    static function dataset_count($project_id = null, $type = null, $lang = null)
-    {
-        $dataset_cnt = 0;
-        $datasetArr = [];
-        $project = Project::select('id');
-        if(!empty($project_id))
-        {
-            $project = $project->where('id', $project_id);
-        }
-
-        if($type == 'archive')
-        {
-            $project = $project->where('is_active',0);
-        }
-        elseif(!empty($project_id) && empty($type))
-        {
-            $project = $project->where('is_active','!=',0);
-        }else{}
-
-        $project = $project->get();
-
-        foreach ($project as $key => $value) {
-            if(!empty($lang))
-            {
-                $datasetArr[] = Datasets::where('project_id',$value->id)->where('active',1)->count();
-            }else{
-                $datasetArr[] = Datasets::where('project_id',$value->id)->count();
-            }
-        }
-
-        $dataset_cnt = array_sum($datasetArr);
-        return $dataset_cnt;
     }
 
     static function entityValue($key,$value) 
