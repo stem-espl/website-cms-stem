@@ -1,3 +1,4 @@
+
 <header class="header-style-two">
     <div class="header-wrapper">
       <div class="header-top-area d-lg-block bg-secondary-color">
@@ -83,63 +84,7 @@
                     <li><a href="#"><i class="fab fa-google-plus"></i></a></li>
                   </ul>
                 </div>
-                <div class="main-menu menu-colour">
-                  <nav id="mobile-menu-right" >
-                    <ul>
-                      <li><a href="index.html">Home</a></li>
-                      <li class="has-sub">
-                        <a href="#">About Us</a>
-                        <ul class="sub-menu">
-                          <li><a href="about.html">About Us</a></li>
-                          <li><a href="history.html">History</a></li>
-                          <li>
-                            <a href="javascript:void(0)">Budget Reports</a>
-                            <ul class="sub-menu right-view">
-                              <li><a href="Profit.html">Profit</a></li>
-                              <!-- <li><a href="Totalincome.html">Income</a></li>
-                                <li><a href="expenses.html">Expenses</a></li> -->
-                            </ul>
-                          </li>
-                          <li>
-                            <a href="javascript:void(0)">Leadership</a>
-                            <ul class="sub-menu right-view">
-                              <li><a href="authority.html">Structure Of Governing Council</a></li>
-                              <li><a href="executive1.html">Executive Committee</a></li>
-                            </ul>
-                          </li>
-                          <li>
-                            <a href="javascript:void(0)">Gallery</a>
-                            <ul class="sub-menu right-view">
-                              <li><a href="anniversary.html">13th Foundation Day Celebration</a></li>
-                              <li><a href="campaign.html">53th NATIONAL SAFETY WEEK CAMPAIGN</a></li>
-                            </ul>
-                          </li>
-                        </ul>
-                      </li>
-                      <li class="has-sub">
-                        <a href="javascript:void(0)">Department</a>
-                        <ul class="sub-menu">
-                          <li><a href="javascript:void(0)">Administration</a></li>
-                          <li>
-                            <a href="javascript:void(0)">Engineering</a>
-                            <ul class="sub-menu">
-                              <li><a href="javascript:void(0)">Operation</a></li>
-                              <li><a href="javascript:void(0)">Project</a></li>
-                            </ul>
-                          </li>
-                          <li><a href="javascript:void(0)">Finance and Accounts</a></li>
-                          <li><a href="Technicaldoc.html">Technical Documents</a></li>
-                          <li><a href="circular.html">Circulars</a></li>
-                          <li><a href="watertariff.html">Water Tariff and Charges</a></li>
-                        </ul>
-                      </li>
-                      <li>
-                        <a href="egoverance.html">e-Governance</a>
-                      </li>
-                      <li><a href="tender.html">Tender & Advertisement</a></li>
-                    </ul>
-                  </nav>
-                </div>
+                @includeIf('front.stem.menu')
                 <div class="main-menu menu-colour">
                 </div>
               </div>
