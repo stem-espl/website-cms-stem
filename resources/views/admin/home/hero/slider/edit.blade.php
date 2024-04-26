@@ -70,7 +70,7 @@
                             <label for="">Image ** </label>
                             <br>
                             <div class="thumb-preview" id="thumbPreview1">
-                                <img src="{{asset('assets/front/img/sliders/'.$slider->image)}}" alt="Slider Image">
+                                <img src="{{asset('assets/front/img/sliders/stem/'.$slider->image)}}" alt="Slider Image">
                             </div>
                             <br>
                             <br>
@@ -104,7 +104,7 @@
                                     <p id="errtitle" class="text-danger mb-0 em"></p>
                                 </div>
                             </div>
-                            <div class="col-lg-6">
+                            <div class="col-lg-6 d-none">
                                 <div class="form-group">
                                     <label for="">Title Font Size **</label>
                                     <input type="number" class="form-control ltr" name="title_font_size" value="{{$slider->title_font_size}}">
@@ -115,7 +115,7 @@
 
 
                         @if ($be->theme_version == 'gym' || $be->theme_version == 'car' || $be->theme_version == 'cleaning')
-                        <div class="row">
+                        <div class="row d-none">
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label for="">Bold Text </label>
@@ -136,7 +136,7 @@
 
 
                         @if ($be->theme_version == 'cleaning')
-                        <div class="row">
+                        <div class="row d-none">
                             <div class="col-lg-12">
                                 <div class="form-group">
                                     <label for="">Bold Text Color **</label>
@@ -149,7 +149,7 @@
 
 
                         @if ($be->theme_version != 'cleaning')
-                        <div class="row">
+                        <div class="row d-none">
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label for="">Text </label>
@@ -168,7 +168,7 @@
                         @endif
 
 
-                        <div class="row">
+                        <div class="row d-none">
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label for="">Button Text </label>
@@ -186,7 +186,7 @@
                         </div>
 
 
-                        <div class="form-group">
+                        <div class="form-group d-none">
                             <label for="">Button URL **</label>
                             <input type="text" class="form-control ltr" name="button_url" value="{{$slider->button_url}}" placeholder="Enter Button URL">
                             <p id="errbutton_url" class="text-danger mb-0 em"></p>

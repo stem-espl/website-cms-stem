@@ -144,6 +144,40 @@
                                     </div>
                                 </div>
                             </div>
+
+                            {{-- Header Logo Part --}}
+                            <div class="form-group">
+                                <label for="">Header Logo ** </label>
+                                <br>
+                                <div class="thumb-preview" id="thumbPreview4">
+                                    <img src="{{asset('assets/front/img/' . $abs->header_logo)}}" alt="headerlogo">
+                                </div>
+                                <br>
+                                <br>
+
+
+                                <input id="fileInput4" type="hidden" name="header_logo">
+                                <button id="chooseImage4" class="choose-image btn btn-primary" type="button" data-multiple="false" data-toggle="modal" data-target="#lfmModal4">Choose Image</button>
+
+
+                                <p class="text-warning mb-0">JPG, PNG, JPEG, SVG, SVG images are allowed</p>
+                                @if ($errors->has('header_logo'))
+                                <p class="text-danger mb-0">{{$errors->first('header_logo')}}</p>
+                                @endif
+
+                                <!-- breadcrumb LFM Modal -->
+                                <div class="modal fade lfm-modal" id="lfmModal4" tabindex="-1" role="dialog" aria-labelledby="lfmModalTitle" aria-hidden="true">
+                                    <i class="fas fa-times-circle"></i>
+                                    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-body p-0">
+                                                <iframe src="{{url('laravel-filemanager')}}?serial=4" style="width: 100%; height: 500px; overflow: hidden; border: none;"></iframe>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                         </form>
 
                     </div>

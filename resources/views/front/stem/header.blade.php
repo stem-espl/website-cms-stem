@@ -1,4 +1,13 @@
+@php
+$links = json_decode($menus, true);
 
+@endphp
+@foreach ($links as $link)
+                  
+                  @php
+                      $href = getHref($link);
+                  @endphp
+@endforeach
 <header class="header-style-two">
     <div class="header-wrapper">
       <div class="header-top-area d-lg-block bg-secondary-color">
@@ -38,7 +47,7 @@
             <div class="col-md-12 col-lg-12 col-sm-12">
               <div class="containerNew">
                 <div class="col-sm-12 col-md-5 col-lg-9 img_padding">
-                  <a class="navbar-brand logo f-left mrt-5 mrt-md-0 mrb-5 mrb-md-0 pdt-10 pdb-10 padding_right"  href="index.html" id="logo_1" style="border-right: 1px solid #000; padding-right: 12px;">
+                  <a class="navbar-brand logo f-left mrt-5 mrt-md-0 mrb-5 mrb-md-0 pdt-10 pdb-10 padding_right"  href="{{$href}}" id="logo_1" style="border-right: 1px solid #000; padding-right: 12px;">
                   <img id="logo-image" class="img-center img-width" src="{{asset('assets/front/img/'.$bs->logo)}}" alt="" loading="lazy">
                   </a>
                   <div class="title-full topText" >
@@ -46,8 +55,8 @@
                   </div>
                 </div>
                 <div class="col-sm-12 col-md-5 col-lg-3 img_padding">
-                  <a class="navbar-brand logo mrt-5  mrt-md-0 mrb-5 mrb-md-0 pdt-10 pdb-5" href="index.html" id="logo_1" class="mx-5">
-                  <img id="logo-image" class="img-center header-top-right-image img_width" src="{{asset('assets/stem/images/clients/emblem.png')}}" alt="" loading="lazy">
+                  <a class="navbar-brand logo mrt-5  mrt-md-0 mrb-5 mrb-md-0 pdt-10 pdb-5" href="{{$href}}" id="logo_1" class="mx-5">
+                  <img id="logo-image" class="img-center header-top-right-image img_width" src="{{asset('assets/front/img/'.$bs->header_logo)}}" alt="" loading="lazy">
                   </a>
                 </div>
               </div>
@@ -72,26 +81,46 @@
                     <button><i class="webex-icon-cross"></i></button>
                   </div>
                   <div class="side-panel-logo mrb-30">
-                    <a href="index.html">
-                    <img src="{{asset('assets/stem/images/logo-sidebar-dark.png')}}" alt=""/>
+                    <a href="{{$href}}">
+                    <img src="{{asset('assets/front/img/'.$bs->logo)}}" width="261" hight="74" alt=""/>
+                    
                     </a>
                   </div>
                   <div class="side-info mrb-30">
                     <div class="side-panel-element mrb-25">
                       <h4 class="mrb-10">Office Address</h4>
                       <ul class="list-items">
-                        <li><span class="fa fa-map-marker-alt mrr-10 text-primary-color"></span>Thane, Maharashtra</li>
-                        <li><span class="fas fa-envelope mrr-10 text-primary-color"></span>www.stemwater.org</li>
-                        <li><span class="fas fa-phone-alt mrr-10 text-primary-color"></span>(022) 2541-4739</li>
+                        <li>
+                        @php 
+                        $addresses = explode(PHP_EOL, $bex->contact_addresses);
+                        @endphp
+                        @foreach ($addresses as $address)
+                          <span class="fa fa-map-marker-alt mrr-10 text-primary-color"></span>{{$address}}
+                        @endforeach
+                        
+                        </li>
+                        @php
+                        $mails = explode(',', $bex->contact_mails);
+                        @endphp
+                        @foreach ($mails as $mail)
+                        <li><span class="fas fa-envelope mrr-10 text-primary-color"></span>{{$mail}}</li>
+                        @endforeach
+
+                        @php
+                        $phones = explode(',', $bex->contact_numbers);
+                        @endphp
+                        @foreach ($phones as $phone)
+                        <li><span class="fas fa-phone-alt mrr-10 text-primary-color"></span>{{$phone}}</li>
+                        @endforeach
                       </ul>
                     </div>
                   </div>
                   <h4 class="mrb-15">Social List</h4>
                   <ul class="social-list">
-                    <li><a href="#"><i class="fab fa-facebook"></i></a></li>
-                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                    <li><a href="#"><i class="fab fa-google-plus"></i></a></li>
+                    @foreach ($socials as $social)
+                    <li><a href="{{$social['url']}}"><i class="{{$social['icon']}}"></i></a></li>
+                    @endforeach
+               
                   </ul>
                 </div>
                 @includeIf('front.stem.menu')
