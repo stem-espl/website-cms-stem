@@ -7,8 +7,10 @@
     <!-- Home Slider Start -->
     <section class="banner-section">
       <div class="home-carousel owl-theme owl-carousel carousel-slide">
+      @if (!empty($sliders))
+                    @foreach ($sliders as $key => $slider)
         <div class="slide-item">
-          <div class="image-layer" data-background="{{asset('assets/stem/images/bg/1.jpg')}}"></div>
+          <div class="image-layer" data-background="{{asset('assets/front/img/sliders/stem/'.$slider->image)}}"></div>
           <div class="auto-container">
             <div class="row clearfix">
               <div class="col-xl-8 col-lg-12 col-md-12 content-column">
@@ -19,54 +21,9 @@
             </div>
           </div>
         </div>
-        <div class="slide-item">
-          <div class="image-layer" data-background="{{asset('assets/stem/images/Edit/DJI_0154.jpg')}}"></div>
-          <div class="auto-container">
-            <div class="row clearfix">
-              <div class="col-xl-8 col-lg-12 col-md-12 content-column">
-                <div class="content-box">
-                  <h1 style="font-style: italic;">Empowering Lives Through water<br></h1>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="slide-item">
-          <div class="image-layer" data-background="images/Edit/DJI_0231.jpg"></div>
-          <div class="auto-container">
-            <div class="row clearfix">
-              <div class="col-xl-8 col-lg-12 col-md-12 content-column">
-                <div class="content-box">
-                  <h1 style="font-style: italic;">Empowering Lives Through water<br></h1>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="slide-item">
-          <div class="image-layer" data-background="{{asset('assets/stem/images/Edit/DJI_0303.jpg')}}"></div>
-          <div class="auto-container">
-            <div class="row clearfix">
-              <div class="col-xl-8 col-lg-12 col-md-12 content-column">
-                <div class="content-box">
-                  <h1 style="font-style: italic;">Empowering Lives Through water<br></h1>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="slide-item">
-          <div class="image-layer" data-background="{{asset('assets/stem/images/Edit/DJI_0236.jpg')}}"></div>
-          <div class="auto-container">
-            <div class="row clearfix">
-              <div class="col-xl-8 col-lg-12 col-md-12 content-column">
-                <div class="content-box">
-                  <h1 style="font-style: italic;">Empowering Lives Through water<br></h1>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        @endforeach
+        @endif
+  
       </div>
     </section>
     <!-- Home Slider End -->

@@ -64,7 +64,7 @@
                             <div class="col-md-3">
                                 <div class="card">
                                     <div class="card-body">
-                                        <img src="{{asset('assets/front/img/sliders/'.$slider->image)}}" alt="" style="width:100%;">
+                                        <img src="{{asset('assets/front/img/sliders/stem/'.$slider->image)}}" alt="" style="width:100%;">
                                     </div>
                                     <div class="card-footer text-center">
                                         <a class="btn btn-secondary btn-sm mr-2" href="{{route('admin.slider.edit', $slider->id) . '?language=' . request()->input('language')}}">
@@ -151,7 +151,7 @@
                             <p id="errtitle" class="mb-0 text-danger em"></p>
                         </div>
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-lg-6 d-none">
                         <div class="form-group">
                             <label for="">Title Font Size **</label>
                             <input type="number" class="form-control ltr" name="title_font_size" value="">
@@ -196,7 +196,7 @@
 
 
                 @if ($be->theme_version != 'cleaning')
-                <div class="row">
+                <div class="row d-none">
                     <div class="col-lg-6">
                         <div class="form-group">
                             <label for="">Text </label>
@@ -204,7 +204,7 @@
                             <p id="errtext" class="mb-0 text-danger em"></p>
                         </div>
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-lg-6 d-none">
                         <div class="form-group">
                             <label for="">Text Font Size **</label>
                             <input type="number" class="form-control ltr" name="text_font_size" value="">
@@ -215,7 +215,7 @@
                 @endif
 
 
-                <div class="row">
+                <div class="row d-none">
                     <div class="col-lg-6">
                         <div class="form-group">
                             <label for="">Button Text </label>
@@ -223,7 +223,7 @@
                             <p id="errbutton_text" class="mb-0 text-danger em"></p>
                         </div>
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-lg-6 d-none">
                         <div class="form-group">
                             <label for="">Button Text Font Size **</label>
                             <input type="number" class="form-control ltr" name="button_text_font_size" value="">
@@ -233,12 +233,12 @@
                 </div>
 
 
-                <div class="form-group">
+                <div class="form-group d-none">
                     <label for="">Button URL </label>
                     <input type="text" class="form-control ltr" name="button_url" value="" placeholder="Enter Button URL">
                     <p id="errbutton_url" class="mb-0 text-danger em"></p>
                 </div>
-                <div class="form-group">
+                <div class="form-group ">
                     <label for="">Serial Number **</label>
                     <input type="number" class="form-control ltr" name="serial_number" value="" placeholder="Enter Serial Number">
                     <p id="errserial_number" class="mb-0 text-danger em"></p>
