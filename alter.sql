@@ -23,3 +23,5 @@ ALTER TABLE `calendar_events` ADD `created_by` INT NULL DEFAULT NULL AFTER `lang
 ALTER TABLE `calendar_events` ADD `image` VARCHAR(255) NULL DEFAULT NULL AFTER `created_by`;
 
 RENAME TABLE `calendar_events` TO `stmp_cms`.`news`;
+
+ALTER TABLE news DROP COLUMN end_date; 

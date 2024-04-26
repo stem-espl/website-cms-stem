@@ -5,9 +5,11 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\News;
+use App\Models\admin;
 use App\Models\Language;
 use Validator;
 use Session;
+use Auth;
 
 class CalendarController extends Controller
 {
@@ -19,28 +21,36 @@ class CalendarController extends Controller
 
         $data['lang_id'] = $lang_id;
 
-        return view('admin.calendar.index', $data);
+        $user = Auth::user();
+        $usename = $user->first_name;
+        return view('admin.calendar.index', $data,compact('usename'));
     }
 
     public function store(Request $request)
     {
         $rules = [
             'title' => 'required|max:255',
-            'date' => 'required',
+            'datetimes' => 'required',
+            'img' =>   'required',
         ];
-
+        
         $validator = Validator::make($request->all(), $rules);
         if ($validator->fails()) {
             $errmsgs = $validator->getMessageBag()->add('error', 'true');
             return response()->json($validator->errors());
         }
 
+        $image = $request->file('img');
+        $imageName = $image->getClientOriginalName();
+    
+        $image=$image->move(public_path('assets/news'), $imageName);
+
         $calendar = new News;
         $calendar->language_id = $request->language_id;
         $calendar->title = $request->title;
-        $calendar->date = $request->date;
-        
-
+        $calendar->date = $request->datetimes;    
+        $calendar->image = 'assets/news/' . $imageName;
+        $calendar->created_by = auth()->id(); 
         $calendar->save();
 
         Session::flash('success', 'Event added to calendar successfully!');
