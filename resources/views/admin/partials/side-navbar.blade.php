@@ -159,7 +159,7 @@ $data = \App\Models\BasicExtra::first();
         @endcanany
 
         {{-- Content Management --}}
-        @canany(['sections-customization','partners-section','blog-section','team-section','testimonials-section','portfolio-section','call-to-action-section','statistics-section','approach-section','service-section','intro-section','features','hero-section','logo-text','useful-links', 'settings-services','category-services','services','portfolios','category-blog','blogs','archives','settings-gallery','categories-gallery','galleries','settings-faq','categories-faq','faqs','categories-career','post-job','job-management'])
+        @canany(['sections-customization','partners-section','blog-section','team-section','testimonials-section','portfolio-section','call-to-action-section','statistics-section','approach-section','service-section','intro-section','features','hero-section','logo-text','useful-links','department-links','about-us-links', 'settings-services','category-services','services','portfolios','category-blog','blogs','archives','settings-gallery','categories-gallery','galleries','settings-faq','categories-faq','faqs','categories-career','post-job','job-management'])
         @includeIf('admin.partials.content-management')
         @endcanany
 
@@ -216,7 +216,8 @@ $data = \App\Models\BasicExtra::first();
           @endif">
           <a href="{{route('admin.calendar.index') . '?language=' . $default->code}}">
             <i class="la flaticon-calendar"></i>
-            <p>Event Calendar</p>
+            <p>
+              {{$be->theme_version == 'stem' ? 'News Section' : 'Event Calendar'}}</p>
           </a>
         </li>
         @endcan

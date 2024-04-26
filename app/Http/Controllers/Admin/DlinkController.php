@@ -5,26 +5,26 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Language;
-use App\Models\Ulink;
+use App\Models\Dlink;
 use Validator;
 use Session;
 
-class UlinkController extends Controller
+class DlinkController extends Controller
 {
     public function index(Request $request)
     {
         $lang_code = isset($request->language) ?  $request->language : 'en';
         $lang = Language::where('code', $lang_code)->first();
         $lang_id = $lang->id;
-        $data['aulinks'] = Ulink::where('language_id', $lang_id)->get();
+        $data['dlink'] = Dlink::where('language_id', $lang_id)->get();
         $data['lang_id'] = $lang_id;
-        return view('admin.footer.ulink.index', $data);
+        return view('admin.footer.dlink.index', $data);
     }
 
     public function edit($id)
     {
-        $data['ulink'] = Ulink::findOrFail($id);
-        return view('admin.footer.ulink.edit', $data);
+        $data['dlink'] = Dlink::find($id);
+        return view('admin.footer.dlink.edit', $data);
     }
 
     public function store(Request $request)
@@ -45,13 +45,13 @@ class UlinkController extends Controller
             return response()->json($validator->errors());
         }
 
-        $ulink = new Ulink;
-        $ulink->language_id = $request->language_id;
-        $ulink->name = $request->name;
-        $ulink->url = $request->url;
-        $ulink->save();
+        $dlink = new Dlink;
+        $dlink->language_id = $request->language_id;
+        $dlink->name = $request->name;
+        $dlink->url = $request->url;
+        $dlink->save();
 
-        Session::flash('success', 'Useful link added successfully!');
+        Session::flash('success', 'Department link added successfully!');
         return "success";
     }
 
@@ -67,23 +67,22 @@ class UlinkController extends Controller
             $errmsgs = $validator->getMessageBag()->add('error', 'true');
             return response()->json($validator->errors());
         }
+        $dlink = Dlink::find($request->dlink_id);
+        $dlink->name = $request->name;
+        $dlink->url = $request->url;
+        $dlink->save();
 
-        $ulink = Ulink::findOrFail($request->ulink_id);
-        $ulink->name = $request->name;
-        $ulink->url = $request->url;
-        $ulink->save();
-
-        Session::flash('success', 'Useful link updated successfully!');
+        Session::flash('success', 'Department link updated successfully!');
         return "success";
     }
 
     public function delete(Request $request)
     {
 
-        $ulink = Ulink::findOrFail($request->ulink_id);
-        $ulink->delete();
+        $dlink = Dlink::find($request->dlink_id);
+        $dlink->delete();
 
-        Session::flash('success', 'Ulink deleted successfully!');
+        Session::flash('success', 'Department deleted successfully!');
         return back();
     }
 }

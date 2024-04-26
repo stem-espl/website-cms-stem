@@ -25,7 +25,7 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
 
 @section('content')
   <div class="page-header">
-    <h4 class="page-title">Calendar Events</h4>
+    <h4 class="page-title">News Section</h4>
     <ul class="breadcrumbs">
       <li class="nav-home">
         <a href="{{route('admin.dashboard')}}">
@@ -36,7 +36,7 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
         <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-        <a href="#">Calendar Events</a>
+        <a href="#">News Section</a>
       </li>
     </ul>
   </div>
@@ -47,7 +47,7 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
         <div class="card-header">
             <div class="row">
                 <div class="col-lg-4">
-                    <div class="card-title d-inline-block">Calendar Events</div>
+                    <div class="card-title d-inline-block">News Section</div>
                 </div>
                 <div class="col-lg-3">
                     @if (!empty($langs))
@@ -60,7 +60,7 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
                     @endif
                 </div>
                 <div class="col-lg-4 offset-lg-1 mt-2 mt-lg-0">
-                    <a href="#" class="btn btn-primary float-right btn-sm" data-toggle="modal" data-target="#createModal"><i class="fas fa-plus"></i> Add Event</a>
+                    <a href="#" class="btn btn-primary float-right btn-sm" data-toggle="modal" data-target="#createModal"><i class="fas fa-plus"></i> Add News</a>
                     <button class="btn btn-danger float-right btn-sm mr-2 d-none bulk-delete" data-href="{{route('admin.calendar.bulk.delete')}}"><i class="flaticon-interface-5"></i> Delete</button>
                 </div>
             </div>
@@ -69,7 +69,7 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
           <div class="row">
             <div class="col-lg-12">
               @if (count($events) == 0)
-                <h3 class="text-center">NO EVENT FOUND</h3>
+                <h3 class="text-center">NO NEWS FOUND</h3>
               @else
                 <div class="table-responsive">
                   <table class="table table-striped mt-3" id="basic-datatables">
@@ -78,9 +78,10 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
                         <th scope="col">
                             <input type="checkbox" class="bulk-check" data-val="all">
                         </th>
-                        <th scope="col">Question</th>
-                        <th scope="col">Start Date</th>
-                        <th scope="col">End Date</th>
+                        <th scope="col">Image</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">News By</th>
                         <th scope="col">Actions</th>
                       </tr>
                     </thead>
@@ -90,6 +91,7 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
                           <td>
                             <input type="checkbox" class="bulk-check" data-val="{{$event->id}}">
                           </td>
+                          <td></td>
                           <td>{{convertUtf8(strlen($event->title)) > 30 ? convertUtf8(substr($event->title, 0, 30)) . '...' : convertUtf8($event->title)}}</td>
                           <td>
                             @php
@@ -98,13 +100,7 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
                             @endphp
                             {{$start}}
                           </td>
-                          <td>
-                            @php
-                            $end = strtotime($event->end_date);
-                            $end = date('Y-m-d H:i' ,$end);
-                            @endphp
-                            {{$end}}
-                          </td>
+                          <td></td>
                           <td>
                             <a class="btn btn-secondary btn-sm editbtn" href="#editModal" data-toggle="modal" data-event_id="{{$event->id}}" data-title="{{$event->title}}" data-start_date="{{$event->start_date}}" data-end_date="{{$event->end_date}}">
                               <span class="btn-label">
@@ -142,7 +138,7 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">Add Event</h5>
+          <h5 class="modal-title" id="exampleModalLongTitle">Add News</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -166,12 +162,9 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
               <p id="errtitle" class="mb-0 text-danger em"></p>
             </div>
             <div class="form-group">
-              <label for="">Event Period **</label>
-              <input type="text" name="datetimes" class="form-control ltr" placeholder="Enter Event Period" autocomplete="off"/>
-              <input type="hidden" id="start_date" name="start_date" value="">
-              <input type="hidden" id="end_date" name="end_date" value="">
-              <p id="errstart_date" class="mb-0 text-danger em"></p>
-              <p id="errend_date" class="mb-0 text-danger em"></p>
+              <label for="">Date **</label>
+              <input type="date" name="datetimes" class="form-control ltr" placeholder="Enter News Date" autocomplete="off"/>
+              <p id="errdatetimes" class="mb-0 text-danger em"></p>
             </div>
           </form>
         </div>
@@ -188,7 +181,7 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">Edit Event</h5>
+          <h5 class="modal-title" id="exampleModalLongTitle">Edit News</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -203,12 +196,10 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
               <p id="eerrtitle" class="mb-0 text-danger em"></p>
             </div>
             <div class="form-group">
-            <label for="">Event Period **</label>
-                <input type="text" name="edatetimes" class="form-control ltr" placeholder="Enter Event Period"/>
+            <label for="">Date **</label>
+                <input type="date" name="edatetimes" class="form-control" placeholder="Enter News Date"/>
                 <input type="hidden" id="instart_date" name="start_date" value="">
-                <input type="hidden" id="inend_date" name="end_date" value="">
-                <p id="eerrstart_date" class="mb-0 text-danger em"></p>
-                <p id="eerrend_date" class="mb-0 text-danger em"></p>
+                <p id="eerrdate" class="mb-0 text-danger em"></p>
             </div>
           </form>
         </div>
@@ -225,7 +216,7 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
 <script type="text/javascript" src="{{asset('assets/admin/js/plugin/daterangepicker/moment.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('assets/admin/js/plugin/daterangepicker/daterangepicker.js')}}"></script>
 
-<script type="text/javascript">
+<!-- <script type="text/javascript">
     $(function() {
 
       $('input[name="datetimes"]').daterangepicker({
@@ -282,7 +273,7 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
     });
   });
 </script>
-
+ -->
 
 <script>
     $(document).ready(function() {
