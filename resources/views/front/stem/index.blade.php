@@ -15,7 +15,7 @@
             <div class="row clearfix">
               <div class="col-xl-8 col-lg-12 col-md-12 content-column">
                 <div class="content-box">
-                  <h1 style="font-style: italic;">Empowering Lives Through water<br></h1>
+                  <h1 style="font-style: italic;">{{$slider->title}}<br></h1>
                 </div>
               </div>
             </div>
