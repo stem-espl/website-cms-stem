@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\CalendarEvent;
+use App\Models\News;
 use App\Models\Language;
 use Validator;
 use Session;
@@ -15,7 +15,7 @@ class CalendarController extends Controller
         $lang = Language::where('code', $request->language)->first();
 
         $lang_id = $lang->id;
-        $data['events'] = CalendarEvent::where('language_id', $lang_id)->orderBy('id', 'DESC')->get();
+        $data['events'] = News::where('language_id', $lang_id)->orderBy('id', 'DESC')->get();
 
         $data['lang_id'] = $lang_id;
 
@@ -26,8 +26,7 @@ class CalendarController extends Controller
     {
         $rules = [
             'title' => 'required|max:255',
-            'start_date' => 'required',
-            'end_date' => 'required',
+            'date' => 'required',
         ];
 
         $validator = Validator::make($request->all(), $rules);
@@ -36,11 +35,11 @@ class CalendarController extends Controller
             return response()->json($validator->errors());
         }
 
-        $calendar = new CalendarEvent;
+        $calendar = new News;
         $calendar->language_id = $request->language_id;
         $calendar->title = $request->title;
-        $calendar->start_date = $request->start_date;
-        $calendar->end_date = $request->end_date;
+        $calendar->date = $request->date;
+        
 
         $calendar->save();
 
@@ -51,14 +50,13 @@ class CalendarController extends Controller
     public function update(Request $request)
     {
         $messages = [
-            'start_date.required' => 'Event period is required',
+            'date.required' => 'Event period is required',
             'end_date.required' => 'Event period is required',
         ];
 
         $rules = [
             'title' => 'required|max:255',
-            'start_date' => 'required',
-            'end_date' => 'required',
+            'date' => 'required',
         ];
 
         $validator = Validator::make($request->all(), $rules);
@@ -67,10 +65,10 @@ class CalendarController extends Controller
             return response()->json($validator->errors());
         }
 
-        $calendar = CalendarEvent::findOrFail($request->event_id);
+        $calendar = News::find($request->event_id);
         $calendar->title = $request->title;
-        $calendar->start_date = $request->start_date;
-        $calendar->end_date = $request->end_date;
+        $calendar->date = $request->date;
+        
         $calendar->save();
 
         Session::flash('success', 'Event date updated in calendar successfully!');
@@ -79,7 +77,7 @@ class CalendarController extends Controller
 
     public function delete(Request $request)
     {
-        $calendar = CalendarEvent::findOrFail($request->event_id);
+        $calendar = News::find($request->event_id);
         $calendar->delete();
 
         Session::flash('success', 'Event deleted successfully!');
@@ -91,7 +89,7 @@ class CalendarController extends Controller
         $ids = $request->ids;
 
         foreach ($ids as $id) {
-            $calendar = CalendarEvent::findOrFail($id);
+            $calendar = News::find($id);
             $calendar->delete();
         }
 

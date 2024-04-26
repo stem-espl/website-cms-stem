@@ -216,7 +216,8 @@ $data = \App\Models\BasicExtra::first();
           @endif">
           <a href="{{route('admin.calendar.index') . '?language=' . $default->code}}">
             <i class="la flaticon-calendar"></i>
-            <p>Event Calendar</p>
+            <p>
+              {{$be->theme_version == 'stem' ? 'News Section' : 'Event Calendar'}}</p>
           </a>
         </li>
         @endcan

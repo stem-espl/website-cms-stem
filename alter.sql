@@ -15,3 +15,11 @@ CREATE TABLE `stmp_cms`.`dlink` (`id` BIGINT(11) NOT NULL , `language_id` INT(11
 INSERT INTO `permissions` (`id`, `name`, `guard_name`, `group_name`, `status`, `basic`, `created_at`, `updated_at`) VALUES (NULL, 'about-us-links', 'admin', 'footer_management', '1', '0', '2024-04-19 14:45:26', '2024-04-19 14:45:26'); 
 
 INSERT INTO `permissions` (`id`, `name`, `guard_name`, `group_name`, `status`, `basic`, `created_at`, `updated_at`) VALUES (NULL, 'department-links', 'admin', 'footer_management', '1', '0', '2024-04-19 14:45:26', '2024-04-19 14:45:26'); 
+
+ALTER TABLE `calendar_events` CHANGE `start_date` `date` VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL;
+
+ALTER TABLE `calendar_events` ADD `created_by` INT NULL DEFAULT NULL AFTER `language_id`;
+
+ALTER TABLE `calendar_events` ADD `image` VARCHAR(255) NULL DEFAULT NULL AFTER `created_by`;
+
+RENAME TABLE `calendar_events` TO `stmp_cms`.`news`;
