@@ -23,3 +23,6 @@ ALTER TABLE `calendar_events` ADD `created_by` INT NULL DEFAULT NULL AFTER `lang
 ALTER TABLE `calendar_events` ADD `image` VARCHAR(255) NULL DEFAULT NULL AFTER `created_by`;
 
 RENAME TABLE `calendar_events` TO `stmp_cms`.`news`;
+
+---date 26-05-2024
+ALTER TABLE `basic_settings` ADD `header_logo` VARCHAR(50) NULL DEFAULT NULL AFTER `logo`;
