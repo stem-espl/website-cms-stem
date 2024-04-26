@@ -675,6 +675,23 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin', 'checkstatus',
         Route::post('/ulink/update', 'Admin\UlinkController@update')->name('admin.ulink.update');
         Route::post('/ulink/delete', 'Admin\UlinkController@delete')->name('admin.ulink.delete');
 
+        // Admin alink Routes
+        Route::get('/alinks', 'Admin\AlinkController@index')->name('admin.alink.index');
+        Route::get('/alink/create', 'Admin\AlinkController@create')->name('admin.alink.create');
+        Route::post('/alink/store', 'Admin\AlinkController@store')->name('admin.alink.store');
+        Route::get('/alink/{id}/edit', 'Admin\AlinkController@edit')->name('admin.alink.edit');
+        Route::post('/alink/update', 'Admin\AlinkController@update')->name('admin.alink.update');
+        Route::post('/alink/delete', 'Admin\AlinkController@delete')->name('admin.alink.delete');
+
+
+        // Admin dlink Routes
+        Route::get('/dlinks', 'Admin\DlinkController@index')->name('admin.dlink.index');
+        Route::get('/dlink/create', 'Admin\DlinkController@create')->name('admin.dlink.create');
+        Route::post('/dlink/store', 'Admin\DlinkController@store')->name('admin.dlink.store');
+        Route::get('/dlink/{id}/edit', 'Admin\DlinkController@edit')->name('admin.dlink.edit');
+        Route::post('/dlink/update', 'Admin\DlinkController@update')->name('admin.dlink.update');
+        Route::post('/dlink/delete', 'Admin\DlinkController@delete')->name('admin.dlink.delete');
+
 
         // Service Settings Route
         Route::get('/service/settings', 'Admin\ServiceController@settings')->name('admin.service.settings');
