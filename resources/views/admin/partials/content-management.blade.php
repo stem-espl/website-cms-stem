@@ -100,6 +100,8 @@
     @elseif(request()->is('admin/blog/*/edit')) show
     @elseif(request()->path() == 'admin/footers') show
     @elseif(request()->path() == 'admin/ulinks') show
+    @elseif(request()->path() == 'admin/alinks') show
+    @elseif(request()->path() == 'admin/dlinks') show
     @elseif(request()->path() == 'admin/gallery/settings') show
     @elseif(request()->path() == 'admin/gallery/categories') show
     @elseif(request()->path() == 'admin/gallery') show
@@ -358,11 +360,13 @@
       </li>
       @endcanany
 
-      @canany(['logo-text','useful-links'])
+      @canany(['logo-text','useful-links','department-links','about-us-links'])
       {{-- Footer --}}
       <li class="
         @if(request()->path() == 'admin/footers') selected
         @elseif(request()->path() == 'admin/ulinks') selected
+        @elseif(request()->path() == 'admin/alinks') selected
+        @elseif(request()->path() == 'admin/dlinks') selected
         @endif">
         <a data-toggle="collapse" href="#footer">
         <span class="sub-item">Footer</span>
@@ -371,6 +375,8 @@
         <div class="collapse
           @if(request()->path() == 'admin/footers') show
           @elseif(request()->path() == 'admin/ulinks') show
+          @elseif(request()->path() == 'admin/alinks') show
+          @elseif(request()->path() == 'admin/dlinks') show
           @endif" id="footer">
           <ul class="nav nav-collapse subnav">
             @can('logo-text')
@@ -384,6 +390,22 @@
             <li class="@if(request()->path() == 'admin/ulinks') active @endif">
               <a href="{{route('admin.ulink.index') . '?language=' . $default->code}}">
               <span class="sub-item">Useful Links</span>
+              </a>
+            </li>
+            @endcan
+
+            @can('about-us-links')
+            <li class="@if(request()->path() == 'admin/alinks') active @endif">
+              <a href="{{route('admin.alink.index') . '?language=' . $default->code}}">
+              <span class="sub-item">About Us Links</span>
+              </a>
+            </li>
+            @endcan
+
+            @can('department-links')
+            <li class="@if(request()->path() == 'admin/dlinks') active @endif">
+              <a href="{{route('admin.dlink.index') . '?language=' . $default->code}}">
+              <span class="sub-item">Department Links</span>
               </a>
             </li>
             @endcan

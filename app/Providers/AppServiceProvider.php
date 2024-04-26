@@ -44,6 +44,8 @@ class AppServiceProvider extends ServiceProvider
       $bex = $currentLang->basic_extra;
 
       $ulinks = $currentLang->ulinks;
+      $alinks = $currentLang->alinks;
+      $dlinks = $currentLang->dlinks;
       $apopups = $currentLang->popups()->where('status', 1)->orderBy('serial_number', 'ASC')->get();
 
       if (serviceCategory()) {
@@ -70,6 +72,8 @@ class AppServiceProvider extends ServiceProvider
       }
       $view->with('apopups', $apopups);
       $view->with('ulinks', $ulinks);
+      $view->with('alinks', $alinks);
+      $view->with('dlinks', $dlinks);
       $view->with('menus', $menus);
       $view->with('currentLang', $currentLang);
       $view->with('rtl', $rtl);

@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Language extends Model
 {
+
+  protected $table ='languages';
   protected $fillable = ['id', 'name', 'is_default', 'code', 'rtl'];
 
   public function basic_setting()
@@ -66,6 +68,17 @@ class Language extends Model
   public function ulinks()
   {
     return $this->hasMany('App\Models\Ulink');
+  }
+  
+  public function alinks()
+  {
+    return $this->hasMany('App\Models\Alink');
+  }
+
+  
+  public function dlinks()
+  {
+    return $this->hasMany('App\Models\Dlink');
   }
 
   public function pages()
