@@ -31,7 +31,9 @@ class BasicController extends Controller
 
     public function updatelogo(Request $request)
     {
+        // dd($request->all());
         $logo = $request->logo;
+        $header_logo = $request->header_logo;
         $favicon = $request->favicon;
         $breadcrumb = $request->breadcrumb;
         $website_heading = $request->website_heading;
@@ -40,6 +42,7 @@ class BasicController extends Controller
         $extLogo = pathinfo($logo, PATHINFO_EXTENSION);
         $extFav = pathinfo($favicon, PATHINFO_EXTENSION);
         $extBread = pathinfo($breadcrumb, PATHINFO_EXTENSION);
+        $extHeadLogo = pathinfo($header_logo, PATHINFO_EXTENSION);
 
         $rules = [];
         if(!empty($request->website_heading))
@@ -57,6 +60,16 @@ class BasicController extends Controller
             $rules['logo'] = [
                 function ($attribute, $value, $fail) use ($extLogo, $allowedExts) {
                     if (!in_array($extLogo, $allowedExts)) {
+                        return $fail("Only png, jpg, jpeg, svg image is allowed");
+                    }
+                }
+            ];
+        }
+
+        if ($request->filled('header_logo')) {
+            $rules['header_logo'] = [
+                function ($attribute, $value, $fail) use ($extHeadLogo, $allowedExts) {
+                    if (!in_array($extHeadLogo, $allowedExts)) {
                         return $fail("Only png, jpg, jpeg, svg image is allowed");
                     }
                 }
@@ -99,6 +112,20 @@ class BasicController extends Controller
                 $bs->save();
             }
 
+        }
+
+        if($request->filled('header_logo'))
+        {
+            $bss = BasicSetting::all();
+            foreach($bss as $key =>$bs)
+            {
+                @unlink('assets/front/img/' . $bs->header_logo);
+                $filename = uniqid() .'.'. $extHeadLogo;
+                @copy($header_logo, 'assets/front/img/' . $filename);
+
+                $bs->header_logo = $filename;
+                $bs->save();
+            }
         }
 
         if ($request->filled('favicon')) {
