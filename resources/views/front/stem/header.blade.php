@@ -5,8 +5,18 @@
         <div class="container">
           <div class="row">
             <div class="col-lg-6 header-top-left-part col-md-6 col-sm-6">
-              <span class="address"><i class="webexflaticon flaticon-placeholder-1"></i> Thane, Maharashtra</span>
-              <span class="phone"><i class="webexflaticon flaticon-send"></i> support@stemwater.org</span>
+            @php 
+                $addresses = explode(PHP_EOL, $bex->contact_addresses);
+                @endphp
+                @foreach ($addresses as $address)
+              <span class="address"><i class="webexflaticon flaticon-placeholder-1"></i> {{$address}}</span>
+            @endforeach
+            @php
+              $mails = explode(',', $bex->contact_mails);
+                                    @endphp
+                                    @foreach ($mails as $mail)
+              <span class="phone"><i class="webexflaticon flaticon-send"></i> {{$mail}}</span>
+              @endforeach
             </div>
             <div class="col-lg-6 header-top-right-part text-right col-md-6 col-sm-6 margin_tp">
               <div class="language">
