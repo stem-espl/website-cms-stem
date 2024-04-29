@@ -78,7 +78,7 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
                             <div class="col-md-3">
                                 <div class="card">
                                     <div class="card-body">
-                                        <img src="{{asset('assets/front/img/partners/'.$partner->image)}}" alt="" style="width:100%;">
+                                        <img src="{{asset('assets/front/img/partners/stem/'.$partner->image)}}" alt="" style="width:100%;">
                                     </div>
                                     <div class="card-footer text-center">
                                         <a class="btn btn-secondary btn-sm mr-2" href="{{route('admin.partner.edit', $partner->id) . '?language=' . request()->input('language')}}">
@@ -152,6 +152,11 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
                         @endforeach
                     </select>
                     <p id="errlanguage_id" class="mb-0 text-danger em"></p>
+                </div>
+                <div class="form-group">
+                    <label for="">Title **</label>
+                    <input type="text" class="form-control ltr" name="title" value="" placeholder="Enter Title">
+                    <p id="errtitle" class="mb-0 text-danger em"></p>
                 </div>
                 <div class="form-group">
                     <label for="">URL **</label>

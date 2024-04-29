@@ -100,22 +100,22 @@
                   <input type="text" class="form-control" name="rank" value="{{$member->rank}}" placeholder="Enter rank">
                   <p id="errrank" class="mb-0 text-danger em"></p>
                 </div>
-                <div class="form-group">
+                <div class="form-group d-none">
                   <label for="">Facebook</label>
                   <input type="text" class="form-control ltr" name="facebook" value="{{$member->facebook}}" placeholder="Enter facebook url">
                   <p id="errfacebook" class="mb-0 text-danger em"></p>
                 </div>
-                <div class="form-group">
+                <div class="form-group d-none">
                   <label for="">Twitter</label>
                   <input type="text" class="form-control ltr" name="twitter" value="{{$member->twitter}}" placeholder="Enter twitter url">
                   <p id="errtwitter" class="mb-0 text-danger em"></p>
                 </div>
-                <div class="form-group">
+                <div class="form-group d-none">
                   <label for="">Instagram</label>
                   <input type="text" class="form-control ltr" name="instagram" value="{{$member->instagram}}" placeholder="Enter instagram url">
                   <p id="errinstagram" class="mb-0 text-danger em"></p>
                 </div>
-                <div class="form-group">
+                <div class="form-group d-none">
                   <label for="">Linkedin</label>
                   <input type="text" class="form-control ltr" name="linkedin" value="{{$member->linkedin}}" placeholder="Enter linkedin url">
                   <p id="errlinkedin" class="mb-0 text-danger em"></p>

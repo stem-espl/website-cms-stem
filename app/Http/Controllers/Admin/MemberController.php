@@ -49,10 +49,10 @@ class MemberController extends Controller
             'image' => 'required',
             'name' => 'required|max:50',
             'rank' => 'required|max:50',
-            'facebook' => 'nullable|max:50',
-            'twitter' => 'nullable|max:50',
-            'linkedin' => 'nullable|max:50',
-            'instagram' => 'nullable|max:50',
+            // 'facebook' => 'nullable|max:50',
+            // 'twitter' => 'nullable|max:50',
+            // 'linkedin' => 'nullable|max:50',
+            // 'instagram' => 'nullable|max:50',
         ];
         if ($request->filled('image')) {
             $rules['image'] = [
@@ -71,14 +71,16 @@ class MemberController extends Controller
         }
 
         $member = new Member;
+        $count = member::get()->count();
+        if($count < 3) {
         $member->language_id = $request->language_id;
         $member->image = $request->member_image;
         $member->name = $request->name;
         $member->rank = $request->rank;
-        $member->facebook = $request->facebook;
-        $member->twitter = $request->twitter;
-        $member->linkedin = $request->linkedin;
-        $member->instagram = $request->instagram;
+        // $member->facebook = $request->facebook;
+        // $member->twitter = $request->twitter;
+        // $member->linkedin = $request->linkedin;
+        // $member->instagram = $request->instagram;
 
         if ($request->filled('image')) {
             $filename = uniqid() .'.'. $extImage;
@@ -87,7 +89,12 @@ class MemberController extends Controller
         }
 
         $member->save();
-
+    }
+    else
+    {
+        Session::flash('error', 'You cant Add more than Three Records!');
+        return "error";
+    }
         Session::flash('success', 'Member added successfully!');
         return "success";
     }
@@ -101,10 +108,10 @@ class MemberController extends Controller
         $rules = [
             'name' => 'required|max:50',
             'rank' => 'required|max:50',
-            'facebook' => 'nullable|max:50',
-            'twitter' => 'nullable|max:50',
-            'linkedin' => 'nullable|max:50',
-            'instagram' => 'nullable|max:50',
+            // 'facebook' => 'nullable|max:50',
+            // 'twitter' => 'nullable|max:50',
+            // 'linkedin' => 'nullable|max:50',
+            // 'instagram' => 'nullable|max:50',
         ];
 
         if ($request->filled('image')) {
@@ -126,10 +133,10 @@ class MemberController extends Controller
         $member = Member::findOrFail($request->member_id);
         $member->name = $request->name;
         $member->rank = $request->rank;
-        $member->facebook = $request->facebook;
-        $member->twitter = $request->twitter;
-        $member->linkedin = $request->linkedin;
-        $member->instagram = $request->instagram;
+        // $member->facebook = $request->facebook;
+        // $member->twitter = $request->twitter;
+        // $member->linkedin = $request->linkedin;
+        // $member->instagram = $request->instagram;
 
         if ($request->filled('image')) {
             @unlink('assets/front/img/members/' . $member->image);

@@ -74,7 +74,7 @@
                                 <label for="">Background ** </label>
                                 <br>
                                 <div class="thumb-preview" id="thumbPreview1">
-                                    <img src="{{asset('assets/front/img/'.$abs->team_bg)}}" alt="Background">
+                                    <img src="{{asset('assets/front/img/members/'.$abs->team_bg)}}" alt="Background">
                                 </div>
                                 <br>
                                 <br>

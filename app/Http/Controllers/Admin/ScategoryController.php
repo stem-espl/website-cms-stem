@@ -64,20 +64,27 @@ class ScategoryController extends Controller
         }
 
         $scategory = new Scategory;
-        $scategory->language_id = $request->language_id;
-        $scategory->name = $request->name;
-        $scategory->status = $request->status;
-        $scategory->short_text = $request->short_text;
-        $scategory->serial_number = $request->serial_number;
+        $count = Scategory::get()->count();
+        if($count < 4) {
+            $scategory->language_id = $request->language_id;
+            $scategory->name = $request->name;
+            $scategory->status = $request->status;
+            $scategory->short_text = $request->short_text;
+            $scategory->serial_number = $request->serial_number;
 
-        if ($request->filled('image')) {
-            $filename = uniqid() .'.'. $extImage;
-            @copy($image, 'assets/front/img/service_category_icons/' . $filename);
-            $scategory->image = $filename;
+            if ($request->filled('image')) {
+                $filename = uniqid() .'.'. $extImage;
+                @copy($image, 'assets/front/img/service_category_icons/' . $filename);
+                $scategory->image = $filename;
+            }
+
+            $scategory->save();
         }
-
-        $scategory->save();
-
+        else
+        {
+            Session::flash('error', 'You cant Add more than Four Records!');
+            return "error";
+        }
         Session::flash('success', 'Category added successfully!');
         return "success";
     }

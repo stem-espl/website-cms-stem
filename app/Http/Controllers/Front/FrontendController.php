@@ -162,6 +162,9 @@ class FrontendController extends Controller
         } elseif ($version == 'stem') {
             if ($bex->home_page_pagebuilder == 1) {
                 $data['scategory'] = Scategory::where('language_id', $lang_id)->orderBy('serial_number', 'ASC')->get();
+                $data['partners'] = Partner::where('language_id', $lang_id)->orderBy('serial_number', 'ASC')->get();
+                $data['members'] = Member::where('language_id', $lang_id)->orderBy('id', 'ASC')->get();
+                // dd($data['members']);
                 return view('front.stem.index', $data);
             } else {
                 return view('front.stem.index', $data);

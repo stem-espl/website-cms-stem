@@ -158,39 +158,26 @@
       <div class="section-content">
         <div class="container">
           <div class="row">
-            <div class="col-md-6 col-lg-6 col-xl-3 mx-5 left_margin">
-              <div class="team-block mrb-30 margin-rigt">
-                <div class="team-upper-part img_sizeset">
-                  <img class="img-full" src="{{asset('assets/stem/images/team/ma.jpg')}}" alt="" loading="lazy">
+          @if (count($members) > 0)
+              @foreach ($members as $key => $member)
+        
+            
+                   
+                <div class="col-md-6 col-lg-6 col-xl-3 mx-5 left_margin">
+                  <div class="team-block mrb-30 margin-rigt">
+                    <div class="team-upper-part img_sizeset">
+                      <img class="img-full" src="{{asset('assets/front/img/members/'.$member->image)}}" alt="" loading="lazy">
+                    
+                    </div>
+                    <div class="team-bottom-part">
+                      <h4 class="team-title mrb-5 name"><a href="page-single-team.html">{{$member->name}}</a></h4>
+                      <h6 class="designation">{{$member->rank}}</h6>
+                    </div>
+                  </div>
                 </div>
-                <div class="team-bottom-part">
-                  <h4 class="team-title mrb-5 name"><a href="page-single-team.html">Mr. Sir</a></h4>
-                  <h6 class="designation">Mayor , T.M.C., Chairman</h6>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6 col-lg-6 col-xl-3 mx-5 left_margin">
-              <div class="team-block mrb-30 margin-rigt">
-                <div class="team-upper-part img_sizeset">
-                  <img class="img-full sr-ias" src="{{asset('assets/stem/images/team/Sr.jpg')}}" alt="" loading="lazy">
-                </div>
-                <div class="team-bottom-part">
-                  <h4 class="team-title mrb-5 name"><a href="page-single-team.html">Mr. Saurabh Rao (I.A.S)</a></h4>
-                  <h6 class="designation">Commissioner</h6>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6 col-lg-6 col-xl-3 mx-5 left_margin">
-              <div class="team-block mrb-30 margin-rigt">
-                <div class="team-upper-part img_sizeset">
-                  <img class="img-full" src="{{asset('assets/stem/images/team/sg.jpg')}}" alt="" loading="lazy">
-                </div>
-                <div class="team-bottom-part">
-                  <h4 class="team-title mrb-5 name"><a href="page-single-team.html">Mr. Sanket Gharat</a></h4>
-                  <h6 class="designation">Managing Director</h6>
-                </div>
-              </div>
-            </div>
+            @endforeach
+            @endif
+          
           </div>
         </div>
       </div>
@@ -219,54 +206,24 @@
       <div class="section-content">
         <div class="container">
           <div class="row">
+          @if(count($partners) > 0)
+            @foreach($partners as $key => $partner)
             <div class="col-md-6 col-lg-6 col-xl-3">
               <div class="mrb-30">
                 <div class="team-upper-part">
-                  <img class="img-full" src="{{asset('assets/stem/images/clients/thane-municipal-corporation.png')}}" alt="">
+                  <img class="img-full" src="{{asset('assets/front/img/partners/stem/'.$partner->image)}}" alt="">
                 </div>
                 <div class="team-bottom-part" style="text-align: center;">
                   <!-- <h4 class="team-title mrb-5"><a href="page-single-team.html">Thane Municipal Corporation, Thane</a></h4> -->
-                  <h6>Thane Municipal Corporation, Thane</h6>
+                  <h6>{{$partner->title}}</h6>
                   <!-- <p>Share Holding: 49.78&incare;</p> -->
                 </div>
               </div>
             </div>
-            <div class="col-md-6 col-lg-6 col-xl-3">
-              <div class="mrb-30">
-                <div class="team-upper-part">
-                  <img class="img-full" src="{{asset('assets/stem/images/clients/mira-bhayandar-municipal-corporation.png')}}" alt="">
-                </div>
-                <div class="team-bottom-part" style="text-align: center;">
-                  <!-- <h4 class="team-title mrb-5"><a href="page-single-team.html">Mira Bhayandar Municipal Corporation</a></h4> -->
-                  <h6>Mira Bhayandar Municipal Corporation</h6>
-                  <!-- <p>Share Holding: 32.55&incare;</p> -->
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6 col-lg-6 col-xl-3">
-              <div class="mrb-30">
-                <div class="team-upper-part">
-                  <img class="img-full" src="{{asset('assets/stem/images/clients/bhiwandi-nizampur-city-municipal-corporation-bhiwandi.png')}}" alt="">
-                </div>
-                <div class="team-bottom-part" style="text-align: center;">
-                  <!-- <h4 class="team-title mrb-5"><a href="page-single-team.html">Bhiwandi Nizampur City Municipal Corporation, Bhiwandi</a></h4> -->
-                  <h6>Bhiwandi Nizampur City Municipal Corporation, Bhiwandi</h6>
-                  <!-- <p>Share Holding: 14.68&incare;</p> -->
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6 col-lg-6 col-xl-3">
-              <div class="mrb-30">
-                <div class="team-upper-part">
-                  <img class="img-full" src="{{asset('assets/stem/images/clients/thane-zilla-parishad-thane.png')}}" alt="">
-                </div>
-                <div class="team-bottom-part" style="text-align: center;">
-                  <!-- <h4 class="team-title mrb-5"><a href="page-single-team.html">Thane Zilla Parishad, Thane</a></h4> -->
-                  <h6>Thane Zilla Parishad, Thane</h6>
-                  <!-- <p>Share Holding: 2.99&incare;</p> -->
-                </div>
-              </div>
-            </div>
+            @endforeach
+           @endif
+         
+            
           </div>
         </div>
       </div>
