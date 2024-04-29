@@ -208,39 +208,26 @@
       <div class="section-content">
         <div class="container">
           <div class="row">
-            <div class="col-md-6 col-lg-6 col-xl-3 mx-5 left_margin">
-              <div class="team-block mrb-30 margin-rigt">
-                <div class="team-upper-part img_sizeset">
-                  <img class="img-full" src="{{asset('assets/stem/images/team/ma.jpg')}}" alt="" loading="lazy">
+          @if (count($members) > 0)
+              @foreach ($members as $key => $member)
+        
+            
+                   
+                <div class="col-md-6 col-lg-6 col-xl-3 mx-5 left_margin">
+                  <div class="team-block mrb-30 margin-rigt">
+                    <div class="team-upper-part img_sizeset">
+                      <img class="img-full" src="{{asset('assets/front/img/members/'.$member->image)}}" alt="" loading="lazy">
+                    
+                    </div>
+                    <div class="team-bottom-part">
+                      <h4 class="team-title mrb-5 name"><a href="page-single-team.html">{{$member->name}}</a></h4>
+                      <h6 class="designation">{{$member->rank}}</h6>
+                    </div>
+                  </div>
                 </div>
-                <div class="team-bottom-part">
-                  <h4 class="team-title mrb-5 name"><a href="page-single-team.html">Mr. Sir</a></h4>
-                  <h6 class="designation">Mayor , T.M.C., Chairman</h6>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6 col-lg-6 col-xl-3 mx-5 left_margin">
-              <div class="team-block mrb-30 margin-rigt">
-                <div class="team-upper-part img_sizeset">
-                  <img class="img-full sr-ias" src="{{asset('assets/stem/images/team/Sr.jpg')}}" alt="" loading="lazy">
-                </div>
-                <div class="team-bottom-part">
-                  <h4 class="team-title mrb-5 name"><a href="page-single-team.html">Mr. Saurabh Rao (I.A.S)</a></h4>
-                  <h6 class="designation">Commissioner</h6>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6 col-lg-6 col-xl-3 mx-5 left_margin">
-              <div class="team-block mrb-30 margin-rigt">
-                <div class="team-upper-part img_sizeset">
-                  <img class="img-full" src="{{asset('assets/stem/images/team/sg.jpg')}}" alt="" loading="lazy">
-                </div>
-                <div class="team-bottom-part">
-                  <h4 class="team-title mrb-5 name"><a href="page-single-team.html">Mr. Sanket Gharat</a></h4>
-                  <h6 class="designation">Managing Director</h6>
-                </div>
-              </div>
-            </div>
+            @endforeach
+            @endif
+          
           </div>
         </div>
       </div>
