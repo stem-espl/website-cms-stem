@@ -15,7 +15,7 @@
             <div class="row clearfix">
               <div class="col-xl-8 col-lg-12 col-md-12 content-column">
                 <div class="content-box">
-                  <h1 style="font-style: italic;">Empowering Lives Through water<br></h1>
+                  <h1 style="font-style: italic;">{{$slider->title}}<br></h1>
                 </div>
               </div>
             </div>
@@ -108,24 +108,28 @@
       <div class="section-content">
         <div class="container">
           <div class="row">
-            <div class="col-md-6 col-xl-3">
-              <div class="service-box">
-                <div class="service-icon">
-                  <span class="webexflaticon flaticon-plan"></span>
-                </div>
-                <div class="service-content">
-                  <div class="title">
-                    <a href="#">
-                      <h3>Uninterrupted Water Supply</h3>
-                    </a>
-                  </div>
-                  <div class="para">
-                    <p>We ensure a consistent and reliable water supply to our beneficiaries as per their allocated shares, meeting their needs efficiently.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6 col-xl-3">
+          @if (count($scategory) > 0)
+                    @foreach ($scategory as $key => $service)
+                    <div class="col-md-6 col-xl-3">
+                      <div class="service-box">
+                        <div class="service-icon">
+                          <span class="webexflaticon flaticon-plan"></span>
+                        </div>
+                        <div class="service-content">
+                          <div class="title">
+                            <a href="#">
+                              <h3>{{$service->name}}</h3>
+                            </a>
+                          </div>
+                          <div class="para">
+                            <p>{{$service->short_text}}</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    @endforeach
+          @endif
+            <!-- <div class="col-md-6 col-xl-3">
               <div class="service-box">
                 <div class="service-icon">
                   <span class="webexflaticon flaticon-meeting"></span>
@@ -175,7 +179,7 @@
                   </div>
                 </div>
               </div>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
