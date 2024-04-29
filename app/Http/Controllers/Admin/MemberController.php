@@ -84,7 +84,7 @@ class MemberController extends Controller
 
         if ($request->filled('image')) {
             $filename = uniqid() .'.'. $extImage;
-            @copy($image, 'assets/front/img/members/' . $filename);
+            @copy($image, 'assets/stem/members/' . $filename);
             $member->image = $filename;
         }
 
@@ -139,9 +139,9 @@ class MemberController extends Controller
         // $member->instagram = $request->instagram;
 
         if ($request->filled('image')) {
-            @unlink('assets/front/img/members/' . $member->image);
+            @unlink('assets/stem/members/' . $member->image);
             $filename = uniqid() .'.'. $extImage;
-            @copy($image, 'assets/front/img/members/' . $filename);
+            @copy($image, 'assets/stem/members/' . $filename);
             $member->image = $filename;
         }
 
@@ -200,7 +200,7 @@ class MemberController extends Controller
     {
 
         $member = Member::findOrFail($request->member_id);
-        @unlink('assets/front/img/members/' . $member->image);
+        @unlink('assets/stem/members/' . $member->image);
         $member->delete();
 
         Session::flash('success', 'Member deleted successfully!');
