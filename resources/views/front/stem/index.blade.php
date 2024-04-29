@@ -166,7 +166,7 @@
                 <div class="col-md-6 col-lg-6 col-xl-3 mx-5 left_margin">
                   <div class="team-block mrb-30 margin-rigt">
                     <div class="team-upper-part img_sizeset">
-                      <img class="img-full" src="{{asset('assets/front/img/members/'.$member->image)}}" alt="" loading="lazy">
+                      <img class="img-full" src="{{asset('assets/stem/members/'.$member->image)}}" alt="" loading="lazy">
                     
                     </div>
                     <div class="team-bottom-part">
