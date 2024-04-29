@@ -10,7 +10,6 @@ npm-debug.log
 yarn-error.log
 /vendor
 .env
-/public/assets/lfm/*
-/public/assets/front/img/*
+/public/assets/stem/*
 public/assets/news/
 composer.lock

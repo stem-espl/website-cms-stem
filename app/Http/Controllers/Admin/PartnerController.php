@@ -73,7 +73,7 @@ class PartnerController extends Controller
 
             if ($request->filled('image')) {
                 $filename = uniqid() .'.'. $extImage;
-                @copy($image, 'assets/front/img/partners/stem/' . $filename);
+                @copy($image, 'assets/stem/partners/' . $filename);
                 $partner->image = $filename;
             }
 
@@ -122,9 +122,9 @@ class PartnerController extends Controller
         $partner->serial_number = $request->serial_number;
 
         if ($request->filled('image')) {
-            @unlink('assets/front/img/partners/stem/' . $partner->image);
+            @unlink('assets/stem/partners/' . $partner->image);
             $filename = uniqid() .'.'. $extImage;
-            @copy($image, 'assets/front/img/partners/stem/' . $filename);
+            @copy($image, 'assets/stem/partners/' . $filename);
             $partner->image = $filename;
         }
 
@@ -138,7 +138,7 @@ class PartnerController extends Controller
     {
 
         $partner = Partner::findOrFail($request->partner_id);
-        @unlink('assets/front/img/partners/stem/' . $partner->image);
+        @unlink('assets/stem/partners/' . $partner->image);
         $partner->delete();
 
         Session::flash('success', 'Partner deleted successfully!');

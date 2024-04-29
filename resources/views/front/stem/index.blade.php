@@ -211,7 +211,7 @@
             <div class="col-md-6 col-lg-6 col-xl-3">
               <div class="mrb-30">
                 <div class="team-upper-part">
-                  <img class="img-full" src="{{asset('assets/front/img/partners/stem/'.$partner->image)}}" alt="">
+                  <img class="img-full" src="{{asset('assets/stem/partners/'.$partner->image)}}" alt="">
                 </div>
                 <div class="team-bottom-part" style="text-align: center;">
                   <!-- <h4 class="team-title mrb-5"><a href="page-single-team.html">Thane Municipal Corporation, Thane</a></h4> -->

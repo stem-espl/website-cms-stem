@@ -66,30 +66,18 @@
                     <label for="">Image ** </label>
                     <br>
                     <div class="thumb-preview" id="thumbPreview1">
-                        <img src="{{asset('assets/front/img/partners/stem/'.$partner->image)}}" alt="User Image">
+                        <img src="{{asset('assets/stem/partners/'.$partner->image)}}" alt="User Image">
                     </div>
                     <br>
                     <br>
 
 
-                    <input id="fileInput1" type="hidden" name="image">
-                    <button id="chooseImage1" class="choose-image btn btn-primary" type="button" data-multiple="false" data-toggle="modal" data-target="#lfmModal1">Choose Image</button>
+                    <input id="fileInput1" type="file" name="image" accept="image/*" hidden>
+                    <label for="fileInput1" class="choose-image btn btn-primary">Choose Image</label>
 
 
                     <p class="text-warning mb-0">JPG, PNG, JPEG, SVG images are allowed</p>
                     <p class="em text-danger mb-0" id="errimage"></p>
-
-                    <!-- Image LFM Modal -->
-                    <div class="modal fade lfm-modal" id="lfmModal1" tabindex="-1" role="dialog" aria-labelledby="lfmModalTitle" aria-hidden="true">
-                        <i class="fas fa-times-circle"></i>
-                        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-                            <div class="modal-content">
-                                <div class="modal-body p-0">
-                                    <iframe src="{{url('laravel-filemanager')}}?serial=1" style="width: 100%; height: 500px; overflow: hidden; border: none;"></iframe>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 <div class="form-group">
                       <label for="">Title **</label>
