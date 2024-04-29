@@ -12,3 +12,5 @@ yarn-error.log
 .env
 /public/assets/lfm/*
 /public/assets/front/img/*
+public/assets/news/
+composer.lock

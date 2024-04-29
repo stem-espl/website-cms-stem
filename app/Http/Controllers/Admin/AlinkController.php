@@ -80,7 +80,7 @@ class AlinkController extends Controller
 
     public function delete(Request $request)
     {
-        $alink = Alink::find($request->ulink_id);
+        $alink = Alink::find($request->alink_id);
         $alink->delete();
 
         Session::flash('success', 'About deleted successfully!');

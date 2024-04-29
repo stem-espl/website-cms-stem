@@ -24,6 +24,7 @@ ALTER TABLE `calendar_events` ADD `image` VARCHAR(255) NULL DEFAULT NULL AFTER `
 
 RENAME TABLE `calendar_events` TO `stmp_cms`.`news`;
 
+ALTER TABLE news DROP COLUMN end_date; 
 ---date 26-05-2024
 ALTER TABLE `basic_settings` ADD `header_logo` VARCHAR(50) NULL DEFAULT NULL AFTER `logo`;
 
