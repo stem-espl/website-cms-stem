@@ -23,7 +23,7 @@ class Admin extends Authenticatable
 
   public function role()
   {
-    return $this->belongsTo('App\Models\RoleOld','role_id','id');
+    return $this->belongsTo('App\Models\Role','role_id','id');
   }
   public static function getpermissionsByGroupName($group_name)
     {
