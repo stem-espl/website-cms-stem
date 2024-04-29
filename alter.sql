@@ -26,3 +26,6 @@ RENAME TABLE `calendar_events` TO `stmp_cms`.`news`;
 
 ---date 26-05-2024
 ALTER TABLE `basic_settings` ADD `header_logo` VARCHAR(50) NULL DEFAULT NULL AFTER `logo`;
+
+---date 29-05-2024
+ALTER TABLE `partners` ADD `title` VARCHAR(255) NULL DEFAULT NULL AFTER `url`;

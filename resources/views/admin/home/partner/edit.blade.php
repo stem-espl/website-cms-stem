@@ -66,7 +66,7 @@
                     <label for="">Image ** </label>
                     <br>
                     <div class="thumb-preview" id="thumbPreview1">
-                        <img src="{{asset('assets/front/img/partners/'.$partner->image)}}" alt="User Image">
+                        <img src="{{asset('assets/front/img/partners/stem/'.$partner->image)}}" alt="User Image">
                     </div>
                     <br>
                     <br>
@@ -90,6 +90,11 @@
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="form-group">
+                      <label for="">Title **</label>
+                      <input type="text" class="form-control ltr" name="title" value="{{$partner->title}}" placeholder="Enter Title">
+                      <p id="errtitle" class="mb-0 text-danger em"></p>
                 </div>
                 <div class="form-group">
                   <label for="">URL **</label>
