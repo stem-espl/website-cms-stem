@@ -13,3 +13,5 @@ yarn-error.log
 /public/assets/stem/*
 public/assets/news/
 composer.lock
+public/assets/front/img/*
+public/assets/lfm/*
