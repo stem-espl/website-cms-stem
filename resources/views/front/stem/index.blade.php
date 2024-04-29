@@ -91,14 +91,14 @@
             <div class="col-lg-5">
               <div class="section-title-left-part mrb-sm-30">
                 <div class="section-left-sub-title mb-20">
-                  <h5 class="sub-title text-primary-color">Service We Offer</h5>
+                  <h5 class="sub-title text-primary-color">{{__('common.Service We Offer')}}</h5>
                 </div>
-                <h2 class="title">Our Services</h2>
+                <h2 class="title">{{$bs->service_section_title}}</h2>
               </div>
             </div>
             <div class="offset-lg-1 col-lg-6">
               <div class="section-title-right-part">
-                <p>At STEM, our primary objective is to provide high-quality water supply services to Thane Municipal Corporation, Bhiwandi Nizampur Municipal Corporation, Mira Bhayander Municipal Corporation, and rural areas. We strive for excellence in managing, maintaining, and administering the water infrastructure assets entrusted to us.</p>
+                <p>{{$bs->our_services_desc}}</p>
               </div>
             </div>
           </div>

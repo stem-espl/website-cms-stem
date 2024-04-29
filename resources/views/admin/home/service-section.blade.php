@@ -71,11 +71,17 @@
                   <input name="service_section_title" class="form-control" value="{{$abs->service_section_title}}">
                   <p id="errservice_section_title" class="em text-danger mb-0"></p>
                 </div>
-                <div class="form-group">
+                <div class="form-group d-none">
                   <label for="">Subtitle **</label>
                   <input name="service_section_subtitle" class="form-control" value="{{$abs->service_section_subtitle}}">
                   <p id="errservice_section_subtitle" class="em text-danger mb-0"></p>
                 </div>
+                <div class="form-group">
+                  <label for="">Services Description **</label>
+                  <input name="our_services_desc" class="form-control" value="{{$abs->our_services_desc}}">
+                  <p id="errour_services_desc" class="em text-danger mb-0"></p>
+                </div>
+                
               </form>
 
             </div>
