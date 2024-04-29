@@ -1,6 +1,6 @@
 /node_modules
 /public/hot
-/public/storage
+/public/storage/*
 /storage/*.key
 .env.backup
 .phpunit.result.cache
@@ -10,3 +10,5 @@ npm-debug.log
 yarn-error.log
 /vendor
 .env
+/public/assets/lfm/*
+/public/assets/front/img/*
