@@ -5,9 +5,9 @@
     <!-- header Start -->
     <!-- header End -->
     <!-- Home Slider Start -->
+    @if (count($sliders) > 0)
     <section class="banner-section">
       <div class="home-carousel owl-theme owl-carousel carousel-slide">
-      @if (count($sliders) > 0)
         @foreach ($sliders as $key => $slider)
         <div class="slide-item">
           <div class="image-layer" data-background="{{asset('assets/front/img/sliders/stem/'.$slider->image)}}"></div>
@@ -22,10 +22,9 @@
           </div>
         </div>
         @endforeach
-        @endif
-  
       </div>
     </section>
+    @endif
     <!-- Home Slider End -->
     <!-- About Section Start -->
     <section class="about-section anim-object pdt-110 pdb-50 pdb-lg-80">
@@ -105,35 +104,36 @@
           </div>
         </div>
       </div>
+      @if (count($scategory) > 0)
       <div class="section-content">
         <div class="container">
           <div class="row">
-          @if (count($scategory) > 0)
-                    @foreach ($scategory as $key => $service)
-                    <div class="col-md-6 col-xl-3">
-                      <div class="service-box">
-                        <div class="service-icon">
-                          <span class="webexflaticon flaticon-plan"></span>
-                        </div>
-                        <div class="service-content">
-                          <div class="title">
-                            <a href="#">
-                              <h3>{{$service->name}}</h3>
-                            </a>
-                          </div>
-                          <div class="para">
-                            <p>{{$service->short_text}}</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    @endforeach
-          @endif
-       
+            @foreach ($scategory as $key => $service)
+            <div class="col-md-6 col-xl-3">
+              <div class="service-box">
+                <div class="service-icon">
+                  <span class="webexflaticon flaticon-plan"></span>
+                </div>
+                <div class="service-content">
+                  <div class="title">
+                    <a href="#">
+                      <h3>{{$service->name}}</h3>
+                    </a>
+                  </div>
+                  <div class="para">
+                    <p>{{$service->short_text}}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            @endforeach   
           </div>
         </div>
       </div>
     </section>
+    @endif
+
+    @if (count($members) > 0)
     <!-- Service Section End -->
     <!-- Team Section Titile Start -->
     <section class="pdt-110 pdb-150 section-white-typo" data-background="{{asset('assets/stem/images/bg/5.jpg')}}" data-overlay-dark="8">
@@ -158,11 +158,7 @@
       <div class="section-content">
         <div class="container">
           <div class="row">
-          @if (count($members) > 0)
-              @foreach ($members as $key => $member)
-        
-            
-                   
+              @foreach ($members as $key => $member)                
                 <div class="col-md-6 col-lg-6 col-xl-3 mx-5 left_margin">
                   <div class="team-block mrb-30 margin-rigt">
                     <div class="team-upper-part img_sizeset">
@@ -175,14 +171,15 @@
                     </div>
                   </div>
                 </div>
-            @endforeach
-            @endif
-          
+            @endforeach          
           </div>
         </div>
       </div>
     </section>
+    @endif
     <!-- Team Section End -->
+
+    @if(count($partners) > 0)
     <!-- STEM Shareholding Start -->
     <!-- Team Section Titile Start -->
     <section class="pdt-50 pdb-50">
@@ -192,7 +189,7 @@
             <div class="col"></div>
             <div class="col-lg-8 col-xl-6">
               <div class="section-title-block">
-                <h2>STEM Shareholding</h2>
+                <h2>{{__('common.STEM Shareholding')}}</h2>
               </div>
             </div>
             <div class="col"></div>
@@ -206,7 +203,6 @@
       <div class="section-content">
         <div class="container">
           <div class="row">
-          @if(count($partners) > 0)
             @foreach($partners as $key => $partner)
             <div class="col-md-6 col-lg-6 col-xl-3">
               <div class="mrb-30">
@@ -220,14 +216,12 @@
                 </div>
               </div>
             </div>
-            @endforeach
-           @endif
-         
-            
+            @endforeach           
           </div>
         </div>
       </div>
     </section>
+    @endif
     <!-- News Section Start -->
     <section class="bg-silver-light pdt-105 pdb-80" data-background="{{asset('assets/stem/images/bg/abs-bg4.png')}}">
       <div class="section-title mrb-30 mrb-md-60">
