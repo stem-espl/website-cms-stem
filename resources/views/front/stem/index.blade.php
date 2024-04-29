@@ -7,8 +7,8 @@
     <!-- Home Slider Start -->
     <section class="banner-section">
       <div class="home-carousel owl-theme owl-carousel carousel-slide">
-      @if (!empty($sliders))
-                    @foreach ($sliders as $key => $slider)
+      @if (count($sliders) > 0)
+        @foreach ($sliders as $key => $slider)
         <div class="slide-item">
           <div class="image-layer" data-background="{{asset('assets/front/img/sliders/stem/'.$slider->image)}}"></div>
           <div class="auto-container">
@@ -129,57 +129,7 @@
                     </div>
                     @endforeach
           @endif
-            <!-- <div class="col-md-6 col-xl-3">
-              <div class="service-box">
-                <div class="service-icon">
-                  <span class="webexflaticon flaticon-meeting"></span>
-                </div>
-                <div class="service-content">
-                  <div class="title">
-                    <a href="#">
-                      <h3>Industry and Commercial Supply</h3>
-                    </a>
-                  </div>
-                  <div class="para">
-                    <p>In addition to urban areas, we offer water supply solutions to industries and commercial establishments.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6 col-xl-3">
-              <div class="service-box">
-                <div class="service-icon">
-                  <span class="webexflaticon flaticon-growth"></span>
-                </div>
-                <div class="service-content">
-                  <div class="title">
-                    <a href="#">
-                      <h3>Environmental and Infrastructure Services</h3>
-                    </a>
-                  </div>
-                  <div class="para">
-                    <p>We engage in contracts with urban local bodies for environmental and infrastructure services, including land-fill sites.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6 col-xl-3">
-              <div class="service-box">
-                <div class="service-icon">
-                  <span class="webexflaticon flaticon-benchmark"></span>
-                </div>
-                <div class="service-content">
-                  <div class="title">
-                    <a href="#">
-                      <h3>Consultancy</h3>
-                    </a>
-                  </div>
-                  <div class="para">
-                    <p>We engage in contracts with urban local bodies for environmental and infrastructure services, including land-fill sites.</p>
-                  </div>
-                </div>
-              </div>
-            </div> -->
+       
           </div>
         </div>
       </div>

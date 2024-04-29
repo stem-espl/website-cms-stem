@@ -115,13 +115,16 @@ $links = json_decode($menus, true);
                       </ul>
                     </div>
                   </div>
+
+                  @if(count($socials) > 0)
                   <h4 class="mrb-15">Social List</h4>
                   <ul class="social-list">
                     @foreach ($socials as $social)
                     <li><a href="{{$social['url']}}"><i class="{{$social['icon']}}"></i></a></li>
-                    @endforeach
-               
+                    @endforeach               
                   </ul>
+                  @endif
+                  
                 </div>
                 @includeIf('front.stem.menu')
                 <div class="main-menu menu-colour">

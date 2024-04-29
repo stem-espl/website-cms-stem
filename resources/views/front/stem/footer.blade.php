@@ -39,6 +39,7 @@
             </div>
           </div>
 
+          @if(count($ulinks) > 0)
           <div class="col-xl-3 col-lg-6 col-md-6">
             <div class="widget footer-widget">
               <h5 class="widget-title text-white mrb-30">{{__('common.Useful Links')}}</h5>
@@ -49,7 +50,9 @@
               </ul>
             </div>
           </div>
+          @endif
 
+          @if(count($alinks) > 0)
           <div class="col-xl-3 col-lg-6 col-md-6">
             <div class="widget footer-widget">
               <h5 class="widget-title text-white mrb-30">{{__('common.About Us')}}</h5>
@@ -61,17 +64,21 @@
               </ul>
             </div>
           </div>
+          @endif
+
+          @if(count($dlinks) > 0)
           <div class="col-xl-3 col-lg-6 col-md-6">
             <div class="widget footer-widget">
               <h5 class="widget-title text-white mrb-30">{{__('common.Department')}}</h5>
               <ul class="footer-widget-list">
                 @foreach ($dlinks as $dlink)
                 <li><a href="{{ $dlink['url'] }}">{{ $dlink['name'] }}</a></li>
-                @endforeach
-        
+                @endforeach        
               </ul>
             </div>
           </div>
+          @endif
+          
         </div>
       </div>
     </div>
