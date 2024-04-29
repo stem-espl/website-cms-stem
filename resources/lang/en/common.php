@@ -16,4 +16,5 @@ return [
     'Useful Links' => 'Useful Links',
     'About Us' => 'About Us',
     'Department' => 'Department',
+    'STEM Shareholding' => 'STEM Shareholding',
 ];

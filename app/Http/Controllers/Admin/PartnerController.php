@@ -42,7 +42,8 @@ class PartnerController extends Controller
         $rules = [
             'language_id' => 'required',
             'image' => 'required',
-            'url' => 'required|max:255',
+            'title' => 'required|max:255',
+            // 'url' => 'required|max:255',
             'serial_number' => 'required|integer',
         ];
 
@@ -63,19 +64,27 @@ class PartnerController extends Controller
         }
 
         $partner = new Partner;
-        $partner->language_id = $request->language_id;
-        $partner->url = $request->url;
-        $partner->serial_number = $request->serial_number;
+        $count = Partner::get()->count();
+        if($count < 4) {
+            $partner->language_id = $request->language_id;
+            $partner->title = $request->title;
+            $partner->url = $request->url;
+            $partner->serial_number = $request->serial_number;
 
-        if ($request->filled('image')) {
-            $filename = uniqid() .'.'. $extImage;
-            @copy($image, 'assets/front/img/partners/' . $filename);
-            $partner->image = $filename;
+            if ($request->filled('image')) {
+                $filename = uniqid() .'.'. $extImage;
+                @copy($image, 'assets/stem/partners/' . $filename);
+                $partner->image = $filename;
+            }
+
+            $partner->save();
         }
-
-        $partner->save();
-
-        Session::flash('success', 'Partner added successfully!');
+        else
+        {
+            Session::flash('error', 'You cant Add more than Four Records!');
+            return "error";
+        }
+        Session::flash('success', 'Title added successfully!');
         return "success";
     }
 
@@ -86,7 +95,8 @@ class PartnerController extends Controller
         $extImage = pathinfo($image, PATHINFO_EXTENSION);
 
         $rules = [
-            'url' => 'required|max:255',
+            'title' => 'required|max:255',
+            // 'url' => 'required|max:255',
             'serial_number' => 'required|integer',
         ];
 
@@ -107,13 +117,14 @@ class PartnerController extends Controller
         }
 
         $partner = Partner::findOrFail($request->partner_id);
+        $partner->title = $request->title;
         $partner->url = $request->url;
         $partner->serial_number = $request->serial_number;
 
         if ($request->filled('image')) {
-            @unlink('assets/front/img/partners/' . $partner->image);
+            @unlink('assets/stem/partners/' . $partner->image);
             $filename = uniqid() .'.'. $extImage;
-            @copy($image, 'assets/front/img/partners/' . $filename);
+            @copy($image, 'assets/stem/partners/' . $filename);
             $partner->image = $filename;
         }
 
@@ -127,7 +138,7 @@ class PartnerController extends Controller
     {
 
         $partner = Partner::findOrFail($request->partner_id);
-        @unlink('assets/front/img/partners/' . $partner->image);
+        @unlink('assets/stem/partners/' . $partner->image);
         $partner->delete();
 
         Session::flash('success', 'Partner deleted successfully!');

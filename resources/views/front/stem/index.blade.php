@@ -5,10 +5,10 @@
     <!-- header Start -->
     <!-- header End -->
     <!-- Home Slider Start -->
+    @if (count($sliders) > 0)
     <section class="banner-section">
       <div class="home-carousel owl-theme owl-carousel carousel-slide">
-      @if (!empty($sliders))
-                    @foreach ($sliders as $key => $slider)
+        @foreach ($sliders as $key => $slider)
         <div class="slide-item">
           <div class="image-layer" data-background="{{asset('assets/front/img/sliders/stem/'.$slider->image)}}"></div>
           <div class="auto-container">
@@ -22,10 +22,9 @@
           </div>
         </div>
         @endforeach
-        @endif
-  
       </div>
     </section>
+    @endif
     <!-- Home Slider End -->
     <!-- About Section Start -->
     <section class="about-section anim-object pdt-110 pdb-50 pdb-lg-80">
@@ -105,85 +104,36 @@
           </div>
         </div>
       </div>
+      @if (count($scategory) > 0)
       <div class="section-content">
         <div class="container">
           <div class="row">
-          @if (count($scategory) > 0)
-                    @foreach ($scategory as $key => $service)
-                    <div class="col-md-6 col-xl-3">
-                      <div class="service-box">
-                        <div class="service-icon">
-                          <span class="webexflaticon flaticon-plan"></span>
-                        </div>
-                        <div class="service-content">
-                          <div class="title">
-                            <a href="#">
-                              <h3>{{$service->name}}</h3>
-                            </a>
-                          </div>
-                          <div class="para">
-                            <p>{{$service->short_text}}</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    @endforeach
-          @endif
-            <!-- <div class="col-md-6 col-xl-3">
+            @foreach ($scategory as $key => $service)
+            <div class="col-md-6 col-xl-3">
               <div class="service-box">
                 <div class="service-icon">
-                  <span class="webexflaticon flaticon-meeting"></span>
+                  <span class="webexflaticon flaticon-plan"></span>
                 </div>
                 <div class="service-content">
                   <div class="title">
                     <a href="#">
-                      <h3>Industry and Commercial Supply</h3>
+                      <h3>{{$service->name}}</h3>
                     </a>
                   </div>
                   <div class="para">
-                    <p>In addition to urban areas, we offer water supply solutions to industries and commercial establishments.</p>
+                    <p>{{$service->short_text}}</p>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="col-md-6 col-xl-3">
-              <div class="service-box">
-                <div class="service-icon">
-                  <span class="webexflaticon flaticon-growth"></span>
-                </div>
-                <div class="service-content">
-                  <div class="title">
-                    <a href="#">
-                      <h3>Environmental and Infrastructure Services</h3>
-                    </a>
-                  </div>
-                  <div class="para">
-                    <p>We engage in contracts with urban local bodies for environmental and infrastructure services, including land-fill sites.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6 col-xl-3">
-              <div class="service-box">
-                <div class="service-icon">
-                  <span class="webexflaticon flaticon-benchmark"></span>
-                </div>
-                <div class="service-content">
-                  <div class="title">
-                    <a href="#">
-                      <h3>Consultancy</h3>
-                    </a>
-                  </div>
-                  <div class="para">
-                    <p>We engage in contracts with urban local bodies for environmental and infrastructure services, including land-fill sites.</p>
-                  </div>
-                </div>
-              </div>
-            </div> -->
+            @endforeach   
           </div>
         </div>
       </div>
     </section>
+    @endif
+
+    @if (count($members) > 0)
     <!-- Service Section End -->
     <!-- Team Section Titile Start -->
     <section class="pdt-110 pdb-150 section-white-typo" data-background="{{asset('assets/stem/images/bg/5.jpg')}}" data-overlay-dark="8">
@@ -208,44 +158,28 @@
       <div class="section-content">
         <div class="container">
           <div class="row">
-            <div class="col-md-6 col-lg-6 col-xl-3 mx-5 left_margin">
-              <div class="team-block mrb-30 margin-rigt">
-                <div class="team-upper-part img_sizeset">
-                  <img class="img-full" src="{{asset('assets/stem/images/team/ma.jpg')}}" alt="" loading="lazy">
+              @foreach ($members as $key => $member)                
+                <div class="col-md-6 col-lg-6 col-xl-3 mx-5 left_margin">
+                  <div class="team-block mrb-30 margin-rigt">
+                    <div class="team-upper-part img_sizeset">
+                      <img class="img-full" src="{{asset('assets/stem/members/'.$member->image)}}" alt="" loading="lazy">
+                    
+                    </div>
+                    <div class="team-bottom-part">
+                      <h4 class="team-title mrb-5 name"><a href="page-single-team.html">{{$member->name}}</a></h4>
+                      <h6 class="designation">{{$member->rank}}</h6>
+                    </div>
+                  </div>
                 </div>
-                <div class="team-bottom-part">
-                  <h4 class="team-title mrb-5 name"><a href="page-single-team.html">Mr. Sir</a></h4>
-                  <h6 class="designation">Mayor , T.M.C., Chairman</h6>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6 col-lg-6 col-xl-3 mx-5 left_margin">
-              <div class="team-block mrb-30 margin-rigt">
-                <div class="team-upper-part img_sizeset">
-                  <img class="img-full sr-ias" src="{{asset('assets/stem/images/team/Sr.jpg')}}" alt="" loading="lazy">
-                </div>
-                <div class="team-bottom-part">
-                  <h4 class="team-title mrb-5 name"><a href="page-single-team.html">Mr. Saurabh Rao (I.A.S)</a></h4>
-                  <h6 class="designation">Commissioner</h6>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6 col-lg-6 col-xl-3 mx-5 left_margin">
-              <div class="team-block mrb-30 margin-rigt">
-                <div class="team-upper-part img_sizeset">
-                  <img class="img-full" src="{{asset('assets/stem/images/team/sg.jpg')}}" alt="" loading="lazy">
-                </div>
-                <div class="team-bottom-part">
-                  <h4 class="team-title mrb-5 name"><a href="page-single-team.html">Mr. Sanket Gharat</a></h4>
-                  <h6 class="designation">Managing Director</h6>
-                </div>
-              </div>
-            </div>
+            @endforeach          
           </div>
         </div>
       </div>
     </section>
+    @endif
     <!-- Team Section End -->
+
+    @if(count($partners) > 0)
     <!-- STEM Shareholding Start -->
     <!-- Team Section Titile Start -->
     <section class="pdt-50 pdb-50">
@@ -255,7 +189,7 @@
             <div class="col"></div>
             <div class="col-lg-8 col-xl-6">
               <div class="section-title-block">
-                <h2>STEM Shareholding</h2>
+                <h2>{{__('common.STEM Shareholding')}}</h2>
               </div>
             </div>
             <div class="col"></div>
@@ -269,58 +203,25 @@
       <div class="section-content">
         <div class="container">
           <div class="row">
+            @foreach($partners as $key => $partner)
             <div class="col-md-6 col-lg-6 col-xl-3">
               <div class="mrb-30">
                 <div class="team-upper-part">
-                  <img class="img-full" src="{{asset('assets/stem/images/clients/thane-municipal-corporation.png')}}" alt="">
+                  <img class="img-full" src="{{asset('assets/stem/partners/'.$partner->image)}}" alt="">
                 </div>
                 <div class="team-bottom-part" style="text-align: center;">
                   <!-- <h4 class="team-title mrb-5"><a href="page-single-team.html">Thane Municipal Corporation, Thane</a></h4> -->
-                  <h6>Thane Municipal Corporation, Thane</h6>
+                  <h6>{{$partner->title}}</h6>
                   <!-- <p>Share Holding: 49.78&incare;</p> -->
                 </div>
               </div>
             </div>
-            <div class="col-md-6 col-lg-6 col-xl-3">
-              <div class="mrb-30">
-                <div class="team-upper-part">
-                  <img class="img-full" src="{{asset('assets/stem/images/clients/mira-bhayandar-municipal-corporation.png')}}" alt="">
-                </div>
-                <div class="team-bottom-part" style="text-align: center;">
-                  <!-- <h4 class="team-title mrb-5"><a href="page-single-team.html">Mira Bhayandar Municipal Corporation</a></h4> -->
-                  <h6>Mira Bhayandar Municipal Corporation</h6>
-                  <!-- <p>Share Holding: 32.55&incare;</p> -->
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6 col-lg-6 col-xl-3">
-              <div class="mrb-30">
-                <div class="team-upper-part">
-                  <img class="img-full" src="{{asset('assets/stem/images/clients/bhiwandi-nizampur-city-municipal-corporation-bhiwandi.png')}}" alt="">
-                </div>
-                <div class="team-bottom-part" style="text-align: center;">
-                  <!-- <h4 class="team-title mrb-5"><a href="page-single-team.html">Bhiwandi Nizampur City Municipal Corporation, Bhiwandi</a></h4> -->
-                  <h6>Bhiwandi Nizampur City Municipal Corporation, Bhiwandi</h6>
-                  <!-- <p>Share Holding: 14.68&incare;</p> -->
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6 col-lg-6 col-xl-3">
-              <div class="mrb-30">
-                <div class="team-upper-part">
-                  <img class="img-full" src="{{asset('assets/stem/images/clients/thane-zilla-parishad-thane.png')}}" alt="">
-                </div>
-                <div class="team-bottom-part" style="text-align: center;">
-                  <!-- <h4 class="team-title mrb-5"><a href="page-single-team.html">Thane Zilla Parishad, Thane</a></h4> -->
-                  <h6>Thane Zilla Parishad, Thane</h6>
-                  <!-- <p>Share Holding: 2.99&incare;</p> -->
-                </div>
-              </div>
-            </div>
+            @endforeach           
           </div>
         </div>
       </div>
     </section>
+    @endif
     <!-- News Section Start -->
     <section class="bg-silver-light pdt-105 pdb-80" data-background="{{asset('assets/stem/images/bg/abs-bg4.png')}}">
       <div class="section-title mrb-30 mrb-md-60">

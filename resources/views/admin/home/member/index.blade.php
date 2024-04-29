@@ -74,32 +74,20 @@
                                 <label for="">Background ** </label>
                                 <br>
                                 <div class="thumb-preview" id="thumbPreview1">
-                                    <img src="{{asset('assets/front/img/'.$abs->team_bg)}}" alt="Background">
+                                    <img src="{{asset('assets/stem/members/'.$abs->team_bg)}}" alt="Background">
                                 </div>
                                 <br>
                                 <br>
 
 
-                                <input id="fileInput1" type="hidden" name="background">
-                                <button id="chooseImage1" class="choose-image btn btn-primary" type="button" data-multiple="false" data-toggle="modal" data-target="#lfmModal1">Choose Image</button>
+                                <input id="fileInput1" type="file" name="image" accept="image/*" hidden>
+                                <label for="fileInput1" class="choose-image btn btn-primary">Choose Image</label>
 
 
                                 <p class="text-warning mb-0">JPG, PNG, JPEG, SVG images are allowed</p>
                                 @if ($errors->has('background'))
                                 <p class="text-danger mb-0">{{$errors->first('background')}}</p>
                                 @endif
-
-                                <!-- Background LFM Modal -->
-                                <div class="modal fade lfm-modal" id="lfmModal1" tabindex="-1" role="dialog" aria-labelledby="lfmModalTitle" aria-hidden="true">
-                                    <i class="fas fa-times-circle"></i>
-                                    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-body p-0">
-                                                <iframe src="{{url('laravel-filemanager')}}?serial=1" style="width: 100%; height: 500px; overflow: hidden; border: none;"></iframe>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                         @endif
@@ -164,7 +152,7 @@
                                     @foreach ($members as $key => $member)
                                     <tr>
                                         <td>{{$loop->iteration}}</td>
-                                        <td><img src="{{asset('assets/front/img/members/'.$member->image)}}" alt="" width="40"></td>
+                                        <td><img src="{{asset('assets/stem/members/'.$member->image)}}" alt="" width="40"></td>
                                         <td>{{convertUtf8($member->name)}}</td>
                                         <td>{{$member->rank}}</td>
                                         <td>

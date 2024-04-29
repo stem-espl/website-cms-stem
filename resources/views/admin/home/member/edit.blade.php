@@ -64,30 +64,19 @@
                     <label for="">Image ** </label>
                     <br>
                     <div class="thumb-preview" id="thumbPreview1">
-                        <img src="{{asset('assets/front/img/members/' . $member->image)}}" alt="User Image">
+                        <img src="{{asset('assets/stem/members/' . $member->image)}}" alt="User Image">
                     </div>
                     <br>
                     <br>
 
 
-                    <input id="fileInput1" type="hidden" name="image">
-                    <button id="chooseImage1" class="choose-image btn btn-primary" type="button" data-multiple="false" data-toggle="modal" data-target="#lfmModal1">Choose Image</button>
+                    <input id="fileInput1" type="file" name="image" accept="image/*" hidden>
+                    <label for="fileInput1" class="choose-image btn btn-primary">Choose Image</label>
 
 
                     <p class="text-warning mb-0">JPG, PNG, JPEG, SVG images are allowed</p>
                     <p class="em text-danger mb-0" id="errimage"></p>
 
-                    <!-- Image LFM Modal -->
-                    <div class="modal fade lfm-modal" id="lfmModal1" tabindex="-1" role="dialog" aria-labelledby="lfmModalTitle" aria-hidden="true">
-                        <i class="fas fa-times-circle"></i>
-                        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-                            <div class="modal-content">
-                                <div class="modal-body p-0">
-                                    <iframe src="{{url('laravel-filemanager')}}?serial=1" style="width: 100%; height: 500px; overflow: hidden; border: none;"></iframe>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
 
                 <div class="form-group">
@@ -100,22 +89,22 @@
                   <input type="text" class="form-control" name="rank" value="{{$member->rank}}" placeholder="Enter rank">
                   <p id="errrank" class="mb-0 text-danger em"></p>
                 </div>
-                <div class="form-group">
+                <div class="form-group d-none">
                   <label for="">Facebook</label>
                   <input type="text" class="form-control ltr" name="facebook" value="{{$member->facebook}}" placeholder="Enter facebook url">
                   <p id="errfacebook" class="mb-0 text-danger em"></p>
                 </div>
-                <div class="form-group">
+                <div class="form-group d-none">
                   <label for="">Twitter</label>
                   <input type="text" class="form-control ltr" name="twitter" value="{{$member->twitter}}" placeholder="Enter twitter url">
                   <p id="errtwitter" class="mb-0 text-danger em"></p>
                 </div>
-                <div class="form-group">
+                <div class="form-group d-none">
                   <label for="">Instagram</label>
                   <input type="text" class="form-control ltr" name="instagram" value="{{$member->instagram}}" placeholder="Enter instagram url">
                   <p id="errinstagram" class="mb-0 text-danger em"></p>
                 </div>
-                <div class="form-group">
+                <div class="form-group d-none">
                   <label for="">Linkedin</label>
                   <input type="text" class="form-control ltr" name="linkedin" value="{{$member->linkedin}}" placeholder="Enter linkedin url">
                   <p id="errlinkedin" class="mb-0 text-danger em"></p>
