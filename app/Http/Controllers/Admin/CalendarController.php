@@ -10,6 +10,8 @@ use App\Models\Language;
 use Validator;
 use Session;
 use Auth;
+use Image;
+
 
 class CalendarController extends Controller
 {
@@ -49,7 +51,7 @@ class CalendarController extends Controller
         $calendar->language_id = $request->language_id;
         $calendar->title = $request->title;
         $calendar->date = $request->datetimes;    
-        $calendar->image = 'assets/news/' . $imageName;
+        $calendar->image =  $imageName;
         $calendar->created_by = auth()->id(); 
         $calendar->save();
 
@@ -59,31 +61,66 @@ class CalendarController extends Controller
 
     public function update(Request $request)
     {
-        $messages = [
-            'date.required' => 'Event period is required',
-            'end_date.required' => 'Event period is required',
-        ];
+        $event = News::find($request->id);
+        if(!empty($event))
+        {
+            $image = $request->image;
+            $allowedExts = array('jpg', 'png', 'jpeg', 'svg');
+            $extImage = pathinfo($image, PATHINFO_EXTENSION);
 
-        $rules = [
-            'title' => 'required|max:255',
-            'date' => 'required',
-        ];
+            $rules = [
+                'title' => 'required|max:255',
+                'date' => 'required',
+            ];
 
-        $validator = Validator::make($request->all(), $rules);
-        if ($validator->fails()) {
-            $errmsgs = $validator->getMessageBag()->add('error', 'true');
-            return response()->json($validator->errors());
-        }
+            if ($request->has('image')) {
+                $rules['image'] = [
+                    'mimes:jpeg,jpg,png,svg',
+                ];
+            }
 
-        $calendar = News::find($request->event_id);
-        $calendar->title = $request->title;
-        $calendar->date = $request->date;
+            $validator = Validator::make($request->all(), $rules);
+            if ($validator->fails()) {
+                $errmsgs = $validator->getMessageBag()->add('error', 'true');
+                return response()->json($validator->errors());
+            }
+
+            
+            if ($request->has('image')) {
+                $image = $request->file('image');
+                $filename = uniqid() .'.'. $image->extension();
+                $imagename= $image->getClientOriginalName();
+    
+                //image resize logic
+                $new_image = Image::make($image->getRealPath());
+                if($new_image != null){
+                    @unlink('assets/news/' . $event->image);
+                    $filename = uniqid() .'.'. $request->file('image')->extension();
+                    $image_width= $new_image->width();
+                    $image_height= $new_image->height();
+                    $new_width= 370;
+                    $new_height= 250;        
+                    $new_image->resize($new_width, $new_height);
+                    $new_image->save(public_path('assets/news/' .$filename));
+                    $event->image = $filename;                
+                }
+            }
         
-        $calendar->save();
-
-        Session::flash('success', 'Event date updated in calendar successfully!');
+            $event->title = $request->title;
+            $event->date = $request->date;
+            $event->image = $filename; 
+            
+            $event->save();
+        
+            Session::flash('success', 'News updated successfully!');
+            
+        }else{
+            Session::flash('error', 'News not found');
+        }
         return "success";
     }
+    
+    
 
     public function delete(Request $request)
     {
@@ -106,4 +143,18 @@ class CalendarController extends Controller
         Session::flash('success', 'Events deleted successfully!');
         return "success";
     }
+
+
+    public function edit(Request $request,$id)
+    {
+        $lang = Language::where('code', $request->language)->first();
+        $data['event'] = News::findOrFail($id);
+       return view('admin.calendar.edit',$data);
+    }
+
+    public function img(){
+     return view('admin.calendar.news');
+    }
+
+
 }

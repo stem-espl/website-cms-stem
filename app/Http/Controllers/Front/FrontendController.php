@@ -44,6 +44,7 @@ use App\Models\BasicExtra;
 use App\Models\CalendarEvent;
 use App\Models\FAQCategory;
 use App\Models\Home;
+use App\Models\News;
 use App\Mail\ContactMail;
 use App\Mail\OrderPackage;
 use App\Mail\OrderQuote;
@@ -103,7 +104,9 @@ class FrontendController extends Controller
             $data['blogs'] = Blog::where('language_id', $lang_id)->orderBy('id', 'DESC')->limit(6)->get();
             $data['partners'] = Partner::where('language_id', $lang_id)->orderBy('serial_number', 'ASC')->get();
             $data['packages'] = Package::where('language_id', $lang_id)->where('feature', 1)->orderBy('serial_number', 'ASC')->get();
-            $data['scategories'] = Scategory::where('language_id', $lang_id)->where('feature', 1)->where('status', 1)->orderBy('serial_number', 'ASC')->get();
+            $data['scategories'] = Scategory::where('language_id', $lang_id)->where('feature', 1)->where('status', 1)->orderBy('serial_number', 'ASC')->get()->get();
+
+            
             if (!serviceCategory()) {
                 $data['services'] = Service::where('language_id', $lang_id)->where('feature', 1)->orderBy('serial_number', 'ASC')->get();
             }
@@ -162,6 +165,8 @@ class FrontendController extends Controller
         } elseif ($version == 'stem') {
             if ($bex->home_page_pagebuilder == 1) {
                 $data['scategory'] = Scategory::where('language_id', $lang_id)->orderBy('serial_number', 'ASC')->get();
+                $data['event'] = News::take(3)->get();
+                $data['scategory'] = Scategory::all();
                 return view('front.stem.index', $data);
             } else {
                 return view('front.stem.index', $data);
