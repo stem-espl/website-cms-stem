@@ -233,22 +233,18 @@
             </li>
             @endcan
             @can('intro-section')
-            @if ($bex->home_page_pagebuilder == 0)
             <li class="@if(request()->path() == 'admin/introsection') active @endif">
               <a href="{{route('admin.introsection.index') . '?language=' . $default->code}}">
               <span class="sub-item">Intro Section</span>
               </a>
             </li>
-            @endif
             @endcan
             @can('service-section')
-            @if ($bex->home_page_pagebuilder == 0)
             <li class="@if(request()->path() == 'admin/servicesection') active @endif">
               <a href="{{route('admin.servicesection.index') . '?language=' . $default->code}}">
               <span class="sub-item">Service Section</span>
               </a>
             </li>
-            @endif
             @endcan
             @can('approach-section')
             <li class="
