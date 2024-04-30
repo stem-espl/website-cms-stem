@@ -1,5 +1,27 @@
 @extends('front.stem.layout')
 @section('content')
+
+
+<div class="containar-flude">
+  <div class="row">
+    <div class="col-4" style="margin-top: 13%;">
+      <div class="btn-group btn-group-toggle" data-toggle="buttons" style="margin-left: 39%;">
+        <label class="btn btn-secondary active">
+          <input type="radio" name="options" id="option1">Home
+        </label>
+        <label class="btn btn-secondary">
+          <input type="radio" name="options" id="option2" autocomplete="off">News
+        </label>
+      </div>
+
+    </div>
+    <div class="col-8">
+      <img src="{{ url('assets/news.jpg') }}" alt=""  style="margin-top: 2%;">
+
+    </div>
+  </div>
+</div>
+
 <div class="section-content">
     <div class="container">
       <div class="row">
