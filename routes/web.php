@@ -1007,10 +1007,13 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin', 'checkstatus',
         Route::get('/calendars', 'Admin\CalendarController@index')->name('admin.calendar.index');
         Route::post('/calendar/store', 'Admin\CalendarController@store')->name('admin.calendar.store');
         Route::post('/calendar/update', 'Admin\CalendarController@update')->name('admin.calendar.update');
+        Route::get('/calendar/{id}/edit', 'Admin\CalendarController@edit')->name('admin.calendar.edit');
         Route::post('/calendar/delete', 'Admin\CalendarController@delete')->name('admin.calendar.delete');
         Route::post('/calendar/bulk-delete', 'Admin\CalendarController@bulkDelete')->name('admin.calendar.bulk.delete');
-    });
+        Route::get('/news/img', 'Admin\CalendarController@img')->name('admin.calendar.img');
 
+    });
+    
 
     Route::group(['middleware' => []], function () {
         // Admin Article Category Routes

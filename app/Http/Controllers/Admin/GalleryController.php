@@ -115,6 +115,8 @@ class GalleryController extends Controller
     return "success";
   }
 
+
+
   public function update(Request $request)
   {
     $categoryInfo = BasicExtra::first();
@@ -139,7 +141,7 @@ class GalleryController extends Controller
       $rules['category_id'] = 'required';
     }
 
-    if ($request->filled('image')) {
+    if ($request->filled('image')) {  
       $rules['image'] = [
         function ($attribute, $value, $fail) use ($extImage, $allowedExts) {
           if (!in_array($extImage, $allowedExts)) {

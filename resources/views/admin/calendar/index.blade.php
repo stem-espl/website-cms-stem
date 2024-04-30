@@ -67,6 +67,8 @@
           </div>
           <div class="card-body">
             <div class="row">
+
+              
               <div class="col-lg-12">
                 @if (count($events) == 0)
                   <h3 class="text-center">NO NEWS FOUND</h3>
@@ -91,7 +93,7 @@
                             <td>
                               <input type="checkbox" class="bulk-check" data-val="{{$event->id}}">
                             </td>
-                            <td><img src="{{ asset('/' . $event->image) }}" alt="" width="50"></td>
+                            <td><img src="{{ asset('assets/news/' . $event->image) }}" alt="" width="50"></td>
                             <td>{{convertUtf8(strlen($event->title)) > 30 ? convertUtf8(substr($event->title, 0, 30)) . '...' : convertUtf8($event->title)}}</td>
                             <td>
                               @php
@@ -106,7 +108,7 @@
                             </td>
 
                             <td>
-                              <a class="btn btn-secondary btn-sm editbtn" href="#editModal" data-toggle="modal" data-event_id="{{$event->id}}"  data-title="{{$event->title}}"data-date="{{$event->date}}" data-image="{{$event->image}}">
+                              <a class="btn btn-secondary btn-sm editbtn" href="{{route('admin.calendar.edit',$event->id)}}">
                                 <span class="btn-label">
                                   <i class="fas fa-edit"></i>
                                 </span>
@@ -191,7 +193,7 @@
     </div>
 
     <!-- Edit Event Modal -->
-    <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    {{-- <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -231,7 +233,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> --}}
   @endsection
 
   @section('scripts')
