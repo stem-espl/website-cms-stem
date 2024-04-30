@@ -23,7 +23,8 @@ class ServicesectionController extends Controller
     public function update(Request $request, $langid)
     {
         $rules = [
-            'service_section_subtitle' => 'required|max:80',
+            // 'service_section_subtitle' => 'required|max:80',
+            'our_services_desc' => 'required|max:400|min:200',
             'service_section_title' => 'required|max:25'
         ];
 
@@ -34,7 +35,8 @@ class ServicesectionController extends Controller
         }
 
         $bs = BS::where('language_id', $langid)->firstOrFail();
-        $bs->service_section_subtitle = $request->service_section_subtitle;
+        // $bs->service_section_subtitle = $request->service_section_subtitle;
+        $bs->our_services_desc = $request->our_services_desc;
         $bs->service_section_title = $request->service_section_title;
         $bs->save();
 

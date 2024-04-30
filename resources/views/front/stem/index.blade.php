@@ -10,7 +10,7 @@
       <div class="home-carousel owl-theme owl-carousel carousel-slide">
         @foreach ($sliders as $key => $slider)
         <div class="slide-item">
-          <div class="image-layer" data-background="{{asset('assets/front/img/sliders/stem/'.$slider->image)}}"></div>
+          <div class="image-layer" data-background="{{asset('assets/stem/sliders/'.$slider->image)}}"></div>
           <div class="auto-container">
             <div class="row clearfix">
               <div class="col-xl-8 col-lg-12 col-md-12 content-column">
@@ -91,14 +91,14 @@
             <div class="col-lg-5">
               <div class="section-title-left-part mrb-sm-30">
                 <div class="section-left-sub-title mb-20">
-                  <h5 class="sub-title text-primary-color">Service We Offer</h5>
+                  <h5 class="sub-title text-primary-color">{{__('common.Service We Offer')}}</h5>
                 </div>
-                <h2 class="title">Our Services</h2>
+                <h2 class="title">{{$bs->service_section_title}}</h2>
               </div>
             </div>
             <div class="offset-lg-1 col-lg-6">
               <div class="section-title-right-part">
-                <p>At STEM, our primary objective is to provide high-quality water supply services to Thane Municipal Corporation, Bhiwandi Nizampur Municipal Corporation, Mira Bhayander Municipal Corporation, and rural areas. We strive for excellence in managing, maintaining, and administering the water infrastructure assets entrusted to us.</p>
+                <p>{{$bs->our_services_desc}}</p>
               </div>
             </div>
           </div>
@@ -162,7 +162,7 @@
                 <div class="col-md-6 col-lg-6 col-xl-3 mx-5 left_margin">
                   <div class="team-block mrb-30 margin-rigt">
                     <div class="team-upper-part img_sizeset">
-                      <img class="img-full" src="{{asset('assets/stem/members/'.$member->image)}}" alt="" loading="lazy">
+                      <img class="img-full sr-ias" src="{{asset('assets/stem/members/'.$member->image)}}" alt="" loading="lazy">
                     
                     </div>
                     <div class="team-bottom-part">
@@ -222,6 +222,8 @@
       </div>
     </section>
     @endif
+
+    @if(count($event) > 0)
     <!-- News Section Start -->
     <section class="bg-silver-light pdt-105 pdb-80" data-background="{{asset('assets/stem/images/bg/abs-bg4.png')}}">
       <div class="section-title mrb-30 mrb-md-60">
@@ -245,9 +247,9 @@
             <div class="col-md-6 col-lg-6 col-xl-4">
               <div class="news-wrapper mrb-30 mrb-sm-40">
                 <div class="news-thumb">
-                  <img src="assets/news/{{ $newsdata->image}}"></img>
+                  <img src="{{asset('assets/stem/news')}}/{{ $newsdata->image}}"></img>
                   <div class="news-top-meta">
-                    <span class="entry-category">News</span>
+                    <span class="entry-category">{{__('common.News')}}</span>
                   </div>
                 </div>
                 <div class="news-details">
@@ -266,6 +268,7 @@
         </div>
       </div>
     </section>
+    @endif
     <!-- News Section End -->
     <!-- Footer Area Start -->
     @endsection

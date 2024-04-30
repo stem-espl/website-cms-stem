@@ -8,7 +8,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Member;
 use App\Models\Language;
 use App\Models\BasicSetting as BS;
-use Validator;
+use Illuminate\Support\Facades\File;
+use Validator, Image;
 use Session;
 
 class MemberController extends Controller
@@ -82,10 +83,28 @@ class MemberController extends Controller
         // $member->linkedin = $request->linkedin;
         // $member->instagram = $request->instagram;
 
-        if ($request->filled('image')) {
-            $filename = uniqid() .'.'. $extImage;
-            @copy($image, 'assets/stem/members/' . $filename);
-            $member->image = $filename;
+        if ($request->has('image')) {
+
+            $destinationPath = '/assets/stem/members/'; 
+            if(!File::exists(public_path($destinationPath))) {
+              File::makeDirectory(public_path($destinationPath), $mode = 0777, true, true);
+            }
+
+            $image = $request->file('image');
+            $imagename= $image->getClientOriginalName();
+
+            //image resize logic
+            $new_image = Image::make($image->getRealPath());
+            if($new_image != null){
+                $filename = uniqid() .'.'. $request->file('image')->extension();
+                $image_width= $new_image->width();
+                $image_height= $new_image->height();
+                $new_width= 1191;
+                $new_height= 1600;
+                $new_image->resize($new_width, $new_height);         
+                $new_image->save(public_path('assets/stem/members/' .$filename));
+                $member->image = $filename;
+            }
         }
 
         $member->save();
@@ -138,11 +157,28 @@ class MemberController extends Controller
         // $member->linkedin = $request->linkedin;
         // $member->instagram = $request->instagram;
 
-        if ($request->filled('image')) {
-            @unlink('assets/stem/members/' . $member->image);
-            $filename = uniqid() .'.'. $extImage;
-            @copy($image, 'assets/stem/members/' . $filename);
-            $member->image = $filename;
+        if ($request->has('image')) {
+            $destinationPath = '/assets/stem/members/'; 
+            if(!File::exists(public_path($destinationPath))) {
+              File::makeDirectory(public_path($destinationPath), $mode = 0777, true, true);
+            }
+
+            $image = $request->file('image');
+            $imagename= $image->getClientOriginalName();
+
+            //image resize logic
+            $new_image = Image::make($image->getRealPath());
+            if($new_image != null){
+                @unlink('assets/stem/members/' . $member->image);
+                $filename = uniqid() .'.'. $request->file('image')->extension();
+                $image_width= $new_image->width();
+                $image_height= $new_image->height();
+                $new_width= 1191;
+                $new_height= 1600;
+                $new_image->resize($new_width, $new_height);         
+                $new_image->save(public_path('assets/stem/members/' .$filename));
+                $member->image = $filename;
+            }
         }
 
         $member->save();

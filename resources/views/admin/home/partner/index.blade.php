@@ -129,7 +129,7 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
                     <label for="">Image ** </label>
                     <br>
                     <div class="thumb-preview" id="thumbPreview1">
-                        <img src="{{asset('assets/admin/img/noimage.jpg')}}" alt="User Image">
+                        <img src="{{asset('assets/admin/img/noimage.jpg')}}" id="preview" alt="User Image">
                     </div>
                     <br>
                     <br>
@@ -184,6 +184,10 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
 @section('scripts')
 <script>
     $(document).ready(function() {
+
+        $("#fileInput1").on('change', function() {
+            preview.src=URL.createObjectURL(event.target.files[0]);
+        });
 
         // make input fields RTL
         $("select[name='language_id']").on('change', function() {

@@ -64,7 +64,7 @@
                             <div class="col-md-3">
                                 <div class="card">
                                     <div class="card-body">
-                                        <img src="{{asset('assets/front/img/sliders/stem/'.$slider->image)}}" alt="" style="width:100%;">
+                                        <img src="{{asset('assets/stem/sliders/'.$slider->image)}}" alt="" style="width:100%;">
                                     </div>
                                     <div class="card-footer text-center">
                                         <a class="btn btn-secondary btn-sm mr-2" href="{{route('admin.slider.edit', $slider->id) . '?language=' . request()->input('language')}}">
@@ -116,14 +116,14 @@
                     <label for="">Image ** </label>
                     <br>
                     <div class="thumb-preview" id="thumbPreview1">
-                        <img src="{{asset('assets/admin/img/noimage.jpg')}}" alt="Slider Image">
+                        <img src="{{asset('assets/admin/img/noimage.jpg')}}" id="preview" alt="Slider Image">
                     </div>
                     <br>
                     <br>
 
 
-                    <input id="fileInput1" type="hidden" name="image">
-                    <button id="chooseImage1" class="choose-image btn btn-primary" type="button" data-multiple="false" data-toggle="modal" data-target="#lfmModal1">Choose Image</button>
+                    <input id="fileInput1" type="file" name="image" accept="image/*" hidden>
+                    <label for="fileInput1" class="choose-image btn btn-primary">Choose Image</label>
 
 
                     <p class="text-warning mb-0">JPG, PNG, JPEG, SVG images are allowed</p>
@@ -254,23 +254,14 @@
 </div>
 </div>
 
-    <!-- Image LFM Modal -->
-    <div class="modal fade lfm-modal" id="lfmModal1" tabindex="-1" role="dialog" aria-labelledby="lfmModalTitle" aria-hidden="true">
-        <i class="fas fa-times-circle"></i>
-        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-body p-0">
-                    <iframe src="{{url('laravel-filemanager')}}?serial=1" style="width: 100%; height: 500px; overflow: hidden; border: none;"></iframe>
-                </div>
-            </div>
-        </div>
-    </div>
     @endsection
 
     @section('scripts')
     <script>
         $(document).ready(function() {
-
+            $("#fileInput1").on('change', function() {
+                preview.src=URL.createObjectURL(event.target.files[0]);
+            });
             // make input fields RTL
             $("select[name='language_id']").on('change', function() {
                 $(".request-loader").addClass("show");
