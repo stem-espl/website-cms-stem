@@ -128,6 +128,9 @@ Route::group(['middleware' => 'setlang'], function () {
 
   // change language routes
   Route::get('/changelanguage/{lang}', 'Front\FrontendController@changeLanguage')->name('changeLanguage');
+  // change language routes
+  Route::post( "/change_language","Front\FrontendController@change_language")->name("change_language");
+
 
   // Product
   Route::get('/cart', 'Front\ProductController@cart')->name('front.cart');
