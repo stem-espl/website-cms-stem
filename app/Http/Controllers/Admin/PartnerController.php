@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Partner;
 use App\Models\Language;
-use Validator;
+use Illuminate\Support\Facades\File;
+use Validator, Image;
 use Session;
 
 class PartnerController extends Controller
@@ -71,10 +72,26 @@ class PartnerController extends Controller
             $partner->url = $request->url;
             $partner->serial_number = $request->serial_number;
 
-            if ($request->filled('image')) {
-                $filename = uniqid() .'.'. $extImage;
-                @copy($image, 'assets/stem/partners/' . $filename);
-                $partner->image = $filename;
+            if ($request->has('image')) {
+                $destinationPath = '/assets/stem/partners/'; 
+                if(!File::exists(public_path($destinationPath))) {
+                  File::makeDirectory(public_path($destinationPath), $mode = 0777, true, true);
+                }
+                $image = $request->file('image');
+                $imagename= $image->getClientOriginalName();
+
+                //image resize logic
+                $new_image = Image::make($image->getRealPath());
+                if($new_image != null){
+                    $filename = uniqid() .'.'. $request->file('image')->extension();
+                    $image_width= $new_image->width();
+                    $image_height= $new_image->height();
+                    $new_width= 900;
+                    $new_height= 900;
+                    $new_image->resize($new_width, $new_height);         
+                    $new_image->save(public_path('assets/stem/partners/' .$filename));
+                    $partner->image = $filename;
+                }
             }
 
             $partner->save();
@@ -121,11 +138,27 @@ class PartnerController extends Controller
         $partner->url = $request->url;
         $partner->serial_number = $request->serial_number;
 
-        if ($request->filled('image')) {
-            @unlink('assets/stem/partners/' . $partner->image);
-            $filename = uniqid() .'.'. $extImage;
-            @copy($image, 'assets/stem/partners/' . $filename);
-            $partner->image = $filename;
+        if ($request->has('image')) {
+            $destinationPath = '/assets/stem/partners/'; 
+            if(!File::exists(public_path($destinationPath))) {
+              File::makeDirectory(public_path($destinationPath), $mode = 0777, true, true);
+            }
+            $image = $request->file('image');
+            $imagename= $image->getClientOriginalName();
+
+            //image resize logic
+            $new_image = Image::make($image->getRealPath());
+            if($new_image != null){
+                @unlink('assets/stem/partners/' . $partner->image);
+                $filename = uniqid() .'.'. $request->file('image')->extension();
+                $image_width= $new_image->width();
+                $image_height= $new_image->height();
+                $new_width= 900;
+                $new_height= 900;
+                $new_image->resize($new_width, $new_height);         
+                $new_image->save(public_path('assets/stem/partners/' .$filename));
+                $partner->image = $filename;
+            }
         }
 
         $partner->save();

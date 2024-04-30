@@ -10,7 +10,7 @@
       <div class="home-carousel owl-theme owl-carousel carousel-slide">
         @foreach ($sliders as $key => $slider)
         <div class="slide-item">
-          <div class="image-layer" data-background="{{asset('assets/front/img/sliders/stem/'.$slider->image)}}"></div>
+          <div class="image-layer" data-background="{{asset('assets/stem/sliders/'.$slider->image)}}"></div>
           <div class="auto-container">
             <div class="row clearfix">
               <div class="col-xl-8 col-lg-12 col-md-12 content-column">
@@ -162,7 +162,7 @@
                 <div class="col-md-6 col-lg-6 col-xl-3 mx-5 left_margin">
                   <div class="team-block mrb-30 margin-rigt">
                     <div class="team-upper-part img_sizeset">
-                      <img class="img-full" src="{{asset('assets/stem/members/'.$member->image)}}" alt="" loading="lazy">
+                      <img class="img-full sr-ias" src="{{asset('assets/stem/members/'.$member->image)}}" alt="" loading="lazy">
                     
                     </div>
                     <div class="team-bottom-part">

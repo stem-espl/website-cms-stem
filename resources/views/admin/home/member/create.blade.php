@@ -46,7 +46,7 @@
                     <label for="">Image ** </label>
                     <br>
                     <div class="thumb-preview" id="thumbPreview1">
-                        <img src="{{asset('assets/admin/img/noimage.jpg')}}" alt="User Image">
+                        <img src="{{asset('assets/admin/img/noimage.jpg')}}" id="preview" alt="User Image">
                     </div>
                     <br>
                     <br>
@@ -125,10 +125,14 @@
 @section('scripts')
 <script>
     $(document).ready(function() {
+
+        $("#fileInput1").on('change', function() {
+            preview.src=URL.createObjectURL(event.target.files[0]);
+        });
+        
         $("select[name='language_id']").on('change', function() {
             $(".request-loader").addClass("show");
             let url = "{{url('/')}}/admin/rtlcheck/" + $(this).val();
-            console.log(url);
             $.get(url, function(data) {
                 $(".request-loader").removeClass("show");
                 if (data == 1) {

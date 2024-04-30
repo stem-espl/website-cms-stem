@@ -5,9 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Models\BasicExtended;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\File;
 use App\Models\Slider;
 use App\Models\Language;
-use Validator;
+use Validator, Image;
 use Session;
 
 class SliderController extends Controller
@@ -74,12 +75,29 @@ class SliderController extends Controller
         $slider = new Slider;
         $slider->language_id = $request->language_id;
         $slider->title = $request->title;
-      
 
-        if ($request->filled('image')) {
-            $filename = uniqid() .'.'. $extImage;
-            @copy($image, 'assets/front/img/sliders/stem/' . $filename);
-            $slider->image = $filename;
+
+        if ($request->has('image')) {
+            $destinationPath = '/assets/stem/sliders/'; 
+            if(!File::exists(public_path($destinationPath))) {
+              File::makeDirectory(public_path($destinationPath), $mode = 0777, true, true);
+            }
+
+            $image = $request->file('image');
+            $imagename= $image->getClientOriginalName();
+
+            //image resize logic
+            $new_image = Image::make($image->getRealPath());
+            if($new_image != null){
+                $filename = uniqid() .'.'. $request->file('image')->extension();
+                $image_width= $new_image->width();
+                $image_height= $new_image->height();
+                $new_width= 1920;
+                $new_height= 1280;
+                $new_image->resize($new_width, $new_height);         
+                $new_image->save(public_path('assets/stem/sliders/' .$filename));
+                $slider->image = $filename;
+            }
         }
 
         $slider->serial_number = $request->serial_number;
@@ -128,12 +146,29 @@ class SliderController extends Controller
 
         $slider = Slider::findOrFail($request->slider_id);
         $slider->title = $request->title;
-      
-        if ($request->filled('image')) {
-            @unlink('assets/front/img/sliders/stem/' . $slider->image);
-            $filename = uniqid() .'.'. $extImage;
-            @copy($image, 'assets/front/img/sliders/stem/' . $filename);
-            $slider->image = $filename;
+
+         if ($request->has('image')) {
+            $destinationPath = '/assets/stem/sliders/'; 
+            if(!File::exists(public_path($destinationPath))) {
+              File::makeDirectory(public_path($destinationPath), $mode = 0777, true, true);
+            }
+
+            $image = $request->file('image');
+            $imagename= $image->getClientOriginalName();
+
+            //image resize logic
+            $new_image = Image::make($image->getRealPath());
+            if($new_image != null){
+                @unlink('assets/stem/sliders/' . $slider->image);
+                $filename = uniqid() .'.'. $request->file('image')->extension();
+                $image_width= $new_image->width();
+                $image_height= $new_image->height();
+                $new_width= 1920;
+                $new_height= 1280;
+                $new_image->resize($new_width, $new_height);         
+                $new_image->save(public_path('assets/stem/sliders/' .$filename));
+                $slider->image = $filename;
+            }
         }
 
         $slider->serial_number = $request->serial_number;
@@ -147,7 +182,7 @@ class SliderController extends Controller
     {
 
         $slider = Slider::findOrFail($request->slider_id);
-        @unlink('assets/front/img/sliders/stem/' . $slider->image);
+        @unlink('assets/stem/sliders/' . $slider->image);
         $slider->delete();
 
         Session::flash('success', 'Slider deleted successfully!');

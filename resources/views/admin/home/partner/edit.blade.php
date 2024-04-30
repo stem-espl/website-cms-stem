@@ -66,7 +66,7 @@
                     <label for="">Image ** </label>
                     <br>
                     <div class="thumb-preview" id="thumbPreview1">
-                        <img src="{{asset('assets/stem/partners/'.$partner->image)}}" alt="User Image">
+                        <img src="{{asset('assets/stem/partners/'.$partner->image)}}" id="preview" alt="User Image">
                     </div>
                     <br>
                     <br>
@@ -113,4 +113,14 @@
     </div>
   </div>
 
+@endsection
+@section('scripts')
+<script>
+    $(document).ready(function() {
+
+        $("#fileInput1").on('change', function() {
+            preview.src=URL.createObjectURL(event.target.files[0]);
+        });
+    });
+</script>
 @endsection
