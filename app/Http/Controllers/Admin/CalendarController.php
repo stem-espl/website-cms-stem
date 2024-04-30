@@ -152,9 +152,5 @@ class CalendarController extends Controller
        return view('admin.calendar.edit',$data);
     }
 
-    public function img(){
-     return view('admin.calendar.news');
-    }
-
 
 }

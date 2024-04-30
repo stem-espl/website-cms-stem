@@ -232,7 +232,7 @@
               <h2 class="mrb-30">Countless Update About STEM</h2>
             </div>
             <div class="col-lg-4 col-xl-6 align-self-center text-left text-lg-right">
-              <a href="{{route('admin.calendar.img')}}" class="cs-btn-one btn-gradient-color btn-md">All News</a>
+              <a href="{{route('admin.stem.img')}}" class="cs-btn-one btn-gradient-color btn-md">All News</a>
             </div>
           </div>
         </div>

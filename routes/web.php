@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Models\Permalink;
-
+use app\Http\Controllers\StemController;
 
 /*
 |--------------------------------------------------------------------------
@@ -1277,6 +1277,12 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin', 'checkstatus',
         Route::post('/delete_feedback', 'Admin\FeedbackController@deleteFeedback')->name('admin.delete_feedback');
         Route::post('/feedback/bulk-delete', 'Admin\FeedbackController@bulkDelete')->name('admin.feedback.bulk.delete');
       });
+
+  });
+
+  Route::group(['middleware' => []], function () {
+    // Admin View Client Feedbacks Routes
+    Route::get('/news/img', 'StemController@index')->name('admin.stem.img');
   });
 
 

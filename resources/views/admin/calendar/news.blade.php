@@ -4,11 +4,11 @@
     <div class="container">
       <div class="row">
    
-  @foreach ($news as $newsdata ) 
+  @foreach ($data as $newsdata ) 
         <div class="col-md-6 col-lg-6 col-xl-4">
           <div class="news-wrapper mrb-30 mrb-sm-40">
             <div class="news-thumb">
-              <img src="assets/news/{{ $newsdata->image}}"></img>
+<img src="{{ asset('assets/news/' . $newsdata->image) }}" alt="News Image">
               <div class="news-top-meta">
                 <span class="entry-category">News</span>
               </div>
@@ -28,4 +28,5 @@
       </div>
     </div>
   </div>
+  
 @endsection
