@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Gallery extends Model
 {
+
+  protected $table = 'galleries';
+
   public function language()
   {
     return $this->belongsTo('App\Models\Language');

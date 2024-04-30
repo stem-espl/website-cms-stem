@@ -91,7 +91,7 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
                     <td>
                       <input type="checkbox" class="bulk-check" data-val="{{$gallery->id}}">
                     </td>
-                    <td><img src="{{asset('assets/front/img/gallery/'.$gallery->image)}}" alt="" width="80"></td>
+                    <td><img src="{{asset('assets/stem/gallery/'.$gallery->image)}}" alt="" width="80"></td>
                     <td>
                       {{strlen($gallery->title) > 70 ? mb_substr($gallery->title, 0, 70, 'UTF-8') . '...' : $gallery->title}}
                     </td>
@@ -146,18 +146,8 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
           {{-- Image Part --}}
           <div class="form-group">
             <label for="">Image ** </label>
-            <br>
-            <div class="thumb-preview" id="thumbPreview1">
-              <img src="{{asset('assets/admin/img/noimage.jpg')}}" alt="User Image">
-            </div>
-            <br>
-            <br>
-
-            <input id="fileInput1" type="hidden" name="image">
-            <button id="chooseImage1" class="choose-image btn btn-primary" type="button" data-multiple="false"
-              data-toggle="modal" data-target="#lfmModal1">Choose Image</button>
-            <p class="text-warning mb-0">JPG, PNG, JPEG, SVG images are allowed</p>
-            <p class="em text-danger mb-0" id="errimage"></p>
+            <input class="form-control" type="file" id="file" name="file">
+            <p id="errcategory_id" class="mb-0 text-danger em"></p>
           </div>
 
           <div class="form-group">

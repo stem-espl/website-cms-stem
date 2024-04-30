@@ -11,6 +11,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\File;
+use Image;
 
 class GalleryController extends Controller
 {
@@ -54,40 +56,20 @@ class GalleryController extends Controller
 
   public function store(Request $request)
   {
-    $categoryInfo = BasicExtra::first();
 
-    $image = $request->image;
+    $image = $request->file;
     $allowedExts = array('jpg', 'png', 'jpeg', 'svg');
-    $extImage = pathinfo($image, PATHINFO_EXTENSION);
-
     $messages = [
       'language_id.required' => 'The language field is required',
+      'file.required' => 'The Image field is required',
     ];
-
-    if ($categoryInfo->gallery_category_status == 1) {
-      $messages['category_id.required'] = 'The category field is required';
-    }
 
     $rules = [
       'language_id' => 'required',
-      'image' => 'required',
+      'file' => 'required',
       'title' => 'required|max:255',
       'serial_number' => 'required|integer',
     ];
-
-    if ($categoryInfo->gallery_category_status == 1) {
-      $rules['category_id'] = 'required';
-    }
-
-    if ($request->filled('image')) {
-      $rules['image'] = [
-        function ($attribute, $value, $fail) use ($extImage, $allowedExts) {
-          if (!in_array($extImage, $allowedExts)) {
-            return $fail("Only png, jpg, jpeg, svg image is allowed");
-          }
-        }
-      ];
-    }
 
     $validator = Validator::make($request->all(), $rules, $messages);
 
@@ -97,17 +79,33 @@ class GalleryController extends Controller
     }
 
     $gallery = new Gallery;
+
+    if ($request->has('file')) {
+      $destinationPath = '/assets/stem/gallery/'; 
+      if(!File::exists(public_path($destinationPath))) {
+        File::makeDirectory(public_path($destinationPath), $mode = 0777, true, true);
+      }
+      $image = $request->file('file');
+      $imagename= $image->getClientOriginalName();
+
+      //image resize logic
+      $new_image = Image::make($image->getRealPath());
+      if($new_image != null){
+          $filename = uniqid() .'.'. $request->file('file')->extension();
+          $image_width= $new_image->width();
+          $image_height= $new_image->height();
+          $new_width= 720;
+          $new_height= 480;
+          $new_image->resize($new_width, $new_height);         
+          $new_image->save( ('assets/stem/gallery/' .$filename));
+          $gallery->image = $filename;
+      }
+  }
+
     $gallery->language_id = $request->language_id;
     $gallery->title = $request->title;
     $gallery->serial_number = $request->serial_number;
     $gallery->category_id = $request->category_id;
-
-    if ($request->filled('image')) {
-      $filename = uniqid() . '.' . $extImage;
-      @mkdir('assets/front/img/gallery', 775, true);
-      @copy($image, 'assets/front/img/gallery/' . $filename);
-      $gallery->image = $filename;
-    }
 
     $gallery->save();
 
@@ -117,70 +115,134 @@ class GalleryController extends Controller
 
 
 
+  // public function update(Request $request)
+  // {
+  //   $categoryInfo = BasicExtra::first();
+
+  //   $message = [];
+
+  //   if ($categoryInfo->gallery_category_status == 1) {
+  //     $message['category_id.required'] = 'The category field is required';
+  //   }
+
+  //   $gallery = Gallery::find($request->gallery_id);
+  //   $image = $request->image;
+  //   $allowedExts = array('jpg', 'png', 'jpeg', 'svg');
+  //   $extImage = pathinfo($image, PATHINFO_EXTENSION);
+
+  //   $rules = [
+  //     'title' => 'required|max:255',
+  //     'serial_number' => 'required|integer',
+  //   ];
+
+  //   if ($categoryInfo->gallery_category_status == 1) {
+  //     $rules['category_id'] = 'required';
+  //   }
+
+  //   if ($request->filled('image')) {  
+  //     $rules['image'] = [
+  //       function ($attribute, $value, $fail) use ($extImage, $allowedExts) {
+  //         if (!in_array($extImage, $allowedExts)) {
+  //           return $fail("Only png, jpg, jpeg, svg image is allowed");
+  //         }
+  //       }
+  //     ];
+  //   }
+
+  //   $validator = Validator::make($request->all(), $rules);
+
+  //   if ($validator->fails()) {
+  //     $errmsgs = $validator->getMessageBag()->add('error', 'true');
+  //     return response()->json($validator->errors());
+  //   }
+
+  //   $gallery = Gallery::findOrFail($request->gallery_id);
+  //   $gallery->title = $request->title;
+  //   $gallery->serial_number = $request->serial_number;
+  //   $gallery->category_id = $request->category_id;
+
+  //   if ($request->filled('image')) {
+  //     @unlink('assets/front/img/gallery/' . $gallery->image);
+  //     $filename = uniqid() . '.' . $extImage;
+  //     @copy($image, 'assets/front/img/gallery/' . $filename);
+  //     $gallery->image = $filename;
+  //   }
+
+  //   $gallery->save();
+
+  //   Session::flash('success', 'Gallery updated successfully!');
+  //   return "success";
+  // }
+
   public function update(Request $request)
   {
-    $categoryInfo = BasicExtra::first();
+      $event = Gallery::find($request->gallery_id);
+      if(!empty($event))
+      {
+          $image = $request->image;
+          $allowedExts = array('jpg', 'png', 'jpeg', 'svg');
+          $extImage = pathinfo($image, PATHINFO_EXTENSION);
 
-    $message = [];
+          $rules = [
+            'title' => 'required|max:255',
+          'serial_number' => 'required|integer',
+          ];
 
-    if ($categoryInfo->gallery_category_status == 1) {
-      $message['category_id.required'] = 'The category field is required';
-    }
-
-    $gallery = Gallery::findOrFail($request->gallery_id);
-    $image = $request->image;
-    $allowedExts = array('jpg', 'png', 'jpeg', 'svg');
-    $extImage = pathinfo($image, PATHINFO_EXTENSION);
-
-    $rules = [
-      'title' => 'required|max:255',
-      'serial_number' => 'required|integer',
-    ];
-
-    if ($categoryInfo->gallery_category_status == 1) {
-      $rules['category_id'] = 'required';
-    }
-
-    if ($request->filled('image')) {  
-      $rules['image'] = [
-        function ($attribute, $value, $fail) use ($extImage, $allowedExts) {
-          if (!in_array($extImage, $allowedExts)) {
-            return $fail("Only png, jpg, jpeg, svg image is allowed");
+          if ($request->has('image')) {
+              $rules['image'] = [
+                  'mimes:jpeg,jpg,png,svg',
+              ];
           }
-        }
-      ];
-    }
 
-    $validator = Validator::make($request->all(), $rules);
+          $validator = Validator::make($request->all(), $rules);
+          if ($validator->fails()) {
+              $errmsgs = $validator->getMessageBag()->add('error', 'true');
+              return response()->json($validator->errors());
+          }
 
-    if ($validator->fails()) {
-      $errmsgs = $validator->getMessageBag()->add('error', 'true');
-      return response()->json($validator->errors());
-    }
+          if ($request->has('image')) {
+              $destinationPath = '/assets/stem/gallery/'; 
+              if(!File::exists(public_path($destinationPath))) {
+                File::makeDirectory(public_path($destinationPath), $mode = 0777, true, true);
+              }
+              $image = $request->file('image');
+              $imagename= $image->getClientOriginalName();
 
-    $gallery = Gallery::findOrFail($request->gallery_id);
-    $gallery->title = $request->title;
-    $gallery->serial_number = $request->serial_number;
-    $gallery->category_id = $request->category_id;
-
-    if ($request->filled('image')) {
-      @unlink('assets/front/img/gallery/' . $gallery->image);
-      $filename = uniqid() . '.' . $extImage;
-      @copy($image, 'assets/front/img/gallery/' . $filename);
-      $gallery->image = $filename;
-    }
-
-    $gallery->save();
-
-    Session::flash('success', 'Gallery updated successfully!');
-    return "success";
+              //image resize logic
+              $new_image = Image::make($image->getRealPath());
+              if($new_image != null){
+                  @unlink('assets/stem/gallery/' . $event->image);
+                  $filename = uniqid() .'.'. $request->file('image')->extension();
+                  $image_width= $new_image->width();
+                  $image_height= $new_image->height();
+                  $new_width= 720;
+                  $new_height= 480;
+                  $new_image->resize($new_width, $new_height);         
+                  $new_image->save(public_path('assets/stem/gallery/' .$filename));
+                  $event->image = $filename;
+              }
+          }
+          
+          $event->title = $request->title;
+          $event->serial_number = $request->serial_number;
+          $event->category_id = $request->category_id;
+          $event->image = $filename; 
+          
+          $event->save();
+      
+          Session::flash('success', 'Gallery updated successfully!');
+          
+      }else{
+          Session::flash('error', 'Gallery not found');
+      }
+      return "success";
   }
 
   public function delete(Request $request)
   {
 
     $gallery = Gallery::findOrFail($request->gallery_id);
-    @unlink('assets/front/img/gallery/' . $gallery->image);
+    @unlink('assets/front/img/gallery/' . $gallery->image); 
     $gallery->delete();
 
     Session::flash('success', 'Image deleted successfully!');

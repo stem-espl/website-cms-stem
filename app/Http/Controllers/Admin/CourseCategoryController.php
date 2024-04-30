@@ -9,6 +9,7 @@ use App\Models\Megamenu;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 
 class CourseCategoryController extends Controller
 {
@@ -49,8 +50,8 @@ class CourseCategoryController extends Controller
     $course_category->name = $request->name;
     $course_category->status = $request->status;
     $course_category->serial_number = $request->serial_number;
-    $course_category->save();
-
+    $course_category->slug  = str_slug($course_category->name,'-');
+    $request['slug'] = Str::slug($request->name);
     Session::flash('success', 'New Course Category Has Added');
 
     return 'success';
