@@ -93,7 +93,7 @@
                             <td>
                               <input type="checkbox" class="bulk-check" data-val="{{$event->id}}">
                             </td>
-                            <td><img src="{{ asset('assets/news/' . $event->image) }}" alt="" width="50"></td>
+                            <td><img src="{{asset('assets/stem/news')}}/{{$event->image}}" alt="" width="50"></td>
                             <td>{{convertUtf8(strlen($event->title)) > 30 ? convertUtf8(substr($event->title, 0, 30)) . '...' : convertUtf8($event->title)}}</td>
                             <td>
                               @php

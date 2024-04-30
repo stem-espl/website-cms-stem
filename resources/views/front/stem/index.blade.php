@@ -222,6 +222,8 @@
       </div>
     </section>
     @endif
+
+    @if(count($event) > 0)
     <!-- News Section Start -->
     <section class="bg-silver-light pdt-105 pdb-80" data-background="{{asset('assets/stem/images/bg/abs-bg4.png')}}">
       <div class="section-title mrb-30 mrb-md-60">
@@ -245,9 +247,9 @@
             <div class="col-md-6 col-lg-6 col-xl-4">
               <div class="news-wrapper mrb-30 mrb-sm-40">
                 <div class="news-thumb">
-                  <img src="assets/news/{{ $newsdata->image}}"></img>
+                  <img src="{{asset('assets/stem/news')}}/{{ $newsdata->image}}"></img>
                   <div class="news-top-meta">
-                    <span class="entry-category">News</span>
+                    <span class="entry-category">{{__('common.News')}}</span>
                   </div>
                 </div>
                 <div class="news-details">
@@ -266,6 +268,7 @@
         </div>
       </div>
     </section>
+    @endif
     <!-- News Section End -->
     <!-- Footer Area Start -->
     @endsection

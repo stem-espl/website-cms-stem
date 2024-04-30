@@ -64,7 +64,7 @@
                 <label for="">Image <span class="text-danger">*</span></label>
                 <br>
                 <div class="thumb-preview" id="thumbPreview1">
-                    <img src="{{asset('assets/news/'.$event->image)}}" id="preview" alt="User Image">
+                    <img src="{{asset('assets/stem/news/')}}/{{$event->image}}" id="preview" alt="User Image">
                 </div>
                 <br>
                 <br>

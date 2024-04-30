@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\News;
 use App\Models\admin;
 use App\Models\Language;
+use Illuminate\Support\Facades\File;
 use Validator;
 use Session;
 use Auth;
@@ -42,16 +43,32 @@ class CalendarController extends Controller
             return response()->json($validator->errors());
         }
 
-        $image = $request->file('img');
-        $imageName = $image->getClientOriginalName();
-    
-        $image=$image->move(public_path('assets/news'), $imageName);
-
         $calendar = new News;
+        if ($request->has('img')) {
+            $destinationPath = '/assets/stem/news/'; 
+            if(!File::exists(public_path($destinationPath))) {
+              File::makeDirectory(public_path($destinationPath), $mode = 0777, true, true);
+            }
+            $image = $request->file('img');
+            $imagename= $image->getClientOriginalName();
+
+            //image resize logic
+            $new_image = Image::make($image->getRealPath());
+            if($new_image != null){
+                $filename = uniqid() .'.'. $request->file('img')->extension();
+                $image_width= $new_image->width();
+                $image_height= $new_image->height();
+                $new_width= 720;
+                $new_height= 480;
+                $new_image->resize($new_width, $new_height);         
+                $new_image->save(public_path('assets/stem/news/' .$filename));
+                $calendar->image = $filename;
+            }
+        }
+        
         $calendar->language_id = $request->language_id;
         $calendar->title = $request->title;
         $calendar->date = $request->datetimes;    
-        $calendar->image =  $imageName;
         $calendar->created_by = auth()->id(); 
         $calendar->save();
 
@@ -85,24 +102,26 @@ class CalendarController extends Controller
                 return response()->json($validator->errors());
             }
 
-            
             if ($request->has('image')) {
+                $destinationPath = '/assets/stem/news/'; 
+                if(!File::exists(public_path($destinationPath))) {
+                  File::makeDirectory(public_path($destinationPath), $mode = 0777, true, true);
+                }
                 $image = $request->file('image');
-                $filename = uniqid() .'.'. $image->extension();
                 $imagename= $image->getClientOriginalName();
-    
+
                 //image resize logic
                 $new_image = Image::make($image->getRealPath());
                 if($new_image != null){
-                    @unlink('assets/news/' . $event->image);
+                    @unlink('assets/stem/news/' . $event->image);
                     $filename = uniqid() .'.'. $request->file('image')->extension();
                     $image_width= $new_image->width();
                     $image_height= $new_image->height();
-                    $new_width= 370;
-                    $new_height= 250;        
-                    $new_image->resize($new_width, $new_height);
-                    $new_image->save(public_path('assets/news/' .$filename));
-                    $event->image = $filename;                
+                    $new_width= 720;
+                    $new_height= 480;
+                    $new_image->resize($new_width, $new_height);         
+                    $new_image->save(public_path('assets/stem/news/' .$filename));
+                    $event->image = $filename;
                 }
             }
         
