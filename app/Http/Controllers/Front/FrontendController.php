@@ -169,6 +169,7 @@ class FrontendController extends Controller
                 $data['scategory'] = Scategory::all();
                 $data['partners'] = Partner::where('language_id', $lang_id)->orderBy('serial_number', 'ASC')->get();
                 $data['members'] = Member::where('language_id', $lang_id)->orderBy('id', 'ASC')->get();
+                
                 // dd($data['members']);
                 return view('front.stem.index', $data);
             } else {
