@@ -85,6 +85,8 @@ class FrontendController extends Controller
         }
         $data['currentLang'] = $currentLang;
 
+        // dd(session()->get('lang'));
+
         $be = $currentLang->basic_extended;
         $bex = $currentLang->basic_extra;
         $lang_id = $currentLang->id;
@@ -1180,6 +1182,7 @@ class FrontendController extends Controller
 
     public function changeLanguage($lang)
     {
+        // dd($request->all());
         session()->put('lang', $lang);
         app()->setLocale($lang);
 
@@ -1188,6 +1191,21 @@ class FrontendController extends Controller
 
         return redirect()->route('front.index');
     }
+
+    public function change_language(Request $request)
+        {
+            $lang = $request->lang == 'mr' ? 'en' : 'mr';
+            session()->put('lang', $lang);
+            app()->setLocale($lang);
+
+            $be = be::first();
+            $version = $be->theme_version;
+        
+            return "success";
+        }
+
+
+   
 
     public function packageorder(Request $request, $id)
     {
