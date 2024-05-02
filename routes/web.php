@@ -1286,6 +1286,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin', 'checkstatus',
   Route::group(['middleware' => []], function () {
     // Admin View Client Feedbacks Routes
     Route::get('/news/img', 'StemController@index')->name('admin.stem.img');
+    Route::get('/aboutus/detail', 'StemController@aboutus')->name('about.detail');
+    Route::get('/budget/report', 'StemController@profitReport')->name('budget.report');
   });
 
 

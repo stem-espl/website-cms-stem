@@ -12,4 +12,14 @@ class StemController extends Controller
         $data=News::all();
         return view('admin.calendar.news',compact('data'));
        }
+
+       public function aboutus()
+       {
+         return view('front.stem.about');
+       }
+
+       public function profitReport()
+       {
+         return view('front.stem.profit');
+       }
 }

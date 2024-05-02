@@ -18,4 +18,5 @@ return [
     'Department' => 'Department',
     'STEM Shareholding' => 'STEM Shareholding',
     'Service We Offer' => 'सेवा आम्ही ऑफर करतो',
+    'A company with difference' => 'भिन्नता असलेली कंपनी',
 ];

@@ -146,7 +146,7 @@
                           <p id="errintro_section_title" class="em text-danger mb-0"></p>
                         </div>
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-lg-6 d-none">
                         <div class="form-group">
                           <label for="">Video Link </label>
                           <input type="text" class="form-control ltr" name="intro_section_video_link" value="{{$abs->intro_section_video_link}}">
