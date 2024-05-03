@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Models\Permalink;
 use app\Http\Controllers\StemController;
+use app\Http\Controllers\Front\GalleryControllerl;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,7 +35,10 @@ Route::get('/backup', 'Front\FrontendController@backup');
 Route::post('/push', 'Front\PushController@store');
 
 Route::group(['middleware' => 'setlang'], function () {
-  Route::get('/', 'Front\FrontendController@index')->name('front.index');
+  Route::get('/', 'Front\FrontendController@index')->name('front.index');  
+    Route::get('/news/img', 'StemController@index')->name('front.stem.img');
+    Route::get('/galleries/{slug}', 'Front\GalleryController@index')->name('front.gallerys');
+
 
   Route::group(['prefix' => 'donation'], function () {
     Route::get('/paystack/success', 'Payment\causes\PaystackController@successPayment')->name('donation.paystack.success');
@@ -773,6 +777,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin', 'checkstatus',
         Route::post('/gallery/update_category', 'Admin\GalleryCategoryController@update')->name('admin.gallery.update_category');
         Route::post('/gallery/delete_category', 'Admin\GalleryCategoryController@delete')->name('admin.gallery.delete_category');
         Route::post('/gallery/bulk_delete_category', 'Admin\GalleryCategoryController@bulkDelete')->name('admin.gallery.bulk_delete_category');
+        Route::get('/gallerys', 'Admin\GalleryCategoryController@getdata')->name('admin.gallerys');
 
         // Admin Gallery Routes
         Route::get('/gallery', 'Admin\GalleryController@index')->name('admin.gallery.index');
@@ -1290,7 +1295,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin', 'checkstatus',
         Route::post('/feedback/bulk-delete', 'Admin\FeedbackController@bulkDelete')->name('admin.feedback.bulk.delete');
       });
 
-  });
+ 
 
   Route::group(['middleware' => []], function () {
     // Admin View Client Feedbacks Routes
@@ -1298,7 +1303,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin', 'checkstatus',
     Route::get('/aboutus/detail', 'StemController@aboutus')->name('about.detail');
     Route::get('/budget/report', 'StemController@profitReport')->name('budget.report');
   });
-
 
 
 // Dynamic Routes

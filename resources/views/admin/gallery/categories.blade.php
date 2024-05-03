@@ -96,6 +96,7 @@
                         <th scope="col">Name</th>
                         <th scope="col">Status</th>
                         <th scope="col">Serial Number</th>
+                        <th scope="col">Slug</th>
                         <th scope="col">Actions</th>
                       </tr>
                     </thead>
@@ -115,7 +116,12 @@
                               <h2 class="d-inline-block"><span class="badge badge-danger">Deactive</span></h2>
                             @endif
                           </td>
+                        
                           <td>{{ $category->serial_number }}</td>
+                          
+                          <td>
+                            {{$category->slug}}
+                          </td>
                           <td>
                             <a class="btn btn-secondary btn-sm mr-1 editbtn" href="#" data-toggle="modal" data-target="#editModal" data-id="{{ $category->id }}" data-name="{{ $category->name }}" data-status="{{ $category->status }}" data-serial_number="{{ $category->serial_number }}">
                               <span class="btn-label">
