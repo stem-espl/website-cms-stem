@@ -9,6 +9,8 @@ use App\Models\Language;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
+
 
 class GalleryCategoryController extends Controller
 {
@@ -48,28 +50,34 @@ class GalleryCategoryController extends Controller
 
   public function store(Request $request)
   {
-    $rules = [
-      'language_id' => 'required',
-      'name' => 'required',
-      'status' => 'required',
-      'serial_number' => 'required'
-    ];
-
-    $validator = Validator::make($request->all(), $rules);
-
-    if ($validator->fails()) {
-      $validator->getMessageBag()->add('error', 'true');
-
-      return response()->json($validator->errors());
-    }
-
-    GalleryCategory::create($request->all());
-
-    Session::flash('success', 'New gallery category added successfully.');
-
-    return 'success';
+      $rules = [
+          'language_id' => 'required',
+          'name' => 'required|unique:gallery_categories,name',
+          'status' => 'required',
+          'serial_number' => 'required'
+      ];
+  
+      $validator = Validator::make($request->all(), $rules);
+  
+      if ($validator->fails()) {
+          $validator->getMessageBag()->add('error', 'true');
+  
+          return response()->json($validator->errors());
+      }  
+    
+      $ramdam=rand(10,10042);
+      $gallerycategory = new GalleryCategory;
+      $gallerycategory->language_id = $request->language_id;
+      $gallerycategory->name = $request->name;
+      $gallerycategory->status = $request->status;
+      $gallerycategory->serial_number = $request->serial_number;
+      $gallerycategory->slug =Str::slug($request->name.'-'.rand(10,10042), '-');
+      $gallerycategory->save();
+  
+      Session::flash('success', 'New gallery category added successfully.');
+  
+      return 'success';
   }
-
   public function update(Request $request)
   {
     $rules = [
@@ -134,4 +142,7 @@ class GalleryCategoryController extends Controller
 
     return 'success';
   }
+
+
+
 }

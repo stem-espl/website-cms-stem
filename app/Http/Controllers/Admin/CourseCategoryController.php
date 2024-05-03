@@ -50,8 +50,6 @@ class CourseCategoryController extends Controller
     $course_category->name = $request->name;
     $course_category->status = $request->status;
     $course_category->serial_number = $request->serial_number;
-    $course_category->slug  = str_slug($course_category->name,'-');
-    $request['slug'] = Str::slug($request->name);
     Session::flash('success', 'New Course Category Has Added');
 
     return 'success';

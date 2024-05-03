@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class GalleryCategory extends Model
 {
+
+  protected $table = 'gallery_categories';
+
   protected $fillable = [
     'language_id',
     'name',
