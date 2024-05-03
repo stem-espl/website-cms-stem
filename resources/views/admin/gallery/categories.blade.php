@@ -95,7 +95,6 @@
                         </th>
                         <th scope="col">Name</th>
                         <th scope="col">Status</th>
-                        <th scope="col">Serial Number</th>
                         <th scope="col">Slug</th>
                         <th scope="col">Actions</th>
                       </tr>
@@ -116,8 +115,6 @@
                               <h2 class="d-inline-block"><span class="badge badge-danger">Deactive</span></h2>
                             @endif
                           </td>
-                        
-                          <td>{{ $category->serial_number }}</td>
                           
                           <td>
                             {{$category->slug}}

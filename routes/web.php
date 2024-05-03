@@ -34,11 +34,11 @@ Route::get('/backup', 'Front\FrontendController@backup');
 
 Route::post('/push', 'Front\PushController@store');
 
-Route::group(['middleware' => 'setlang'], function () {
+  Route::group(['middleware' => 'setlang'], function () {
   Route::get('/', 'Front\FrontendController@index')->name('front.index');  
     Route::get('/news/img', 'StemController@index')->name('front.stem.img');
     Route::get('/galleries/{slug}', 'Front\GalleryController@index')->name('front.gallerys');
-
+  Route::get('/news', 'Front\FrontendController@news')->name('front.news');   
 
   Route::group(['prefix' => 'donation'], function () {
     Route::get('/paystack/success', 'Payment\causes\PaystackController@successPayment')->name('donation.paystack.success');

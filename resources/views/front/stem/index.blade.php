@@ -1,10 +1,6 @@
 @extends('front.stem.layout')
 @section('content')
-    <!-- Preloader Start -->
-    <!-- Preloader End -->
-    <!-- header Start -->
-    <!-- header End -->
-    <!-- Home Slider Start -->
+
     @if (count($sliders) > 0)
     <section class="banner-section">
       <div class="home-carousel owl-theme owl-carousel carousel-slide">
@@ -234,7 +230,7 @@
               <h2 class="mrb-30">Countless Update About STEM</h2>
             </div>
             <div class="col-lg-4 col-xl-6 align-self-center text-left text-lg-right">
-              <a href="{{route('admin.stem.img')}}" class="cs-btn-one btn-gradient-color btn-md">All News</a>
+              <a href="{{route('front.stem.img')}}" class="cs-btn-one btn-gradient-color btn-md">All News</a>
             </div>
           </div>
         </div>

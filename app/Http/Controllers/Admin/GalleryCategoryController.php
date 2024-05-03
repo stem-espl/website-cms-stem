@@ -70,7 +70,6 @@ class GalleryCategoryController extends Controller
       $gallerycategory->language_id = $request->language_id;
       $gallerycategory->name = $request->name;
       $gallerycategory->status = $request->status;
-      $gallerycategory->serial_number = $request->serial_number;
       $gallerycategory->slug =Str::slug($request->name.'-'.rand(10,10042), '-');
       $gallerycategory->save();
   

@@ -24,18 +24,18 @@
 		<div class="section-content">
 			<div class="container">
 				<div class="row">
-                    <div class="col-md-12 pdb-40 text-center">
-						<h3>13th Foundation Day Celebration</h3>
+                    <div class="col-md-12 pdb-40 text-center">					
+						<h3>{{$name}}</h3>
 					</div>
+                    @foreach ($gallery as $galleries)
 					<div class="col-md-6 col-lg-6 col-xl-4">
 						<div class="case-study-item mrb-30">
 							<div class="case-study-thumb">
-							    @foreach ($gallery as $galleries)
-                                {{$galleries}}
-                            @endforeach
+                                <img src="{{asset('assets/stem/gallery')}}/{{ $galleries->image}}"></img>
 							</div>
 						</div>
 					</div>
+                    @endforeach
 				</div>
 			</div>
 		</div>

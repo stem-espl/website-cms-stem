@@ -19,8 +19,9 @@ class GalleryController extends Controller
   public function index($slug){
 
     $category = GalleryCategory::where('slug', $slug)->firstOrFail();
-    $gallery=Gallery::where('id',$category->id)->get();
-    return view('front.gallery.gallery',compact('gallery'));
+    $gallery = Gallery::where('category_id', $category->id)->get();
+    $name=$category->name;
+    return view('front.gallery.gallery',compact('gallery','name'));
   }
 
 }
