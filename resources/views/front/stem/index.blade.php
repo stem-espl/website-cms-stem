@@ -32,10 +32,10 @@
             </div>
           </div>
           <div class="col-md-12 col-xl-6">
-            <h2 class="title-under-line mrb-70">STEM having capacity of treating 316 million+<span class="f-weight-400"> liters per day of high quality potable water per day</span></h2>
-            <h5 class="mrb-30 text-primary-color">A company with difference</h5>
-            <p class="mrb-40">Our mission is to provide reliable, sustainable, and accessible water services to communities, ensuring their well-being and prosperity. We are committed to innovation, responsible resource management, and delivering exceptional customer service. </p>
-            <a href="about.html" class="cs-btn-one btn-gradient-color btn-lg">Know more about STEM</a>
+            <h2 class="title-under-line mrb-70">{{$bs->intro_section_title}}<span class="f-weight-400">{{$bs->intro_section_text}} </span></h2>
+            <h5 class="mrb-30 text-primary-color">{{__('common.A company with difference')}}</h5>
+            <p class="mrb-40">{{$bs->intro_section_button_text}} </p>
+            <a href="{{$bs->intro_section_button_url}}" class="cs-btn-one btn-gradient-color btn-lg">Know more about STEM</a>
           </div>
         </div>
         <div class="row mrt-100 mrt-lg-90">

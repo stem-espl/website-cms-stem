@@ -132,6 +132,9 @@ Route::post('/push', 'Front\PushController@store');
 
   // change language routes
   Route::get('/changelanguage/{lang}', 'Front\FrontendController@changeLanguage')->name('changeLanguage');
+  // change language routes
+  Route::post( "/change_language","Front\FrontendController@change_language")->name("change_language");
+
 
   // Product
   Route::get('/cart', 'Front\ProductController@cart')->name('front.cart');
@@ -1038,6 +1041,15 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin', 'checkstatus',
         Route::post('/article/bulk_delete', 'Admin\ArticleController@bulkDelete')->name('admin.article.bulk_delete');
     });
 
+    Route::group(['middleware' => []], function () {
+      // Admin Lead categories Routes
+      Route::get('/lead_categories', 'Admin\LeadershipController@index')->name('admin.lead_category.index');
+
+      // // Admin Leadership  Routes
+      Route::get('/leaderships', 'Admin\LeadershipController@indexLead')->name('admin.leadership.index');
+      
+  });
+
 
     Route::group(['middleware' => []], function () {
         // Admin Course Category Routes
@@ -1285,6 +1297,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin', 'checkstatus',
 
  
 
+  Route::group(['middleware' => []], function () {
+    // Admin View Client Feedbacks Routes
+    Route::get('/news/img', 'StemController@index')->name('admin.stem.img');
+    Route::get('/aboutus/detail', 'StemController@aboutus')->name('about.detail');
+    Route::get('/budget/report', 'StemController@profitReport')->name('budget.report');
   });
 
 

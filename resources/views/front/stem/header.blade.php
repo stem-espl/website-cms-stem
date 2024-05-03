@@ -1,6 +1,5 @@
 @php
 $links = json_decode($menus, true);
-
 @endphp
 @foreach ($links as $link)
                   
@@ -29,11 +28,12 @@ $links = json_decode($menus, true);
             </div>
             <div class="col-lg-6 header-top-right-part text-right col-md-6 col-sm-6 margin_tp">
               <div class="language">
-                <a class="language-btn" href="#"><i class="webexflaticon flaticon-internet"></i> English</a>
+                <a class="language-btn" href="#"><i class="webexflaticon flaticon-internet"></i> {{isset($currentLang->name) ? $currentLang->name : 'English'}}</a>
                 <ul class="language-dropdown">
-                    @foreach($langs as $lang)
-                  <li><a href="javascript:void(0)">{{$lang->name}}</a></li>
-                  @endforeach
+                @foreach ($langs as $key => $lang)
+                                        <a class="dropdown-item" href='{{ route('changeLanguage', $lang->code) }}'>{{convertUtf8($lang->name)}}</a>
+                                    @endforeach
+
                 </ul>
               </div>
             </div>
@@ -137,3 +137,24 @@ $links = json_decode($menus, true);
     </div>
     </div>
   </header>
+
+
+
+  <script>
+    function change_lang(lang)
+    {
+      
+      var lg = lang;
+      alert(lg)
+            $.ajax({
+                method: 'POST',
+                url: '{{ route('change_language') }}',
+                data: { lang: lg , _token: '{{ csrf_token() }}' },
+                success: function(response) {
+                  // alert(response);return false;
+                  window.location="{{route('front.index')}}";
+                  
+                }
+            });
+    }  
+  </script>

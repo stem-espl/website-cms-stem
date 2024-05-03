@@ -32,11 +32,11 @@ class IntrosectionController extends Controller
         $extImage2 = pathinfo($image2, PATHINFO_EXTENSION);
 
         $rules = [
-            'intro_section_title' => 'required|max:25',
+            'intro_section_title' => 'required|max:70',
             'intro_section_text' => 'required|max:80',
-            'intro_section_button_text' => 'nullable|max:15',
+            'intro_section_button_text' => 'nullable|max:400',
             'intro_section_button_url' => 'nullable|max:255',
-            'intro_section_video_link' => 'nullable'
+            // 'intro_section_video_link' => 'nullable'
         ];
 
         if ($request->filled('image')) {
@@ -70,16 +70,16 @@ class IntrosectionController extends Controller
         $bs->intro_section_text = $request->intro_section_text;
         $bs->intro_section_button_text = $request->intro_section_button_text;
         $bs->intro_section_button_url = $request->intro_section_button_url;
-        $videoLink = $request->intro_section_video_link;
+        // $videoLink = $request->intro_section_video_link;
         if (strpos($videoLink, "&") != false) {
             $videoLink = substr($videoLink, 0, strpos($videoLink, "&"));
         }
-        $bs->intro_section_video_link = $videoLink;
+        // $bs->intro_section_video_link = $videoLink;
 
         if ($request->filled('image')) {
-            @unlink('assets/front/img/' . $bs->intro_bg);
+            @unlink('assets/stem/intro/' . $bs->intro_bg);
             $filename = uniqid() .'.'. $extImage;
-            @copy($image, 'assets/front/img/' . $filename);
+            @copy($image, 'assets/stem/intro/' . $filename);
 
             $bs->intro_bg = $filename;
         }
@@ -88,9 +88,9 @@ class IntrosectionController extends Controller
 
         $be = BasicExtended::where('language_id', $langid)->firstOrFail();
         if ($request->filled('image_2')) {
-            @unlink('assets/front/img/' . $be->intro_bg2);
+            @unlink('assets/stem/intro/' . $be->intro_bg2);
             $filename = uniqid() .'.'. $extImage2;
-            @copy($image2, 'assets/front/img/' . $filename);
+            @copy($image2, 'assets/stem/intro/' . $filename);
 
             $be->intro_bg2 = $filename;
         }

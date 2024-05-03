@@ -14,8 +14,9 @@ return [
 
     'Language' => 'Language',
     'Useful Links' => 'Useful Links',
-    'About Us' => 'About Us',
+    'About Us' => 'आमच्याबद्दल',
     'Department' => 'Department',
     'STEM Shareholding' => 'STEM Shareholding',
-    'Service We Offer' => 'Service We Offer',
+    'Service We Offer' => 'सेवा आम्ही ऑफर करतो',
+    'A company with difference' => 'भिन्नता असलेली कंपनी',
 ];

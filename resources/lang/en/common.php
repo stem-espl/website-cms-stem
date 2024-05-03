@@ -18,4 +18,5 @@ return [
     'Department' => 'Department',
     'STEM Shareholding' => 'STEM Shareholding',
     'Service We Offer' => 'Service We Offer',
+    'A company with difference' => 'A company with difference',
 ];
