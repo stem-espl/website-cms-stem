@@ -1036,6 +1036,15 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin', 'checkstatus',
         Route::post('/article/bulk_delete', 'Admin\ArticleController@bulkDelete')->name('admin.article.bulk_delete');
     });
 
+    Route::group(['middleware' => []], function () {
+      // Admin Lead categories Routes
+      Route::get('/lead_categories', 'Admin\LeadershipController@index')->name('admin.lead_category.index');
+
+      // // Admin Leadership  Routes
+      Route::get('/leaderships', 'Admin\LeadershipController@indexLead')->name('admin.leadership.index');
+      
+  });
+
 
     Route::group(['middleware' => []], function () {
         // Admin Course Category Routes

@@ -163,6 +163,45 @@ $data = \App\Models\BasicExtra::first();
         @includeIf('admin.partials.content-management')
         @endcanany
 
+        {{-- Leadership Management --}}
+      @canany(['categories-acknowledged', 'articles'])
+        {{-- Articles --}}
+        <li class="nav-item
+          @if(request()->path() == 'admin/article_categories') active
+    
+          @endif">
+          <a data-toggle="collapse" href="#article">
+            <i class='fas fa-pencil-alt'></i>
+            <p>Leadership Management</p>
+            <span class="caret"></span>
+          </a>
+          <div class="collapse
+            @if(request()->path() == 'admin/lead_categories') show
+  
+            @endif" id="article">
+            <ul class="nav nav-collapse">
+              @can('categories-acknowledged')
+              <li class="@if(request()->path() == 'admin/lead_categories') active @endif">
+                <a href="{{route('admin.lead_category.index') . '?language=' . $default->code}}">
+                <span class="sub-item">Leadership Category</span>
+                </a>
+              </li>
+              @endcan
+              @can('articles')
+              <li class="@if(request()->path() == 'admin/leaderships') active
+                
+                @endif">
+                <a href="{{route('admin.leadership.index') . '?language=' . $default->code}}">
+                <span class="sub-item">Leadership</span>
+                </a>
+              </li>
+              @endcan
+            </ul>
+          </div>
+        </li>
+        @endcanany
+
+
         @canany(['settings-page','create-page','pages'])
         {{-- Dynamic Pages --}}
         <li class="nav-item
