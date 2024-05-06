@@ -56,6 +56,7 @@ class GalleryController extends Controller
 
   public function store(Request $request)
   {
+
     $image = $request->file;
     $allowedExts = array('jpg', 'png', 'jpeg', 'svg');
     $messages = [
