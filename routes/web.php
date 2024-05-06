@@ -3202,6 +3202,19 @@ Route::group(
             );
         });
 
+
+        
+        Route::group(["middleware" => []], function () {
+            // Admin Users Routes
+            Route::get("/e-governance", "Admin\EGovernanceController@index")->name(
+                "admin.egovernance.index"
+            );
+
+            Route::post("/e-governance/store", "Admin\EGovernanceController@store")->name(
+                "admin.egovernance.store"
+            );
+        });
+
         Route::group(["middleware" => []], function () {
             // Admin View Client Feedbacks Routes
             Route::get(
