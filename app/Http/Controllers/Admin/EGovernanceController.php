@@ -18,12 +18,12 @@ class EGovernanceController extends Controller
         $lang = Language::where('code', $request->language)->first();
 
         $lang_id = $lang->id;
-        $data['galleries'] = EGovernanceModel::where('language_id', $lang_id)->orderBy('id', 'DESC')->get();
+        $data['egovernance'] = EGovernanceModel::where('language_id', $lang_id)->orderBy('id', 'DESC')->get();
     
         $data['lang_id'] = $lang_id;
     
         $data['categoryInfo'] = BasicExtra::first();
-        return view('admin.egovernance.egovernance');
+        return view('admin.egovernance.egovernance',$data);
     }
 
     public function store(Request $request)
