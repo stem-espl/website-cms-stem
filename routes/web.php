@@ -858,50 +858,50 @@ Route::group(
             "admin.logout"
         );
 
-        Route::group(["middleware" => []], function () {
+       
             // Admin Dashboard Routes
             Route::get(
                 "/dashboard",
                 "Admin\DashboardController@dashboard"
-            )->name("admin.dashboard");
-        });
-
+            )->name("admin.dashboard")->middleware('can:dashboard');
+     
         // Admin Profile Routes
         Route::get(
             "/changePassword",
             "Admin\ProfileController@changePass"
-        )->name("admin.changePass");
+        )->name("admin.changePass")->middleware('can:change-password');
         Route::post(
             "/profile/updatePassword",
             "Admin\ProfileController@updatePassword"
-        )->name("admin.updatePassword");
+        )->name("admin.updatePassword")->middleware('can:change-password');
         Route::get(
             "/profile/edit",
             "Admin\ProfileController@editProfile"
-        )->name("admin.editProfile");
+        )->name("admin.editProfile")->middleware('can:profile');
         Route::post(
             "/propic/update",
             "Admin\ProfileController@updatePropic"
-        )->name("admin.propic.update");
+        )->name("admin.propic.update")->middleware('can:profile');
         Route::post(
             "/profile/update",
             "Admin\ProfileController@updateProfile"
-        )->name("admin.updateProfile");
+        )->name("admin.updateProfile")->middleware('can:profile');
 
-        Route::group(["middleware" => []], function () {
             // Admin Home Version Setting Routes
             Route::get(
                 "/home-settings",
                 "Admin\BasicController@homeSettings"
-            )->name("admin.homeSettings");
+            )->name("admin.homeSettings")->middleware('can:theme-setting');
             Route::post(
                 "/homeSettings/post",
                 "Admin\BasicController@updateHomeSettings"
-            )->name("admin.homeSettings.update");
+            )->name("admin.homeSettings.update")->middleware('can:theme-setting');
+
+
             Route::get("/audit", "AuditReportController@index")->name(
                 "audit-from"
-            );
-        });
+            )->middleware('can:audit-trail');
+
 
         Route::group(["middleware" => []], function () {
             // Admin File Manager Routes
