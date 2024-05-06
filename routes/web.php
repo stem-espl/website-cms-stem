@@ -3,7 +3,6 @@
 use Illuminate\Support\Facades\Route;
 use App\Models\Permalink;
 use app\Http\Controllers\StemController;
-use app\Http\Controllers\Front\GalleryControllerl;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,10 +34,7 @@ Route::get('/backup', 'Front\FrontendController@backup');
 Route::post('/push', 'Front\PushController@store');
 
 Route::group(['middleware' => 'setlang'], function () {
-  Route::get('/', 'Front\FrontendController@index')->name('front.index');  
-    Route::get('/news/img', 'StemController@index')->name('front.stem.img');
-    Route::get('/galleries/{slug}', 'Front\GalleryController@index')->name('front.gallerys');
-
+  Route::get('/', 'Front\FrontendController@index')->name('front.index');
 
   Route::group(['prefix' => 'donation'], function () {
     Route::get('/paystack/success', 'Payment\causes\PaystackController@successPayment')->name('donation.paystack.success');
@@ -777,7 +773,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin', 'checkstatus',
         Route::post('/gallery/update_category', 'Admin\GalleryCategoryController@update')->name('admin.gallery.update_category');
         Route::post('/gallery/delete_category', 'Admin\GalleryCategoryController@delete')->name('admin.gallery.delete_category');
         Route::post('/gallery/bulk_delete_category', 'Admin\GalleryCategoryController@bulkDelete')->name('admin.gallery.bulk_delete_category');
-        Route::get('/gallerys', 'Admin\GalleryCategoryController@getdata')->name('admin.gallerys');
 
         // Admin Gallery Routes
         Route::get('/gallery', 'Admin\GalleryController@index')->name('admin.gallery.index');
@@ -787,6 +782,22 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin', 'checkstatus',
         Route::post('/gallery/update', 'Admin\GalleryController@update')->name('admin.gallery.update');
         Route::post('/gallery/delete', 'Admin\GalleryController@delete')->name('admin.gallery.delete');
         Route::post('/gallery/bulk-delete', 'Admin\GalleryController@bulkDelete')->name('admin.gallery.bulk.delete');
+
+             // Admin Leadership Category Routes
+             Route::get('/leadership_categories', 'Admin\LeadershipController@index')->name('admin.leadership_category.index');
+             Route::post('/leadership_category/store', 'Admin\LeadershipController@store')->name('admin.leadership_category.store');
+             Route::post('/leadership_category/update', 'Admin\LeadershipController@update')->name('admin.leadership_category.update');
+             Route::post('/leadership_category/delete', 'Admin\LeadershipController@delete')->name('admin.leadership_category.delete');
+             Route::post('/leadership_category/bulk_delete', 'Admin\LeadershipController@bulkDelete')->name('admin.leadership_category.bulk_delete');
+     
+            //  Admin Leadership Routes
+             Route::get('/leadership', 'Admin\LeadershipController@leadIndex')->name('admin.leadership.index');
+             Route::get('/leadership/{langId}/get_leadcategories', 'Admin\LeadershipController@getLeadCategories')->name('get_leadcategory');
+             Route::post('/leadership/store', 'Admin\LeadershipController@leadStore')->name('admin.leadership.store');
+             Route::get('/leadership/{id}/edit', 'Admin\LeadershipController@leadEdit')->name('admin.leadership.edit');
+             Route::post('/leadership/update', 'Admin\LeadershipController@leadUpdate')->name('admin.leadership.update');
+             Route::post('/leadership/delete', 'Admin\LeadershipController@leadDelete')->name('admin.leadership.delete');
+             Route::post('/leadership/bulk_delete', 'Admin\LeadershipController@leadBulkDelete')->name('admin.leadership.bulk_delete');
 
 
         // Admin FAQ Settings Routes
@@ -1041,15 +1052,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin', 'checkstatus',
         Route::post('/article/bulk_delete', 'Admin\ArticleController@bulkDelete')->name('admin.article.bulk_delete');
     });
 
-    Route::group(['middleware' => []], function () {
-      // Admin Lead categories Routes
-      Route::get('/lead_categories', 'Admin\LeadershipController@index')->name('admin.lead_category.index');
-
-      // // Admin Leadership  Routes
-      Route::get('/leaderships', 'Admin\LeadershipController@indexLead')->name('admin.leadership.index');
-      
-  });
-
 
     Route::group(['middleware' => []], function () {
         // Admin Course Category Routes
@@ -1295,7 +1297,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin', 'checkstatus',
         Route::post('/feedback/bulk-delete', 'Admin\FeedbackController@bulkDelete')->name('admin.feedback.bulk.delete');
       });
 
- 
+  });
 
   Route::group(['middleware' => []], function () {
     // Admin View Client Feedbacks Routes
@@ -1303,6 +1305,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin', 'checkstatus',
     Route::get('/aboutus/detail', 'StemController@aboutus')->name('about.detail');
     Route::get('/budget/report', 'StemController@profitReport')->name('budget.report');
   });
+
 
 
 // Dynamic Routes
