@@ -16,7 +16,7 @@ class EgoveranceController extends Controller
 {
 
   public function index(){
-    $egovernance=EGovernanceModel::all();
+    $egovernance=EGovernanceModel::where('status',1)->get();
     return view('front.egoverance.egoverance',compact('egovernance'));
   }
 

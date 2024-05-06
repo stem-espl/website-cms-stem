@@ -146,6 +146,7 @@ class EGovernanceController extends Controller
             $event->save();
         
             Session::flash('success', 'E-Governance updated successfully!');
+            // return redirect()->route('admin.egovernance.index');
             
         }else{
             Session::flash('error', 'E-Governance not found');

@@ -31,7 +31,7 @@
 					<div class="col-md-6 col-lg-6 col-xl-4">
 						<div class="case-study-item mrb-30">
 							<div class="case-study-thumb">
-                                <img src="{{asset('assets/stem/egovernance')}}/{{ $galleries->image}}"></img>
+                                <img src="{{asset('assets/stem/gallery')}}/{{ $galleries->image}}"></img>
 							</div>
 						</div>
 					</div>
