@@ -111,7 +111,7 @@ class DocumentController extends Controller
           'title.required' => 'The title in english field is required.',
           'title_mr.required' => 'The title in marathi field is required.',
           'documents.required' => 'The document is required.',
-        ])
+        ]);
 
 
   		$document = Document::findOrFail($request->tender_id);
