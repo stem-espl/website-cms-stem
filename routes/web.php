@@ -47,7 +47,10 @@ Route::group(["middleware" => "setlang"], function () {
     Route::get('/budget/report', 'StemController@profitReport')->name('budget.report');
     Route::get('/news/img', 'StemController@index')->name('front.stem.img');
     Route::get('/galleries/{slug}', 'Front\GalleryController@index')->name('front.gallerys');
-  Route::get('/news', 'Front\FrontendController@news')->name('front.news');   
+    Route::get('/news', 'Front\FrontendController@news')->name('front.news');   
+
+    Route::get('/egovernance', 'Front\EgoveranceController@index')->name('front.egoverance');
+
 
     Route::group(["prefix" => "donation"], function () {
         Route::get(
@@ -3224,15 +3227,21 @@ Route::group(
             Route::get("/e-governance", "Admin\EGovernanceController@index")->name(
                 "admin.egovernance.index"
             );
-
             Route::post("/e-governance/store", "Admin\EGovernanceController@store")->name(
                 "admin.egovernance.store"
             );
-
             Route::get(
                 "/e-governance/{id}/edit",
                 "Admin\EGovernanceController@edit"
-            )->name("admin.gallery.edit");
+            )->name("admin.egovernance.edit");
+
+            Route::post("/egovernance/update", "Admin\EGovernanceController@update")->name(
+                "admin.egovernance.update"
+            );
+
+            Route::post("/egovernance/delete", "Admin\EGovernanceController@delete")->name(
+                "admin.egovernance.delete"
+            );
         });
 
         Route::group(["middleware" => []], function () {

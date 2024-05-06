@@ -96,18 +96,23 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
                       {{strlen($egovernanc->title) > 70 ? mb_substr($egovernanc->title, 0, 70, 'UTF-8') . '...' : $egovernanc->title}}
                     </td>
                     <td>
-                        {{$egovernanc->status}}
+                      @if ($egovernanc->status == 1)
+                      <h2 class="d-inline-block"><span class="badge badge-success">Active</span></h2>
+                      @else
+                      <h2 class="d-inline-block"><span class="badge badge-danger">Deactive</span></h2>
+                      @endif
+                    </td>
                     <td>
                       <a class="btn btn-secondary btn-sm"
-                        href="{{route('admin.gallery.edit', $egovernanc->id) . '?language=' . request()->input('language')}}">
+                        href="{{route('admin.egovernance.edit', $egovernanc->id) . '?language=' . request()->input('language')}}">
                         <span class="btn-label">
                           <i class="fas fa-edit"></i>
                         </span>
                         Edit
                       </a>
-                      <form class="deleteform d-inline-block" action="{{route('admin.gallery.delete')}}" method="post">
+                      <form class="deleteform d-inline-block" action="{{route('admin.egovernance.delete')}}" method="post">
                         @csrf
-                        <input type="hidden" name="gallery_id" value="{{$egovernanc->id}}">
+                        <input type="hidden" name="egovernance_id" value="{{$egovernanc->id}}">
                         <button type="submit" class="btn btn-danger btn-sm deletebtn">
                           <span class="btn-label">
                             <i class="fas fa-trash"></i>

@@ -81,6 +81,89 @@ class EGovernanceController extends Controller
       Session::flash('success', 'E-Governance added successfully!');
       return "success";
     }
+
+
+    public function edit(Request $request, $id)
+    {
+      $lang = Language::where('code', $request->language)->first();
+  
+      $data['egovernan'] = EGovernanceModel::findOrFail($id);
+  
+      $data['categoryInfo'] = BasicExtra::first();
+  
+      return view('admin.egovernance.edit', $data);
+    }
+
+    public function update(Request $request)
+    {
+        $event = EGovernanceModel::find($request->egovernan_id);
+        if(!empty($event))
+        {
+            $image = $request->image;
+            $allowedExts = array('jpg', 'png', 'jpeg', 'svg');
+            $extImage = pathinfo($image, PATHINFO_EXTENSION);
+  
+            $rules = [
+            //   'title' => 'required|max:255',
+            ];
+  
+            if ($request->has('image')) {
+                $rules['image'] = [
+                    'mimes:jpeg,jpg,png,svg',
+                ];
+            }
+  
+            $validator = Validator::make($request->all(), $rules);
+            if ($validator->fails()) {
+                $errmsgs = $validator->getMessageBag()->add('error', 'true');
+                return response()->json($validator->errors());
+            }
+  
+            if ($request->has('image')) {
+                $destinationPath = '/assets/stem/egovernance/'; 
+                if(!File::exists(public_path($destinationPath))) {
+                  File::makeDirectory(public_path($destinationPath), $mode = 0777, true, true);
+                }
+                $image = $request->file('image');
+                $imagename= $image->getClientOriginalName();
+  
+                //image resize logic
+                $new_image = Image::make($image->getRealPath());
+                if($new_image != null){
+                    @unlink('assets/stem/egovernance/' . $event->image);
+                    $filename = uniqid() .'.'. $request->file('image')->extension();
+                    $image_width= $new_image->width();
+                    $image_height= $new_image->height();
+                    $new_width= 769;
+                    $new_height= 445;
+                    $new_image->resize($new_width, $new_height);         
+                    $new_image->save(public_path('assets/stem/egovernance/' .$filename));
+                    $event->image = $filename;
+                }
+            }
+            $event->title = $request->title;
+            $event->status = $request->status;
+            $event->save();
+        
+            Session::flash('success', 'E-Governance updated successfully!');
+            
+        }else{
+            Session::flash('error', 'E-Governance not found');
+        }
+        return "success";
+    }
+
+
+    public function delete(Request $request)
+    {
+  
+      $egovernanceModel = EGovernanceModel::findOrFail($request->egovernance_id);
+      @unlink('aassets/stem/egovernance/' . $egovernan->image); 
+      $egovernanceModel->delete();
+  
+      Session::flash('success', 'E-Governance deleted successfully!');
+      return back();
+    }
   
 }
 
