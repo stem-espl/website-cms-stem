@@ -56,10 +56,4 @@ ALTER TABLE `e_governance` ADD PRIMARY KEY (`id`);
 
 ALTER TABLE `e_governance` MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
-ALTER TABLE `e_governance` CHANGE `language_id` `language_id` INT(11) NOT NULL DEFAULT '0';
-
-ALTER TABLE `e_governance` ADD `deleted_at` INT NULL DEFAULT NULL AFTER `status`;
-ALTER TABLE `e_governance` CHANGE `id` `id` INT(11) NOT NULL AUTO_INCREMENT;
-
-
-
+ALTER TABLE `e_governance` CHANGE `language_id` `language_id` INT(11) NULL DEFAULT NULL;
