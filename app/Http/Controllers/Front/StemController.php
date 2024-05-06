@@ -8,6 +8,8 @@ use App\Models\Tender;
 use App\Models\TenderCategory;
 use App\Http\Controllers\Controller;
 use App\Models\Language;
+use App\Models\LeadCategory;
+use App\Models\Leadership;
 
 class StemController extends Controller
 {
@@ -51,5 +53,16 @@ class StemController extends Controller
       public function profitReport()
       {
          return view('front.stem.profit');
+      }
+
+      public function showLeadership($slug){
+
+        $category = LeadCategory::where('slug', $slug)->firstOrFail();
+        // dd($category);
+        $leadership = Leadership::where('category_id', $category->id)->where('status','1')->get();
+        // dd($leadership);
+        $name=$category->name;
+        
+        return view('front.stem.executive',compact('leadership','name'));
       }
 }

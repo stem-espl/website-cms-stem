@@ -45,9 +45,11 @@ Route::group(["middleware" => "setlang"], function () {
 
     Route::get('/aboutus/detail', 'Front\StemController@aboutus')->name('about.detail');
     Route::get('/tenders', 'Front\StemController@tenders')->name('front.tenders');
+  
     Route::get('/budget/report', 'Front\StemController@profitReport')->name('budget.report');
     Route::get('/news/img', 'Front\StemController@index')->name('front.stem.img');
     Route::get('/galleries/{slug}', 'Front\GalleryController@index')->name('front.gallerys');
+    Route::get("/committee/{slug}", "Front\StemController@showLeadership")->name( "front.leadership");
     Route::get('/news', 'Front\FrontendController@news')->name('front.news');   
 
     Route::get('/egovernance', 'Front\EgoveranceController@index')->name('front.egoverance');
