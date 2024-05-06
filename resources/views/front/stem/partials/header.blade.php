@@ -126,7 +126,7 @@ $links = json_decode($menus, true);
                   @endif
                   
                 </div>
-                @includeIf('front.stem.menu')
+                @includeIf('front.stem.partials.menu')
                 <div class="main-menu menu-colour">
                 </div>
               </div>

@@ -57,3 +57,14 @@ ALTER TABLE `e_governance` ADD PRIMARY KEY (`id`);
 ALTER TABLE `e_governance` MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 ALTER TABLE `e_governance` CHANGE `language_id` `language_id` INT(11) NULL DEFAULT NULL;
+
+CREATE TABLE `tender_category` (`id` INT NOT NULL , `name` VARCHAR(255) NULL DEFAULT NULL , `name_mr` VARCHAR(255) NULL DEFAULT NULL , `status` INT NOT NULL DEFAULT '0' , `deleted_at` TIMESTAMP NULL DEFAULT NULL , `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP , `updated_at` TIMESTAMP on update CURRENT_TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ) ENGINE = InnoDB;
+
+
+CREATE TABLE `tenders` (`id` INT NOT NULL AUTO_INCREMENT , `title` VARCHAR(255) NULL DEFAULT NULL , `title_mr` VARCHAR(255) NULL DEFAULT NULL , `description` LONGTEXT NULL DEFAULT NULL , `description_mr` LONGTEXT NULL DEFAULT NULL , `deadline` VARCHAR(255) NULL DEFAULT NULL , `tender_link` TEXT NULL DEFAULT NULL , `files` TEXT NULL DEFAULT NULL , `tender_category` INT(11) NULL DEFAULT NULL , `status` INT(11) NULL DEFAULT '0' , `deleted_at` TIMESTAMP NULL DEFAULT NULL , `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP , `updated_at` TIMESTAMP on update CURRENT_TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+
+ALTER TABLE `tender_category` CHANGE `id` `id` INT(11) NOT NULL AUTO_INCREMENT, add PRIMARY KEY (`id`);
+
+
+INSERT INTO `permissions` (`id`, `name`, `guard_name`, `group_name`, `status`, `basic`, `created_at`, `updated_at`) VALUES (NULL, 'categories-tender', 'admin', 'tenders', '1', '0', '2024-04-19 14:45:27', '2024-04-19 14:45:27');
+INSERT INTO `permissions` (`id`, `name`, `guard_name`, `group_name`, `status`, `basic`, `created_at`, `updated_at`) VALUES (NULL, 'tenders', 'admin', 'tenders', '1', '0', '2024-04-19 14:45:27', '2024-04-19 14:45:27');
