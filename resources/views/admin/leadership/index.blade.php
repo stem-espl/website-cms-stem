@@ -90,7 +90,7 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
                   @foreach ($leaderships as $key => $lead)
                   <tr>
                     <td>
-                      <input type="checkbox" class="bulk-check" data-val="{{$leadership->id}}">
+                      <input type="checkbox" class="bulk-check" data-val="{{$lead->id}}">
                     </td>
                     <td><img src="{{asset('assets/stem/leadership/'.$lead->image)}}" alt="" width="80"></td>
                     <td>
