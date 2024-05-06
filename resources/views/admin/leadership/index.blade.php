@@ -80,6 +80,7 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
                       <input type="checkbox" class="bulk-check" data-val="all">
                     </th>
                     <th scope="col">Image</th>
+                    <th scope="col">Status</th>
                     <th scope="col">Title</th>
                   
                     <th scope="col">Actions</th>
@@ -93,7 +94,14 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
                     </td>
                     <td><img src="{{asset('assets/stem/leadership/'.$lead->image)}}" alt="" width="80"></td>
                     <td>
-                      {{strlen($lead->title) > 70 ? mb_substr($lead->title, 0, 70, 'UTF-8') . '...' : $lead->title}}
+                            @if ($lead->status == 1)
+                              <h2 class="d-inline-block"><span class="badge badge-success">Active</span></h2>
+                            @else
+                              <h2 class="d-inline-block"><span class="badge badge-danger">Deactive</span></h2>
+                            @endif
+                      </td>
+                    <td>
+                      {{strlen($lead->title) > 70 ? mb_substr($lead->name, 0, 70, 'UTF-8') . '...' : $lead->name}}
                     </td>
                     
                     <td>
@@ -106,7 +114,7 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
                       </a>
                       <form class="deleteform d-inline-block" action="{{route('admin.leadership.delete')}}" method="post">
                         @csrf
-                        <input type="hidden" name="lead_id" value="{{$lead->id}}">
+                        <input type="hidden" name="leadership_id" value="{{$lead->id}}">
                         <button type="submit" class="btn btn-danger btn-sm deletebtn">
                           <span class="btn-label">
                             <i class="fas fa-trash"></i>
@@ -162,7 +170,7 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
           </div>
           <div class="form-group {{ $categoryInfo->gallery_category_status == 0 ? 'd-none' : '' }}">
             <label for="">Category **</label>
-            <select name="category_id" id="lead_category_id" class="form-control" disabled>
+            <select name="category_id" class="form-control" id="lead_category_id"  disabled>
               <option selected disabled>Select a category</option>
             </select>
             <p id="errcategory_id" class="mb-0 text-danger em"></p>
@@ -171,6 +179,20 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
             <label for="">Title **</label>
             <input type="text" class="form-control" name="title" placeholder="Enter title" value="">
             <p id="errtitle" class="mb-0 text-danger em"></p>
+          </div>
+          <div class="form-group">
+            <label for="">Post **</label>
+            <input type="text" class="form-control" name="postname" placeholder="Enter Post Name" value="">
+            <p id="errpost" class="mb-0 text-danger em"></p>
+          </div>
+          <div class="form-group">
+            <label for="">Status*</label>
+            <select name="status" class="form-control ltr">
+              <option selected disabled>Select a Status</option>
+              <option value="1">Active</option>
+              <option value="0">Deactive</option>
+            </select>
+            <p id="errstatus" class="mt-1 mb-0 text-danger em"></p>
           </div>
           <div class="form-group d-none">
             <label for="">Serial Number **</label>
@@ -210,81 +232,30 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
   $(document).ready(function() {
     $("select[name='language_id']").on('change', function() {
       $("#lead_category_id").removeAttr('disabled');
-
-      let langId = $(this).val();
-    
-      let url = "{{url('/')}}/leadership/" + langId + "/get_leadcategories";
-      // alert(url);return false;
-      $.get(url, function(data) {
-        let options = `<option value="" disabled selected>Select a category</option>`;
-
-        if (data.length == 0) {
-          options += `<option value="" disabled>${'No Category Exists'}</option>`;
-        } else {
-    
-          for (let i = 0; i < data.length; i++) {
-            options +=`<option value="${data[i].id}">${data[i].name}</option>`;
-          }
-        }
-
-        $("#lead_category_id").html(options);
+         var id = $(this).attr('id');
+          var langId = $(this).val();
+          // alert(langId);
+          $.ajax({
+            method: 'GET',
+            url: '{{ route('get_leadcategory') }}',
+                data: { langId: langId , _token: '{{ csrf_token() }}' },
+            
+              success: function( lead_categories ) {
+                var options = "";
+                // let options = "<option value="" disabled selected>Select a category</option>";
+                $.each(lead_categories, function(index, category) {
+                    options += "<option value='" + category.id + "'>" + category.name + "</option>";
+                });
+                // Create new dropdown element with generated options
+                // var newDropdown = $("<select class ='form-controle'>").attr("id", "lead_category_id").html(options);
+                // Replace existing dropdown with new one
+                // $("#lead_category_id").replaceWith(newDropdown);
+                $("#lead_category_id").html(options);
+          
+              }
+        });
       });
-    });
 
-
-    // $(document).ready(function() {
-    // $("select[name='language_id']").on('change', function() {
-    //   $("#lead_category_id").removeAttr('disabled');
-
-    //   let langId = $(this).val();
-    //   alert(langId);
-    
-    //   $.ajax({
-    //             method: 'POST',
-    //             url = "{{url('/')}}/leadership/" + langId + "/get_leadcategories",
-    //             data: { lang: lg , _token: '{{ csrf_token() }}' },
-    //             success: function(response) {
-    //               // alert(response);return false;
-    //               window.location="{{route('front.index')}}";
-                  
-    //             }
-    //         });
-    //     $("#lead_category_id").html(options);
-    //   });
-    // });
-
-    // make input fields RTL
-    $("select[name='language_id']").on('change', function() {
-      $(".request-loader").addClass("show");
-      let url = "{{url('/')}}/admin/rtlcheck/" + $(this).val();
-      console.log(url);
-      $.get(url, function(data) {
-        $(".request-loader").removeClass("show");
-        if (data == 1) {
-          $("form input").each(function() {
-            if (!$(this).hasClass('ltr')) {
-              $(this).addClass('rtl');
-            }
-          });
-          $("form select").each(function() {
-            if (!$(this).hasClass('ltr')) {
-              $(this).addClass('rtl');
-            }
-          });
-          $("form textarea").each(function() {
-            if (!$(this).hasClass('ltr')) {
-              $(this).addClass('rtl');
-            }
-          });
-          $("form .nicEdit-main").each(function() {
-            $(this).addClass('rtl text-right');
-          });
-        } else {
-          $("form input, form select, form textarea").removeClass('rtl');
-          $("form .nicEdit-main").removeClass('rtl text-right');
-        }
-      });
-    });
   });
 </script>
 @endsection

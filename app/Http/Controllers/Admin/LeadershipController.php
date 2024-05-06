@@ -11,6 +11,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\File;
+use Image;
 
 
 class LeadershipController extends Controller
@@ -59,6 +61,9 @@ class LeadershipController extends Controller
   }
   public function update(Request $request)
   {
+    // dd($request->all());
+    $event = LeadCategory::findOrFail($request->categoryId);
+    
     $rules = [
       'name' => 'required',
       'status' => 'required',
@@ -73,7 +78,11 @@ class LeadershipController extends Controller
       return response()->json($validator->errors());
     }
 
-    LeadCategory::findOrFail($request->categoryId)->update($request->all());
+   $event= LeadCategory::findOrFail($request->categoryId);
+    $event->name = $request->name;
+  
+    $event->status = $request->status;
+    $event->save();
 
     Session::flash('success', 'Leadership category updated successfully.');
 
@@ -142,9 +151,10 @@ public function leadIndex(Request $request)
   return view('admin.leadership.index', $data);
 }
 
-public function getLeadCategories($langId)
+public function getLeadCategories(Request $request)
 {
-    dd($langId);
+    // dd($request->all());
+    $langId = $request->langId;
   $lead_categories = LeadCategory::where('language_id', $langId)
     ->where('status', 1)
     ->get();
@@ -152,15 +162,16 @@ public function getLeadCategories($langId)
   return $lead_categories;
 }
 
-public function leadEedit(Request $request, $id)
+public function leadEdit(Request $request, $id)
 {
   $lang = Language::where('code', $request->language)->first();
 
-  $data['categories'] = GalleryCategory::where('language_id', $lang->id)
+  $data['categories'] = LeadCategory::where('language_id', $lang->id)
     ->where('status', 1)
     ->get();
 
   $data['leadership'] = Leadership::findOrFail($id);
+  // dd($data['leadership']);
 
   $data['categoryInfo'] = BasicExtra::first();
 
@@ -171,7 +182,7 @@ public function leadEedit(Request $request, $id)
 
 public function leadStore(Request $request)
 {
-dd('hi');
+// dd($request->all());
   $image = $request->file;
   $allowedExts = array('jpg', 'png', 'jpeg', 'svg');
   $messages = [
@@ -183,6 +194,7 @@ dd('hi');
     'language_id' => 'required',
     'file' => 'required',
     'title' => 'required|max:255',
+    'status' => 'required',
     // 'serial_number' => 'required|integer',/
   ];
 
@@ -213,14 +225,16 @@ dd('hi');
         $new_height= 480;
         $new_image->resize($new_width, $new_height);         
         $new_image->save( ('assets/stem/leadership/' .$filename));
-        $gallery->image = $filename;
+        $leadership->image = $filename;
     }
 }
 
   $leadership->language_id = $request->language_id;
-  $leadership->title = $request->title;
+  $leadership->name = $request->title;
 //   $leadership->serial_number = $request->serial_number;
   $leadership->category_id = $request->category_id;
+  $leadership->post = $request->postname;
+  $leadership->status = $request->status;
 
   $leadership->save();
 
@@ -228,5 +242,94 @@ dd('hi');
   return "success";
 }
 
+
+public function leadupdate(Request $request)
+{
+  // dd($request->all());
+    $event = Leadership::find($request->leadership_id);
+    if(!empty($event))
+    {
+        $image = $request->image;
+        $allowedExts = array('jpg', 'png', 'jpeg', 'svg');
+        $extImage = pathinfo($image, PATHINFO_EXTENSION);
+
+        $rules = [
+          'title' => 'required|max:255',
+        // 'serial_number' => 'required|integer',
+        ];
+
+        if ($request->has('image')) {
+            $rules['image'] = [
+                'mimes:jpeg,jpg,png,svg',
+            ];
+        }
+
+        $validator = Validator::make($request->all(), $rules);
+        if ($validator->fails()) {
+            $errmsgs = $validator->getMessageBag()->add('error', 'true');
+            return response()->json($validator->errors());
+        }
+
+        if ($request->has('image')) {
+            $destinationPath = '/assets/stem/leadership/'; 
+            if(!File::exists(public_path($destinationPath))) {
+              File::makeDirectory(public_path($destinationPath), $mode = 0777, true, true);
+            }
+            $image = $request->file('image');
+            $imagename= $image->getClientOriginalName();
+
+            //image resize logic
+            $new_image = Image::make($image->getRealPath());
+            if($new_image != null){
+                @unlink('assets/stem/leadership/' . $event->image);
+                $filename = uniqid() .'.'. $request->file('image')->extension();
+                $image_width= $new_image->width();
+                $image_height= $new_image->height();
+                $new_width= 720;
+                $new_height= 480;
+                $new_image->resize($new_width, $new_height);         
+                $new_image->save(public_path('assets/stem/leadership/' .$filename));
+                $event->image = $filename;
+            }
+        }
+        
+        $event->name = $request->title;
+        $event->post = $request->postname;
+        $event->category_id = $request->category_id;
+        $event->status = $request->status;
+        $event->save();
+    
+        Session::flash('success', 'Leadership updated successfully!');
+        
+    }else{
+        Session::flash('error', 'Leadership not found');
+    }
+    return "success";
+}
+
+public function leadDelete(Request $request)
+{
+
+  $leadership = Leadership::findOrFail($request->leadership_id);
+  @unlink('assets/stem/leadership/' . $leadership->image); 
+  $leadership->delete();
+
+  Session::flash('success', 'Image deleted successfully!');
+  return back();
+}
+
+public function bulkLeadDelete(Request $request)
+{
+  $ids = $request->ids;
+
+  foreach ($ids as $id) {
+    $leadership = Leadership::findOrFail($id);
+    @unlink('assets/stem/leadership/' . $leadership->image);
+    $leadership->delete();
+  }
+
+  Session::flash('success', 'Image deleted successfully!');
+  return "success";
+}
 
 }
