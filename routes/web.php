@@ -1726,51 +1726,51 @@ Route::group(
             // Admin Tender Category Routes
             Route::get("/tender_category", "Admin\TendersController@category_index")->name(
                 "admin.tcategory.index"
-            );
+            )->middleware('can:categories-tender');
             Route::post(
                 "/tender_category/store",
                 "Admin\TendersController@category_store"
-            )->name("admin.tcategory.store");
+            )->name("admin.tcategory.store")->middleware('can:categories-tender');
             Route::post(
                 "/tender_category/update",
                 "Admin\TendersController@category_update"
-            )->name("admin.tcategory.update");
+            )->name("admin.tcategory.update")->middleware('can:categories-tender');
             Route::post(
                 "/tender_category/delete",
                 "Admin\TendersController@category_delete"
-            )->name("admin.tcategory.delete");
+            )->name("admin.tcategory.delete")->middleware('can:categories-tender');
             Route::post(
                 "/tender_category/bulk-delete",
                 "Admin\TendersController@category_bulkDelete"
-            )->name("admin.tcategory.bulk.delete");
+            )->name("admin.tcategory.bulk.delete")->middleware('can:categories-tender');
 
 
             // Admin Tender Routes
             Route::get("/tenders", "Admin\TendersController@index")->name(
                 "admin.tenders.index"
-            );
+            )->middleware('can:tenders');
             Route::get("/tender/add", "Admin\TendersController@add")->name(
                 "admin.tenders.add"
-            );
+            )->middleware('can:tenders');
             Route::get("/tender/edit/{id}", "Admin\TendersController@edit")->name(
                 "admin.tenders.edit"
-            );
+            )->middleware('can:tenders');
             Route::post(
                 "/tender/store",
                 "Admin\TendersController@store"
-            )->name("admin.tenders.store");
+            )->name("admin.tenders.store")->middleware('can:tenders');
             Route::post(
                 "/tender/update",
                 "Admin\TendersController@update"
-            )->name("admin.tenders.update");
+            )->name("admin.tenders.update")->middleware('can:tenders');
             Route::post(
                 "/tender/delete",
                 "Admin\TendersController@delete"
-            )->name("admin.tenders.delete");
+            )->name("admin.tenders.delete")->middleware('can:tenders');
             Route::post(
                 "/tender/bulk-delete",
                 "Admin\TendersController@bulkDelete"
-            )->name("admin.tenders.bulk.delete");
+            )->name("admin.tenders.bulk.delete")->middleware('can:tenders');
 
 
             // Admin Blog Category Routes

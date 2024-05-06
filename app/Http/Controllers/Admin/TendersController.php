@@ -41,9 +41,9 @@ class TendersController extends Controller
     $lang_code = $lang->code;
 
     if($lang_code == 'mr')
-    	$data['tendersCat'] = TenderCategory::select('id','name_mr as title')->orderBy('title', 'ASC')->get();
+    	$data['tendersCat'] = TenderCategory::select('id','name_mr as title')->where('status','1')->orderBy('title', 'ASC')->get();
     else
-    	$data['tendersCat'] = TenderCategory::select('id','name as title')->orderBy('title', 'ASC')->get();
+    	$data['tendersCat'] = TenderCategory::select('id','name as title')->where('status','1')->orderBy('title', 'ASC')->get();
 
     return view('admin.tender.add', $data);
   }

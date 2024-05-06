@@ -22,10 +22,17 @@ class StemController extends Controller
 
           if($lang_code == 'mr')
           {
-            $data['tenders'] = Tender::select('title_mr as title','description_mr as description','files','id','tender_link')->orderBy('id','DESC')->paginate(10);
+            $data['tenders'] = Tender::select('tenders.title_mr as title','tenders.description_mr as description','tenders.files','tenders.id','tenders.tender_link','tender_category.name_mr as name');
           }else{
-            $data['tenders'] = Tender::select('title','description','files','id','tender_link')->orderBy('id','DESC')->paginate(10);
+            $data['tenders'] = Tender::select('tenders.title','tenders.description','tenders.files','tenders.id','tenders.tender_link','tender_category.name');
           }
+
+          $data['tenders'] = $data['tenders']->leftJoin('tender_category','tenders.tender_category','=','tender_category.id')
+                                            ->where('tenders.status','1')
+                                            ->where('tender_category.status','1')
+                                            ->whereNull('tender_category.deleted_at')
+                                            ->orderBy('tenders.id','DESC')
+                                            ->paginate(10);
 
           return view('front.stem.tenders',$data);
       }

@@ -204,32 +204,37 @@ $data = \App\Models\BasicExtra::first();
         {{-- Tenders Management --}}
         @canany(['categories-tender', 'tenders'])
         <li class="nav-item
-          @if(request()->path() == 'leadership_categories') active
-    
+          @if(request()->path() == 'admin/tender_category') active
+          @elseif(request()->path() == 'admin/tenders') active
+          @elseif(request()->is('admin/tender/edit/*')) active
+          @elseif(request()->is('admin/tender/add')) active
           @endif">
-          <a data-toggle="collapse" href="#leadership">
+          <a data-toggle="collapse" href="#tenders">
             <i class='fas fa-pencil-alt'></i>
             <p>Tenders Management</p>
             <span class="caret"></span>
           </a>
           <div class="collapse
-            @if(request()->path() == 'admin/lead_categories') show
-  
-            @endif" id="leadership">
+            @if(request()->path() == 'admin/tender_category') show
+            @elseif(request()->path() == 'admin/tenders') show
+            @elseif(request()->path() == 'admin/tender/edit/*') show
+            @elseif(request()->path() == 'admin/tender/add') show
+            @endif" id="tenders">
             <ul class="nav nav-collapse">
               @can('categories-tender')
-              <li class="@if(request()->path() == '/leadership/categories') active @endif">
-                <a href="{{route('admin.leadership_category.index') . '?language=' . $default->code}}">
+              <li class="@if(request()->path() == 'admin/tender_category') active @endif">
+                <a href="{{route('admin.tcategory.index') . '?language=' . $default->code}}">
                 <span class="sub-item">Tender Category</span>
                 </a>
               </li>
               @endcan
               @can('tenders')
-              <li class="@if(request()->path() == 'leadership') show
-                
+              <li class="@if(request()->path() == 'admin/tenders') active
+              @elseif(request()->is('admin/tender/edit/*')) active
+              @elseif(request()->is('admin/tender/add')) active
                 @endif">
-                <a href="{{route('admin.leadership.index') . '?language=' . $default->code}}">
-                <span class="sub-item">tenders</span>
+                <a href="{{route('admin.tenders.index') . '?language=' . $default->code}}">
+                <span class="sub-item">Tenders</span>
                 </a>
               </li>
               @endcan

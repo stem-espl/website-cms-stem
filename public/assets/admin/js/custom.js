@@ -350,6 +350,26 @@ $(function ($) {
               // console.log(data);
               $summernote.summernote('insertImage', data);
               $(".request-loader").removeClass('show');
+            },
+            error: function(data){
+              if(data.status == 403)
+              {
+                  var content = {};
+                  content.message = 'Unautorized';
+                  content.title = 'Error';
+                  content.icon = 'fa fa-bell';
+
+                  $.notify(content,{
+                    type: 'danger',
+                    placement: {
+                      from: 'top',
+                      align: 'right'
+                    },
+                    showProgressbar: true,
+                    time: 1000,
+                    delay: 4000,
+                  });
+              }
             }
           });
           
@@ -463,6 +483,24 @@ $(function ($) {
         
       },
       error: function (error){
+        if(error.status == 403)
+        {
+            var content = {};
+            content.message = 'Unautorized';
+            content.title = 'Error';
+            content.icon = 'fa fa-bell';
+
+            $.notify(content,{
+              type: 'danger',
+              placement: {
+                from: 'top',
+                align: 'right'
+              },
+              showProgressbar: true,
+              time: 1000,
+              delay: 4000,
+            });
+        }
         $(".em").each(function () {
           $(this).html('');
         })
@@ -587,6 +625,24 @@ $(function ($) {
         }
       },
       error: function (error){
+       if(error.status == 403)
+        {
+            var content = {};
+            content.message = 'Unautorized';
+            content.title = 'Error';
+            content.icon = 'fa fa-bell';
+
+            $.notify(content,{
+              type: 'danger',
+              placement: {
+                from: 'top',
+                align: 'right'
+              },
+              showProgressbar: true,
+              time: 1000,
+              delay: 4000,
+            });
+        }
         for (let x in error.responseJSON.errors) {
           document.getElementById('eerr' + x).innerHTML = error.responseJSON.errors[x][0];
         }
@@ -756,12 +812,30 @@ $(function ($) {
           data: fd,
           contentType: false,
           processData: false,
-          success: function (data) {
-            console.log(data);
-            
+          success: function (data) {            
             $(".request-loader").removeClass('show');
             if (data == "success") {
               location.reload();
+            }
+          },
+          error:function(error){
+            if(error.status == 403)
+            {
+                var content = {};
+                content.message = 'Unautorized';
+                content.title = 'Error';
+                content.icon = 'fa fa-bell';
+
+                $.notify(content,{
+                  type: 'danger',
+                  placement: {
+                    from: 'top',
+                    align: 'right'
+                  },
+                  showProgressbar: true,
+                  time: 1000,
+                  delay: 4000,
+                });
             }
           }
         });
