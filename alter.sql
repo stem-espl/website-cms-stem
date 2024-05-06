@@ -34,9 +34,13 @@ ALTER TABLE `partners` ADD `title` VARCHAR(255) NULL DEFAULT NULL AFTER `url`;
 ALTER TABLE `gallery_categories` ADD `slug` VARCHAR(255) NOT NULL AFTER `name`;
 
 ---date 03-05-2024
-CREATE TABLE `stem`.`lead_categories` (`id` INT(11) NOT NULL AUTO_INCREMENT , `language_id` INT(11) NOT NULL , `name` VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL , `status` TINYINT(3) NOT NULL , `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP , `updated_at` TIMESTAMP on update CURRENT_TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP , `deleted_at` TIMESTAMP NULL DEFAULT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
-ALTER TABLE `lead_categories` ADD `sug` VARCHAR NULL DEFAULT NULL AFTER `name`;
-CREATE TABLE `stem`.`leadership` (`id` INT(11) NOT NULL AUTO_INCREMENT , `language_id` INT(11) NOT NULL , `category_id` INT(11) NOT NULL , `name` VARCHAR(255) NULL DEFAULT NULL , `post` VARCHAR(255) NULL DEFAULT NULL , `status` TINYINT(3) NULL DEFAULT NULL , `image` VARCHAR(255) NULL DEFAULT NULL , `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP , `updated_at` TIMESTAMP on update CURRENT_TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP , `deleted_at` TIMESTAMP NULL DEFAULT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+CREATE TABLE `lead_categories` (`id` INT(11) NOT NULL AUTO_INCREMENT , `language_id` INT(11) NOT NULL , `name` VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL , `status` TINYINT(3) NOT NULL , `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP , `updated_at` TIMESTAMP on update CURRENT_TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP , `deleted_at` TIMESTAMP NULL DEFAULT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+ALTER TABLE `lead_categories` ADD `slug` VARCHAR(255) NULL DEFAULT NULL AFTER `name`;
+CREATE TABLE `leadership` (`id` INT(11) NOT NULL AUTO_INCREMENT , `language_id` INT(11) NOT NULL , `category_id` INT(11) NOT NULL , `name` VARCHAR(255) NULL DEFAULT NULL , `post` VARCHAR(255) NULL DEFAULT NULL , `status` TINYINT(3) NULL DEFAULT NULL , `image` VARCHAR(255) NULL DEFAULT NULL , `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP , `updated_at` TIMESTAMP on update CURRENT_TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP , `deleted_at` TIMESTAMP NULL DEFAULT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+
+--- add permissions for Leadership 
+INSERT INTO `permissions` (`id`, `name`, `guard_name`, `group_name`, `status`, `basic`, `created_at`, `updated_at`) VALUES (NULL, 'leadership', 'admin', 'leadership', '1', '0', '2024-04-19 14:45:27', '2024-04-19 14:45:27'); 
+INSERT INTO `permissions` (`id`, `name`, `guard_name`, `group_name`, `status`, `basic`, `created_at`, `updated_at`) VALUES (NULL, 'category-leadership', 'admin', 'leadership', '1', '0', '2024-04-19 14:45:27', '2024-04-19 14:45:27'); 
 
 
 
