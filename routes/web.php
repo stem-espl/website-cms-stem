@@ -44,6 +44,7 @@ Route::group(["middleware" => "setlang"], function () {
     Route::get("/", "Front\FrontendController@index")->name("front.index");
 
     Route::get('/aboutus/detail', 'StemController@aboutus')->name('about.detail');
+    Route::get('/tenders', 'StemController@tenders')->name('front.tenders');
     Route::get('/budget/report', 'StemController@profitReport')->name('budget.report');
     Route::get('/news/img', 'StemController@index')->name('front.stem.img');
     Route::get('/galleries/{slug}', 'Front\GalleryController@index')->name('front.gallerys');
@@ -1721,6 +1722,56 @@ Route::group(
                 "/portfolio/feature",
                 "Admin\PortfolioController@feature"
             )->name("admin.portfolio.feature");
+
+            // Admin Tender Category Routes
+            Route::get("/tender_category", "Admin\TendersController@category_index")->name(
+                "admin.tcategory.index"
+            );
+            Route::post(
+                "/tender_category/store",
+                "Admin\TendersController@category_store"
+            )->name("admin.tcategory.store");
+            Route::post(
+                "/tender_category/update",
+                "Admin\TendersController@category_update"
+            )->name("admin.tcategory.update");
+            Route::post(
+                "/tender_category/delete",
+                "Admin\TendersController@category_delete"
+            )->name("admin.tcategory.delete");
+            Route::post(
+                "/tender_category/bulk-delete",
+                "Admin\TendersController@category_bulkDelete"
+            )->name("admin.tcategory.bulk.delete");
+
+
+            // Admin Tender Routes
+            Route::get("/tenders", "Admin\TendersController@index")->name(
+                "admin.tenders.index"
+            );
+            Route::get("/tender/add", "Admin\TendersController@add")->name(
+                "admin.tenders.add"
+            );
+            Route::get("/tender/edit/{id}", "Admin\TendersController@edit")->name(
+                "admin.tenders.edit"
+            );
+            Route::post(
+                "/tender/store",
+                "Admin\TendersController@store"
+            )->name("admin.tenders.store");
+            Route::post(
+                "/tender/update",
+                "Admin\TendersController@update"
+            )->name("admin.tenders.update");
+            Route::post(
+                "/tender/delete",
+                "Admin\TendersController@delete"
+            )->name("admin.tenders.delete");
+            Route::post(
+                "/tender/bulk-delete",
+                "Admin\TendersController@bulkDelete"
+            )->name("admin.tenders.bulk.delete");
+
 
             // Admin Blog Category Routes
             Route::get("/bcategorys", "Admin\BcategoryController@index")->name(

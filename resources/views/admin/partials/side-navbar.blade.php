@@ -164,7 +164,7 @@ $data = \App\Models\BasicExtra::first();
         @endcanany
 
         {{-- Leadership Management --}}
-      @canany(['category-leadership', 'leadership'])
+        @canany(['category-leadership', 'leadership'])
         {{-- Articles --}}
         <li class="nav-item
           @if(request()->path() == 'leadership_categories') active
@@ -193,6 +193,43 @@ $data = \App\Models\BasicExtra::first();
                 @endif">
                 <a href="{{route('admin.leadership.index') . '?language=' . $default->code}}">
                 <span class="sub-item">Leadership</span>
+                </a>
+              </li>
+              @endcan
+            </ul>
+          </div>
+        </li>
+        @endcanany
+
+        {{-- Tenders Management --}}
+        @canany(['categories-tender', 'tenders'])
+        <li class="nav-item
+          @if(request()->path() == 'leadership_categories') active
+    
+          @endif">
+          <a data-toggle="collapse" href="#leadership">
+            <i class='fas fa-pencil-alt'></i>
+            <p>Tenders Management</p>
+            <span class="caret"></span>
+          </a>
+          <div class="collapse
+            @if(request()->path() == 'admin/lead_categories') show
+  
+            @endif" id="leadership">
+            <ul class="nav nav-collapse">
+              @can('categories-tender')
+              <li class="@if(request()->path() == '/leadership/categories') active @endif">
+                <a href="{{route('admin.leadership_category.index') . '?language=' . $default->code}}">
+                <span class="sub-item">Tender Category</span>
+                </a>
+              </li>
+              @endcan
+              @can('tenders')
+              <li class="@if(request()->path() == 'leadership') show
+                
+                @endif">
+                <a href="{{route('admin.leadership.index') . '?language=' . $default->code}}">
+                <span class="sub-item">tenders</span>
                 </a>
               </li>
               @endcan

@@ -14,13 +14,13 @@
     <link rel="stylesheet" href="{{asset('assets/stem/css/responsive.css')}}">
   </head>
   <body>
-    @includeIf('front.stem.header')
-        {{-- @includeIf('front.stem.header') --}}
+    @includeIf('front.stem.partials.header')
+        {{-- @includeIf('front.stem.partials.header') --}}
         <div id="skip-content-div">
             @yield('content')
         </div>
       
-        @includeIf('front.stem.footer')
-        @includeIf('front.stem.script')
+        @includeIf('front.stem.partials.footer')
+        @includeIf('front.stem.partials.script')
     </body>
     </html>

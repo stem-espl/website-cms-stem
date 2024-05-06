@@ -63,7 +63,7 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
             </div>
             <div class="card-body pt-5 pb-5">
                 <div class="row no-gutters">
-                    @if($bex->theme_version != 'stem')
+                    @if($be->theme_version != 'stem')
                     <div class="col-lg-4">
                         <div class="card border-primary mb-3">
                             <div class="card-header bg-primary text-white">Pre-built Menus</div>
@@ -190,7 +190,7 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
                         </div>
                     </div>
                     @endif
-                    @if($bex->theme_version == 'stem')
+                    @if($be->theme_version == 'stem')
                     <div class="col-lg-6">
                     @else
                     <div class="col-lg-4">
@@ -246,7 +246,7 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
                             </div>
                         </div>
                     </div>
-                    @if($bex->theme_version == 'stem')
+                    @if($be->theme_version == 'stem')
                     <div class="col-lg-6">
                     @else
                     <div class="col-lg-4">
