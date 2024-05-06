@@ -86,19 +86,18 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
                   </tr>
                 </thead>
                 <tbody>
-                  {{-- @foreach ($galleries as $key => $gallery)
+                  @foreach ($egovernance as $key => $egovernanc)
                   <tr>
                     <td>
-                      <input type="checkbox" class="bulk-check" data-val="{{$gallery->id}}">
+                      <input type="checkbox" class="bulk-check" data-val="{{$egovernanc->id}}">
                     </td>
-                    <td><img src="{{asset('assets/stem/gallery/'.$gallery->image)}}" alt="" width="80"></td>
+                    <td><img src="{{asset('assets/stem/egovernance/'.$egovernanc->image)}}" alt="" width="80"></td>
                     <td>
-                      {{strlen($gallery->title) > 70 ? mb_substr($gallery->title, 0, 70, 'UTF-8') . '...' : $gallery->title}}
+                      {{strlen($egovernanc->title) > 70 ? mb_substr($egovernanc->title, 0, 70, 'UTF-8') . '...' : $egovernanc->title}}
                     </td>
-                    <td>{{$gallery->serial_number}}</td>
                     <td>
                       <a class="btn btn-secondary btn-sm"
-                        href="{{route('admin.gallery.edit', $gallery->id) . '?language=' . request()->input('language')}}">
+                        href="{{route('admin.gallery.edit', $egovernanc->id) . '?language=' . request()->input('language')}}">
                         <span class="btn-label">
                           <i class="fas fa-edit"></i>
                         </span>
@@ -106,7 +105,7 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
                       </a>
                       <form class="deleteform d-inline-block" action="{{route('admin.gallery.delete')}}" method="post">
                         @csrf
-                        <input type="hidden" name="gallery_id" value="{{$gallery->id}}">
+                        <input type="hidden" name="gallery_id" value="{{$egovernanc->id}}">
                         <button type="submit" class="btn btn-danger btn-sm deletebtn">
                           <span class="btn-label">
                             <i class="fas fa-trash"></i>
@@ -116,7 +115,7 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
                       </form>
                     </td>
                   </tr>
-                  @endforeach --}}
+                  @endforeach
                 </tbody>
               </table>
             </div>
@@ -166,7 +165,7 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
             <input type="text" class="form-control" name="title" placeholder="Enter title" value="">
             <p id="errtitle" class="mb-0 text-danger em"></p>
           </div>
-          
+
         </form>
       </div>
       <div class="modal-footer">
