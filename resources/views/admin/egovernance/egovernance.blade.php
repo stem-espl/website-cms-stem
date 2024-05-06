@@ -69,9 +69,9 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
       <div class="card-body">
         <div class="row">
           <div class="col-lg-12">
-            {{-- @if (count($galleries) == 0) --}}
+            @if (count($egovernance) == 0)
             <h3 class="text-center">NO IMAGE FOUND</h3>
-            {{-- @else --}}
+            @else
             <div class="table-responsive">
               <table class="table table-striped mt-3" id="basic-datatables">
                 <thead>
@@ -96,6 +96,8 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
                       {{strlen($egovernanc->title) > 70 ? mb_substr($egovernanc->title, 0, 70, 'UTF-8') . '...' : $egovernanc->title}}
                     </td>
                     <td>
+                        {{$egovernanc->status}}
+                    <td>
                       <a class="btn btn-secondary btn-sm"
                         href="{{route('admin.gallery.edit', $egovernanc->id) . '?language=' . request()->input('language')}}">
                         <span class="btn-label">
@@ -119,7 +121,7 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
                 </tbody>
               </table>
             </div>
-            {{-- @endif --}}
+            @endif
           </div>
         </div>
       </div>
@@ -192,7 +194,7 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
 @endsection
 
 @section('scripts')
-{{-- <script>
+<script>
   $(document).ready(function() {
     $("select[name='language_id']").on('change', function() {
       $("#gallery_category_id").removeAttr('disabled');
@@ -248,5 +250,5 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
       });
     });
   });
-</script> --}}
+</script>
 @endsection

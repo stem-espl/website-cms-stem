@@ -3213,6 +3213,11 @@ Route::group(
             Route::post("/e-governance/store", "Admin\EGovernanceController@store")->name(
                 "admin.egovernance.store"
             );
+
+            Route::get(
+                "/e-governance/{id}/edit",
+                "Admin\EGovernanceController@edit"
+            )->name("admin.gallery.edit");
         });
 
         Route::group(["middleware" => []], function () {
