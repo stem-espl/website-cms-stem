@@ -1,7 +1,7 @@
 <?php
 use Illuminate\Support\Facades\Route;
 use App\Models\Permalink;
-use app\Http\Controllers\StemController;
+use app\Http\Controllers\Front\StemController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,10 +43,10 @@ Route::post("/push", "Front\PushController@store");
 Route::group(["middleware" => "setlang"], function () {
     Route::get("/", "Front\FrontendController@index")->name("front.index");
 
-    Route::get('/aboutus/detail', 'StemController@aboutus')->name('about.detail');
-    Route::get('/tenders', 'StemController@tenders')->name('front.tenders');
-    Route::get('/budget/report', 'StemController@profitReport')->name('budget.report');
-    Route::get('/news/img', 'StemController@index')->name('front.stem.img');
+    Route::get('/aboutus/detail', 'Front\StemController@aboutus')->name('about.detail');
+    Route::get('/tenders', 'Front\StemController@tenders')->name('front.tenders');
+    Route::get('/budget/report', 'Front\StemController@profitReport')->name('budget.report');
+    Route::get('/news/img', 'Front\StemController@index')->name('front.stem.img');
     Route::get('/galleries/{slug}', 'Front\GalleryController@index')->name('front.gallerys');
     Route::get('/news', 'Front\FrontendController@news')->name('front.news');   
 
@@ -898,7 +898,7 @@ Route::group(
             )->name("admin.homeSettings.update")->middleware('can:theme-setting');
 
 
-            Route::get("/audit", "AuditReportController@index")->name(
+            Route::get("/audit", "Admin\AuditReportController@index")->name(
                 "audit-from"
             )->middleware('can:audit-trail');
 
@@ -1909,20 +1909,20 @@ Route::group(
             )->name("admin.gallery.bulk.delete");
 
             // Admin Leadership Category Routes
-            Route::get('/leadership_categories', 'admin\leadershipcontroller@index')->name('admin.leadership_category.index');
-            Route::post('/leadership_category/store', 'admin\leadershipcontroller@store')->name('admin.leadership_category.store');
-            Route::post('/leadership_category/update', 'admin\leadershipcontroller@update')->name('admin.leadership_category.update');
-            Route::post('/leadership_category/delete', 'admin\leadershipcontroller@delete')->name('admin.leadership_category.delete');
-            Route::post('/leadership_category/bulk_delete', 'admin\leadershipcontroller@bulkdelete')->name('admin.leadership_category.bulk_delete');
+            Route::get('/leadership_categories', 'admin\LeadershipController@index')->name('admin.leadership_category.index');
+            Route::post('/leadership_category/store', 'admin\LeadershipController@store')->name('admin.leadership_category.store');
+            Route::post('/leadership_category/update', 'admin\LeadershipController@update')->name('admin.leadership_category.update');
+            Route::post('/leadership_category/delete', 'admin\LeadershipController@delete')->name('admin.leadership_category.delete');
+            Route::post('/leadership_category/bulk_delete', 'admin\LeadershipController@bulkdelete')->name('admin.leadership_category.bulk_delete');
     
            //  Admin Leadership Routes
-            Route::get('/leadership', 'admin\leadershipcontroller@leadindex')->name('admin.leadership.index');
-            Route::get('/leadership/{langId}/get_leadcategories', 'Admin\LeadershipController@getLeadCategories')->name('get_leadcategory');
-            Route::post('/leadership/store', 'admin\leadershipcontroller@leadstore')->name('admin.leadership.store');
-            Route::get('/leadership/{id}/edit', 'admin\leadershipcontroller@leadedit')->name('admin.leadership.edit');
-            Route::post('/leadership/update', 'admin\leadershipcontroller@leadupdate')->name('admin.leadership.update');
-            Route::post('/leadership/delete', 'admin\leadershipcontroller@leaddelete')->name('admin.leadership.delete');
-            Route::post('/leadership/bulk_delete', 'admin\leadershipcontroller@leadbulkdelete')->name('admin.leadership.bulk_delete');
+            Route::get('/leadership', 'admin\leadershipcontroller@leadIndex')->name('admin.leadership.index');
+            Route::get('/leadership/get_leadcategories', 'Admin\LeadershipController@getLeadCategories')->name('get_leadcategory');
+            Route::post('/leadership/store', 'admin\LeadershipController@leadstore')->name('admin.leadership.store');
+            Route::get('/leadership/{id}/edit', 'admin\LeadershipController@leadEdit')->name('admin.leadership.edit');
+            Route::post('/leadership/update', 'admin\LeadershipController@leadupdate')->name('admin.leadership.update');
+            Route::post('/leadership/delete', 'admin\LeadershipController@leaddelete')->name('admin.leadership.delete');
+            Route::post('/leadership/bulk_delete', 'admin\LeadershipController@leadbulkdelete')->name('admin.leadership.bulk_delete');
 
             // Admin FAQ Settings Routes
             Route::get(
@@ -2047,14 +2047,6 @@ Route::group(
             )->name("admin.contact.update");
         });
 
-        Route::group(['middleware' => []], function () {
-            // Admin Lead categories Routes
-            Route::get('/lead_categories', 'Admin\LeadershipController@index')->name('admin.lead_category.index');
-
-            // // Admin Leadership  Routes
-            Route::get('/leaderships', 'Admin\LeadershipController@indexLead')->name('admin.leadership.index');
-            
-        });
 
         Route::group(["middleware" => []], function () {
             // Mega Menus Management Routes

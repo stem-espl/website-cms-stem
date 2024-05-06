@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Front;
 
 use Illuminate\Http\Request;
 use App\Models\News;
 use App\Models\Tender;
 use App\Models\TenderCategory;
+use App\Http\Controllers\Controller;
 use App\Models\Language;
 
 class StemController extends Controller
