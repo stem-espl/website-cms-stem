@@ -1,7 +1,7 @@
 <?php
 use Illuminate\Support\Facades\Route;
 use App\Models\Permalink;
-use app\Http\Controllers\StemController;
+use app\Http\Controllers\Front\StemController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,10 +43,10 @@ Route::post("/push", "Front\PushController@store");
 Route::group(["middleware" => "setlang"], function () {
     Route::get("/", "Front\FrontendController@index")->name("front.index");
 
-    Route::get('/aboutus/detail', 'StemController@aboutus')->name('about.detail');
-    Route::get('/tenders', 'StemController@tenders')->name('front.tenders');
-    Route::get('/budget/report', 'StemController@profitReport')->name('budget.report');
-    Route::get('/news/img', 'StemController@index')->name('front.stem.img');
+    Route::get('/aboutus/detail', 'Front\StemController@aboutus')->name('about.detail');
+    Route::get('/tenders', 'Front\StemController@tenders')->name('front.tenders');
+    Route::get('/budget/report', 'Front\StemController@profitReport')->name('budget.report');
+    Route::get('/news/img', 'Front\StemController@index')->name('front.stem.img');
     Route::get('/galleries/{slug}', 'Front\GalleryController@index')->name('front.gallerys');
     Route::get('/news', 'Front\FrontendController@news')->name('front.news');   
 
@@ -898,7 +898,7 @@ Route::group(
             )->name("admin.homeSettings.update")->middleware('can:theme-setting');
 
 
-            Route::get("/audit", "AuditReportController@index")->name(
+            Route::get("/audit", "Admin\AuditReportController@index")->name(
                 "audit-from"
             )->middleware('can:audit-trail');
 

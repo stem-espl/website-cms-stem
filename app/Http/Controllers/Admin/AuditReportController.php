@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 use App\Models\Audit;
 use App\Models\BasicSetting;
 use App\Models\admin;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 use App\Helper\CommonHelper;
+use App\Http\Controllers\Controller;
 use Auth;
 class AuditReportController extends Controller
 {
