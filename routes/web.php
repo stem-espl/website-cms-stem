@@ -908,7 +908,7 @@ Route::group(
             Route::get(
                 "/file-manager",
                 "Admin\BasicController@fileManager"
-            )->name("admin.file-manager");
+            )->name("admin.file-manager")->middleware('can:file-manager');
 
             // Admin Logo Routes
             Route::get("/logo", "Admin\BasicController@logo")->name(
@@ -921,26 +921,28 @@ Route::group(
             // Admin preloader Routes
             Route::get("/preloader", "Admin\BasicController@preloader")->name(
                 "admin.preloader"
-            );
+            )->middleware('can:preloader');
             Route::post(
                 "/preloader/post",
                 "Admin\BasicController@updatepreloader"
-            )->name("admin.preloader.update");
+            )->name("admin.preloader.update")->middleware('can:preloader');
 
             // Admin Scripts Routes
             Route::get(
                 "/feature/settings",
                 "Admin\BasicController@featuresettings"
-            )->name("admin.featuresettings");
+            )->name("admin.featuresettings")->middleware('can:features');
+
             Route::post(
                 "/feature/settings/update",
                 "Admin\BasicController@updatefeatrue"
-            )->name("admin.featuresettings.update");
+            )->name("admin.featuresettings.update")->middleware('can:features');
 
             // Admin Basic Information Routes
             Route::get("/basicinfo", "Admin\BasicController@basicinfo")->name(
                 "admin.basicinfo"
             );
+
             Route::post(
                 "/basicinfo/{langid}/post",
                 "Admin\BasicController@updatebasicinfo"
