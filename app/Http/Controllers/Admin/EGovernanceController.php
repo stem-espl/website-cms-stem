@@ -8,6 +8,8 @@ use App\Models\EGovernanceModel;
 use App\Models\Language;
 use Validator;
 use Session;
+use Illuminate\Support\Facades\File;
+use Image;
 
 class EGovernanceController extends Controller
 {
@@ -26,6 +28,7 @@ class EGovernanceController extends Controller
 
     public function store(Request $request)
     {
+  
       $image = $request->file;
       $allowedExts = array('jpg', 'png', 'jpeg', 'svg');
       $messages = [
@@ -46,7 +49,7 @@ class EGovernanceController extends Controller
         return response()->json($validator->errors());
       }
   
-      $gallery = new EGovernanceModel;
+      $egovernance = new EGovernanceModel;
   
       if ($request->has('file')) {
         $destinationPath = '/assets/stem/egovernance/'; 
@@ -66,10 +69,18 @@ class EGovernanceController extends Controller
             $new_height= 480;
             $new_image->resize($new_width, $new_height);         
             $new_image->save( ('assets/stem/egovernance/' .$filename));
-            $gallery->image = $filename;
+            $egovernance->image = $filename;
         }
     }
-
+  
+      $egovernance->language_id = $request->language_id;
+      $egovernance->title = $request->title;
+  
+      $egovernance->save();
+  
+      Session::flash('success', 'E-Governance added successfully!');
+      return "success";
+    }
+  
 }
 
-}
