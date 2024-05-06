@@ -961,58 +961,58 @@ Route::group(
             Route::get(
                 "/mail-from-admin",
                 "Admin\EmailController@mailFromAdmin"
-            )->name("admin.mailFromAdmin");
+            )->name("admin.mailFromAdmin")->middleware('can:email-settings');
             Route::post(
                 "/mail-from-admin/update",
                 "Admin\EmailController@updateMailFromAdmin"
-            )->name("admin.mailfromadmin.update");
+            )->name("admin.mailfromadmin.update")->middleware('can:email-settings');;
             Route::get(
                 "/mail-to-admin",
                 "Admin\EmailController@mailToAdmin"
-            )->name("admin.mailToAdmin");
+            )->name("admin.mailToAdmin")->middleware('can:email-settings');;
             Route::post(
                 "/mail-to-admin/update",
                 "Admin\EmailController@updateMailToAdmin"
-            )->name("admin.mailtoadmin.update");
+            )->name("admin.mailtoadmin.update")->middleware('can:email-settings');;
             Route::get(
                 "/email-templates",
                 "Admin\EmailController@templates"
-            )->name("admin.email.templates");
+            )->name("admin.email.templates")->middleware('can:email-settings');
             Route::get(
                 "/email-template/{id}/edit",
                 "Admin\EmailController@editTemplate"
-            )->name("admin.email.editTemplate");
+            )->name("admin.email.editTemplate")->middleware('can:email-settings');
             Route::post(
                 "/emailtemplate/{id}/update",
                 "Admin\EmailController@templateUpdate"
-            )->name("admin.email.templateUpdate");
+            )->name("admin.email.templateUpdate")->middleware('can:email-settings');
 
             // Admin Email Settings Routes
             Route::get(
                 "/mail-from-admin",
                 "Admin\EmailController@mailFromAdmin"
-            )->name("admin.mailFromAdmin");
+            )->name("admin.mailFromAdmin")->middleware('can:email-settings');
             Route::post(
                 "/mail-from-admin/update",
                 "Admin\EmailController@updateMailFromAdmin"
-            )->name("admin.mailfromadmin.update");
+            )->name("admin.mailfromadmin.update")->middleware('can:email-settings');
             Route::get(
                 "/mail-to-admin",
                 "Admin\EmailController@mailToAdmin"
-            )->name("admin.mailToAdmin");
+            )->name("admin.mailToAdmin")->middleware('can:email-settings');
             Route::post(
                 "/mail-to-admin/update",
                 "Admin\EmailController@updateMailToAdmin"
-            )->name("admin.mailtoadmin.update");
+            )->name("admin.mailtoadmin.update")->middleware('can:email-settings');
 
             // Admin Support Routes
             Route::get("/support", "Admin\BasicController@support")->name(
                 "admin.support"
-            );
+            )->middleware('can:support-information');
             Route::post(
                 "/support/{langid}/post",
                 "Admin\BasicController@updatesupport"
-            )->name("admin.support.update");
+            )->name("admin.support.update")->middleware('can:support-information');
 
             // Admin Page Heading Routes
             Route::get("/heading", "Admin\BasicController@heading")->name(
@@ -1053,21 +1053,21 @@ Route::group(
             )->name("admin.social.delete");
 
             // Admin SEO Information Routes
-            Route::get("/seo", "Admin\BasicController@seo")->name("admin.seo");
+            Route::get("/seo", "Admin\BasicController@seo")->name("admin.seo")->middleware('can:seo-information');
             Route::post(
                 "/seo/{langid}/update",
                 "Admin\BasicController@updateseo"
-            )->name("admin.seo.update");
+            )->name("admin.seo.update")->middleware('can:seo-information');
 
             // Admin Maintanance Mode Routes
             Route::get(
                 "/maintainance",
                 "Admin\BasicController@maintainance"
-            )->name("admin.maintainance");
+            )->name("admin.maintainance")->middleware('can:maintenance-mode');
             Route::post(
                 "/maintainance/update",
                 "Admin\BasicController@updatemaintainance"
-            )->name("admin.maintainance.update");
+            )->name("admin.maintainance.update")->middleware('can:maintenance-mode');
 
             // Admin Section Customization Routes
             Route::get("/sections", "Admin\BasicController@sections")->name(
