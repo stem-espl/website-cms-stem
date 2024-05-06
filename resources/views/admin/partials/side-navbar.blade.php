@@ -159,18 +159,18 @@ $data = \App\Models\BasicExtra::first();
         @endcanany
 
         {{-- Content Management --}}
-        @canany(['sections-customization','partners-section','blog-section','team-section','testimonials-section','portfolio-section','call-to-action-section','statistics-section','approach-section','service-section','intro-section','features','hero-section','logo-text','useful-links','department-links','about-us-links', 'settings-services','category-services','services','portfolios','category-blog','blogs','archives','settings-gallery','categories-gallery','galleries','settings-faq','categories-faq','faqs','categories-career','post-job','job-management'])
+        @canany(['sections-customization','partners-section','blog-section','team-section','testimonials-section','portfolio-section','call-to-action-section','statistics-section','approach-section','service-section','intro-section','features','hero-section','logo-text','useful-links','department-links','about-us-links', 'settings-services','category-services','services','portfolios','category-blog','blogs','archives','settings-gallery','categories-gallery','galleries','settings-faq','categories-faq','faqs','categories-career','post-job','job-management','category-leadership','leadership'])
         @includeIf('admin.partials.content-management')
         @endcanany
 
         {{-- Leadership Management --}}
-      @canany(['categories-acknowledged', 'articles'])
+      @canany(['category-leadership', 'leadership'])
         {{-- Articles --}}
         <li class="nav-item
-          @if(request()->path() == 'admin/article_categories') active
+          @if(request()->path() == 'leadership_categories') active
     
           @endif">
-          <a data-toggle="collapse" href="#article">
+          <a data-toggle="collapse" href="#leadership">
             <i class='fas fa-pencil-alt'></i>
             <p>Leadership Management</p>
             <span class="caret"></span>
@@ -178,17 +178,17 @@ $data = \App\Models\BasicExtra::first();
           <div class="collapse
             @if(request()->path() == 'admin/lead_categories') show
   
-            @endif" id="article">
+            @endif" id="leadership">
             <ul class="nav nav-collapse">
-              @can('categories-acknowledged')
-              <li class="@if(request()->path() == 'admin/lead_categories') active @endif">
-                <a href="{{route('admin.lead_category.index') . '?language=' . $default->code}}">
+              @can('category-leadership')
+              <li class="@if(request()->path() == '/leadership/categories') active @endif">
+                <a href="{{route('admin.leadership_category.index') . '?language=' . $default->code}}">
                 <span class="sub-item">Leadership Category</span>
                 </a>
               </li>
               @endcan
-              @can('articles')
-              <li class="@if(request()->path() == 'admin/leaderships') active
+              @can('leadership')
+              <li class="@if(request()->path() == 'leadership') show
                 
                 @endif">
                 <a href="{{route('admin.leadership.index') . '?language=' . $default->code}}">
