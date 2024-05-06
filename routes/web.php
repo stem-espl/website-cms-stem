@@ -1726,6 +1726,58 @@ Route::group(
                 "Admin\PortfolioController@feature"
             )->name("admin.portfolio.feature");
 
+
+            // Admin Document Category Routes
+            Route::get("/document_category", "Admin\DocumentController@category_index")->name(
+                "admin.dcategory.index"
+            )->middleware('can:categories-document');
+            Route::post(
+                "/document_category/store",
+                "Admin\DocumentController@category_store"
+            )->name("admin.dcategory.store")->middleware('can:categories-document');
+            Route::post(
+                "/document_category/update",
+                "Admin\DocumentController@category_update"
+            )->name("admin.dcategory.update")->middleware('can:categories-document');
+            Route::post(
+                "/document_category/delete",
+                "Admin\DocumentController@category_delete"
+            )->name("admin.dcategory.delete")->middleware('can:categories-document');
+            Route::post(
+                "/document_category/bulk-delete",
+                "Admin\DocumentController@category_bulkDelete"
+            )->name("admin.dcategory.bulk.delete")->middleware('can:categories-document');
+
+
+            // Admin Documents Routes
+            Route::get("/documents", "Admin\DocumentController@index")->name(
+                "admin.documents.index"
+            )->middleware('can:documents');
+            Route::get("/document/add", "Admin\DocumentController@add")->name(
+                "admin.documents.add"
+            )->middleware('can:documents');
+            Route::get("/document/edit/{id}", "Admin\DocumentController@edit")->name(
+                "admin.documents.edit"
+            )->middleware('can:documents');
+            Route::post(
+                "/document/store",
+                "Admin\DocumentController@store"
+            )->name("admin.documents.store")->middleware('can:documents');
+            Route::post(
+                "/document/update",
+                "Admin\DocumentController@update"
+            )->name("admin.documents.update")->middleware('can:documents');
+            Route::post(
+                "/document/delete",
+                "Admin\DocumentController@delete"
+            )->name("admin.documents.delete")->middleware('can:documents');
+            Route::post(
+                "/document/bulk-delete",
+                "Admin\DocumentController@bulkDelete"
+            )->name("admin.documents.bulk.delete")->middleware('can:documents');
+
+
+
             // Admin Tender Category Routes
             Route::get("/tender_category", "Admin\TendersController@category_index")->name(
                 "admin.tcategory.index"
