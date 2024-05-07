@@ -10,10 +10,10 @@
 			<div class="row">
 				<div class="col-xl-12 text-center">
 					<div class="page-title-content">
-						<h3 class="title text-white">BOARD OF DIRECTORS</h3>
+						<h3 class="title text-white">{{ convertUtf8($name) }}</h3>
 						<nav aria-label="breadcrumb">
 							<ol class="breadcrumb">
-								<li class="breadcrumb-item"><a href="stem.html">Home</a></li>
+								<li class="breadcrumb-item"><a href="stem.html">{{__('common.Home')}}</a></li>
 								<li class="breadcrumb-item active" data-filter="" aria-current="page">{{ convertUtf8($name) }}</li>
 							</ol>
 						</nav>
@@ -30,7 +30,7 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12 pdt-40 pdb-40 text-center">
-						<h3> BOARD OF DIRECTORS</h3>
+						<h3> {{ convertUtf8($name) }}</h3>
 					</div>
                     @if (count($leadership) > 0)
                           @foreach ($leadership as $leader)
