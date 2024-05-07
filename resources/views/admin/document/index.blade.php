@@ -78,18 +78,23 @@ else
                         <th scope="col">
                             <input type="checkbox" class="bulk-check" data-val="all">
                         </th>
-                        <th scope="col">Title</th>z
+                        <th scope="col">Category Name</th>
+                        <th scope="col">English Name</th>
+                        <th scope="col">Marathi Name</th>
                         <th scope="col">Status</th>
                         <th scope="col">Actions</th>
                       </tr>
                     </thead>
                     <tbody>
-                      @foreach ($tenders as $key => $tend)
+                      @foreach ($documents as $key => $tend)
                         <tr>
                           <td>
                             <input type="checkbox" class="bulk-check" data-val="{{$tend->id}}">
                           </td>
-                          <td>{{convertUtf8($tend->title)}}</td>
+                          <td>{{convertUtf8($tend->document_category_id)}}</td>
+
+                          <td>{{convertUtf8($tend->name)}}</td>
+                          <td>{{convertUtf8($tend->name_mr)}}</td>
                           <td>
                             @if ($tend->status == 1)
                               <h2 class="d-inline-block"><span class="badge badge-success">Active</span></h2>
