@@ -77,3 +77,5 @@ ALTER TABLE `document_categories` ADD `name_mr` VARCHAR(255) NULL DEFAULT NULL A
 ALTER TABLE `document_categories` ADD `slug` VARCHAR(250) NULL DEFAULT NULL AFTER `name_mr`;
 ALTER TABLE `documents` ADD `files` VARCHAR(255) NULL DEFAULT NULL AFTER `status`;
 ALTER TABLE `documents` ADD `name_mr` VARCHAR(255) NULL DEFAULT NULL AFTER `name`;
+--07-05-2024
+ALTER TABLE `features` ADD `total_numbers` FLOAT NULL DEFAULT NULL AFTER `serial_number`;
