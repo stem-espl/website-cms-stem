@@ -23,9 +23,7 @@ class DocumentController extends Controller
     else
     	$lang = Language::where('is_default', 1)->first();
     $lang_id = $lang->id;
-
     $data['documents'] = Document::orderBy('id', 'DESC')->paginate(10);
-
     $data['lang_id'] = $lang_id;
 
     return view('admin.document.index', $data);
@@ -224,7 +222,7 @@ class DocumentController extends Controller
       }
 
       $tcategory = DocumentCategory::findOrFail($request->dcategory_id);
-      dd($tcategory);
+
       $tcategory->name = $request->name;
       $tcategory->name_mr = $request->name_mr;
       $tcategory->status = $request->status;

@@ -25,7 +25,7 @@ else
 
 @section('content')
   <div class="page-header">
-    <h4 class="page-title">Tenders</h4>
+    <h4 class="page-title">Document</h4>
     <ul class="breadcrumbs">
       <li class="nav-home">
         <a href="{{route('admin.dashboard')}}">
@@ -36,7 +36,7 @@ else
         <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-        <a href="javascript:void(0)">Tenders</a>
+        <a href="javascript:void(0)">Document</a>
       </li>
     </ul>
   </div>
@@ -47,7 +47,7 @@ else
         <div class="card-header">
             <div class="row">
                 <div class="col-lg-4">
-                    <div class="card-title d-inline-block">Tenders</div>
+                    <div class="card-title d-inline-block">Document</div>
                 </div>
                 <div class="col-lg-3">
                     @if (!empty($langs))
@@ -60,7 +60,7 @@ else
                     @endif
                 </div>
                 <div class="col-lg-4 offset-lg-1 mt-2 mt-lg-0">
-                    <a href="{{route('admin.tenders.add')}}" class="btn btn-primary float-right btn-sm"><i class="fas fa-plus"></i> Add Tender</a>
+                    <a href="{{route('admin.documents.add')}}" class="btn btn-primary float-right btn-sm"><i class="fas fa-plus"></i> Add Document</a>
                     <button class="btn btn-danger float-right btn-sm mr-2 d-none bulk-delete" data-href="{{route('admin.tenders.bulk.delete')}}"><i class="flaticon-interface-5"></i> Delete</button>
                 </div>
             </div>
@@ -68,8 +68,8 @@ else
         <div class="card-body">
           <div class="row">
             <div class="col-lg-12">
-              @if (count($tenders) == 0)
-                <h3 class="text-center">NO TENDER FOUND</h3>
+              @if (count($documents) == 0)
+                <h3 class="text-center">NO Document FOUND</h3>
               @else
                 <div class="table-responsive">
                   <table class="table table-striped mt-3">
@@ -78,7 +78,7 @@ else
                         <th scope="col">
                             <input type="checkbox" class="bulk-check" data-val="all">
                         </th>
-                        <th scope="col">Title</th>
+                        <th scope="col">Title</th>z
                         <th scope="col">Status</th>
                         <th scope="col">Actions</th>
                       </tr>
@@ -127,7 +127,7 @@ else
         <div class="card-footer">
           <div class="row">
             <div class="d-inline-block mx-auto">
-              {{$tenders->appends(['language' => request()->input('language')])->links()}}
+              {{$documents->appends(['language' => request()->input('language')])->links()}}
             </div>
           </div>
         </div>

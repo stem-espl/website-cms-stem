@@ -25,7 +25,7 @@ else
 
 @section('content')
   <div class="page-header">
-    <h4 class="page-title">Tender Add</h4>
+    <h4 class="page-title">Document Add</h4>
     <ul class="breadcrumbs">
       <li class="nav-home">
         <a href="{{route('admin.dashboard')}}">
@@ -36,13 +36,13 @@ else
         <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-        <a href="{{route('admin.tenders.index')}}">Tenders</a>
+        <a href="{{route('admin.tenders.index')}}">Document</a>
       </li>
       <li class="separator">
         <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-        <a href="javascript:void(0)">Tender Add</a>
+        <a href="javascript:void(0)">Document Add</a>
       </li>
     </ul>
   </div>
@@ -52,7 +52,7 @@ else
         <div class="card-header">
             <div class="row">
                 <div class="col-lg-10">
-                    <div class="card-title">Tender Add</div>
+                    <div class="card-title">Document Add</div>
                 </div>
                 <div class="col-lg-2">
                     @if (!empty($langs))
@@ -72,41 +72,24 @@ else
               <form id="ajaxForm" action="{{route('admin.tenders.store')}}" method="post">
                 @csrf
                 <div class="form-group">
-                  <label for="">Tender Category **</label>
+                  <label for="">Document Category **</label>
                   <select class="form-control" name="tender_category">
                     <option value="">Select</option>
-                    @foreach($tendersCat as $cat)
-                    <option value="{{$cat->id}}">{{$cat->title}}</option>
-                    @endforeach
+                    {{-- @foreach($documents as $cat) --}}
+                    {{-- <option value="{{$cat->id}}">{{$cat->title}}</option>
+                    @endforeach --}}
                   </select>
                   <p id="errtender_category" class="em text-danger mb-0"></p>
                 </div>
                 <div class="form-group">
-                  <label for="">Title in English **</label>
+                  <label for="">Name in English **</label>
                   <input type="text" class="form-control" name="title" value="" placeholder="Enter title in english">
                   <p id="errtitle" class="em text-danger mb-0"></p>
                 </div>
                 <div class="form-group">
-                  <label for="">Title in Marathi **</label>
+                  <label for="">Name in Marathi **</label>
                   <input type="text" class="form-control" name="title_mr" value="" placeholder="Enter title in marathi">
                   <p id="errtitle_mr" class="em text-danger mb-0"></p>
-                </div>
-
-                <div class="form-group">
-                  <label for="">Description in English **</label>
-                  <textarea class="form-control" name="description" value="" placeholder="Enter description in english"></textarea>
-                  <p id="errdescription" class="em text-danger mb-0"></p>
-                </div>
-                <div class="form-group">
-                  <label for="">Description in Marathi **</label>
-                  <textarea class="form-control" name="description_mr" value="" placeholder="Enter description in marathi"></textarea>
-                  <p id="errdescription_mr" class="em text-danger mb-0"></p>
-                </div>
-
-                <div class="form-group">
-                  <label for="">Tender E-Link **</label>
-                  <input type="text" class="form-control" name="tender_link" value="" placeholder="Enter Tender E-Link">
-                  <p id="errtender_link" class="em text-danger mb-0"></p>
                 </div>
 
                 <div class="form-group">
@@ -120,23 +103,15 @@ else
                 </div>
 
                 <div class="form-group">
-                  <div id="downloadFile" class="form-group">
-                      <label for="">Tender Document **</label>
+                      <div id="downloadFile" class="form-group">
+                      <label for="">Document File **</label>
                       <br>
                       <input name="tender_doc" type="file" accept="application/pdf" >
                       <p class="mb-0 text-warning">Only PDF file is allowed. File size should be less than 2MB.</p>
                       <p id="errtender_doc" class="mb-0 text-danger em"></p>
                   </div>
-                </div>
-
-                <div class="form-group">
-                  <label for="">Deadline</label>
-                  <input type="date" name="deadline" class="form-control">
-                  <p id="errdeadline" class="mb-0 text-danger em"></p>
-                </div>
-                
+                </div>                
               </form>
-
             </div>
           </div>
         </div>
