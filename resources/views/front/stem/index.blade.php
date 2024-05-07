@@ -39,16 +39,20 @@
           </div>
         </div>
         <div class="row mrt-100 mrt-lg-90">
+        @if (count($features) > 0)
+        @foreach ($features as $key => $feature)
           <div class="col-md-6 col-lg-6 col-xl-3">
             <div class="funfact mrb-lg-30 mrb-60">
               <div class="icon">
                 <span class="webexflaticon flaticon-like-3"></span>
               </div>
-              <h2 class="counter">316</h2>
-              <h6 class="title">Million litres of water per day</h6>
+              <h2 class="counter">{{$feature->total_numbers}}</h2>
+              <h6 class="title">{{$feature->title}}</h6>
             </div>
           </div>
-          <div class="col-md-6 col-lg-6 col-xl-3">
+          @endforeach
+        @endif
+          <!-- <div class="col-md-6 col-lg-6 col-xl-3">
             <div class="funfact mrb-lg-30 mrb-60">
               <div class="icon">
                 <span class="webexflaticon flaticon-man-2"></span>
@@ -74,7 +78,7 @@
               <h2 class="counter">32</h2>
               <h6 class="title">Seasoned Experiences</h6>
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
     </section>

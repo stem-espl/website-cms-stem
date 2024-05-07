@@ -68,3 +68,4 @@ ALTER TABLE `tender_category` CHANGE `id` `id` INT(11) NOT NULL AUTO_INCREMENT, 
 
 INSERT INTO `permissions` (`id`, `name`, `guard_name`, `group_name`, `status`, `basic`, `created_at`, `updated_at`) VALUES (NULL, 'categories-tender', 'admin', 'tenders', '1', '0', '2024-04-19 14:45:27', '2024-04-19 14:45:27');
 INSERT INTO `permissions` (`id`, `name`, `guard_name`, `group_name`, `status`, `basic`, `created_at`, `updated_at`) VALUES (NULL, 'tenders', 'admin', 'tenders', '1', '0', '2024-04-19 14:45:27', '2024-04-19 14:45:27');
+ALTER TABLE `features` ADD `total_numbers` FLOAT NULL DEFAULT NULL AFTER `serial_number`;

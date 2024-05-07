@@ -42,10 +42,11 @@ class FeatureController extends Controller
 
         $rules = [
             'language_id' => 'required',
-            'icon' => 'required',
+            // 'icon' => 'required',
             'title' => 'required|max:50',
-            'color' => 'required',
+            // 'color' => 'required',
             'serial_number' => 'required|integer',
+            'total_numbers' => 'required|numeric',
         ];
 
         $be = BasicExtended::select('theme_version')->first();
@@ -60,7 +61,7 @@ class FeatureController extends Controller
         }
 
         $feature = new Feature;
-        $feature->icon = $request->icon;
+        // $feature->icon = $request->icon;
         $feature->language_id = $request->language_id;
         $feature->title = $request->title;
 
@@ -69,6 +70,7 @@ class FeatureController extends Controller
         }
 
         $feature->serial_number = $request->serial_number;
+        $feature->total_numbers = $request->total_numbers;
         $feature->save();
 
         Session::flash('success', 'Feature added successfully!');
@@ -78,10 +80,11 @@ class FeatureController extends Controller
     public function update(Request $request)
     {
         $rules = [
-            'icon' => 'required',
+            // 'icon' => 'required',
             'title' => 'required|max:50',
-            'color' => 'required',
+            // 'color' => 'required',
             'serial_number' => 'required|integer',
+            'total_numbers' => 'required|numeric',
         ];
 
         $be = BasicExtended::select('theme_version')->first();
@@ -92,7 +95,7 @@ class FeatureController extends Controller
         $request->validate($rules);
 
         $feature = Feature::findOrFail($request->feature_id);
-        $feature->icon = $request->icon;
+        // $feature->icon = $request->icon;
         $feature->title = $request->title;
 
         if ($be->theme_version != 'car') {
@@ -100,8 +103,8 @@ class FeatureController extends Controller
         }
 
         $feature->serial_number = $request->serial_number;
+        $feature->total_numbers = $request->total_numbers;
         $feature->save();
-
         Session::flash('success', 'Feature updated successfully!');
         return back();
     }
@@ -111,7 +114,6 @@ class FeatureController extends Controller
 
         $feature = Feature::findOrFail($request->feature_id);
         $feature->delete();
-
         Session::flash('success', 'Feature deleted successfully!');
         return back();
     }

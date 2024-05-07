@@ -57,7 +57,7 @@
               <div class="col-lg-6 offset-lg-3">
                   @csrf
                   <input type="hidden" name="feature_id" value="{{$feature->id}}">
-                  <div class="form-group">
+                  <div class="form-group ">
                     <label for="">Icon **</label>
                     <div class="btn-group d-block">
                         <button type="button" class="btn btn-primary iconpicker-component"><i class="{{$feature->icon}}"></i></button>
@@ -82,7 +82,7 @@
                     @endif
                   </div>
                   @if ($be->theme_version != 'car')
-                    <div class="form-group">
+                    <div class="form-group d-none">
                         <label>Color **</label>
                         <input class="jscolor form-control ltr" name="color" value="{{$feature->color}}">
                         @if ($errors->has('color'))
@@ -98,6 +98,12 @@
                     @endif
                     <p class="text-warning"><small>The higher the serial number is, the later the feature will be shown.</small></p>
                   </div>
+                  <div class="form-group">
+              <label for="">Total Number **</label>
+              <input type="number" class="form-control ltr" name="total_numbers" value="{{$feature->total_numbers}}" placeholder="Enter total Number">
+              <p id="errtotal_number" class="mb-0 text-danger em"></p>
+          
+            </div>
               </div>
             </div>
           </div>
