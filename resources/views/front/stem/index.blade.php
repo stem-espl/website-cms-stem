@@ -230,11 +230,11 @@
         <div class="container">
           <div class="row">
             <div class="col-lg-8 col-xl-6">
-              <h5 class="mrb-15 text-primary-color sub-title-side-line">News And Updates</h5>
-              <h2 class="mrb-30">Countless Update About STEM</h2>
+              <h5 class="mrb-15 text-primary-color sub-title-side-line">{{__('common.News And Updates')}}</h5>
+              <h2 class="mrb-30">{{__('common.Countless Update About STEM')}}</h2>
             </div>
             <div class="col-lg-4 col-xl-6 align-self-center text-left text-lg-right">
-              <a href="{{route('front.stem.img')}}" class="cs-btn-one btn-gradient-color btn-md">All News</a>
+              <a href="{{route('front.stem.img')}}" class="cs-btn-one btn-gradient-color btn-md">{{__('common.All News')}}</a>
             </div>
           </div>
         </div>

@@ -34,4 +34,10 @@ return [
     'Last' => 'Last',
     'Click Here' => 'Click Here',
     'info_page' => 'Showing _START_ to _END_ of _TOTAL_ entries',
+    'Office Address' =>'Office Address',
+    'Social Links' =>'Social Links',
+    'News And Updates' =>'News And Updates',
+    'Countless Update About STEM' =>'Countless Update About STEM',
+    'All News' =>'All News',
+    'Budget Reports' =>'Budget Reports',
 ];

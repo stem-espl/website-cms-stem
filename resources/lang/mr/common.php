@@ -33,4 +33,10 @@ return [
     'Last' => 'शेवटचा',
     'Click Here' => 'इथे क्लिक करा',
     'info_page' => '_TOTAL_ प्रविष्ट्यांपैकी _START_ ते _END_ दर्शवित आहे',
+    'Office Address' =>'कार्यालयाचा पत्ता',
+    'Social Links' =>'सामाजिक दुवे',
+    'News And Updates' =>'बातम्या आणि अपडेट्स',
+    'Countless Update About STEM' =>'स्टेम बद्दल अगणित अद्यतन',
+    'All News' =>'सर्व बातम्या',
+    'Budget Reports' =>'बजेट अहवाल',
 ];

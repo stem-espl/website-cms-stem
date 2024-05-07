@@ -88,7 +88,7 @@ $links = json_decode($menus, true);
                   </div>
                   <div class="side-info mrb-30">
                     <div class="side-panel-element mrb-25">
-                      <h4 class="mrb-10">Office Address</h4>
+                      <h4 class="mrb-10">{{__('common.Office Address')}}</h4>
                       <ul class="list-items">
                         <li>
                         @php 
@@ -117,7 +117,7 @@ $links = json_decode($menus, true);
                   </div>
 
                   @if(count($socials) > 0)
-                  <h4 class="mrb-15">Social List</h4>
+                  <h4 class="mrb-15">{{__('common.Social Links')}}</h4>
                   <ul class="social-list">
                     @foreach ($socials as $social)
                     <li><a href="{{$social['url']}}"><i class="{{$social['icon']}}"></i></a></li>

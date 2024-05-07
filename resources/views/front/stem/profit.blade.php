@@ -7,11 +7,11 @@
 			<div class="row">
 				<div class="col-xl-12 text-center">
 					<div class="page-title-content">
-						<h3 class="title bud-title">Budget Reports</h3>
+						<h3 class="title bud-title">{{__('common.News')}}</h3>
 						<nav aria-label="breadcrumb">
 							<ol class="breadcrumb">
-								<li class="breadcrumb-item"><a href="stem.html">Home</a></li>
-								<li class="breadcrumb-item active" aria-current="page">Budget Reports</li>
+								<li class="breadcrumb-item"><a href="stem.html">{{__('common.Home')}}</a></li>
+								<li class="breadcrumb-item active" aria-current="page">{{__('common.Budget Reports')}}</li>
 							</ol>
 						</nav>
 					</div>
