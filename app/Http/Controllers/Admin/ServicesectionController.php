@@ -24,7 +24,7 @@ class ServicesectionController extends Controller
     {
         $rules = [
             // 'service_section_subtitle' => 'required|max:80',
-            'our_services_desc' => 'required|max:400|min:200',
+            'our_services_desc' => 'required|max:700|min:200',
             'service_section_title' => 'required|max:25'
         ];
 

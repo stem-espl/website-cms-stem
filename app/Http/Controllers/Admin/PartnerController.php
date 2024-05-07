@@ -65,7 +65,7 @@ class PartnerController extends Controller
         }
 
         $partner = new Partner;
-        $count = Partner::get()->count();
+        $count = Partner::where('language_id',$request->language_id)->get()->count();
         if($count < 4) {
             $partner->language_id = $request->language_id;
             $partner->title = $request->title;

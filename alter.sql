@@ -82,3 +82,6 @@ ALTER TABLE `documents` ADD `name_mr` VARCHAR(255) NULL DEFAULT NULL AFTER `name
 ALTER TABLE `features` ADD `total_numbers` FLOAT NULL DEFAULT NULL AFTER `serial_number`;
 INSERT INTO `permissions` (`id`, `name`, `guard_name`, `group_name`, `status`, `basic`, `created_at`, `updated_at`) VALUES (NULL, 'categories-leadership', 'admin', 'leadership', '1', '0', '2024-04-19 14:45:27', '2024-04-19 14:45:27');
 INSERT INTO `permissions` (`id`, `name`, `guard_name`, `group_name`, `status`, `basic`, `created_at`, `updated_at`) VALUES (NULL, 'leadership', 'admin', 'leadership', '1', '0', '2024-04-19 14:45:27', '2024-04-19 14:45:27');
+ALTER TABLE `basic_settings` ADD `intro_section_subtitle` VARCHAR(255) NULL DEFAULT NULL AFTER `intro_section_title`;
+ALTER TABLE `basic_settings` CHANGE `intro_section_text` `intro_section_text` TEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL;
+ALTER TABLE `basic_settings` ADD `our_services_desc` TEXT NULL DEFAULT NULL AFTER `service_section_title`;

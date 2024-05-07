@@ -171,7 +171,7 @@ $data = \App\Models\BasicExtra::first();
     
           @endif">
           <a data-toggle="collapse" href="#leadership">
-            <i class='fas fa-pencil-alt'></i>
+            <i class="la flaticon-users"></i>
             <p>Leadership Management</p>
             <span class="caret"></span>
           </a>
@@ -210,7 +210,7 @@ $data = \App\Models\BasicExtra::first();
           @elseif(request()->is('admin/tender/add')) active
           @endif">
           <a data-toggle="collapse" href="#tenders">
-            <i class='fas fa-pencil-alt'></i>
+            <i class="la flaticon-file"></i>
             <p>Tenders Management</p>
             <span class="caret"></span>
           </a>

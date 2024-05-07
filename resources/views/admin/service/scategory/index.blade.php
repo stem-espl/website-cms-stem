@@ -81,9 +81,9 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
                                         <th scope="col">
                                             <input type="checkbox" class="bulk-check" data-val="all">
                                         </th>
-                                        <th scope="col">Icon Image</th>
+                                        <th scope="col" class="d-none">Icon Image</th>
                                         <th scope="col">Name</th>
-                                        <th scope="col">Featured</th>
+                                        <th scope="col" class="d-none">Featured</th>
                                         <th scope="col">Serial Number</th>
                                         <th scope="col">Status</th>
                                         <th scope="col">Actions</th>
@@ -95,13 +95,13 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
                                         <td>
                                             <input type="checkbox" class="bulk-check" data-val="{{$scategory->id}}">
                                         </td>
-                                        <td>
+                                        <td class="d-none">
                                             @if (!empty($scategory->image))
                                             <img src="{{asset('assets/front/img/service_category_icons/'.$scategory->image)}}" width="40">
                                             @endif
                                         </td>
                                         <td>{{convertUtf8($scategory->name)}}</td>
-                                        <td>
+                                        <td class="d-none">
                                             <form id="featureForm{{$scategory->id}}" class="d-inline-block" action="{{route('admin.scategory.feature')}}" method="post">
                                                 @csrf
                                                 <input type="hidden" name="scategory_id" value="{{$scategory->id}}">
@@ -174,17 +174,18 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
                 @csrf
                 {{-- Image Part --}}
                 <div class="form-group">
-                    <label for="">Image ** </label>
+                    <label for="">Image</label>
                     <br>
                     <div class="thumb-preview" id="thumbPreview1">
-                        <img src="{{asset('assets/admin/img/noimage.jpg')}}" alt="Icon Image">
+                        <img src="{{asset('assets/admin/img/noimage.jpg')}}" id="preview"  alt="Icon Image">
                     </div>
                     <br>
                     <br>
 
 
-                    <input id="fileInput1" type="hidden" name="image">
-                    <button id="chooseImage1" class="choose-image btn btn-primary" type="button" data-multiple="false" data-toggle="modal" data-target="#lfmModal1">Choose Image</button>
+                    <input id="fileInput1" type="file" name="image" accept="image/*" hidden>
+                    <label for="fileInput1" class="choose-image btn btn-primary">Choose Image</label>
+
 
 
                     <p class="text-warning mb-0">JPG, PNG, JPEG, SVG images are allowed</p>
@@ -237,21 +238,17 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
 </div>
 </div>
 
-<!-- Image LFM Modal -->
-<div class="modal fade lfm-modal" id="lfmModal1" tabindex="-1" role="dialog" aria-labelledby="lfmModalTitle" aria-hidden="true">
-    <i class="fas fa-times-circle"></i>
-    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-body p-0">
-                <iframe src="{{url('laravel-filemanager')}}?serial=1" style="width: 100%; height: 500px; overflow: hidden; border: none;"></iframe>
-            </div>
-        </div>
-    </div>
-</div>
 @endsection
+
 
 @section('scripts')
 <script>
+    $(document).ready(function() {
+
+        $("#fileInput1").on('change', function() {
+            preview.src=URL.createObjectURL(event.target.files[0]);
+        });
+    });
     $(document).ready(function() {
 
         // make input fields RTL
