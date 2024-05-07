@@ -15,6 +15,7 @@ return [
     'Language' => 'Language',
     'Useful Links' => 'Useful Links',
     'About Us' => 'About Us',
+    'News' => 'News',
     'Department' => 'Department',
     'STEM Shareholding' => 'STEM Shareholding',
     'Service We Offer' => 'Service We Offer',

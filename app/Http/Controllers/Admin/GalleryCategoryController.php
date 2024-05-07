@@ -56,7 +56,7 @@ class GalleryCategoryController extends Controller
           'language_id' => 'required',
           'name' => 'required|unique:gallery_categories,name',
           'status' => 'required',
-          'serial_number' => 'required'
+          // 'serial_number' => 'required'
       ];
   
       $validator = Validator::make($request->all(), $rules);
@@ -72,6 +72,7 @@ class GalleryCategoryController extends Controller
       $gallerycategory->language_id = $request->language_id;
       $gallerycategory->name = $request->name;
       $gallerycategory->status = $request->status;
+      $gallerycategory->serial_number = 1;
       $gallerycategory->slug =Str::slug($request->name.'-'.rand(10,10042), '-');
       $gallerycategory->save();
   

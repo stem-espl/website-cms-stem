@@ -30,11 +30,11 @@
 
 
                 <div class="mrb-0"><a href="#" class="text-light-gray"><i class="fas fa-globe mrr-10"></i>www.stemwater.org</a></div>
-                <div class="mrb-0 mt-3">
+                <!-- <div class="mrb-0 mt-3">
            
                     <p class="text-light-gray">{{convertUtf8($bs->contact_form_title)}}</p>
              
-                </div>
+                </div> -->
               </address>
             </div>
           </div>
