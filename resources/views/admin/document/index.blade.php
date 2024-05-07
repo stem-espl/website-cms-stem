@@ -78,18 +78,23 @@ else
                         <th scope="col">
                             <input type="checkbox" class="bulk-check" data-val="all">
                         </th>
-                        <th scope="col">Title</th>z
+                        <th scope="col">Category Name</th>
+                        <th scope="col">English Name</th>
+                        <th scope="col">Marathi Name</th>
                         <th scope="col">Status</th>
                         <th scope="col">Actions</th>
                       </tr>
                     </thead>
                     <tbody>
-                      @foreach ($tenders as $key => $tend)
+                      @foreach ($documents as $key => $tend)
                         <tr>
                           <td>
                             <input type="checkbox" class="bulk-check" data-val="{{$tend->id}}">
                           </td>
-                          <td>{{convertUtf8($tend->title)}}</td>
+                          <td>{{convertUtf8($tend->document_category_id)}}</td>
+
+                          <td>{{convertUtf8($tend->name)}}</td>
+                          <td>{{convertUtf8($tend->name_mr)}}</td>
                           <td>
                             @if ($tend->status == 1)
                               <h2 class="d-inline-block"><span class="badge badge-success">Active</span></h2>
@@ -98,7 +103,7 @@ else
                             @endif
                           </td>
                           <td>
-                            <a class="btn btn-secondary btn-sm" href="{{route('admin.tenders.edit',$tend->id)}}">
+                            <a class="btn btn-secondary btn-sm" href="{{route('admin.documents.edit',$tend->id)}}">
                               <span class="btn-label">
                                 <i class="fas fa-edit"></i>
                               </span>
@@ -106,7 +111,7 @@ else
                             </a>
                             <form class="deleteform d-inline-block" action="{{route('admin.tenders.delete')}}" method="post">
                               @csrf
-                              <input type="hidden" name="tender_id" value="{{$tend->id}}">
+                              <input type="hidden" name="document_id" value="{{$tend->id}}">
                               <button type="submit" class="btn btn-danger btn-sm deletebtn">
                                 <span class="btn-label">
                                   <i class="fas fa-trash"></i>

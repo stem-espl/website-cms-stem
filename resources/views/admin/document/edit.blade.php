@@ -70,26 +70,26 @@ else
           <div class="row">
             <div class="col-lg-6 offset-lg-3">
               <form id="ajaxForm" action="{{route('admin.tenders.update')}}" method="post">
-                <input type="hidden" name="tender_id" value="{{$tender->id}}">
+                <input type="hidden" name="document_id" value="{{$document->id}}">
                 @csrf
                 <div class="form-group">
                   <label for="">Tender Category **</label>
                   <select class="form-control" name="tender_category">
                     <option value="">Select</option>
-                    @foreach($tendersCat as $cat)
-                    <option value="{{$cat->id}}" <?php if($tender->id == $cat->id) echo "selected"; ?>>{{$cat->title}}</option>
-                    @endforeach
+                    {{-- @foreach($category as $cat)
+                    <option value="{{$cat}}" <?php if($category->name == $cat) echo "selected"; ?>>{{$cat->name}}</option>
+                    @endforeach --}}
                   </select>
                   <p id="errtender_category" class="em text-danger mb-0"></p>
                 </div>
                 <div class="form-group">
-                  <label for="">Title in English **</label>
-                  <input type="text" class="form-control" name="title" value="{{$tender->title}}" placeholder="Enter title in english">
+                  <label for="">document in English **</label>
+                  <input type="text" class="form-control" name="title" value="{{$document->title}}" placeholder="Enter title in english">
                   <p id="errtitle" class="em text-danger mb-0"></p>
                 </div>
                 <div class="form-group">
-                  <label for="">Title in Marathi **</label>
-                  <input type="text" class="form-control" name="title_mr" value="{{$tender->title_mr}}" placeholder="Enter title in marathi">
+                  <label for="">document in Marathi **</label>
+                  <input type="text" class="form-control" name="title_mr" value="{{$document->title_mr}}" placeholder="Enter title in marathi">
                   <p id="errtitle_mr" class="em text-danger mb-0"></p>
                 </div>
 
@@ -122,9 +122,9 @@ else
 
                 <div class="form-group">
                   <div id="downloadFile" class="form-group">
-                      <label for="">Tender Document **</label>
+                      <label for="">document Document **</label>
                       <br>
-                      <input name="tender_doc" type="file" accept="application/pdf" >
+                      <input name="file" type="file" accept="application/pdf" >
                       <p class="mb-0 text-warning">Only PDF file is allowed. File size should be less than 2MB.</p>
                       <p id="errtender_doc" class="mb-0 text-danger em"></p>
                   </div>
@@ -133,7 +133,7 @@ else
                     <div class="col-sm-3 col-md-2 col-lg-6 col-xl-4">
                       <div class="pdf">
                           <a href="javascript:void(0)" class="delete_file pdf-delete img-circle"><strong>&times;</strong></a>
-                        <a class="pdf-body d-block" href="{{asset('assets/stem/tenders')}}/{{$tender->files}}" download><img src="{{asset('assets/front/img/pdf.png')}}" class="text-center align-items-center" width="100"></a>
+                        <a class="pdf-body d-block" href="{{asset('assets/stem/documents')}}/{{$tender->files}}" download><img src="{{asset('assets/front/img/pdf.png')}}" class="text-center align-items-center" width="100"></a>
                       </div>
                     </div>
                   </div>

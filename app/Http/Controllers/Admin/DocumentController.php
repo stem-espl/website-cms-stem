@@ -26,7 +26,7 @@ class DocumentController extends Controller
     $data['documents'] = Document::orderBy('id', 'DESC')->paginate(10);
     $data['lang_id'] = $lang_id;
 
-    return view('admin.document.index', $data);
+    return view('admin.document.index',$data);
   }
 
   public function add(Request $request)
@@ -37,7 +37,7 @@ class DocumentController extends Controller
     	$lang = Language::where('is_default', 1)->first();
     $lang_id = $lang->id;
     $lang_code = $lang->code;
-
+    $data['category']=DocumentCategory::select('id','name')->get();
     if($lang_code == 'mr')
     	$data['documentCat'] = DocumentCategory::select('id','name_mr as title')->where('status','1')->orderBy('title', 'ASC')->get();
     else
@@ -52,29 +52,26 @@ class DocumentController extends Controller
             'title' => 'required|max:255',
             'title_mr' => 'required|max:255',
             'status' => 'required',
-            'documents' => 'required|max:2048|mimes:application/pdf,pdf',
         ],[
         	'title.required' => 'The title in english field is required.',
         	'title_mr.required' => 'The title in marathi field is required.',
-        	'documents.required' => 'The document is required.',
+        	'file.required' => 'The document is required.',
         ]);
-
-
   		$document = new Document();
-  		$document->document_category_id = $request->document_category_id;
-  		if ($request->hasFile('documents')) {
-          $file = $request->file('documents');
+  		// $document->document_category_id = $request->document_category_id;
+  		if ($request->hasFile('files')) {
+          $file = $request->file('files');
           $rand = rand(000,999);
           $filename = $rand.'-'.time() . '.' . $file->getClientOriginalExtension();
-          $request->file('documents')->move('assets/stem/documents/', $filename);
+          $request->file('files')->move('assets/stem/documents/', $filename);
           $document->files = $filename;
       }
 
-      $document->title = $request->title;
-      $document->title_mr = $request->title_mr;
+      $document->document_category_id = $request->document_category;
+      $document->name = $request->title;
+      $document->name_mr = $request->title_mr;
       $document->status = $request->status;
       $document->save();
-
   		Session::flash('success', 'Documents added successfully!');
       return "success";
   }
@@ -94,6 +91,7 @@ class DocumentController extends Controller
     	$data['documentCat'] = DocumentCategory::select('id','name as title')->orderBy('title', 'ASC')->get();
 
     $data['document'] = Document::findOrFail($id);
+    $data['category'] = DocumentCategory::select('id','name')->get();
 
     return view('admin.document.edit', $data);
   }

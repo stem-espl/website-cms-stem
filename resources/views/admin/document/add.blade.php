@@ -69,15 +69,15 @@ else
         <div class="card-body pt-5 pb-4">
           <div class="row">
             <div class="col-lg-6 offset-lg-3">
-              <form id="ajaxForm" action="{{route('admin.tenders.store')}}" method="post">
+              <form id="ajaxForm" action="{{route('admin.documents.store')}}" method="post">
                 @csrf
                 <div class="form-group">
                   <label for="">Document Category **</label>
-                  <select class="form-control" name="tender_category">
+                  <select class="form-control" name="document_category">
                     <option value="">Select</option>
-                    {{-- @foreach($documents as $cat) --}}
-                    {{-- <option value="{{$cat->id}}">{{$cat->title}}</option>
-                    @endforeach --}}
+                    @foreach($category as $cat)
+                    <option value="{{$cat->id}}">{{$cat->name}}</option>
+                    @endforeach 
                   </select>
                   <p id="errtender_category" class="em text-danger mb-0"></p>
                 </div>
@@ -106,7 +106,7 @@ else
                       <div id="downloadFile" class="form-group">
                       <label for="">Document File **</label>
                       <br>
-                      <input name="tender_doc" type="file" accept="application/pdf" >
+                      <input name="files" id="files" type="file" accept="application/pdf" >
                       <p class="mb-0 text-warning">Only PDF file is allowed. File size should be less than 2MB.</p>
                       <p id="errtender_doc" class="mb-0 text-danger em"></p>
                   </div>
