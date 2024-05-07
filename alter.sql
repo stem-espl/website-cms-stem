@@ -80,3 +80,5 @@ ALTER TABLE `documents` ADD `files` VARCHAR(255) NULL DEFAULT NULL AFTER `status
 ALTER TABLE `documents` ADD `name_mr` VARCHAR(255) NULL DEFAULT NULL AFTER `name`;
 --07-05-2024
 ALTER TABLE `features` ADD `total_numbers` FLOAT NULL DEFAULT NULL AFTER `serial_number`;
+INSERT INTO `permissions` (`id`, `name`, `guard_name`, `group_name`, `status`, `basic`, `created_at`, `updated_at`) VALUES (NULL, 'categories-leadership', 'admin', 'leadership', '1', '0', '2024-04-19 14:45:27', '2024-04-19 14:45:27');
+INSERT INTO `permissions` (`id`, `name`, `guard_name`, `group_name`, `status`, `basic`, `created_at`, `updated_at`) VALUES (NULL, 'leadership', 'admin', 'leadership', '1', '0', '2024-04-19 14:45:27', '2024-04-19 14:45:27');
