@@ -71,14 +71,14 @@ use app\Http\Controllers\Front\StemController;
 			Route::post("/sendquote", "Front\FrontendController@sendquote")->name( "front.sendquote" ); 
 			Route::get( "/checkout/payment/{slug1}/{slug2}", "Front\FrontendController@loadpayment" )->name("front.load.payment"); 
 			// Package Order Routes 
-			Route::post("/package-order", "Front\FrontendController@submitorder")->name( "front.packageorder.submit" );
+			Route::post("/package-order", "Front\FrontendController@submitorder")->name("front.packageorder.submit");
 			Route::get( "/order-confirmation/{packageid}/{packageOrderId}", "Front\FrontendController@orderConfirmation" )->name("front.packageorder.confirmation"); 
 			Route::get( "/payment/{packageid}/cancle", "Payment\PaymentController@paycancle" )->name("front.payment.cancle"); 
 			//Paypal Routes 
 			Route::post("/paypal/submit", "Payment\PaypalController@store")->name( "front.paypal.submit" ); 
-			Route::get( "/paypal/{packageid}/notify", "Payment\PaypalController@notify" )->name("front.paypal.notify");
+			Route::get("/paypal/{packageid}/notify", "Payment\PaypalController@notify")->name("front.paypal.notify");
 			//Stripe Routes 
-			Route::post("/stripe/submit", "Payment\StripeController@store")->name( "front.stripe.submit" ); 
+			Route::post("/stripe/submit", "Payment\StripeController@store")->name("front.stripe.submit"); 
 			//Paystack Routes 
 			Route::post("/paystack/submit", "Payment\PaystackController@store")->name( "front.paystack.submit" ); 
 			//PayTM Routes 
@@ -108,16 +108,16 @@ use app\Http\Controllers\Front\StemController;
 			Route::get("/gallery", "Front\FrontendController@gallery")->name( "front.gallery" ); 
 			Route::get("/faq", "Front\FrontendController@faq")->name("front.faq"); 
 			// change language routes 
-			Route::get( "/changelanguage/{lang}", "Front\FrontendController@changeLanguage" )->name("changeLanguage"); 
+			Route::get( "/changelanguage/{lang}", "Front\FrontendController@changeLanguage")->name("changeLanguage");
 			// change language routes 
 			Route::post( "/change_language", "Front\FrontendController@change_language" )->name("change_language"); 
 			// Product 
 			Route::get("/cart", "Front\ProductController@cart")->name("front.cart"); 
 			Route::get("/add-to-cart/{id}", "Front\ProductController@addToCart")->name( "add.cart" ); 
 			Route::post("/cart/update", "Front\ProductController@updatecart")->name( "cart.update" ); 
-			Route::get( "/cart/item/remove/{id}", "Front\ProductController@cartitemremove" )->name("cart.item.remove"); 
+			Route::get( "/cart/item/remove/{id}", "Front\ProductController@cartitemremove")->name("cart.item.remove"); 
 			Route::get("/checkout", "Front\ProductController@checkout")->name( "front.checkout" ); 
-			Route::get( "/checkout/{slug}", "Front\ProductController@Prdouctcheckout" )->name("front.product.checkout"); 
+			Route::get("/checkout/{slug}","Front\ProductController@Prdouctcheckout")->name("front.product.checkout");
 			Route::post("/coupon", "Front\ProductController@coupon")->name( "front.coupon" ); 
 			// review 
 			Route::post( "product/review/submit", "Front\ReviewController@reviewsubmit" )->name("product.review.submit"); 
@@ -702,7 +702,7 @@ use app\Http\Controllers\Front\StemController;
 			Route::post( "/page/bulk-delete", "Admin\PageController@bulkDelete" )->name("admin.page.bulk.delete"); 
 			Route::post( "/upload/pagebuilder", "Admin\PageController@uploadPbImage" )->name("admin.pb.upload"); 
 			Route::post( "/remove/img/pagebuilder", "Admin\PageController@removePbImage" )->name("admin.pb.remove"); 
-			Route::post( "/upload/tui/pagebuilder", "Admin\PageController@uploadPbTui" )->name("admin.pb.tui.upload");
+			Route::post( "/upload/tui/pagebuilder", "Admin\PageController@uploadPbTui")->name("admin.pb.tui.upload");
 			// Page Builder Routes 
 			Route::get( "/pagebuilder/content", "Admin\PageBuilderController@content" )->name("admin.pagebuilder.content"); 
 			Route::post( "/pagebuilder/save", "Admin\PageBuilderController@save" )->name("admin.pagebuilder.save"); 
@@ -727,7 +727,7 @@ use app\Http\Controllers\Front\StemController;
 			Route::post( "/product/update", "Admin\ProductController@update" )->name("admin.product.update"); 
 			Route::post( "/product/feature", "Admin\ProductController@feature" )->name("admin.product.feature"); 
 			Route::post( "/product/delete", "Admin\ProductController@delete" )->name("admin.product.delete"); 
-			Route::get( "/product/populer/tags/", "Admin\ProductController@populerTag" )->name("admin.product.tags"); 
+			Route::get( "/product/populer/tags/", "Admin\ProductController@populerTag" )->name("admin.product.tags");
 			Route::post( "/product/populer/tags/update", "Admin\ProductController@populerTagupdate" )->name("admin.popular-tag.update"); 
 			Route::post( "/product/paymentStatus", "Admin\ProductController@paymentStatus" )->name("admin.product.paymentStatus"); 
 			Route::get( "product/{id}/getcategory", "Admin\ProductController@getCategory" )->name("admin.product.getcategory"); 
@@ -744,7 +744,7 @@ use app\Http\Controllers\Front\StemController;
 			Route::post("/coupon/store", "Admin\CouponController@store")->name( "admin.coupon.store" ); Route::get( "/coupon/{id}/edit", "Admin\CouponController@edit" )->name("admin.coupon.edit"); Route::post( "/coupon/update", "Admin\CouponController@update" )->name("admin.coupon.update"); Route::post( "/coupon/delete", "Admin\CouponController@delete" )->name("admin.coupon.delete"); 
 			// Admin Coupon Routes End 
 			// Product Order 
-			Route::get( "/product/all/orders", "Admin\ProductOrderController@all" )->name("admin.all.product.orders"); 
+			Route::get("/product/all/orders", "Admin\ProductOrderController@all" )->name("admin.all.product.orders");
 			Route::get( "/product/pending/orders", "Admin\ProductOrderController@pending" )->name("admin.pending.product.orders"); 
 			Route::get( "/product/processing/orders", "Admin\ProductOrderController@processing" )->name("admin.processing.product.orders"); 
 			Route::get( "/product/completed/orders", "Admin\ProductOrderController@completed" )->name("admin.completed.product.orders"); 
@@ -753,8 +753,8 @@ use app\Http\Controllers\Front\StemController;
 			Route::get( "/product/orders/detais/{id}", "Admin\ProductOrderController@details" )->name("admin.product.details"); 
 			Route::post( "/product/order/delete", "Admin\ProductOrderController@orderDelete" )->name("admin.product.order.delete"); 
 			Route::post( "/product/order/bulk-delete", "Admin\ProductOrderController@bulkOrderDelete" )->name("admin.product.order.bulk.delete"); 
-			Route::get( "/product/orders/report", "Admin\ProductOrderController@report" )->name("admin.orders.report"); 
-			Route::get( "/product/export/report", "Admin\ProductOrderController@exportReport" )->name("admin.orders.export"); 
+			Route::get("/product/orders/report", "Admin\ProductOrderController@report")->name("admin.orders.report");
+			Route::get("/product/export/report", "Admin\ProductOrderController@exportReport")->name("admin.orders.export"); 
 			// Product Order end//Event Manage Routes 
 			Route::get( "/event/categories", "Admin\EventCategoryController@index" )->name("admin.event.category.index"); 
 			Route::post( "/event/category/store", "Admin\EventCategoryController@store" )->name("admin.event.category.store"); 
@@ -772,18 +772,18 @@ use app\Http\Controllers\Front\StemController;
 			Route::post("/event/update", "Admin\EventController@update")->name( "admin.event.update" ); 
 			Route::post( "/event/{id}/uploadUpdate", "Admin\EventController@uploadUpdate" )->name("admin.event.uploadUpdate"); 
 			Route::post("/event/delete", "Admin\EventController@delete")->name( "admin.event.delete" ); 
-			Route::post( "/event/bulk-delete", "Admin\EventController@bulkDelete" )->name("admin.event.bulk.delete"); 
+			Route::post( "/event/bulk-delete", "Admin\EventController@bulkDelete" )->name("admin.event.bulk.delete");
 			Route::get( "/event/{lang_id}/get-categories", "Admin\EventController@getCategories" )->name("admin.event.get-categories"); 
-			Route::get( "/events/payment-log", "Admin\EventController@paymentLog" )->name("admin.event.payment.log"); 
-			Route::post( "/events/payment-log/delete", "Admin\EventController@paymentLogDelete" )->name("admin.event.payment.delete"); 
-			Route::post( "/events/payment/bulk-delete", "Admin\EventController@paymentLogBulkDelete" )->name("admin.event.payment.bulk.delete"); 
+			Route::get("/events/payment-log", "Admin\EventController@paymentLog" )->name("admin.event.payment.log"); 
+			Route::post("/events/payment-log/delete", "Admin\EventController@paymentLogDelete" )->name("admin.event.payment.delete"); 
+			Route::post("/events/payment/bulk-delete", "Admin\EventController@paymentLogBulkDelete" )->name("admin.event.payment.bulk.delete"); 
 			Route::post( "/events/payment-log-update", "Admin\EventController@paymentLogUpdate" )->name("admin.event.payment.log.update"); 
 			Route::get("/events/report", "Admin\EventController@report")->name( "admin.event.report" ); 
 			Route::get( "/events/export", "Admin\EventController@exportReport" )->name("admin.event.export"); 
 			//Donation Manage Routes 
 			Route::get("/donations", "Admin\DonationController@index")->name( "admin.donation.index" ); 
-			Route::get( "/donation/settings", "Admin\DonationController@settings" )->name("admin.donation.settings"); 
-			Route::post( "/donation/settings", "Admin\DonationController@updateSettings" )->name("admin.donation.settings"); 
+			Route::get("/donation/settings", "Admin\DonationController@settings" )->name("admin.donation.settings"); 
+			Route::post( "/donation/settings", "Admin\DonationController@updateSettings")->name("admin.donation.settings"); 
 			Route::post( "/donation/store", "Admin\DonationController@store" )->name("admin.donation.store"); 
 			Route::get( "/donation/{id}/edit", "Admin\DonationController@edit" )->name("admin.donation.edit"); 
 			Route::post( "/donation/update", "Admin\DonationController@update" )->name("admin.donation.update"); 
@@ -814,7 +814,7 @@ use app\Http\Controllers\Front\StemController;
 			Route::get("/articles", "Admin\ArticleController@index")->name( "admin.article.index" ); 
 			Route::get( "/article/{langId}/get_categories", "Admin\ArticleController@getCategories" ); 
 			Route::post( "/article/store", "Admin\ArticleController@store" )->name("admin.article.store"); 
-			Route::get( "/article/{id}/edit", "Admin\ArticleController@edit" )->name("admin.article.edit"); 
+			Route::get("/article/{id}/edit", "Admin\ArticleController@edit" )->name("admin.article.edit"); 
 			Route::post( "/article/update", "Admin\ArticleController@update" )->name("admin.article.update"); 
 			Route::post( "/article/delete", "Admin\ArticleController@delete" )->name("admin.article.delete"); 
 			Route::post( "/article/bulk_delete", "Admin\ArticleController@bulkDelete" )->name("admin.article.bulk_delete");
@@ -827,12 +827,12 @@ use app\Http\Controllers\Front\StemController;
 			// Admin Course Routes 
 			Route::get("/courses", "Admin\CourseController@index")->name( "admin.course.index" ); 
 			Route::get("/course/create", "Admin\CourseController@create")->name( "admin.course.create" ); 
-			Route::get( "/course/{langId}/get_categories", "Admin\CourseController@getCategories" ); 
+			Route::get("/course/{langId}/get_categories", "Admin\CourseController@getCategories" ); 
 			Route::post("/course/store", "Admin\CourseController@store")->name( "admin.course.store" ); 
-			Route::get( "/course/{id}/edit", "Admin\CourseController@edit" )->name("admin.course.edit"); 
-			Route::post( "/course/update", "Admin\CourseController@update" )->name("admin.course.update"); 
-			Route::post( "/course/delete", "Admin\CourseController@delete" )->name("admin.course.delete"); 
-			Route::post( "/course/bulk_delete", "Admin\CourseController@bulkDelete" )->name("admin.course.bulk_delete"); 
+			Route::get("/course/{id}/edit", "Admin\CourseController@edit" )->name("admin.course.edit"); 
+			Route::post("/course/update", "Admin\CourseController@update" )->name("admin.course.update"); 
+			Route::post("/course/delete", "Admin\CourseController@delete" )->name("admin.course.delete"); 
+			Route::post("/course/bulk_delete","Admin\CourseController@bulkDelete")->name("admin.course.bulk_delete");
 			Route::post( "/course/featured", "Admin\CourseController@featured" )->name("admin.course.featured"); 
 			Route::get( "/course/purchase-log", "Admin\CourseController@purchaseLog" )->name("admin.course.purchaseLog"); 
 			Route::post( "/course/purchase/payment-status", "Admin\CourseController@purchasePaymentStatus" )->name("admin.course.purchasePaymentStatus"); 
@@ -840,22 +840,22 @@ use app\Http\Controllers\Front\StemController;
 			Route::post( "/course/purchase/delete", "Admin\CourseController@purchaseDelete" )->name("admin.course.purchaseDelete"); 
 			Route::post( "/course/purchase/bulk_delete", "Admin\CourseController@purchaseBulkOrderDelete" )->name("admin.course.purchaseBulkOrderDelete"); 
 			// Admin Course Modules Routes 
-			Route::get( "/course/{id?}/modules", "Admin\ModuleController@index" )->name("admin.course.module.index"); 
-			Route::post( "/course/module/store", "Admin\ModuleController@store" )->name("admin.course.module.store"); 
-			Route::post( "/course/module/update", "Admin\ModuleController@update" )->name("admin.course.module.update"); 
-			Route::post( "/course/module/delete", "Admin\ModuleController@delete" )->name("admin.course.module.delete"); 
+			Route::get("/course/{id?}/modules", "Admin\ModuleController@index")->name("admin.course.module.index");
+			Route::post("/course/module/store", "Admin\ModuleController@store")->name("admin.course.module.store");
+			Route::post("/course/module/update", "Admin\ModuleController@update")->name("admin.course.module.update"); 
+			Route::post("/course/module/delete", "Admin\ModuleController@delete")->name("admin.course.module.delete");
 			Route::post( "/course/module/bulk_delete", "Admin\ModuleController@bulkDelete" )->name("admin.course.module.bulk_delete"); 
 			// Admin Module Lessons Routes 
 			Route::get( "/module/{id}/lessons", "Admin\LessonController@index" )->name("admin.module.lesson.index"); 
-			Route::post( "/module/lesson/store", "Admin\LessonController@store" )->name("admin.module.lesson.store"); 
-			Route::post( "module/lesson/update", "Admin\LessonController@update" )->name("admin.module.lesson.update"); 
-			Route::post( "/module/lesson/delete", "Admin\LessonController@delete" )->name("admin.module.lesson.delete"); 
+			Route::post( "/module/lesson/store", "Admin\LessonController@store" )->name("admin.module.lesson.store");
+			Route::post("module/lesson/update", "Admin\LessonController@update")->name("admin.module.lesson.update");
+			Route::post("/module/lesson/delete", "Admin\LessonController@delete")->name("admin.module.lesson.delete"); 
 			Route::post( "/module/lesson/bulk_delete", "Admin\LessonController@bulkDelete" )->name("admin.module.lesson.bulk_delete"); 
 			Route::get( "/course/settings", "Admin\CourseController@settings" )->name("admin.course.settings"); 
-			Route::post( "/course/settings", "Admin\CourseController@updateSettings" )->name("admin.course.settings"); 
+			Route::post("/course/settings", "Admin\CourseController@updateSettings")->name("admin.course.settings"); 
 			// Admin Course Enroll Report Routes 
 			Route::get( "/course/enrolls/report", "Admin\CourseController@report" )->name("admin.enrolls.report"); 
-			Route::get( "/course/export/report", "Admin\CourseController@exportReport" )->name("admin.enrolls.export"); 
+			Route::get("/course/export/report", "Admin\CourseController@exportReport")->name("admin.enrolls.export"); 
 			// Admin RSS feed Routes 
 			Route::get("/rss", "Admin\RssFeedsController@index")->name( "admin.rss.index" ); 
 			Route::get("/rss/feeds", "Admin\RssFeedsController@feed")->name( "admin.rss.feed" ); 
@@ -866,28 +866,29 @@ use app\Http\Controllers\Front\StemController;
 			Route::post( "/rss/delete", "Admin\RssFeedsController@rssdelete" )->name("admin.rssfeed.delete"); 
 			Route::post( "/rss/feed/delete", "Admin\RssFeedsController@delete" )->name("admin.rss.delete"); 
 			Route::post( "/rss-posts/bulk/delete", "Admin\RssFeedsController@bulkDelete" )->name("admin.rss.bulk.delete"); 
-			Route::get( "rss-feed/update/{id}", "Admin\RssFeedsController@feedUpdate" )->name("admin.rss.feedUpdate"); 
-			Route::get( "rss-feed/cronJobUpdate", "Admin\RssFeedsController@cronJobUpdate" )->name("rss.cronJobUpdate"); 
+			Route::get("rss-feed/update/{id}", "Admin\RssFeedsController@feedUpdate" )->name("admin.rss.feedUpdate"); 
+			Route::get("rss-feed/cronJobUpdate", "Admin\RssFeedsController@cronJobUpdate")->name("rss.cronJobUpdate"); 
 			// Register User start 
 			Route::get( "register/users", "Admin\RegisterUserController@index" )->name("admin.register.user"); 
 			Route::post( "register/users/ban", "Admin\RegisterUserController@userban" )->name("register.user.ban"); 
 			Route::post( "register/users/email", "Admin\RegisterUserController@emailStatus" )->name("register.user.email"); 
-			Route::get( "register/user/details/{id}", "Admin\RegisterUserController@view" )->name("register.user.view"); 
-			Route::post( "register/user/delete", "Admin\RegisterUserController@delete" )->name("register.user.delete"); 
+			Route::get("register/user/details/{id}", "Admin\RegisterUserController@view")->name("register.user.view"); 
+			Route::post("register/user/delete", "Admin\RegisterUserController@delete")->name("register.user.delete");
 			Route::post( "register/user/bulk-delete", "Admin\RegisterUserController@bulkDelete" )->name("register.user.bulk.delete"); 
 			Route::get( "register/user/{id}/changePassword", "Admin\RegisterUserController@changePass" )->name("register.user.changePass"); 
 			Route::post( "register/user/updatePassword", "Admin\RegisterUserController@updatePassword" )->name("register.user.updatePassword"); 
 			//Register User end 
+
 			// Admin Push Notification Routes 
 			Route::get( "/pushnotification/settings", "Admin\PushController@settings" )->name("admin.pushnotification.settings"); 
 			Route::post( "/pushnotification/update/settings", "Admin\PushController@updateSettings" )->name("admin.pushnotification.updateSettings"); 
-			Route::get( "/pushnotification/send", "Admin\PushController@send" )->name("admin.pushnotification.send"); 
+			Route::get( "/pushnotification/send", "Admin\PushController@send" )->name("admin.pushnotification.send");
 			Route::post("/push", "Admin\PushController@push")->name( "admin.pushnotification.push" ); 
 			// Admin Subscriber Routes 
 			Route::get( "/subscribers", "Admin\SubscriberController@index" )->name("admin.subscriber.index"); 
-			Route::get( "/mailsubscriber", "Admin\SubscriberController@mailsubscriber" )->name("admin.mailsubscriber"); 
+			Route::get("/mailsubscriber", "Admin\SubscriberController@mailsubscriber")->name("admin.mailsubscriber");
 			Route::post( "/subscribers/sendmail", "Admin\SubscriberController@subscsendmail" )->name("admin.subscribers.sendmail"); 
-			Route::post( "/subscriber/delete", "Admin\SubscriberController@delete" )->name("admin.subscriber.delete"); 
+			Route::post("/subscriber/delete", "Admin\SubscriberController@delete")->name("admin.subscriber.delete"); 
 			Route::post( "/subscriber/bulk-delete", "Admin\SubscriberController@bulkDelete" )->name("admin.subscriber.bulk.delete");
 			// Admin Support Ticket Routes 
 			Route::get("/all/tickets", "Admin\TicketController@all")->name( "admin.tickets.all" ); 
@@ -895,12 +896,13 @@ use app\Http\Controllers\Front\StemController;
 			Route::get("/open/tickets", "Admin\TicketController@open")->name( "admin.tickets.open" ); 
 			Route::get( "/closed/tickets", "Admin\TicketController@closed" )->name("admin.tickets.closed"); 
 			Route::get( "/ticket/messages/{id}", "Admin\TicketController@messages" )->name("admin.ticket.messages"); 
-			Route::post( "/zip-file/upload/", "Admin\TicketController@zip_file_upload" )->name("admin.zip_file.upload"); 
+			Route::post("/zip-file/upload/", "Admin\TicketController@zip_file_upload")->name("admin.zip_file.upload"); 
 			Route::post( "/ticket/reply/{id}", "Admin\TicketController@ticketReply" )->name("admin.ticket.reply"); 
 			Route::get( "/ticket/close/{id}", "Admin\TicketController@ticketclose" )->name("admin.ticket.close"); 
-			Route::post( "/ticket/assign/staff", "Admin\TicketController@ticketAssign" )->name("ticket.assign.staff"); 
+			Route::post("/ticket/assign/staff", "Admin\TicketController@ticketAssign")->name("ticket.assign.staff"); 
 			Route::get( "/ticket/settings", "Admin\TicketController@settings" )->name("admin.ticket.settings"); 
-			Route::post( "/ticket/settings", "Admin\TicketController@updateSettings" )->name("admin.ticket.settings");
+			Route::post("/ticket/settings", "Admin\TicketController@updateSettings")->name("admin.ticket.settings");
+			
 			// Admin Package Form Builder Routes 
 			Route::get( "/package/settings", "Admin\PackageController@settings" )->name("admin.package.settings"); 
 			Route::post( "/package/settings", "Admin\PackageController@updateSettings" )->name("admin.package.settings"); 
@@ -929,7 +931,7 @@ use app\Http\Controllers\Front\StemController;
 			// Admin Package Orders Routes 
 			Route::get("/all/orders", "Admin\PackageController@all")->name( "admin.all.orders" ); 
 			Route::get( "/pending/orders", "Admin\PackageController@pending" )->name("admin.pending.orders"); 
-			Route::get( "/processing/orders", "Admin\PackageController@processing" )->name("admin.processing.orders"); 
+			Route::get("/processing/orders", "Admin\PackageController@processing")->name("admin.processing.orders"); 
 			Route::get( "/completed/orders", "Admin\PackageController@completed" )->name("admin.completed.orders"); 
 			Route::get( "/rejected/orders", "Admin\PackageController@rejected" )->name("admin.rejected.orders"); 
 			Route::post( "/orders/status", "Admin\PackageController@status" )->name("admin.orders.status"); 
@@ -939,9 +941,9 @@ use app\Http\Controllers\Front\StemController;
 			Route::get( "/package/order/report", "Admin\PackageController@report" )->name("admin.package.report"); 
 			Route::get( "/package/order/export", "Admin\PackageController@exportReport" )->name("admin.package.export"); 
 			// Admin Subscription Routes 
-			Route::get( "/subscriptions", "Admin\SubscriptionController@subscriptions" )->name("admin.subscriptions"); 
+			Route::get("/subscriptions", "Admin\SubscriptionController@subscriptions")->name("admin.subscriptions"); 
 			Route::get( "/subscription/requests", "Admin\SubscriptionController@requests" )->name("admin.requests.subscriptions"); 
-			Route::post( "/subscription/mail", "Admin\SubscriptionController@mail" )->name("admin.subscription.mail"); 
+			Route::post("/subscription/mail", "Admin\SubscriptionController@mail")->name("admin.subscription.mail"); 
 			Route::post( "/package/subscription/delete", "Admin\SubscriptionController@subDelete" )->name("admin.package.subDelete"); 
 			Route::post( "/package/subscription/status", "Admin\SubscriptionController@status" )->name("admin.subscription.status"); 
 			Route::post( "/sub/bulk-delete", "Admin\SubscriptionController@bulkSubDelete" )->name("admin.sub.bulk.delete"); 
@@ -950,12 +952,12 @@ use app\Http\Controllers\Front\StemController;
 			Route::post( "/quote/visibility/update", "Admin\QuoteController@updateVisibility" )->name("admin.quote.visibility.update"); 
 			Route::get("/quote/form", "Admin\QuoteController@form")->name( "admin.quote.form" ); 
 			Route::post( "/quote/form/store", "Admin\QuoteController@formstore" )->name("admin.quote.form.store"); 
-			Route::post( "/quote/inputDelete", "Admin\QuoteController@inputDelete" )->name("admin.quote.inputDelete"); 
+			Route::post("/quote/inputDelete", "Admin\QuoteController@inputDelete")->name("admin.quote.inputDelete"); 
 			Route::get( "/quote/{id}/inputEdit", "Admin\QuoteController@inputEdit" )->name("admin.quote.inputEdit"); 
 			Route::get( "/quote/{id}/options", "Admin\QuoteController@options" )->name("admin.quote.options"); 
-			Route::post( "/quote/inputUpdate", "Admin\QuoteController@inputUpdate" )->name("admin.quote.inputUpdate"); 
+			Route::post("/quote/inputUpdate", "Admin\QuoteController@inputUpdate")->name("admin.quote.inputUpdate"); 
 			Route::post("/quote/delete", "Admin\QuoteController@delete")->name( "admin.quote.delete" ); 
-			Route::post( "/quote/bulk-delete", "Admin\QuoteController@bulkDelete" )->name("admin.quote.bulk.delete"); 
+			Route::post("/quote/bulk-delete", "Admin\QuoteController@bulkDelete")->name("admin.quote.bulk.delete"); 
 			// Admin Quote Routes 
 			Route::get("/all/quotes", "Admin\QuoteController@all")->name( "admin.all.quotes" ); 
 			Route::get( "/pending/quotes", "Admin\QuoteController@pending" )->name("admin.pending.quotes"); 
@@ -969,10 +971,10 @@ use app\Http\Controllers\Front\StemController;
 			Route::post( "/quote/visibility/update", "Admin\QuoteController@updateVisibility" )->name("admin.quote.visibility.update"); 
 			Route::get("/quote/form", "Admin\QuoteController@form")->name( "admin.quote.form" ); 
 			Route::post( "/quote/form/store", "Admin\QuoteController@formstore" )->name("admin.quote.form.store"); 
-			Route::post( "/quote/inputDelete", "Admin\QuoteController@inputDelete" )->name("admin.quote.inputDelete"); 
+			Route::post("/quote/inputDelete", "Admin\QuoteController@inputDelete")->name("admin.quote.inputDelete"); 
 			Route::get( "/quote/{id}/inputEdit", "Admin\QuoteController@inputEdit" )->name("admin.quote.inputEdit"); 
 			Route::get( "/quote/{id}/options", "Admin\QuoteController@options" )->name("admin.quote.options"); 
-			Route::post( "/quote/inputUpdate", "Admin\QuoteController@inputUpdate" )->name("admin.quote.inputUpdate"); 
+			Route::post("/quote/inputUpdate", "Admin\QuoteController@inputUpdate")->name("admin.quote.inputUpdate"); 
 			Route::post("/quote/delete", "Admin\QuoteController@delete")->name( "admin.quote.delete" ); 
 			Route::post( "/quote/bulk-delete", "Admin\QuoteController@bulkDelete" )->name("admin.quote.bulk.delete"); 
 			// Admin Quote Routes 
@@ -983,6 +985,7 @@ use app\Http\Controllers\Front\StemController;
 			Route::get( "/rejected/quotes", "Admin\QuoteController@rejected" )->name("admin.rejected.quotes"); 
 			Route::post("/quotes/status", "Admin\QuoteController@status")->name( "admin.quotes.status" ); 
 			Route::post("/quote/mail", "Admin\QuoteController@mail")->name( "admin.quotes.mail" ); 
+
 			// Admin Roles Routes 
 			Route::get("/roles", "Admin\RoleController@index")->name( "admin.role.index" ); 
 			Route::post("/role/store", "Admin\RoleController@store")->name( "admin.role.store" ); 
@@ -990,22 +993,25 @@ use app\Http\Controllers\Front\StemController;
 			Route::post("/role/delete", "Admin\RoleController@delete")->name( "admin.role.delete" ); 
 			Route::get( "role/{id}/permissions/manage", "Admin\RoleController@managePermissions" )->name("admin.role.permissions.manage"); 
 			Route::post( "role/permissions/update", "Admin\RoleController@updatePermissions" )->name("admin.role.permissions.update");
+
 			// Admin Users Routes 
 			Route::get("/users", "Admin\UserController@index")->name( "admin.user.index" ); 
 			Route::post("/user/store", "Admin\UserController@store")->name( "admin.user.store" ); 
 			Route::get("/user/{id}/edit", "Admin\UserController@edit")->name( "admin.user.edit" ); 
 			Route::post("/user/update", "Admin\UserController@update")->name( "admin.user.update" ); 
 			Route::post("/user/delete", "Admin\UserController@delete")->name( "admin.user.delete" );
+
 			// Admin Users Routes 
 			Route::get("/e-governance", "Admin\EGovernanceController@index")->name( "admin.egovernance.index" ); 
-			Route::post("/e-governance/store", "Admin\EGovernanceController@store")->name( "admin.egovernance.store" ); 
-			Route::get( "/e-governance/{id}/edit", "Admin\EGovernanceController@edit" )->name("admin.egovernance.edit"); 
-			Route::post("/egovernance/update", "Admin\EGovernanceController@update")->name( "admin.egovernance.update" ); 
+			Route::post("/e-governance/store", "Admin\EGovernanceController@store")->name("admin.egovernance.store");
+			Route::get("/e-governance/{id}/edit", "Admin\EGovernanceController@edit")->name("admin.egovernance.edit"); 
+			Route::post("/egovernance/update", "Admin\EGovernanceController@update")->name("admin.egovernance.update" ); 
 			Route::post("/egovernance/delete", "Admin\EGovernanceController@delete")->name( "admin.egovernance.delete" ); 
+
 			// Admin View Client Feedbacks Routes 
 			Route::get( "/feedbacks", "Admin\FeedbackController@feedbacks" )->name("admin.client_feedbacks"); 
-			Route::post( "/delete_feedback", "Admin\FeedbackController@deleteFeedback" )->name("admin.delete_feedback"); 
-			Route::post( "/feedback/bulk-delete", "Admin\FeedbackController@bulkDelete" )->name("admin.feedback.bulk.delete"); 
+			Route::post("/delete_feedback", "Admin\FeedbackController@deleteFeedback")->name("admin.delete_feedback"); 
+			Route::post("/feedback/bulk-delete", "Admin\FeedbackController@bulkDelete" )->name("admin.feedback.bulk.delete"); 
 	});
 			
 	// Dynamic Routes 
