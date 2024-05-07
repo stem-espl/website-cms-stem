@@ -26,7 +26,9 @@ class CourseController extends Controller
 {
     public function index(Request $request)
     {
-        $language = Language::where('code', $request->language)->first();
+        // $language = Language::where('code', $request->language)->first();
+        $lang_code = isset($request->language) ?  $request->language : 'en';
+        $language = Language::where('code', $lang_code)->first();
         $language_id = $language->id;
 
         $courses = Course::where('language_id', $language_id)

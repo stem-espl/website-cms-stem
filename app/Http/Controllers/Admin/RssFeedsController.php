@@ -13,7 +13,9 @@ class RssFeedsController extends Controller
 {
     public function index(Request $request)
     {
-        $lang = Language::where('code', $request->language)->first();
+        // $lang = Language::where('code', $request->language)->first();
+        $lang_code = isset($request->language) ?  $request->language : 'en';
+        $lang = Language::where('code', $lang_code)->first();
         $lang_id = $lang->id;
         $data['lang_id'] = $lang_id;
         $data['rsss'] = RssPost::where('language_id', $lang_id)->orderBy('id', 'DESC')->paginate(10);
@@ -22,7 +24,9 @@ class RssFeedsController extends Controller
 
     public function feed(Request $request)
     {
-        $lang = Language::where('code', $request->language)->first();
+        // $lang = Language::where('code', $request->language)->first();
+        $lang_code = isset($request->language) ?  $request->language : 'en';
+        $lang = Language::where('code', $lang_code)->first();
         $lang_id = $lang->id;
         $data['lang_id'] = $lang_id;
         $data['feeds'] = RssFeed::where('language_id', $lang_id)->orderBy('id', 'DESC')->paginate(10);

@@ -121,7 +121,9 @@ class PageBuilderController extends Controller
 
     public function content(Request $request)
     {
-        $lang = Language::where('code', $request->language)->firstOrFail();
+        // $lang = Language::where('code', $request->language)->firstOrFail();
+        $lang_code = isset($request->language) ?  $request->language : 'en';
+        $lang = Language::where('code', $lang_code)->first();
         if ($request->type == 'page') {
             $data = Page::findOrFail($request->id);
         } elseif ($request->type == 'themeHome') {
