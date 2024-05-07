@@ -86,6 +86,7 @@ else
                         </th>
                         <th scope="col">Name</th>
                         <th scope="col">Status</th>
+                        <th scope="col">Slug</th>
                         <th scope="col">Actions</th>
                       </tr>
                     </thead>
@@ -103,6 +104,7 @@ else
                               <h2 class="d-inline-block"><span class="badge badge-danger">Deactive</span></h2>
                             @endif
                           </td>
+                          <td>{{$dcategory->slug}}</td>
                           <td>
                             <a class="btn btn-secondary btn-sm editbtn" href="#editModal" data-toggle="modal" data-dcategory_id="{{$dcategory->id}}" data-name="{{$dcategory->name}}" data-status="{{$dcategory->status}}" data-name_mr="{{$dcategory->name_mr}}">
                               <span class="btn-label">

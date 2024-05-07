@@ -168,9 +168,9 @@ class DocumentController extends Controller
 
 
     if($lang_code == 'mr')
-    	$data['documentCat'] = DocumentCategory::select('id','status','name_mr','name','name_mr as title')->orderBy('id', 'DESC')->paginate(10);
+    	$data['documentCat'] = DocumentCategory::select('id','status','name_mr','name','name_mr as title','slug')->orderBy('id', 'DESC')->paginate(10);
     else
-    	$data['documentCat'] = DocumentCategory::select('id','status','name_mr','name','name as title')->orderBy('id', 'DESC')->paginate(10);
+    	$data['documentCat'] = DocumentCategory::select('id','status','name_mr','name','name as title','slug')->orderBy('id', 'DESC')->paginate(10);
     $data['lang_id'] = $lang_id;
 
     return view('admin.document.category.index', $data);
@@ -184,7 +184,7 @@ class DocumentController extends Controller
         ];
 
         $rules = [
-            'name' => 'required|max:255',
+            'name' => 'required|max:255|unique:document_categories,name',
             'name_mr' => 'required|max:255',
             'status' => 'required',
         ];
@@ -199,8 +199,8 @@ class DocumentController extends Controller
         $tcategory->name = $request->name;
         $tcategory->name_mr = $request->name_mr;
         $tcategory->status = $request->status;
+        $tcategory->slug =Str::slug($request->name.'-'.rand(10,10042), '-');
         $tcategory->save();
-
         Session::flash('success', 'Document category added successfully!');
         return "success";
   }
@@ -212,7 +212,7 @@ class DocumentController extends Controller
             'name_mr.required' => 'The name in marathi is required',
         ];
       $rules = [
-          'name' => 'required|max:255',
+          'name' => 'required|max:255|unique:document_categories,name',
           'name_mr' => 'required|max:255',
           'status' => 'required',
       ];
@@ -223,7 +223,8 @@ class DocumentController extends Controller
           return response()->json($validator->errors());
       }
 
-      $tcategory = DocumentCategory::findOrFail($request->tcategory_id);
+      $tcategory = DocumentCategory::findOrFail($request->dcategory_id);
+      dd($tcategory);
       $tcategory->name = $request->name;
       $tcategory->name_mr = $request->name_mr;
       $tcategory->status = $request->status;

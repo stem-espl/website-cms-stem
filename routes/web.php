@@ -1734,23 +1734,23 @@ Route::group(
             // Admin Document Category Routes
             Route::get("/document_category", "Admin\DocumentController@category_index")->name(
                 "admin.dcategory.index"
-            )->middleware('can:categories-document');
+            );
             Route::post(
                 "/document_category/store",
                 "Admin\DocumentController@category_store"
-            )->name("admin.dcategory.store")->middleware('can:categories-document');
+            )->name("admin.dcategory.store");
             Route::post(
                 "/document_category/update",
                 "Admin\DocumentController@category_update"
-            )->name("admin.dcategory.update")->middleware('can:categories-document');
+            )->name("admin.dcategory.update");
             Route::post(
                 "/document_category/delete",
                 "Admin\DocumentController@category_delete"
-            )->name("admin.dcategory.delete")->middleware('can:categories-document');
+            )->name("admin.dcategory.delete");
             Route::post(
                 "/document_category/bulk-delete",
                 "Admin\DocumentController@category_bulkDelete"
-            )->name("admin.dcategory.bulk.delete")->middleware('can:categories-document');
+            )->name("admin.dcategory.bulk.delete");
 
 
             // Admin Documents Routes
