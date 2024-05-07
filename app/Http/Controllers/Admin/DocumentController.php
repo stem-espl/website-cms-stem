@@ -26,7 +26,7 @@ class DocumentController extends Controller
     $data['documents'] = Document::orderBy('id', 'DESC')->paginate(10);
     $data['lang_id'] = $lang_id;
 
-    return view('admin.document.index', $data);
+    return view('admin.document.index',$data);
   }
 
   public function add(Request $request)
@@ -91,6 +91,7 @@ class DocumentController extends Controller
     	$data['documentCat'] = DocumentCategory::select('id','name as title')->orderBy('title', 'ASC')->get();
 
     $data['document'] = Document::findOrFail($id);
+    $data['category'] = DocumentCategory::select('id','name')->get();
 
     return view('admin.document.edit', $data);
   }

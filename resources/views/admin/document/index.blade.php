@@ -103,7 +103,7 @@ else
                             @endif
                           </td>
                           <td>
-                            <a class="btn btn-secondary btn-sm" href="{{route('admin.tenders.edit',$tend->id)}}">
+                            <a class="btn btn-secondary btn-sm" href="{{route('admin.documents.edit',$tend->id)}}">
                               <span class="btn-label">
                                 <i class="fas fa-edit"></i>
                               </span>
@@ -111,7 +111,7 @@ else
                             </a>
                             <form class="deleteform d-inline-block" action="{{route('admin.tenders.delete')}}" method="post">
                               @csrf
-                              <input type="hidden" name="tender_id" value="{{$tend->id}}">
+                              <input type="hidden" name="document_id" value="{{$tend->id}}">
                               <button type="submit" class="btn btn-danger btn-sm deletebtn">
                                 <span class="btn-label">
                                   <i class="fas fa-trash"></i>
