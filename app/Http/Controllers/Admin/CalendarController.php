@@ -17,7 +17,9 @@ use Image;
 class CalendarController extends Controller
 {
     public function index(Request $request) {
-        $lang = Language::where('code', $request->language)->first();
+        // $lang = Language::where('code', $request->language)->first();
+        $lang_code = isset($request->language) ?  $request->language : 'en';
+        $lang = Language::where('code', $lang_code)->first();
 
         $lang_id = $lang->id;
         $data['events'] = News::where('language_id', $lang_id)->orderBy('id', 'DESC')->get();

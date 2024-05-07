@@ -15,7 +15,11 @@ class ApproachController extends Controller
 {
     public function index(Request $request)
     {
-        $lang = Language::where('code', $request->language)->firstOrFail();
+        // $lang = Language::where('code', $request->language)->firstOrFail();
+        if(!empty($request->language))
+    	$lang = Language::where('code', $request->language)->first();
+        else
+    	$lang = Language::where('is_default', 1)->first();
         $data['lang_id'] = $lang->id;
         $data['abs'] = $lang->basic_setting;
         $data['points'] = Point::where('language_id', $data['lang_id'])->orderBy('id', 'DESC')->get();

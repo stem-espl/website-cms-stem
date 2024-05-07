@@ -28,11 +28,13 @@ class PackageController extends Controller
 {
   public function index(Request $request)
   {
-    $lang = Language::where('code', $request->language)->first();
+    // $lang = Language::where('code', $request->language)->first();
+    $lang_code = isset($request->language) ?  $request->language : 'en';
+    $lang = Language::where('code', $lang_code)->first();
 
-        $lang_id = $lang->id;
-        $data['packages'] = Package::where('language_id', $lang_id)->orderBy('id', 'DESC')->get();
-        $data['abx'] = $lang->basic_extra;
+    $lang_id = $lang->id;
+    $data['packages'] = Package::where('language_id', $lang_id)->orderBy('id', 'DESC')->get();
+    $data['abx'] = $lang->basic_extra;
 
     $data['lang_id'] = $lang_id;
 
@@ -63,7 +65,9 @@ class PackageController extends Controller
 
   public function form(Request $request)
   {
-    $lang = Language::where('code', $request->language)->firstOrFail();
+    // $lang = Language::where('code', $request->language)->firstOrFail();
+    $lang_code = isset($request->language) ?  $request->language : 'en';
+    $lang = Language::where('code', $lang_code)->first();
     $data['lang_id'] = $lang->id;
     $data['abs'] = $lang->basic_setting;
     $data['inputs'] = PackageInput::where('language_id', $data['lang_id'])->get();

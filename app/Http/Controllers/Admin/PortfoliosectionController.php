@@ -14,7 +14,7 @@ class PortfoliosectionController extends Controller
     public function index(Request $request)
     {
         if (empty($request->language)) {
-            $data['lang_id'] = 0;
+            $data['lang_id'] = 169;
             $data['abs'] = BS::firstOrFail();
         } else {
             $lang = Language::where('code', $request->language)->firstOrFail();

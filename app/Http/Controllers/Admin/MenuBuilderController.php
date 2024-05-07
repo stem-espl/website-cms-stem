@@ -20,7 +20,9 @@ class MenuBuilderController extends Controller
 {
 
     public function index(Request $request) {
-        $lang = Language::where('code', $request->language)->firstOrFail();
+        // $lang = Language::where('code', $request->language)->firstOrFail();
+        $lang_code = isset($request->language) ?  $request->language : 'en';
+        $lang = Language::where('code', $lang_code)->first();
         $data['lang_id'] = $lang->id;
 
         // set language
@@ -72,7 +74,9 @@ class MenuBuilderController extends Controller
     }
 
     public function megaMenuEdit(Request $request) {
-        $lang = Language::where('code', $request->language)->firstOrFail();
+        // $lang = Language::where('code', $request->language)->firstOrFail();
+        $lang_code = isset($request->language) ?  $request->language : 'en';
+        $lang = Language::where('code', $lang_code)->first();
 
         // for 'services' mega menu
         if ($request->type == 'services') {
