@@ -61,6 +61,7 @@
                         <th scope="col">Icon</th>
                         <th scope="col">Title</th>
                         <th scope="col">Serial Number</th>
+                        <th scope="col">Total Number</th>
                         <th scope="col">Actions</th>
                       </tr>
                     </thead>
@@ -71,6 +72,7 @@
                           <td><i class="{{ $feature->icon }}"></i></td>
                           <td>{{convertUtf8($feature->title)}}</td>
                           <td>{{$feature->serial_number}}</td>
+                          <td>{{$feature->total_numbers}}</td>
                           <td>
                             <a class="btn btn-secondary btn-sm" href="{{route('admin.feature.edit', $feature->id) . '?language=' . request()->input('language')}}">
                               <span class="btn-label">
@@ -151,7 +153,7 @@
               <p id="errtitle" class="mb-0 text-danger em"></p>
             </div>
             @if ($be->theme_version != 'car')
-                <div class="form-group">
+                <div class="form-group d-none">
                     <label>Color **</label>
                     <input class="jscolor form-control ltr" name="color" value="">
                     <p id="errcolor" class="mb-0 text-danger em"></p>
@@ -163,6 +165,13 @@
               <p id="errserial_number" class="mb-0 text-danger em"></p>
               <p class="text-warning"><small>The higher the serial number is, the later the feature will be shown.</small></p>
             </div>
+            <div class="form-group">
+              <label for="">Total Number **</label>
+              <input type="number" class="form-control ltr" name="total_numbers" value="" placeholder="Enter total Number">
+              <p id="errtotal_number" class="mb-0 text-danger em"></p>
+          
+            </div>
+
           </form>
         </div>
         <div class="modal-footer">
