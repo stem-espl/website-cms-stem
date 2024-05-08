@@ -21,7 +21,7 @@
     <title>{{$bs->website_title}}</title>
     <link
     rel="icon"
-    href="{{asset('assets/front/img/'.$bs->favicon)}}"
+    href="{{asset('assets/stem/favicon/'.$bs->favicon)}}"
     >
     @includeif('admin.partials.styles')
     @php
