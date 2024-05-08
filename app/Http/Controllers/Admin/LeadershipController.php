@@ -20,7 +20,9 @@ class LeadershipController extends Controller
  // Leadership Category Functions  
   public function index(Request $request)
   {
-    $language = Language::where('code', $request->language)->first();
+    // $language = Language::where('code', $request->language)->first();
+    $lang_code = isset($request->language) ?  $request->language : 'en';
+    $language = Language::where('code', $lang_code)->first();
 
     $categories = LeadCategory::where('language_id', $language->id)
       ->orderBy('id', 'desc')
@@ -138,7 +140,9 @@ class LeadershipController extends Controller
 public function leadIndex(Request $request)
 {
     // dd('hi');
-  $lang = Language::where('code', $request->language)->first();
+  // $lang = Language::where('code', $request->language)->first();
+  $lang_code = isset($request->language) ?  $request->language : 'en';
+  $lang = Language::where('code', $lang_code)->first();
 
   $lang_id = $lang->id;
   $data['leaderships'] = Leadership::where('language_id', $lang_id)->orderBy('id', 'DESC')->get();

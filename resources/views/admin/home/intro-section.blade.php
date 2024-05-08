@@ -75,30 +75,19 @@
                             <label for="">Image ** </label>
                             <br>
                             <div class="thumb-preview" id="thumbPreview1">
-                                <img src="{{asset('assets/front/img/'.$abs->intro_bg)}}" alt="Image">
+                                <img src="{{asset('assets/stem/intro/'.$abs->intro_bg)}}" id="preview" alt="Image">
                             </div>
                             <br>
                             <br>
 
 
-                            <input id="fileInput1" type="hidden" name="image">
-                            <button id="chooseImage1" class="choose-image btn btn-primary" type="button" data-multiple="false" data-toggle="modal" data-target="#lfmModal1">Choose Image</button>
+                            <input id="fileInput1" type="file" name="image" accept="image/*" hidden>
+                            <label for="fileInput1" class="choose-image btn btn-primary">Choose Image</label>
 
 
                             <p class="text-warning mb-0">JPG, PNG, JPEG, SVG images are allowed</p>
                             <p class="text-danger mb-0 em" id="errimage"></p>
 
-                            <!-- Image LFM Modal -->
-                            <div class="modal fade lfm-modal" id="lfmModal1" tabindex="-1" role="dialog" aria-labelledby="lfmModalTitle" aria-hidden="true">
-                                <i class="fas fa-times-circle"></i>
-                                <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-body p-0">
-                                            <iframe src="{{url('laravel-filemanager')}}?serial=1" style="width: 100%; height: 500px; overflow: hidden; border: none;"></iframe>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                     @if ($be->theme_version == 'logistic' || $be->theme_version == 'lawyer')
@@ -109,41 +98,37 @@
                                 <label for="">Image 2 ** </label>
                                 <br>
                                 <div class="thumb-preview" id="thumbPreview2">
-                                    <img src="{{asset('assets/front/img/'.$abe->intro_bg2)}}" alt="Image">
+                                    <img src="{{asset('assets/stem/intro/'.$abe->intro_bg2)}}" id="preview2" alt="Image">
                                 </div>
                                 <br>
                                 <br>
 
 
-                                <input id="fileInput2" type="hidden" name="image_2">
-                                <button id="chooseImage2" class="choose-image btn btn-primary" type="button" data-multiple="false" data-toggle="modal" data-target="#lfmModal2">Choose Image</button>
+                                <input id="fileInput2" type="file" name="image" accept="image/*" hidden>
+                                <label for="fileInput2" class="choose-image btn btn-primary">Choose Image</label>
 
 
                                 <p class="text-warning mb-0">JPG, PNG, JPEG, SVG images are allowed</p>
                                 <p class="text-danger mb-0 em" id="errimage_2"></p>
 
-                                <!-- Image 2 LFM Modal -->
-                                <div class="modal fade lfm-modal" id="lfmModal2" tabindex="-1" role="dialog" aria-labelledby="lfmModalTitle" aria-hidden="true">
-                                    <i class="fas fa-times-circle"></i>
-                                    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-body p-0">
-                                                <iframe src="{{url('laravel-filemanager')}}?serial=2" style="width: 100%; height: 500px; overflow: hidden; border: none;"></iframe>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     @endif
                 </div>
 
                 <div class="row">
-                    <div class="col-lg-6">
+                    <div class="col-lg-12">
                         <div class="form-group">
                           <label for="">Title **</label>
                           <input type="text" class="form-control" name="intro_section_title" value="{{$abs->intro_section_title}}">
                           <p id="errintro_section_title" class="em text-danger mb-0"></p>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                          <label for="">Sub-title **</label>
+                          <input type="text" class="form-control" name="intro_section_subtitle" value="{{$abs->intro_section_subtitle}}">
+                          <p id="errintro_section_subtitle" class="em text-danger mb-0"></p>
                         </div>
                     </div>
                     <div class="col-lg-6 d-none">
@@ -202,3 +187,18 @@
   </div>
 
 @endsection
+@section('scripts')
+<script>
+    $(document).ready(function() {
+
+        $("#fileInput1").on('change', function() {
+            preview.src=URL.createObjectURL(event.target.files[0]);
+        });
+
+        $("#fileInput2").on('change', function() {
+            preview2.src=URL.createObjectURL(event.target.files[0]);
+        });
+    });
+</script>
+@endsection
+        

@@ -28,14 +28,14 @@
         <div class="row align-items-center">
           <div class="col-md-12 col-xl-6">
             <div class="about-image-block mrb-lg-60">
-              <img class="img-full" src="{{asset('assets/stem/images/about/home_about.png')}}" alt="">
+              <img class="img-full" src="{{asset('assets/stem/intro')}}/{{$bs->intro_bg}}" alt="">
             </div>
           </div>
           <div class="col-md-12 col-xl-6">
-            <h2 class="title-under-line mrb-70">{{$bs->intro_section_title}}<span class="f-weight-400">{{$bs->intro_section_text}} </span></h2>
+            <h2 class="title-under-line mrb-70">{{$bs->intro_section_title}} <span class="f-weight-400">{{$bs->intro_section_subtitle}} </span></h2>
             <h5 class="mrb-30 text-primary-color">{{__('common.A company with difference')}}</h5>
-            <p class="mrb-40">{{$bs->intro_section_button_text}} </p>
-            <a href="{{$bs->intro_section_button_url}}" class="cs-btn-one btn-gradient-color btn-lg">Know more about STEM</a>
+            <p class="mrb-40">{{$bs->intro_section_text}} </p>
+            <a href="{{$bs->intro_section_button_url}}" class="cs-btn-one btn-gradient-color btn-lg">{{$bs->intro_section_button_text}}</a>
           </div>
         </div>
         <div class="row mrt-100 mrt-lg-90">
@@ -43,48 +43,38 @@
         @foreach ($features as $key => $feature)
           <div class="col-md-6 col-lg-6 col-xl-3">
             <div class="funfact mrb-lg-30 mrb-60">
+              @if($key == 1)
+              <div class="icon">
+                <span class="webexflaticon flaticon-man-2"></span>
+              </div>
+              @elseif($key == 2)
+              <div class="icon">
+                <span class="webexflaticon flaticon-trophy-1"></span>
+              </div>
+              @elseif($key == 3)
+              <div class="icon">
+                <span class="webexflaticon flaticon-briefcase-1"></span>
+              </div>
+              @else
               <div class="icon">
                 <span class="webexflaticon flaticon-like-3"></span>
               </div>
+              @endif
               <h2 class="counter">{{$feature->total_numbers}}</h2>
               <h6 class="title">{{$feature->title}}</h6>
             </div>
           </div>
           @endforeach
         @endif
-          <!-- <div class="col-md-6 col-lg-6 col-xl-3">
-            <div class="funfact mrb-lg-30 mrb-60">
-              <div class="icon">
-                <span class="webexflaticon flaticon-man-2"></span>
-              </div>
-              <h2 class="counter">3.5</h2>
-              <h6 class="title">Million People Covered</h6>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-6 col-xl-3">
-            <div class="funfact mrb-lg-30 mrb-60">
-              <div class="icon">
-                <span class="webexflaticon flaticon-trophy-1"></span>
-              </div>
-              <h2 class="counter">35</h2>
-              <h6 class="title">Villages Watered</h6>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-6 col-xl-3">
-            <div class="funfact mrb-lg-30 mrb-60">
-              <div class="icon">
-                <span class="webexflaticon flaticon-briefcase-1"></span>
-              </div>
-              <h2 class="counter">32</h2>
-              <h6 class="title">Seasoned Experiences</h6>
-            </div>
-          </div> -->
+          
         </div>
       </div>
     </section>
     <!-- About Section End -->
     <!-- Service Section Start -->
+    @if(!empty($bs->service_section_title) || count($scategory) > 0)
     <section class="serivce-section bg-silver-light pdt-105 pdb-80" data-background="{{asset('assets/stem/images/bg/abs-bg7.png')}}">
+      @if(!empty($bs->service_section_title))
       <div class="section-title">
         <div class="container">
           <div class="row">
@@ -104,6 +94,7 @@
           </div>
         </div>
       </div>
+      @endif
       @if (count($scategory) > 0)
       <div class="section-content">
         <div class="container">
@@ -130,6 +121,7 @@
           </div>
         </div>
       </div>
+      @endif
     </section>
     @endif
 

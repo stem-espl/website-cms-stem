@@ -80,8 +80,8 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
                       <input type="checkbox" class="bulk-check" data-val="all">
                     </th>
                     <th scope="col">Image</th>
-                    <th scope="col">Title</th>
-                    <th scope="col">Serial Number</th>
+                    <th scope="col" class="d-none">Title</th>
+                    <th scope="col" class="d-none">Serial Number</th>
                     <th scope="col">Actions</th>
                   </tr>
                 </thead>
@@ -92,10 +92,10 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
                       <input type="checkbox" class="bulk-check" data-val="{{$gallery->id}}">
                     </td>
                     <td><img src="{{asset('assets/stem/gallery/'.$gallery->image)}}" alt="" width="80"></td>
-                    <td>
+                    <td class="d-none">
                       {{strlen($gallery->title) > 70 ? mb_substr($gallery->title, 0, 70, 'UTF-8') . '...' : $gallery->title}}
                     </td>
-                    <td>{{$gallery->serial_number}}</td>
+                    <td class="d-none">{{$gallery->serial_number}}</td>
                     <td>
                       <a class="btn btn-secondary btn-sm"
                         href="{{route('admin.gallery.edit', $gallery->id) . '?language=' . request()->input('language')}}">
@@ -167,12 +167,12 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
             </select>
             <p id="errcategory_id" class="mb-0 text-danger em"></p>
           </div>
-          <div class="form-group">
+          <div class="form-group d-none" >
             <label for="">Title **</label>
             <input type="text" class="form-control" name="title" placeholder="Enter title" value="">
             <p id="errtitle" class="mb-0 text-danger em"></p>
           </div>
-          <div class="form-group">
+          <div class="form-group d-none">
             <label for="">Serial Number **</label>
             <input type="number" class="form-control ltr" name="serial_number" value=""
               placeholder="Enter Serial Number">
@@ -190,19 +190,6 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
   </div>
 </div>
 
-<!-- Image LFM Modal -->
-<div class="modal fade lfm-modal" id="lfmModal1" tabindex="-1" role="dialog" aria-labelledby="lfmModalTitle"
-  aria-hidden="true">
-  <i class="fas fa-times-circle"></i>
-  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-body p-0">
-        <iframe src="{{url('laravel-filemanager')}}?serial=1"
-          style="width: 100%; height: 500px; overflow: hidden; border: none;"></iframe>
-      </div>
-    </div>
-  </div>
-</div>
 @endsection
 
 @section('scripts')

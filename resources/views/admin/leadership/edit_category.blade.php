@@ -23,8 +23,8 @@
             <label for="">Category Status*</label>
             <select name="status" id="instatus" class="form-control">
             <option disabled>Select a Status</option>
-                  <option value="1" <?php echo ($category->status == 1) ? 'selected' : ''; ?>>Active</option>
-                  <option value="0" <?php echo ($category->status == 0) ? 'selected' : ''; ?>>Deactive</option>
+                  <option value="1">Active</option>
+                  <option value="0">Deactive</option>
             </select>
             <p id="eerrstatus" class="mt-1 mb-0 text-danger em"></p>
           </div>

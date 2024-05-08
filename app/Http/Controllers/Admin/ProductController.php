@@ -22,8 +22,9 @@ class ProductController extends Controller
 {
     public function index(Request $request)
     {
-        $lang = Language::where('code', $request->language)->first();
-
+        // $lang = Language::where('code', $request->language)->first();
+        $lang_code = isset($request->language) ?  $request->language : 'en';
+        $lang = Language::where('code', $lang_code)->first();
         $lang_id = $lang->id;
         $data['products'] = Product::where('language_id', $lang_id)->orderBy('id', 'DESC')->get();
         $data['lang_id'] = $lang_id;
@@ -40,7 +41,9 @@ class ProductController extends Controller
 
     public function create(Request $request)
     {
-        $lang = Language::where('code', $request->language)->first();
+        // $lang = Language::where('code', $request->language)->first();
+        $lang_code = isset($request->language) ?  $request->language : 'en';
+        $lang = Language::where('code', $lang_code)->first();
         $abx = $lang->basic_extra;
         $categories = Pcategory::where('status',1)->get();
         return view('admin.product.create',compact('categories','abx'));

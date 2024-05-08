@@ -14,7 +14,9 @@ class PackageCategoryController extends Controller
 {
   public function index(Request $request)
   {
-    $language = Language::where('code', $request->language)->first();
+    // $language = Language::where('code', $request->language)->first();
+    $lang_code = isset($request->language) ?  $request->language : 'en';
+    $language = Language::where('code', $lang_code)->first();
 
     $categories = PackageCategory::where('language_id', $language->id)
       ->orderBy('id', 'desc')

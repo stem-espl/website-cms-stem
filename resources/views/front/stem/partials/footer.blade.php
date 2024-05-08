@@ -4,7 +4,7 @@
         <div class="row">
           <div class="col-xl-3 col-lg-6 col-md-6">
             <div class="widget footer-widget">
-              <img src="{{asset('assets/stem/images/logo-footer.png')}}" alt="" class="mrb-20">
+              <img src="{{asset('assets/stem/footer')}}/{{$bs->footer_logo}}" alt="" class="mrb-20">
               <address class="mrb-25">
                 @php                
                 $addresses = explode(PHP_EOL, $bex->contact_addresses);
@@ -30,11 +30,11 @@
 
 
                 <div class="mrb-0"><a href="#" class="text-light-gray"><i class="fas fa-globe mrr-10"></i>www.stemwater.org</a></div>
-                <div class="mrb-0 mt-3">
+                <!-- <div class="mrb-0 mt-3">
            
                     <p class="text-light-gray">{{convertUtf8($bs->contact_form_title)}}</p>
              
-                </div>
+                </div> -->
               </address>
             </div>
           </div>

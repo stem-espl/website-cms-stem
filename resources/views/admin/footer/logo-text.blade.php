@@ -75,37 +75,26 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
                     <label for="">Footer Logo ** </label>
                     <br>
                     <div class="thumb-preview" id="thumbPreview1">
-                        <img src="{{asset('assets/front/img/'.$abs->footer_logo)}}" alt="Footer Logo">
+                        <img src="{{asset('assets/stem/footer/'.$abs->footer_logo)}}" id="preview" alt="Footer Logo">
                     </div>
                     <br>
                     <br>
 
 
-                    <input id="fileInput1" type="hidden" name="footer_logo">
-                    <button id="chooseImage1" class="choose-image btn btn-primary" type="button" data-multiple="false" data-toggle="modal" data-target="#lfmModal1">Choose Image</button>
+                    <input id="fileInput1" type="file" name="image" accept="image/*" hidden>
+                    <label for="fileInput1" class="choose-image btn btn-primary">Choose Image</label>
 
 
                     <p class="text-warning mb-0">JPG, PNG, JPEG, SVG images are allowed</p>
                     <p id="errfooter_logo" class="em text-danger mb-0"></p>
 
-                    <!-- Background LFM Modal -->
-                    <div class="modal fade lfm-modal" id="lfmModal1" tabindex="-1" role="dialog" aria-labelledby="lfmModalTitle" aria-hidden="true">
-                        <i class="fas fa-times-circle"></i>
-                        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-                            <div class="modal-content">
-                                <div class="modal-body p-0">
-                                    <iframe src="{{url('laravel-filemanager')}}?serial=1" style="width: 100%; height: 500px; overflow: hidden; border: none;"></iframe>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group d-none">
                   <label for="">Footer Text **</label>
                   <input type="text" class="form-control" name="footer_text" value="{{$abs->footer_text}}">
                   <p id="errfooter_text" class="em text-danger mb-0"></p>
                 </div>
-                <div class="form-group">
+                <div class="form-group d-none">
                   <label for="">Newsletter Text **</label>
                   <input type="text" class="form-control" name="newsletter_text" value="{{$abs->newsletter_text}}">
                   <p id="errnewsletter_text" class="em text-danger mb-0"></p>
@@ -134,4 +123,14 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
     </div>
   </div>
 
+@endsection
+@section('scripts')
+<script>
+    $(document).ready(function() {
+
+        $("#fileInput1").on('change', function() {
+            preview.src=URL.createObjectURL(event.target.files[0]);
+        });
+    });
+</script>
 @endsection

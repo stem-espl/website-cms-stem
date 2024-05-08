@@ -4,17 +4,20 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\File;
 use App\Models\Scategory;
 use App\Models\Language;
 use App\Models\Megamenu;
-use Validator;
+use Validator, Image;
 use Session;
 
 class ScategoryController extends Controller
 {
     public function index(Request $request)
     {
-        $lang = Language::where('code', $request->language)->first();
+        // $lang = Language::where('code', $request->language)->first();
+        $lang_code = isset($request->language) ?  $request->language : 'en';
+        $lang = Language::where('code', $lang_code)->first();
 
         $lang_id = $lang->id;
         $data['scategorys'] = Scategory::where('language_id', $lang_id)->orderBy('id', 'DESC')->paginate(10);
@@ -64,7 +67,7 @@ class ScategoryController extends Controller
         }
 
         $scategory = new Scategory;
-        $count = Scategory::get()->count();
+        $count = Scategory::where('language_id', $request->language_id)->get()->count();
         if($count < 4) {
             $scategory->language_id = $request->language_id;
             $scategory->name = $request->name;
@@ -72,18 +75,37 @@ class ScategoryController extends Controller
             $scategory->short_text = $request->short_text;
             $scategory->serial_number = $request->serial_number;
 
-            if ($request->filled('image')) {
-                $filename = uniqid() .'.'. $extImage;
-                @copy($image, 'assets/front/img/service_category_icons/' . $filename);
-                $scategory->image = $filename;
+            if ($request->has('image')) {
+
+            $destinationPath = '/assets/stem/service_category/'; 
+                if(!File::exists(public_path($destinationPath))) {
+                  File::makeDirectory(public_path($destinationPath), $mode = 0777, true, true);
+                }
+
+                $image = $request->file('image');
+                $imagename= $image->getClientOriginalName();
+
+                //image resize logic
+                $new_image = Image::make($image->getRealPath());
+                if($new_image != null){
+                    $filename = uniqid() .'.'. $request->file('image')->extension();
+                    $image_width= $new_image->width();
+                    $image_height= $new_image->height();
+                    $new_width= 1191;
+                    $new_height= 1600;
+                    $new_image->resize($new_width, $new_height);         
+                    $new_image->save(public_path('assets/stem/service_category/' .$filename));
+                    $scategory->image = $filename;
+                }
             }
+
 
             $scategory->save();
         }
         else
         {
             Session::flash('error', 'You cant Add more than Four Records!');
-            return "error";
+            return "success";
         }
         Session::flash('success', 'Category added successfully!');
         return "success";
@@ -124,11 +146,28 @@ class ScategoryController extends Controller
         $scategory->short_text = $request->short_text;
         $scategory->serial_number = $request->serial_number;
 
-        if ($request->filled('image')) {
-            @unlink('assets/front/img/service_category_icons/' . $scategory->image);
-            $filename = uniqid() .'.'. $extImage;
-            @copy($image, 'assets/front/img/service_category_icons/' . $filename);
-            $scategory->image = $filename;
+        if ($request->has('image')) {
+            $destinationPath = '/assets/stem/service_category/'; 
+            if(!File::exists(public_path($destinationPath))) {
+              File::makeDirectory(public_path($destinationPath), $mode = 0777, true, true);
+            }
+
+            $image = $request->file('image');
+            $imagename= $image->getClientOriginalName();
+
+            //image resize logic
+            $new_image = Image::make($image->getRealPath());
+            if($new_image != null){
+                @unlink('assets/stem/service_category/' . $scategory->image);
+                $filename = uniqid() .'.'. $request->file('image')->extension();
+                $image_width= $new_image->width();
+                $image_height= $new_image->height();
+                $new_width= 1191;
+                $new_height= 1600;
+                $new_image->resize($new_width, $new_height);         
+                $new_image->save(public_path('assets/stem/service_category/' .$filename));
+                $scategory->image = $filename;
+            }
         }
 
         $scategory->save();
@@ -145,7 +184,7 @@ class ScategoryController extends Controller
             Session::flash('warning', 'First, delete all the services under this category!');
             return back();
         }
-        @unlink('assets/front/img/service_category_icons/' . $scategory->image);
+        @unlink('assets/stem/service_category/' . $scategory->image);
 
         $this->deleteFromMegaMenu($scategory);
 
@@ -194,7 +233,7 @@ class ScategoryController extends Controller
 
         foreach ($ids as $id) {
             $scategory = Scategory::findOrFail($id);
-            @unlink('assets/front/img/service_category_icons/' . $scategory->image);
+            @unlink('assets/stem/service_category/' . $scategory->image);
 
             $this->deleteFromMegaMenu($scategory);
 

@@ -26,7 +26,7 @@ use app\Http\Controllers\Front\StemController;
 	Route::post("/push", "Front\PushController@store"); 
 	Route::group(["middleware" => "setlang"], function (){ 
 			Route::get("/", "Front\FrontendController@index")->name("front.index"); 
-			Route::get('/aboutus/detail', 'Front\StemController@aboutus')->name('about.detail'); 
+			Route::get('/aboutus', 'Front\StemController@aboutus')->name('about.detail'); 
 			Route::get('/tenders', 'Front\StemController@tenders')->name('front.tenders'); 
 			Route::get('/budget/report', 'Front\StemController@profitReport')->name('budget.report'); 
 			Route::get('/news/img', 'Front\StemController@index')->name('front.stem.img'); 
@@ -333,9 +333,7 @@ use app\Http\Controllers\Front\StemController;
 			Route::post( "/feature/settings/update", "Admin\BasicController@updatefeatrue" )->name("admin.featuresettings.update")->middleware('can:features'); 
 			// Admin Basic Information Routes 
 			Route::get("/basicinfo", "Admin\BasicController@basicinfo")->name( "admin.basicinfo" )->middleware('can:general-settings'); 
-			Route::post( "/basicinfo/{langid}/post", "Admin\BasicController@updatebasicinfo" )->name("admin.basicinfo.update")->middleware('can:general-settings'); 
 			// Admin Basic Information Routes 
-			Route::get("/basicinfo", "Admin\BasicController@basicinfo")->name( "admin.basicinfo" )->middleware('can:general-settings'); 
 			Route::post( "/basicinfo/post", "Admin\BasicController@updatebasicinfo" )->name("admin.basicinfo.update")->middleware('can:general-settings'); 
 			// Admin Email Settings Routes 
 			Route::get( "/mail-from-admin", "Admin\EmailController@mailFromAdmin" )->name("admin.mailFromAdmin")->middleware('can:email-settings'); 

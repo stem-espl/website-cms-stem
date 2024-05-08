@@ -13,7 +13,9 @@ class ServicesectionController extends Controller
 {
     public function index(Request $request)
     {
-        $lang = Language::where('code', $request->language)->firstOrFail();
+        // $lang = Language::where('code', $request->language)->firstOrFail();
+        $lang_code = isset($request->language) ?  $request->language : 'en';
+        $lang = Language::where('code', $lang_code)->first();
         $data['lang_id'] = $lang->id;
         $data['abs'] = $lang->basic_setting;
 
@@ -24,7 +26,7 @@ class ServicesectionController extends Controller
     {
         $rules = [
             // 'service_section_subtitle' => 'required|max:80',
-            'our_services_desc' => 'required|max:400|min:200',
+            'our_services_desc' => 'required|max:700|min:200',
             'service_section_title' => 'required|max:25'
         ];
 

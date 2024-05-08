@@ -16,7 +16,9 @@ class MemberController extends Controller
 {
     public function index(Request $request)
     {
-        $lang = Language::where('code', $request->language)->firstOrFail();
+        // $lang = Language::where('code', $request->language)->firstOrFail();
+        $lang_code = isset($request->language) ?  $request->language : 'en';
+        $lang = Language::where('code', $lang_code)->first();
         $data['lang_id'] = $lang->id;
         $data['abs'] = $lang->basic_setting;
         $data['members'] = Member::where('language_id', $data['lang_id'])->get();
@@ -72,48 +74,48 @@ class MemberController extends Controller
         }
 
         $member = new Member;
-        $count = member::get()->count();
+        $count = member::where('language_id',$request->language_id)->get()->count();
         if($count < 3) {
-        $member->language_id = $request->language_id;
-        $member->image = $request->member_image;
-        $member->name = $request->name;
-        $member->rank = $request->rank;
-        // $member->facebook = $request->facebook;
-        // $member->twitter = $request->twitter;
-        // $member->linkedin = $request->linkedin;
-        // $member->instagram = $request->instagram;
+            $member->language_id = $request->language_id;
+            $member->image = $request->member_image;
+            $member->name = $request->name;
+            $member->rank = $request->rank;
+            // $member->facebook = $request->facebook;
+            // $member->twitter = $request->twitter;
+            // $member->linkedin = $request->linkedin;
+            // $member->instagram = $request->instagram;
 
-        if ($request->has('image')) {
+            if ($request->has('image')) {
 
-            $destinationPath = '/assets/stem/members/'; 
-            if(!File::exists(public_path($destinationPath))) {
-              File::makeDirectory(public_path($destinationPath), $mode = 0777, true, true);
+                $destinationPath = '/assets/stem/members/'; 
+                if(!File::exists(public_path($destinationPath))) {
+                  File::makeDirectory(public_path($destinationPath), $mode = 0777, true, true);
+                }
+
+                $image = $request->file('image');
+                $imagename= $image->getClientOriginalName();
+
+                //image resize logic
+                $new_image = Image::make($image->getRealPath());
+                if($new_image != null){
+                    $filename = uniqid() .'.'. $request->file('image')->extension();
+                    $image_width= $new_image->width();
+                    $image_height= $new_image->height();
+                    $new_width= 1191;
+                    $new_height= 1600;
+                    $new_image->resize($new_width, $new_height);         
+                    $new_image->save(public_path('assets/stem/members/' .$filename));
+                    $member->image = $filename;
+                }
             }
 
-            $image = $request->file('image');
-            $imagename= $image->getClientOriginalName();
-
-            //image resize logic
-            $new_image = Image::make($image->getRealPath());
-            if($new_image != null){
-                $filename = uniqid() .'.'. $request->file('image')->extension();
-                $image_width= $new_image->width();
-                $image_height= $new_image->height();
-                $new_width= 1191;
-                $new_height= 1600;
-                $new_image->resize($new_width, $new_height);         
-                $new_image->save(public_path('assets/stem/members/' .$filename));
-                $member->image = $filename;
-            }
+            $member->save();
         }
-
-        $member->save();
-    }
-    else
-    {
-        Session::flash('error', 'You cant Add more than Three Records!');
-        return "error";
-    }
+        else
+        {
+            Session::flash('error', 'You cant Add more than Three Records!');
+            return "success";
+        }
         Session::flash('success', 'Member added successfully!');
         return "success";
     }

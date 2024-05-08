@@ -159,19 +159,19 @@ $data = \App\Models\BasicExtra::first();
         @endcanany
 
         {{-- Content Management --}}
-        @canany(['sections-customization','partners-section','blog-section','team-section','testimonials-section','portfolio-section','call-to-action-section','statistics-section','approach-section','service-section','intro-section','features','hero-section','logo-text','useful-links','department-links','about-us-links', 'settings-services','category-services','services','portfolios','category-blog','blogs','archives','settings-gallery','categories-gallery','galleries','settings-faq','categories-faq','faqs','categories-career','post-job','job-management','category-leadership','leadership'])
+        @canany(['sections-customization','partners-section','blog-section','team-section','testimonials-section','portfolio-section','call-to-action-section','statistics-section','approach-section','service-section','intro-section','features','hero-section','logo-text','useful-links','department-links','about-us-links', 'settings-services','category-services','services','portfolios','category-blog','blogs','archives','settings-gallery','categories-gallery','galleries','settings-faq','categories-faq','faqs','categories-career','post-job','job-management','categories-leadership','leadership'])
         @includeIf('admin.partials.content-management')
         @endcanany
 
         {{-- Leadership Management --}}
-        @canany(['category-leadership', 'leadership'])
+        @canany(['categories-leadership', 'leadership'])
         {{-- Articles --}}
         <li class="nav-item
           @if(request()->path() == 'leadership_categories') active
     
           @endif">
           <a data-toggle="collapse" href="#leadership">
-            <i class='fas fa-pencil-alt'></i>
+            <i class="la flaticon-users"></i>
             <p>Leadership Management</p>
             <span class="caret"></span>
           </a>
@@ -180,7 +180,7 @@ $data = \App\Models\BasicExtra::first();
   
             @endif" id="leadership">
             <ul class="nav nav-collapse">
-              @can('category-leadership')
+              @can('categories-leadership')
               <li class="@if(request()->path() == '/leadership/categories') active @endif">
                 <a href="{{route('admin.leadership_category.index') . '?language=' . $default->code}}">
                 <span class="sub-item">Leadership Category</span>
@@ -210,7 +210,7 @@ $data = \App\Models\BasicExtra::first();
           @elseif(request()->is('admin/tender/add')) active
           @endif">
           <a data-toggle="collapse" href="#tenders">
-            <i class='fas fa-pencil-alt'></i>
+            <i class="la flaticon-file"></i>
             <p>Tenders Management</p>
             <span class="caret"></span>
           </a>

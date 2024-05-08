@@ -5,15 +5,19 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\BasicSetting as BS;
+use Illuminate\Support\Facades\File;
 use App\Models\Language;
 use Validator;
 use Session;
+use Image;
 
 class FooterController extends Controller
 {
     public function index(Request $request)
     {
-        $lang = Language::where('code', $request->language)->firstOrFail();
+        // $lang = Language::where('code', $request->language)->firstOrFail();
+        $lang_code = isset($request->language) ?  $request->language : 'en';
+        $lang = Language::where('code', $lang_code)->first();
         $data['lang_id'] = $lang->id;
         $data['abs'] = $lang->basic_setting;
 
@@ -54,11 +58,27 @@ class FooterController extends Controller
         $bs->newsletter_text = $request->newsletter_text;
         $bs->copyright_text = str_replace(url('/') . '/assets/front/img/', "{base_url}/assets/front/img/", $request->copyright_text);
 
-        if ($request->filled('footer_logo')) {
-            @unlink('assets/front/img/' . $bs->footer_logo);
-            $filename = uniqid() .'.'. $extFooterLogo;
-            @copy($footerLogo, 'assets/front/img/' . $filename);
-            $bs->footer_logo = $filename;
+        if ($request->has('image')) {
+            $destinationPath = '/assets/stem/footer/'; 
+            if(!File::exists(public_path($destinationPath))) {
+                File::makeDirectory(public_path($destinationPath), $mode = 0777, true, true);
+            }
+            $image = $request->file('image');
+            $imagename= $image->getClientOriginalName();
+
+            //image resize logic
+            $new_image = Image::make($image->getRealPath());
+            if($new_image != null){
+              @unlink('assets/stem/footer/' . $bs->footer_logo);
+              $filename = uniqid() .'.'. $request->file('image')->extension();
+              $image_width= $new_image->width();
+              $image_height= $new_image->height();
+              $new_width= 196;
+              $new_height= 68;
+              $new_image->resize($new_width, $new_height);         
+              $new_image->save(public_path('assets/stem/footer/' .$filename));
+              $bs->footer_logo = $filename;
+            }
         }
 
         $bs->save();
