@@ -25,7 +25,7 @@ else
 
 @section('content')
   <div class="page-header">
-    <h4 class="page-title">Tender Update</h4>
+    <h4 class="page-title">Document Update</h4>
     <ul class="breadcrumbs">
       <li class="nav-home">
         <a href="{{route('admin.dashboard')}}">
@@ -36,13 +36,13 @@ else
         <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-        <a href="{{route('admin.tenders.index')}}">Tenders</a>
+        <a href="{{route('admin.tenders.index')}}">Document</a>
       </li>
       <li class="separator">
         <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-        <a href="javascript:void(0)">Tender Update</a>
+        <a href="javascript:void(0)">Document Update</a>
       </li>
     </ul>
   </div>
@@ -52,7 +52,7 @@ else
         <div class="card-header">
             <div class="row">
                 <div class="col-lg-10">
-                    <div class="card-title">Tender Update</div>
+                    <div class="card-title">Document Update</div>
                 </div>
                 <div class="col-lg-2">
                     @if (!empty($langs))
@@ -73,77 +73,54 @@ else
                 <input type="hidden" name="document_id" value="{{$document->id}}">
                 @csrf
                 <div class="form-group">
-                  <label for="">Tender Category **</label>
+                  <label for="">Document Category **</label>
                   <select class="form-control" name="tender_category">
                     <option value="">Select</option>
-                    {{-- @foreach($category as $cat)
-                    <option value="{{$cat}}" <?php if($category->name == $cat) echo "selected"; ?>>{{$cat->name}}</option>
-                    @endforeach --}}
+                    @foreach ($documentCat as $category)
+                    <option value="{{ $category->id }}" {{ $category->id == $document->id ? 'selected' : '' }}>{{ $category->name }}</option>
+                  @endforeach
                   </select>
                   <p id="errtender_category" class="em text-danger mb-0"></p>
                 </div>
                 <div class="form-group">
                   <label for="">document in English **</label>
-                  <input type="text" class="form-control" name="title" value="{{$document->title}}" placeholder="Enter title in english">
+                  <input type="text" class="form-control" name="title" value="{{$document->name}}" placeholder="Enter title in english">
                   <p id="errtitle" class="em text-danger mb-0"></p>
                 </div>
                 <div class="form-group">
                   <label for="">document in Marathi **</label>
-                  <input type="text" class="form-control" name="title_mr" value="{{$document->title_mr}}" placeholder="Enter title in marathi">
+                  <input type="text" class="form-control" name="title_mr" value="{{$document->name_mr}}" placeholder="Enter title in marathi">
                   <p id="errtitle_mr" class="em text-danger mb-0"></p>
-                </div>
-
-                <div class="form-group">
-                  <label for="">Description in English **</label>
-                  <textarea class="form-control" name="description" placeholder="Enter description in english">{{$tender->description ? $tender->description : ''}}</textarea>
-                  <p id="errdescription" class="em text-danger mb-0"></p>
-                </div>
-                <div class="form-group">
-                  <label for="">Description in Marathi **</label>
-                  <textarea class="form-control" name="description_mr" placeholder="Enter description in marathi">{{$tender->description_mr ? $tender->description_mr : ''}}</textarea>
-                  <p id="errdescription_mr" class="em text-danger mb-0"></p>
-                </div>
-
-                <div class="form-group">
-                  <label for="">Tender E-Link **</label>
-                  <input type="text" class="form-control" name="tender_link" value="{{$tender->tender_link}}" placeholder="Enter Tender E-Link">
-                  <p id="errtender_link" class="em text-danger mb-0"></p>
                 </div>
 
                 <div class="form-group">
                   <label for="">Status **</label>
                   <select class="form-control ltr" name="status">
                     <option value="" selected disabled>Select a status</option>
-                    <option value="1" <?php if($tender->status == '1') echo "selected";?>>Active</option>
-                    <option value="0" <?php if($tender->status == '0') echo "selected";?>>Deactive</option>
+                    <option value="1" <?php if($document->status == '1') echo "selected";?>>Active</option>
+                    <option value="0" <?php if($document->status == '0') echo "selected";?>>Deactive</option>
                   </select>
                   <p id="errstatus" class="mb-0 text-danger em"></p>
                 </div>
 
                 <div class="form-group">
                   <div id="downloadFile" class="form-group">
-                      <label for="">document Document **</label>
+                      <label for="">PDF Document **</label>
                       <br>
                       <input name="file" type="file" accept="application/pdf" >
                       <p class="mb-0 text-warning">Only PDF file is allowed. File size should be less than 2MB.</p>
                       <p id="errtender_doc" class="mb-0 text-danger em"></p>
                   </div>
-                  @if(!empty($tender->files))
+                  @if(!empty($document->files))
                   <div class="row ">
                     <div class="col-sm-3 col-md-2 col-lg-6 col-xl-4">
                       <div class="pdf">
                           <a href="javascript:void(0)" class="delete_file pdf-delete img-circle"><strong>&times;</strong></a>
-                        <a class="pdf-body d-block" href="{{asset('assets/stem/documents')}}/{{$tender->files}}" download><img src="{{asset('assets/front/img/pdf.png')}}" class="text-center align-items-center" width="100"></a>
+                        <a class="pdf-body d-block" href="{{asset('assets/stem/documents')}}/{{$document->files}}" download><img src="{{asset('assets/front/img/pdf.png')}}" class="text-center align-items-center" width="100"></a>
                       </div>
                     </div>
                   </div>
                   @endif
-                </div>
-
-                <div class="form-group">
-                  <label for="">Deadline</label>
-                  <input type="date" name="deadline" value="{{$tender->deadline}}" class="form-control">
-                  <p id="errdeadline" class="mb-0 text-danger em"></p>
                 </div>
                 
               </form>

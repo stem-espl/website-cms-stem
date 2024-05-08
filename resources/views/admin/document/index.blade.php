@@ -91,7 +91,10 @@ else
                           <td>
                             <input type="checkbox" class="bulk-check" data-val="{{$tend->id}}">
                           </td>
-                          <td>{{convertUtf8($tend->document_category_id)}}</td>
+                     
+                          <td>{{$category}}</td>
+                        
+                        
 
                           <td>{{convertUtf8($tend->name)}}</td>
                           <td>{{convertUtf8($tend->name_mr)}}</td>
@@ -121,6 +124,7 @@ else
                             </form>
                           </td>
                         </tr>
+                   
                       @endforeach
                     </tbody>
                   </table>

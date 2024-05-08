@@ -26,6 +26,7 @@ class DocumentController extends Controller
     $data['documents'] = Document::orderBy('id', 'DESC')->paginate(10);
     $data['lang_id'] = $lang_id;
 
+    $data['category']=DocumentCategory::select('name')->get();
     return view('admin.document.index',$data);
   }
 
@@ -86,13 +87,12 @@ class DocumentController extends Controller
     $lang_code = $lang->code;
 
     if($lang_code == 'mr')
-    	$data['documentCat'] = DocumentCategory::select('id','name_mr as title')->orderBy('title', 'ASC')->get();
+    	$data['documentCat'] = DocumentCategory::select('id','name')->get();
     else
-    	$data['documentCat'] = DocumentCategory::select('id','name as title')->orderBy('title', 'ASC')->get();
+    	$data['documentCat'] = DocumentCategory::select('id','name')->get();
 
     $data['document'] = Document::findOrFail($id);
     $data['category'] = DocumentCategory::select('id','name')->get();
-
     return view('admin.document.edit', $data);
   }
 
