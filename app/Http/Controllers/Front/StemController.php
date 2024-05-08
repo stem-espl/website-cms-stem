@@ -10,6 +10,10 @@ use App\Http\Controllers\Controller;
 use App\Models\Language;
 use App\Models\LeadCategory;
 use App\Models\Leadership;
+use App\Models\ContactQuery;
+use App\Models\BasicSetting;
+use App\Models\BasicExtra;
+use Illuminate\Support\Facades\Validator;
 
 class StemController extends Controller
 {
@@ -58,11 +62,42 @@ class StemController extends Controller
       public function showLeadership($slug){
 
         $category = LeadCategory::where('slug', $slug)->firstOrFail();
-        // dd($category);
         $leadership = Leadership::where('category_id', $category->id)->where('status','1')->get();
-        // dd($leadership);
         $name=$category->name;
-        
         return view('front.stem.executive',compact('leadership','name'));
+      }
+
+      public function storeContactQuery(Request $request) {
+        $validator =  Validator::make($request->all(),[
+          'name' => 'required|string|max:255',
+          'email' => 'required|email|max:255|unique:contact_query',
+          'phone' => 'required|numeric|regex:/^[0-9]{10}$/|unique:contact_query',
+          'message' => 'required',
+          
+        ], [
+          'phone.unique' => 'The Pnone Number field has already been taken.',
+          'email.unique' => 'The Email field has already been taken.',
+      ]);
+
+        if($validator->fails()){
+          return back()->withErrors($validator)->withInput();
+        };
+
+          $contact = new ContactQuery;
+          $contact->name = $request->name;
+          $contact->email = $request->email;
+          $contact->phone = $request->phone;
+          $contact->message = $request->message;
+          $contact->status = '0';
+          $contact->save();
+          return back();
+      }
+      public function contactUs()
+      {
+          $lang_code = isset($request->language) ?  $request->language : 'en';
+          $language = Language::where('code', $lang_code)->first();
+          $bs=BasicSetting::where('language_id', $language->id)->get(['contact_form_title','contact_form_subtitle',]);
+          $bex=BasicExtra::where('language_id', $language->id)->get(['contact_addresses','contact_numbers','contact_mails','latitude','longitude']);
+          return view('front.stem.contact-us',compact('bex','bs'));
       }
 }

@@ -27,6 +27,8 @@ use app\Http\Controllers\Front\StemController;
 	Route::group(["middleware" => "setlang"], function (){ 
 			Route::get("/", "Front\FrontendController@index")->name("front.index"); 
 			Route::get('/aboutus', 'Front\StemController@aboutus')->name('about.detail'); 
+			Route::get('/contactus', 'Front\StemController@contactUs')->name('contact.detail'); 
+			Route::post('/contactus/query', 'Front\StemController@storeContactQuery')->name('contact.query'); 
 			Route::get('/tenders', 'Front\StemController@tenders')->name('front.tenders'); 
 			Route::get('/budget/report', 'Front\StemController@profitReport')->name('budget.report'); 
 			Route::get('/news/img', 'Front\StemController@index')->name('front.stem.img'); 

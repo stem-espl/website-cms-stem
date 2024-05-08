@@ -120,7 +120,7 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
                   @endif
                 </div>
 
-                <div class="form-group">
+                <div class="form-group d-none">
                   <label>Map Zoom</label>
                   <input class="form-control" name="map_zoom" value="{{$abex->map_zoom}}" placeholder="Enter Google Map Address">
                   @if ($errors->has('map_zoom'))

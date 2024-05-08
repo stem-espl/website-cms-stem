@@ -85,3 +85,5 @@ INSERT INTO `permissions` (`id`, `name`, `guard_name`, `group_name`, `status`, `
 ALTER TABLE `basic_settings` ADD `intro_section_subtitle` VARCHAR(255) NULL DEFAULT NULL AFTER `intro_section_title`;
 ALTER TABLE `basic_settings` CHANGE `intro_section_text` `intro_section_text` TEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL;
 ALTER TABLE `basic_settings` ADD `our_services_desc` TEXT NULL DEFAULT NULL AFTER `service_section_title`;
+CREATE TABLE `contact_query` (`id` INT(11) NOT NULL AUTO_INCREMENT , `name` VARCHAR(255) NULL DEFAULT NULL , `phone` VARCHAR(90) NULL DEFAULT NULL , `email` VARCHAR(255) NULL DEFAULT NULL , `message` LONGTEXT NULL DEFAULT NULL , `status` INT(3) NULL DEFAULT NULL , `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP , `updated_at` TIMESTAMP on update CURRENT_TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP , `deleted_at` TIMESTAMP NULL DEFAULT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+

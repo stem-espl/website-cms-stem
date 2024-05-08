@@ -13,10 +13,10 @@ return [
     */
 
     'Language' => 'Language',
-    'Useful Links' => 'Useful Links',
+    'Useful Links' => 'उपयुक्त दुवे',
     'About Us' => 'आमच्याबद्दल',
-    'Department' => 'Department',
-    'STEM Shareholding' => 'STEM Shareholding',
+    'Department' => 'विभाग',
+    'STEM Shareholding' => 'स्टेम शेअरहोल्डिंग',
     'Service We Offer' => 'सेवा आम्ही ऑफर करतो',
     'A company with difference' => 'भिन्नता असलेली कंपनी',
     'Tender/Advertisement' => 'निविदा/जाहिरात',
@@ -39,4 +39,14 @@ return [
     'Countless Update About STEM' =>'स्टेम बद्दल अगणित अद्यतन',
     'All News' =>'सर्व बातम्या',
     'Budget Reports' =>'बजेट अहवाल',
+    'Contact Us' =>'संपर्क साधा',
+    'Our Address' =>'आमचा पत्ता',
+    'Phone Number' =>'दूरध्वनी क्रमांक',
+    'Email Us' =>'आम्हाला ईमेल करा',
+    'Get In Touch' =>'संपर्कात रहा',
+    'Name' =>'नाव',
+    'Phone' =>'फोन',
+    'Email' =>'ईमेल',
+    'Messages' =>'संदेश',
+    'Submit Now' =>'आता सबमिट करा',
 ];

@@ -33,7 +33,7 @@ class ContactController extends Controller
             'contact_mails' => 'required',
             'latitude' => 'nullable|max:255',
             'longitude' => 'nullable|max:255',
-            'map_zoom' => 'nullable|max:255',
+            // 'map_zoom' => 'nullable|max:255',
         ]);
 
         $bs = BasicSetting::where('language_id', $langid)->firstOrFail();
@@ -47,7 +47,7 @@ class ContactController extends Controller
         $bex->contact_mails = $request->contact_mails;
         $bex->latitude = $request->latitude;
         $bex->longitude = $request->longitude;
-        $bex->map_zoom = $request->map_zoom ? $request->map_zoom : 0;
+        // $bex->map_zoom = $request->map_zoom ? $request->map_zoom : 0;
         $bex->save();
 
         Session::flash('success', 'Contact page updated successfully!');

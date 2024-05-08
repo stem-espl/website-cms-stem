@@ -40,4 +40,15 @@ return [
     'Countless Update About STEM' =>'Countless Update About STEM',
     'All News' =>'All News',
     'Budget Reports' =>'Budget Reports',
+    'Contact Us' =>'Contact Us',
+    'Our Address' =>'Our Address',
+    'Phone Number' =>'Phone Number',
+    'Email Us' =>'Email Us',
+    'Get In Touch' =>'Get In Touch',
+    'Name' =>'Name',
+    'Phone' =>'Phone',
+    'Email' =>'Email',
+    'Messages' =>'Messages',
+    'Submit Now' =>'Submit Now',
+    
 ];
