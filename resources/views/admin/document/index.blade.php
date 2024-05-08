@@ -91,7 +91,10 @@ else
                           <td>
                             <input type="checkbox" class="bulk-check" data-val="{{$tend->id}}">
                           </td>
-                          <td>{{convertUtf8($tend->document_category_id)}}</td>
+                     
+                          <td>{{$category}}</td>
+                        
+                        
 
                           <td>{{convertUtf8($tend->name)}}</td>
                           <td>{{convertUtf8($tend->name_mr)}}</td>
@@ -109,7 +112,7 @@ else
                               </span>
                               Edit
                             </a>
-                            <form class="deleteform d-inline-block" action="{{route('admin.tenders.delete')}}" method="post">
+                            <form class="deleteform d-inline-block" action="{{route('admin.documents.delete')}}" method="post">
                               @csrf
                               <input type="hidden" name="document_id" value="{{$tend->id}}">
                               <button type="submit" class="btn btn-danger btn-sm deletebtn">
@@ -121,6 +124,7 @@ else
                             </form>
                           </td>
                         </tr>
+                   
                       @endforeach
                     </tbody>
                   </table>

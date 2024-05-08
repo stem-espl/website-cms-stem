@@ -69,8 +69,8 @@ class GalleryController extends Controller
     $rules = [
       'language_id' => 'required',
       'file' => 'required',
-      'title' => 'required|max:255',
-      'serial_number' => 'required|integer',
+      // 'title' => 'required|max:255',
+      // 'serial_number' => 'required|integer',
     ];
 
     $validator = Validator::make($request->all(), $rules, $messages);
@@ -105,8 +105,8 @@ class GalleryController extends Controller
   }
 
     $gallery->language_id = $request->language_id;
-    $gallery->title = $request->title;
-    $gallery->serial_number = $request->serial_number;
+    $gallery->title = isset($request->title) ? $request->title : '';
+    $gallery->serial_number = 1;
     $gallery->category_id = $request->category_id;
 
     $gallery->save();
@@ -186,8 +186,8 @@ class GalleryController extends Controller
           $extImage = pathinfo($image, PATHINFO_EXTENSION);
 
           $rules = [
-            'title' => 'required|max:255',
-          'serial_number' => 'required|integer',
+            // 'title' => 'required|max:255',
+            // 'serial_number' => 'required|integer',
           ];
 
           if ($request->has('image')) {
@@ -225,8 +225,8 @@ class GalleryController extends Controller
               }
           }
           
-          $event->title = $request->title;
-          $event->serial_number = $request->serial_number;
+          $event->title = isset($request->title) ? $request->title : '';
+          $event->serial_number = 1;
           $event->category_id = $request->category_id;
           $event->image = $filename; 
           

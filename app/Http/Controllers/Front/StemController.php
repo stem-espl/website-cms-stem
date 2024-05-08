@@ -9,6 +9,8 @@ use App\Models\TenderCategory;
 use App\Http\Controllers\Controller;
 use App\Models\Language;
 use App\Models\LeadCategory;
+use App\Models\DocumentCategory;
+use App\Models\Document;
 use App\Models\Leadership;
 use App\Models\ContactQuery;
 use App\Models\BasicSetting;
@@ -99,5 +101,15 @@ class StemController extends Controller
           $bs=BasicSetting::where('language_id', $language->id)->get(['contact_form_title','contact_form_subtitle',]);
           $bex=BasicExtra::where('language_id', $language->id)->get(['contact_addresses','contact_numbers','contact_mails','latitude','longitude']);
           return view('front.stem.contact-us',compact('bex','bs'));
+      }
+
+      
+      public function circular($slug){
+
+        $category = DocumentCategory::where('slug', $slug)->firstOrFail();
+      
+         $document = Document::select('id','document_category_id','name_mr','files')->where('status','1')->get();
+        
+        return view('front.department.circular',compact('document'));
       }
 }

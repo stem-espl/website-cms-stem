@@ -86,7 +86,7 @@
                 </select>
                 <p id="eerrcategory_id" class="mb-0 text-danger em"></p>
               </div>
-              <div class="form-group">
+              <div class="form-group d-none">
                 <label for="">Title **</label>
                 <input type="text" class="form-control" name="title" value="{{$gallery->title}}" placeholder="Enter title">
                 <p id="errtitle" class="mb-0 text-danger em"></p>

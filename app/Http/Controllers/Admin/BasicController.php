@@ -7,6 +7,7 @@ use App\Models\BasicExtra;
 use App\Models\BasicSetting;
 use App\Models\Home;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\File;
 use App\Models\Language;
 use App\Models\Service;
 use App\Models\Timezone;
@@ -14,7 +15,8 @@ use Artisan;
 use Config;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
-use Validator;
+use Validator, DB;
+use Image;
 
 class BasicController extends Controller
 {
@@ -98,67 +100,183 @@ class BasicController extends Controller
 
         $request->validate($rules);
 
-        if ($request->filled('logo')) {
+        // if ($request->filled('logo')) {
 
+        //     $bss = BasicSetting::all();
+        //     // only remove the the previous image, if it is not the same as default image or the first image is being updated
+
+        //     foreach ($bss as $key => $bs) {
+        //         @unlink('assets/front/img/' . $bs->logo);
+        //         $filename = uniqid() .'.'. $extLogo;
+        //         @copy($logo, 'assets/front/img/' . $filename);
+
+        //         $bs->logo = $filename;
+        //         $bs->save();
+        //     }
+
+        // }
+
+        if ($request->has('logo')) {
             $bss = BasicSetting::all();
-            // only remove the the previous image, if it is not the same as default image or the first image is being updated
 
-            foreach ($bss as $key => $bs) {
-                @unlink('assets/front/img/' . $bs->logo);
-                $filename = uniqid() .'.'. $extLogo;
-                @copy($logo, 'assets/front/img/' . $filename);
+            $destinationPath = '/assets/stem/logo/'; 
+            if(!File::exists(public_path($destinationPath))) {
+                File::makeDirectory(public_path($destinationPath), $mode = 0777, true, true);
+            }
+            $image = $request->file('logo');
+            $imagename= $image->getClientOriginalName();
 
+            //image resize logic
+            $new_image = Image::make($image->getRealPath());
+            if($new_image != null){
+              $filename = uniqid() .'.'. $request->file('logo')->extension();
+              $image_width= $new_image->width();
+              $image_height= $new_image->height();
+              $new_width= 306;
+              $new_height= 88;
+              $new_image->resize($new_width, $new_height);         
+              $new_image->save(public_path('assets/stem/logo/' .$filename));
+
+              foreach ($bss as $key => $bs) {
+                @unlink('assets/stem/logo/' . $bs->logo);
                 $bs->logo = $filename;
                 $bs->save();
+              }             
             }
-
         }
 
-        if($request->filled('header_logo'))
-        {
+        if ($request->has('header_logo')) {
             $bss = BasicSetting::all();
-            foreach($bss as $key =>$bs)
-            {
-                @unlink('assets/front/img/' . $bs->header_logo);
-                $filename = uniqid() .'.'. $extHeadLogo;
-                @copy($header_logo, 'assets/front/img/' . $filename);
 
+            $destinationPath = '/assets/stem/header_logo/'; 
+            if(!File::exists(public_path($destinationPath))) {
+                File::makeDirectory(public_path($destinationPath), $mode = 0777, true, true);
+            }
+            $image = $request->file('header_logo');
+            $imagename= $image->getClientOriginalName();
+
+            //image resize logic
+            $new_image = Image::make($image->getRealPath());
+            if($new_image != null){
+              $filename = uniqid() .'.'. $request->file('header_logo')->extension();
+              $image_width= $new_image->width();
+              $image_height= $new_image->height();
+              $new_width= 306;
+              $new_height= 88;
+              $new_image->resize($new_width, $new_height);         
+              $new_image->save(public_path('assets/stem/header_logo/' .$filename));
+
+              foreach ($bss as $key => $bs) {
+                @unlink('assets/stem/header_logo/' . $bs->header_logo);
                 $bs->header_logo = $filename;
                 $bs->save();
+              }             
             }
         }
 
-        if ($request->filled('favicon')) {
-
+        if ($request->has('favicon')) {
             $bss = BasicSetting::all();
-            // only remove the the previous image, if it is not the same as default image or the first image is being updated
 
-            foreach ($bss as $key => $bs) {
-                @unlink('assets/front/img/' . $bs->favicon);
-                $filename = uniqid() .'.'. $extFav;
-                @copy($favicon, 'assets/front/img/' . $filename);
+            $destinationPath = '/assets/stem/favicon/'; 
+            if(!File::exists(public_path($destinationPath))) {
+                File::makeDirectory(public_path($destinationPath), $mode = 0777, true, true);
+            }
+            $image = $request->file('favicon');
+            $imagename= $image->getClientOriginalName();
 
+            //image resize logic
+            $new_image = Image::make($image->getRealPath());
+            if($new_image != null){
+              $filename = uniqid() .'.'. $request->file('favicon')->extension();
+              $image_width= $new_image->width();
+              $image_height= $new_image->height();
+              $new_width= 80;
+              $new_height= 80;
+              $new_image->resize($new_width, $new_height);         
+              $new_image->save(public_path('assets/stem/favicon/' .$filename));
+
+              foreach ($bss as $key => $bs) {
+                @unlink('assets/stem/favicon/' . $bs->favicon);
                 $bs->favicon = $filename;
                 $bs->save();
+              }             
             }
-
         }
 
-        if ($request->filled('breadcrumb')) {
-
+        if ($request->has('breadcrumb')) {
             $bss = BasicSetting::all();
-            // only remove the the previous image, if it is not the same as default image or the first image is being updated
 
-            foreach ($bss as $key => $bs) {
-                @unlink('assets/front/img/' . $bs->breadcrumb);
-                $filename = uniqid() .'.'. $extBread;
-                @copy($breadcrumb, 'assets/front/img/' . $filename);
+            $destinationPath = '/assets/stem/breadcrumb/'; 
+            if(!File::exists(public_path($destinationPath))) {
+                File::makeDirectory(public_path($destinationPath), $mode = 0777, true, true);
+            }
+            $image = $request->file('breadcrumb');
+            $imagename= $image->getClientOriginalName();
 
+            //image resize logic
+            $new_image = Image::make($image->getRealPath());
+            if($new_image != null){
+              $filename = uniqid() .'.'. $request->file('breadcrumb')->extension();
+              $image_width= $new_image->width();
+              $image_height= $new_image->height();
+              $new_width= 960;
+              $new_height= 273;
+              $new_image->resize($new_width, $new_height);         
+              $new_image->save(public_path('assets/stem/breadcrumb/' .$filename));
+
+              foreach ($bss as $key => $bs) {
+                @unlink('assets/stem/breadcrumb/' . $bs->breadcrumb);
                 $bs->breadcrumb = $filename;
                 $bs->save();
+              }             
             }
-
         }
+
+        // if($request->filled('header_logo'))
+        // {
+        //     $bss = BasicSetting::all();
+        //     foreach($bss as $key =>$bs)
+        //     {
+        //         @unlink('assets/front/img/' . $bs->header_logo);
+        //         $filename = uniqid() .'.'. $extHeadLogo;
+        //         @copy($header_logo, 'assets/front/img/' . $filename);
+
+        //         $bs->header_logo = $filename;
+        //         $bs->save();
+        //     }
+        // }
+
+        // if ($request->filled('favicon')) {
+
+        //     $bss = BasicSetting::all();
+        //     // only remove the the previous image, if it is not the same as default image or the first image is being updated
+
+        //     foreach ($bss as $key => $bs) {
+        //         @unlink('assets/front/img/' . $bs->favicon);
+        //         $filename = uniqid() .'.'. $extFav;
+        //         @copy($favicon, 'assets/front/img/' . $filename);
+
+        //         $bs->favicon = $filename;
+        //         $bs->save();
+        //     }
+
+        // }
+
+        // if ($request->filled('breadcrumb')) {
+
+        //     $bss = BasicSetting::all();
+        //     // only remove the the previous image, if it is not the same as default image or the first image is being updated
+
+        //     foreach ($bss as $key => $bs) {
+        //         @unlink('assets/front/img/' . $bs->breadcrumb);
+        //         $filename = uniqid() .'.'. $extBread;
+        //         @copy($breadcrumb, 'assets/front/img/' . $filename);
+
+        //         $bs->breadcrumb = $filename;
+        //         $bs->save();
+        //     }
+
+        // }
 
         $request->session()->flash('success', 'Images updated successfully!');
         return back();
@@ -294,6 +412,7 @@ class BasicController extends Controller
 
     public function updatebasicinfo(Request $request)
     {
+        
         $rules = [
             'website_title' => 'required',
             'base_color' => 'required',
@@ -308,6 +427,7 @@ class BasicController extends Controller
             'base_currency_text_position' => 'required',
             'base_currency_rate' => 'required|numeric',
         ];
+
         $be = BasicExtended::first();
 
         if ($be->theme_version == 'cleaning' || $be->theme_version == 'logistic') {
@@ -322,50 +442,62 @@ class BasicController extends Controller
 
         $request->validate($rules);
 
-        $bss = BasicSetting::all();
-        foreach ($bss as $key => $bs) {
-            $bs->website_title = $request->website_title;
-            $bs->base_color = $request->base_color;
 
-            if ($be->theme_version != 'dark' && $be->theme_version != 'gym' && $be->theme_version != 'car' && $be->theme_version != 'construction' && $be->theme_version != 'lawyer') {
-                $bs->secondary_base_color = $request->secondary_base_color;
+        DB::beginTransaction();
+        try{
+            $bss = BasicSetting::all();
+            foreach ($bss as $key => $bs) {
+                $bs->website_title = $request->website_title;
+                $bs->base_color = $request->base_color;
+
+                if ($be->theme_version != 'dark' && $be->theme_version != 'gym' && $be->theme_version != 'car' && $be->theme_version != 'construction' && $be->theme_version != 'lawyer') {
+                    $bs->secondary_base_color = $request->secondary_base_color;
+                }
+
+
+                $bs->save();
             }
 
 
-            $bs->save();
-        }
+            $bes = BasicExtended::all();
+            foreach ($bes as $key => $be) {
+                if ($be->theme_version != 'cleaning' && $be->theme_version != 'logistic') {
+                    $be->hero_overlay_color = $request->hero_area_overlay_color;
+                    $be->hero_overlay_opacity = $request->hero_area_overlay_opacity;
+                }
 
 
-        $bes = BasicExtended::all();
-        foreach ($bes as $key => $be) {
-            if ($be->theme_version != 'cleaning' && $be->theme_version != 'logistic') {
-                $be->hero_overlay_color = $request->hero_area_overlay_color;
-                $be->hero_overlay_opacity = $request->hero_area_overlay_opacity;
+                $be->breadcrumb_overlay_color = $request->breadcrumb_area_overlay_color;
+                $be->breadcrumb_overlay_opacity = $request->breadcrumb_area_overlay_opacity;
+                $be->save();
             }
 
 
-            $be->breadcrumb_overlay_color = $request->breadcrumb_area_overlay_color;
-            $be->breadcrumb_overlay_opacity = $request->breadcrumb_area_overlay_opacity;
-            $be->save();
-        }
+            $bexs = BasicExtra::all();
+            foreach ($bexs as $key => $bex) {
+                $bex->base_currency_symbol = $request->base_currency_symbol;
+                $bex->base_currency_symbol_position = $request->base_currency_symbol_position;
+                $bex->base_currency_text = $request->base_currency_text;
+                $bex->base_currency_text_position = $request->base_currency_text_position;
+                $bex->base_currency_rate = $request->base_currency_rate;
+                $bex->timezone = $request->timezone;
+                $bex->save();
+            }
 
-
-        $bexs = BasicExtra::all();
-        foreach ($bexs as $key => $bex) {
-            $bex->base_currency_symbol = $request->base_currency_symbol;
-            $bex->base_currency_symbol_position = $request->base_currency_symbol_position;
-            $bex->base_currency_text = $request->base_currency_text;
-            $bex->base_currency_text_position = $request->base_currency_text_position;
-            $bex->base_currency_rate = $request->base_currency_rate;
-            $bex->timezone = $request->timezone;
-            $bex->save();
-        }
-
-        // set timezone in .env
-        if ($request->has('timezone') && $request->filled('timezone')) {
-            $arr = ['TIMEZONE' => $request->timezone];
-            setEnvironmentValue($arr);
-            \Artisan::call('config:clear');
+            if($be->theme_version != 'stem')
+            {
+                // set timezone in .env
+                if ($request->has('timezone') && $request->filled('timezone')) {
+                    $arr = ['TIMEZONE' => $request->timezone];
+                    setEnvironmentValue($arr);
+                    \Artisan::call('config:clear');
+                } 
+            }
+            DB::commit();           
+        }catch(Exception $e){
+            DB::rollback();
+            Session::flash('error', $e->getMessage());
+            return back();
         }
 
         Session::flash('success', 'Basic informations updated successfully!');

@@ -38,7 +38,7 @@
             <div class="containerNew">
               <div class="col-sm-12 col-md-5 col-lg-9 img_padding">
                 <a class="navbar-brand logo f-left mrt-5 mrt-md-0 mrb-5 mrb-md-0 pdt-10 pdb-10 padding_right"  href="{{route('front.index')}}" id="logo_1" style="border-right: 1px solid #000; padding-right: 12px;">
-                <img id="logo-image" class="img-center img-width" src="{{asset('assets/front/img/'.$bs->logo)}}" alt="" loading="lazy">
+                <img id="logo-image" class="img-center img-width" src="{{asset('assets/stem/logo/'.$bs->logo)}}" alt="" loading="lazy">
                 </a>
                 <div class="title-full topText" >
                   <p><span>{{$bs->website_heading}}</span></p>
@@ -46,7 +46,7 @@
               </div>
               <div class="col-sm-12 col-md-5 col-lg-3 img_padding">
                 <a class="navbar-brand logo mrt-5  mrt-md-0 mrb-5 mrb-md-0 pdt-10 pdb-5" href="{{route('front.index')}}" id="logo_1" class="mx-5">
-                <img id="logo-image" class="img-center header-top-right-image img_width" src="{{asset('assets/front/img/'.$bs->header_logo)}}" alt="" loading="lazy">
+                <img id="logo-image" class="img-center header-top-right-image img_width" src="{{asset('assets/stem/header_logo/'.$bs->header_logo)}}" alt="" loading="lazy">
                 </a>
               </div>
             </div>
@@ -72,7 +72,7 @@
                 </div>
                 <div class="side-panel-logo mrb-30">
                   <a href="{{route('front.index')}}">
-                  <img src="{{asset('assets/front/img/'.$bs->logo)}}" width="261" hight="74" alt=""/>
+                  <img src="{{asset('assets/stem/logo/'.$bs->logo)}}" width="261" hight="74" alt=""/>
                   </a>
                 </div>
                 <div class="side-info mrb-30">

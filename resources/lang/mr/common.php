@@ -12,11 +12,12 @@ return [
     |
     */
 
-    'Language' => 'Language',
+    'Language' => 'भाषा',
     'Useful Links' => 'उपयुक्त दुवे',
     'About Us' => 'आमच्याबद्दल',
     'Department' => 'विभाग',
-    'STEM Shareholding' => 'स्टेम शेअरहोल्डिंग',
+    'News' => 'बातम्या',
+    'STEM Shareholding' => 'STEM शेअरहोल्डिंग',
     'Service We Offer' => 'सेवा आम्ही ऑफर करतो',
     'A company with difference' => 'भिन्नता असलेली कंपनी',
     'Tender/Advertisement' => 'निविदा/जाहिरात',

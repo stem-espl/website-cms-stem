@@ -1,24 +1,61 @@
 <?php
 header ("Content-Type:text/css");
 $color = $_GET['color']; // Change your Color Here
+$color1 = $_GET['color1']; // Change your Color Here
+$color2 = $_GET['color2']; // Change your Color Here
 
 
 function checkhexcolor($color) {
     return preg_match('/^#[a-f0-9]{6}$/i', $color);
 }
 
+function checkhexcolor1($color1) {
+    return preg_match('/^#[a-f0-9]{6}$/i', $color1);
+}
+
+function checkhexcolor2($color2) {
+    return preg_match('/^#[a-f0-9]{6}$/i', $color2);
+}
+
 if( isset( $_GET[ 'color' ] ) AND $_GET[ 'color' ] != '' ) {
     $color = "#".$_GET[ 'color' ];
 }
 
-if( !$color OR !checkhexcolor( $color ) ) {
-    $color = "#25D06F";
+if( isset( $_GET[ 'color1' ] ) AND $_GET[ 'color1' ] != '' ) {
+    $color1 = "#".$_GET[ 'color1' ];
 }
 
+if( isset( $_GET[ 'color2' ] ) AND $_GET[ 'color2' ] != '' ) {
+    $color2 = "#".$_GET[ 'color2' ];
+}
+
+if( !$color OR !checkhexcolor( $color ) ) {
+    $color = "#17305E";
+}
+
+if( !$color1 OR !checkhexcolor1( $color1 ) ) {
+    $color1 = "#303743";
+}
+if( !$color2 OR !checkhexcolor2( $color2 ) ) {
+    $color2 = "#1d3990";
+}
+    
 ?>
 
 
 .base-bg {
+    background-color: <?php echo $color; ?> !important;
+}
+.bg-secondary-color {
+    background-color: <?php echo $color; ?> !important;
+}
+#scrollUp {
+    background-color: <?php echo $color2; ?> !important;
+}
+.footer-bottom-area{
+    background-color: <?php echo $color1; ?> !important;
+}
+.menutabs_1 {
     background-color: <?php echo $color; ?> !important;
 }
 .base-color {

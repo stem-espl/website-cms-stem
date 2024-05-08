@@ -38,7 +38,7 @@
             <p id="errstatus" class="mt-1 mb-0 text-danger em"></p>
           </div>
 
-          <div class="form-group">
+          <div class="form-group d-none">
             <label for="">Category Serial Number*</label>
             <input type="number" class="form-control ltr" name="serial_number" placeholder="Enter Category Serial Number">
             <p id="errserial_number" class="mt-1 mb-0 text-danger em"></p>
