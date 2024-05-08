@@ -12,6 +12,9 @@
     <!-- Main Stylesheet -->
     <link rel="stylesheet" href="{{asset('assets/stem/css/style.css')}}">
     <link rel="stylesheet" href="{{asset('assets/stem/css/responsive.css')}}">
+    <!-- common base color change -->
+    <link href="{{url('/')}}/assets/front/css/common-base-color.php?color={{$bs->base_color}}&color1={{$bs->secondary_base_color}}&color2={{$be->hero_overlay_color}}" rel="stylesheet">
+    <!-- base color change -->
   </head>
   <body>
     @includeIf('front.stem.partials.header')
