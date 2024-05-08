@@ -23,10 +23,12 @@ class DocumentController extends Controller
     else
     	$lang = Language::where('is_default', 1)->first();
     $lang_id = $lang->id;
+    
     $data['documents'] = Document::orderBy('id', 'DESC')->paginate(10);
     $data['lang_id'] = $lang_id;
 
-    $data['category']=DocumentCategory::select('name')->get();
+    $category=DocumentCategory::first();
+    $data['category']=$category->name;
     return view('admin.document.index',$data);
   }
 
@@ -99,19 +101,17 @@ class DocumentController extends Controller
   public function update(Request $request)
   {
   		$request->validate([
-            'title' => 'required|max:255',
-            'title_mr' => 'required|max:255',
+            'e_name' => 'required|max:255',
+            'm_name' => 'required|max:255',
             'status' => 'required',
-            'documents' => 'required|max:2048|mimes:application/pdf,pdf',
         ],[
-          'title.required' => 'The title in english field is required.',
-          'title_mr.required' => 'The title in marathi field is required.',
-          'documents.required' => 'The document is required.',
+          'e_name.required' => 'The name in english field is required.',
+          'm_name.required' => 'The marathi in marathi field is required.',
         ]);
 
 
-  		$document = Document::findOrFail($request->tender_id);
-  		$document->document_category_id = $request->document_category_id;
+  		$document = Document::findOrFail($request->document_id);
+  		// $document->document_category_id = $request->document_category_id;
   		if ($request->hasFile('documents')) {
           $file = $request->file('documents');
           $rand = rand(000,999);
@@ -122,8 +122,9 @@ class DocumentController extends Controller
           $document->files = $filename;
       }
 
-      $document->title = $request->title;
-      $document->title_mr = $request->title_mr;
+      $document->document_category_id = $request->document;
+      $document->name = $request->e_name;
+      $document->name_mr = $request->m_name;
       $document->status = $request->status;
       $document->save();
 
@@ -133,8 +134,9 @@ class DocumentController extends Controller
 
   public function delete(Request $request)
   {
-      $tender = Document::findOrFail($request->tender_id);
-      $tender->delete();
+      $document = Document::findOrFail($request->document_id);
+  
+      $document->delete();
       Session::flash('success', 'Document deleted successfully!');
       return back();
   }
@@ -203,6 +205,7 @@ class DocumentController extends Controller
 
   public function category_update(Request $request)
   {
+    
   	$messages = [
             'name.required' => 'The name in english is required',
             'name_mr.required' => 'The name in marathi is required',

@@ -9,6 +9,8 @@ use App\Models\TenderCategory;
 use App\Http\Controllers\Controller;
 use App\Models\Language;
 use App\Models\LeadCategory;
+use App\Models\DocumentCategory;
+use App\Models\Document;
 use App\Models\Leadership;
 
 class StemController extends Controller
@@ -64,5 +66,16 @@ class StemController extends Controller
         $name=$category->name;
         
         return view('front.stem.executive',compact('leadership','name'));
+      }
+
+
+      
+      public function circular($slug){
+
+        $category = DocumentCategory::where('slug', $slug)->firstOrFail();
+      
+         $document = Document::select('id','document_category_id','name_mr','files')->where('status','1')->get();
+        
+        return view('front.department.circular',compact('document'));
       }
 }

@@ -112,7 +112,7 @@ else
                               </span>
                               Edit
                             </a>
-                            <form class="deleteform d-inline-block" action="{{route('admin.tenders.delete')}}" method="post">
+                            <form class="deleteform d-inline-block" action="{{route('admin.documents.delete')}}" method="post">
                               @csrf
                               <input type="hidden" name="document_id" value="{{$tend->id}}">
                               <button type="submit" class="btn btn-danger btn-sm deletebtn">

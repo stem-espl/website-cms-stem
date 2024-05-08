@@ -69,12 +69,12 @@ else
         <div class="card-body pt-5 pb-4">
           <div class="row">
             <div class="col-lg-6 offset-lg-3">
-              <form id="ajaxForm" action="{{route('admin.tenders.update')}}" method="post">
+              <form id="ajaxForm" action="{{route('admin.documents.update')}}" method="post">
                 <input type="hidden" name="document_id" value="{{$document->id}}">
                 @csrf
                 <div class="form-group">
                   <label for="">Document Category **</label>
-                  <select class="form-control" name="tender_category">
+                  <select class="form-control" name="document">
                     <option value="">Select</option>
                     @foreach ($documentCat as $category)
                     <option value="{{ $category->id }}" {{ $category->id == $document->id ? 'selected' : '' }}>{{ $category->name }}</option>
@@ -84,12 +84,12 @@ else
                 </div>
                 <div class="form-group">
                   <label for="">document in English **</label>
-                  <input type="text" class="form-control" name="title" value="{{$document->name}}" placeholder="Enter title in english">
+                  <input type="text" class="form-control" name="e_name" value="{{$document->name}}" placeholder="Enter title in english">
                   <p id="errtitle" class="em text-danger mb-0"></p>
                 </div>
                 <div class="form-group">
                   <label for="">document in Marathi **</label>
-                  <input type="text" class="form-control" name="title_mr" value="{{$document->name_mr}}" placeholder="Enter title in marathi">
+                  <input type="text" class="form-control" name="m_name" value="{{$document->name_mr}}" placeholder="Enter title in marathi">
                   <p id="errtitle_mr" class="em text-danger mb-0"></p>
                 </div>
 
@@ -105,9 +105,9 @@ else
 
                 <div class="form-group">
                   <div id="downloadFile" class="form-group">
-                      <label for="">PDF Document **</label>
+                      <label for="">Document **</label>
                       <br>
-                      <input name="file" type="file" accept="application/pdf" >
+                      <input name="documents" type="file" accept="application/pdf" >
                       <p class="mb-0 text-warning">Only PDF file is allowed. File size should be less than 2MB.</p>
                       <p id="errtender_doc" class="mb-0 text-danger em"></p>
                   </div>
