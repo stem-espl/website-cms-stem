@@ -35,7 +35,7 @@
       <div class="card-body pt-5 pb-4">
         <div class="row">
           <div class="col-lg-6 offset-lg-3">
-            <form id="imageForm" action="{{route('admin.logo.update')}}" method="POST">
+            <form id="imageForm" action="{{route('admin.logo.update')}}" method="POST"  enctype="multipart/form-data">
               @csrf
               <div class="form-group">
                 <label>Website Heading **</label>
@@ -81,7 +81,7 @@
                 <label for="">Breadcrumb ** </label>
                 <br>
                 <div class="thumb-preview" id="thumbPreview3">
-                  <img src="{{asset('assets/front/img/' . $abs->breadcrumb)}}" id="preview3" alt="breadcrumb">
+                  <img src="{{asset('assets/front/img/' . $abs->breadcrumb)}}" id="preview2" alt="breadcrumb">
                 </div>
                 <br>
                 <br>
@@ -97,7 +97,7 @@
                 <label for="">Header Logo ** </label>
                 <br>
                 <div class="thumb-preview" id="thumbPreview4">
-                  <img src="{{asset('assets/front/img/' . $abs->header_logo)}}" id="preview4" alt="headerlogo">
+                  <img src="{{asset('assets/front/img/' . $abs->header_logo)}}" id="preview3" alt="headerlogo">
                 </div>
                 <br>
                 <br>
