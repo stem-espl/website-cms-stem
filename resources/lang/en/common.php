@@ -51,5 +51,7 @@ return [
     'Email' =>'Email',
     'Messages' =>'Messages',
     'Submit Now' =>'Submit Now',
+    'Download' =>'Download',
+    'Sr No' =>'Sr No',
     
 ];

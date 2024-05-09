@@ -5,11 +5,11 @@
 			<div class="row">
 				<div class="col-xl-12 text-center">
 					<div class="page-title-content">
-						<h3 class="title text-white circular-title">Circulars</h3>
+						<h3 class="title text-white circular-title">{{__($variable)}}</h3>
 						<nav aria-label="breadcrumb">
 							<ol class="breadcrumb">
 								<li class="breadcrumb-item"><a href="stem.html">Home</a></li>
-								<li class="breadcrumb-item active" aria-current="page">Circulars</li>
+								<li class="breadcrumb-item active" aria-current="page">{{__($variable)}}</li>
 							</ol>
 						</nav>
 					</div>
@@ -25,7 +25,7 @@
 					<thead class="back_color">
 						<tr>
 							<th>Sr No</th>
-							<th>Circulars</th>
+							<th>{{__($variable)}}</th>	
 							<th>Download</th>
 							
 						</tr>
