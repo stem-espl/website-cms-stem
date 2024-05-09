@@ -76,19 +76,18 @@ else
                   <label for="">Document Category **</label>
                   <select class="form-control" name="document">
                     <option value="">Select</option>
-
-               @foreach ($documentCat as $category)
-            <option value="{{ $category->id }}" {{ $category->id == $document->document_category_id ? 'selected' : '' }}>
-                {{ $category->name }}
-            </option>
-             @endforeach
+                      @foreach ($documentCat as $category)
+                    <option value="{{ $category->id }}" {{ $category->id == $document->document_category_id ? 'selected' : '' }}>
+                        {{ $category->name }}
+                    </option>
+                    @endforeach
 
                   </select>
                   <p id="errtender_category" class="em text-danger mb-0"></p>
                 </div>
                 <div class="form-group">
                   <label for="">document in English **</label>
-                  <input type="text" class="form-control" name="  " value="{{$document->name}}" placeholder="Enter title in english">
+                  <input type="text" class="form-control" name="e_name" value="{{$document->name}}" placeholder="Enter title in english">
                   <p id="errtitle" class="em text-danger mb-0"></p>
                 </div>
                 <div class="form-group">
