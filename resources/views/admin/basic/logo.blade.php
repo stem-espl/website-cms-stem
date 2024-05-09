@@ -49,7 +49,7 @@
                 <label for="">Logo ** </label>
                 <br>
                 <div class="thumb-preview" id="thumbPreview1">
-                  <img src="{{asset('assets/front/img/' . $abs->logo)}}" id="preview" alt="Logo">
+                  <img src="{{asset('assets/stem/logo/' . $abs->logo)}}" id="preview" alt="Logo">
                 </div>
                 <br>
                 <br>
@@ -65,7 +65,7 @@
                 <label for="">Favicon ** </label>
                 <br>
                 <div class="thumb-preview" id="thumbPreview2">
-                  <img src="{{asset('assets/front/img/' . $abs->favicon)}}" id="preview1" alt="favicon">
+                  <img src="{{asset('assets/stem/favicon/' . $abs->favicon)}}" id="preview1" alt="favicon">
                 </div>
                 <br>
                 <br>
@@ -81,7 +81,7 @@
                 <label for="">Breadcrumb ** </label>
                 <br>
                 <div class="thumb-preview" id="thumbPreview3">
-                  <img src="{{asset('assets/front/img/' . $abs->breadcrumb)}}" id="preview2" alt="breadcrumb">
+                  <img src="{{asset('assets/stem/breadcrumb/' . $abs->breadcrumb)}}" id="preview2" alt="breadcrumb">
                 </div>
                 <br>
                 <br>
@@ -97,7 +97,7 @@
                 <label for="">Header Logo ** </label>
                 <br>
                 <div class="thumb-preview" id="thumbPreview4">
-                  <img src="{{asset('assets/front/img/' . $abs->header_logo)}}" id="preview3" alt="headerlogo">
+                  <img src="{{asset('assets/stem/header_logo/' . $abs->header_logo)}}" id="preview3" alt="headerlogo">
                 </div>
                 <br>
                 <br>
