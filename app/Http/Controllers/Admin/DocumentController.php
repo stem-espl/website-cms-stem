@@ -25,10 +25,13 @@ class DocumentController extends Controller
     $lang_id = $lang->id;
     
     $data['documents'] = Document::orderBy('id', 'DESC')->paginate(10);
+    foreach($data['documents'] as $val)
+    {
+        $category=DocumentCategory::where('id',$val->document_category_id)->first();
+        $val->cat_name = isset($category->name) ? $category->name : '';
+    }
     $data['lang_id'] = $lang_id;
 
-    $category=DocumentCategory::first();
-    $data['category']=$category->name;
     return view('admin.document.index',$data);
   }
 
