@@ -92,7 +92,7 @@ else
                             <input type="checkbox" class="bulk-check" data-val="{{$tend->id}}">
                           </td>
                      
-                          <td>{{$category}}</td>
+                          <td>{{$tend->cat_name}}</td>
                         
                         
 

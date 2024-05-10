@@ -50,4 +50,6 @@ return [
     'Email' =>'ईमेल',
     'Messages' =>'संदेश',
     'Submit Now' =>'आता सबमिट करा',
+    'Download' =>'डाउनलोड करा',
+    'Sr No' =>'अनु. क्र',
 ];
