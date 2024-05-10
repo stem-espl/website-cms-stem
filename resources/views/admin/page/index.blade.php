@@ -83,7 +83,7 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
                         </th>
                         <th scope="col">Name</th>
                         <th scope="col">Status</th>
-                        <th scope="col">Serial Number</th>
+                        <th scope="col">Slug</th>
                         <th scope="col">Actions</th>
                       </tr>
                     </thead>
@@ -101,7 +101,7 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
                               <span class="badge badge-danger">Deactive</span>
                             @endif
                           </td>
-                          <td>{{$apage->serial_number}}</td>
+                          <td>{{$apage->slug}}</td>
                           <td>
                             <a class="btn btn-secondary btn-sm" href="{{route('admin.page.edit', $apage->id) . '?language=' . request()->input('language')}}">
                                 <span class="btn-label">

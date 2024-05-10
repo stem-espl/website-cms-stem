@@ -89,7 +89,7 @@
                             <p id="errstatus" class="em text-danger mb-0"></p>
                         </div>
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-lg-6 d-none">
                         <div class="form-group">
                             <label for="">Serial Number **</label>
                             <input type="number" class="form-control ltr" name="serial_number" value="{{$page->serial_number}}" placeholder="Enter Serial Number">
