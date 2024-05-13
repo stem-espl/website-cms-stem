@@ -1161,7 +1161,7 @@ class FrontendController extends Controller
             $currentLang = Language::where('is_default', 1)->first();
         }
 
-        $data['page'] = Page::where('slug', $slug)->firstOrFail();
+        $data['page'] = Page::where('slug', $slug)->where('status',1)->firstOrFail();
 
         $be = $currentLang->basic_extended;
         $bex = $currentLang->basic_extra;
