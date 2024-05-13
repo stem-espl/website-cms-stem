@@ -198,6 +198,10 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
 @section('scripts')
 <script>
   $(document).ready(function() {
+    $("#fileInput1").on('change', function() {
+        preview.src=URL.createObjectURL(event.target.files[0]);
+    });
+    
     $("select[name='language_id']").on('change', function() {
       $("#gallery_category_id").removeAttr('disabled');
 
