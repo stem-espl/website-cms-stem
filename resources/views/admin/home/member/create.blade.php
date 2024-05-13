@@ -81,6 +81,11 @@
                   <input type="text" class="form-control" name="rank" value="" placeholder="Enter rank">
                   <p id="errrank" class="mb-0 text-danger em"></p>
                 </div>
+                <div class="form-group">
+                  <label for="">URL</label>
+                  <input type="text" class="form-control ltr" name="url" value="" placeholder="Enter URL">
+                  <p id="errurl" class="text-danger mb-0 em"></p>
+                </div>
                 <div class="form-group d-none">
                   <label for="">Facebook</label>
                   <input type="text" class="form-control ltr" name="facebook" value="" placeholder="Enter facebook url">

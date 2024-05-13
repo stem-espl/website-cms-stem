@@ -42,14 +42,14 @@
 </div>
 <div class="row">
     <div class="col-md-12">
-        @if ($bex->home_page_pagebuilder == 0)
+    
         <div class="card">
             <div class="card-header">
                 <div class="row">
-                    <div class="col-lg-10">
-                        <div class="card-title">Title & Subtitle</div>
+                  <div class="col-lg-4">
+                        <div class="card-title d-inline-block">Team Section</div>
                     </div>
-                    <div class="col-lg-2">
+                    <div class="col-lg-3">
                         @if (!empty($langs))
                         <select name="language" class="form-control" onchange="window.location='{{url()->current() . '?language='}}'+this.value">
                             <option value="" selected disabled>Select a Language</option>
@@ -62,7 +62,7 @@
                 </div>
             </div>
 
-            <form class="" action="{{route('admin.teamtext.update', $lang_id)}}" method="post">
+            <form class="d-none" action="{{route('admin.teamtext.update', $lang_id)}}" method="post">
                 @csrf
                 <div class="card-body">
                     <div class="row">
@@ -123,7 +123,7 @@
                 </div>
             </form>
         </div>
-        @endif
+ 
 
         <div class="card">
             <div class="card-header">
@@ -144,7 +144,7 @@
                                         <th scope="col">Image</th>
                                         <th scope="col">Name</th>
                                         <th scope="col">Rank</th>
-                                        <th scope="col">Featured</th>
+                                        <!-- <th scope="col">Featured</th> -->
                                         <th scope="col">Actions</th>
                                     </tr>
                                 </thead>
@@ -155,7 +155,7 @@
                                         <td><img src="{{asset('assets/stem/members/'.$member->image)}}" alt="" width="40"></td>
                                         <td>{{convertUtf8($member->name)}}</td>
                                         <td>{{$member->rank}}</td>
-                                        <td>
+                                        <!-- <td class="d-none">
                                             <form id="featureForm{{$member->id}}" class="d-inline-block" action="{{route('admin.member.feature')}}" method="post">
                                                 @csrf
                                                 <input type="hidden" name="member_id" value="{{$member->id}}">
@@ -164,7 +164,7 @@
                                                     <option value="0" {{$member->feature == 0 ? 'selected' : ''}}>No</option>
                                                 </select>
                                             </form>
-                                        </td>
+                                        </td> -->
                                         <td>
                                             <a class="btn btn-secondary btn-sm" href="{{route('admin.member.edit', $member->id) . '?language=' . request()->input('language')}}">
                                                 <span class="btn-label">

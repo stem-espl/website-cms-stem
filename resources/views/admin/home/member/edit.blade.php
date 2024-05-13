@@ -89,6 +89,11 @@
                   <input type="text" class="form-control" name="rank" value="{{$member->rank}}" placeholder="Enter rank">
                   <p id="errrank" class="mb-0 text-danger em"></p>
                 </div>
+                <div class="form-group">
+                  <label for="">URL</label>
+                  <input type="text" class="form-control ltr" name="url" value="{{$member->url}}" placeholder="Enter URL">
+                  <p id="errurl" class="text-danger mb-0 em"></p>
+                </div>
                 <div class="form-group d-none">
                   <label for="">Facebook</label>
                   <input type="text" class="form-control ltr" name="facebook" value="{{$member->facebook}}" placeholder="Enter facebook url">
