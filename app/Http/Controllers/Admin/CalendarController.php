@@ -20,10 +20,8 @@ class CalendarController extends Controller
         // $lang = Language::where('code', $request->language)->first();
         $lang_code = isset($request->language) ?  $request->language : 'en';
         $lang = Language::where('code', $lang_code)->first();
-
         $lang_id = $lang->id;
         $data['events'] = News::where('language_id', $lang_id)->orderBy('id', 'DESC')->get();
-
         $data['lang_id'] = $lang_id;
 
         $user = Auth::user();
@@ -73,7 +71,6 @@ class CalendarController extends Controller
         $calendar->date = $request->datetimes;    
         $calendar->created_by = auth()->id(); 
         $calendar->save();
-
         Session::flash('success', 'Event added to calendar successfully!');
         return "success";
     }
@@ -129,8 +126,6 @@ class CalendarController extends Controller
         
             $event->title = $request->title;
             $event->date = $request->date;
-            $event->image = $filename; 
-            
             $event->save();
         
             Session::flash('success', 'News updated successfully!');

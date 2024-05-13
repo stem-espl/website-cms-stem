@@ -1615,6 +1615,17 @@ $data = \App\Models\BasicExtra::first();
       </li>
       @endcan
 
+
+      @can('history')
+      {{-- Dashboard --}}
+      <li class="nav-item">
+        <a href="{{route('admin.index')}}">
+          <i class="la flaticon-paint-palette"></i>
+          <p>History</p>
+        </a>
+      </li>
+      @endcan
+
     </div>
   </div>
 </div>

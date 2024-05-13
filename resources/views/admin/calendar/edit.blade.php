@@ -45,13 +45,13 @@
     <div class="card">
       <div class="card-header">
         <div class="card-title d-inline-block">Edit News Section</div>
-        {{-- <a class="btn btn-info btn-sm float-right d-inline-block"
-          href="{{route('admin.gallery.index') . '?language=' . request()->input('language')}}">
+        <a class="btn btn-info btn-sm float-right d-inline-block"
+          href="{{route('admin.calendar.index') . '?language=' . request()->input('language')}}">
           <span class="btn-label">
             <i class="fas fa-backward" style="font-size: 12px;"></i>
           </span>
           Back
-        </a> --}}
+        </a>
       </div>
       <div class="card-body pt-5 pb-5">
         <div class="row">

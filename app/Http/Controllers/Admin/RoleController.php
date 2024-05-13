@@ -72,11 +72,8 @@ class RoleController extends Controller
 
     public function managePermissions($id) 
     {
-
         $data['role'] = Role::find($id);
-
         $data['permissionByGroupNames'] = Permission::select('group_name');
-
         if(auth()->guard('admin')->user()->role_id != 1)
         {
           $data['permissionByGroupNames'] = $data['permissionByGroupNames']->where('basic','0');

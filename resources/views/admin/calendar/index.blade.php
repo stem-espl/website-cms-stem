@@ -67,8 +67,6 @@
           </div>
           <div class="card-body">
             <div class="row">
-
-              
               <div class="col-lg-12">
                 @if (count($events) == 0)
                   <h3 class="text-center">NO NEWS FOUND</h3>
@@ -97,7 +95,7 @@
                             <td>{{convertUtf8(strlen($event->title)) > 30 ? convertUtf8(substr($event->title, 0, 30)) . '...' : convertUtf8($event->title)}}</td>
                             <td>
                               @php
-                              $start = strtotime($event->start_date);
+                              $start = strtotime($event->date);
                               $start = date('Y-m-d H:i' ,$start);
                               @endphp
                               {{$start}}

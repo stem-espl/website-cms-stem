@@ -2,25 +2,23 @@
 @section('content')
 
 
-<div class="containar-flude">
-  <div class="row">
-    <div class="col-4" style="margin-top: 13%;">
-      <div class="btn-group btn-group-toggle" data-toggle="buttons" style="margin-left: 39%;">
-        <label class="btn btn-secondary active">
-          <input type="radio" name="options" id="option1">Home
-        </label>
-        <label class="btn btn-secondary">
-          <input type="radio" name="options" id="option2" autocomplete="off">News
-        </label>
+<section class="page-title-section_3">
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-12 text-center">
+        <div class="page-title-content">
+          <h3 class="title">News</h3>
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="">Home</a></li>
+              <li class="breadcrumb-item active" aria-current="page">News</li>
+            </ol>
+          </nav>
+        </div>
       </div>
-
-    </div>
-    <div class="col-8">
-      <img src="{{ url('assets/news.jpg') }}" alt=""  style="margin-top: 2%;">
-
     </div>
   </div>
-</div>
+</section>
 
 <div class="section-content">
     <div class="container">
