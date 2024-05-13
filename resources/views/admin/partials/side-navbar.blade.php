@@ -159,8 +159,50 @@ $data = \App\Models\BasicExtra::first();
         @endcanany
 
         {{-- Content Management --}}
-        @canany(['sections-customization','partners-section','blog-section','team-section','testimonials-section','portfolio-section','call-to-action-section','statistics-section','approach-section','service-section','intro-section','features','hero-section','logo-text','useful-links','department-links','about-us-links', 'settings-services','category-services','services','portfolios','category-blog','blogs','archives','settings-gallery','categories-gallery','galleries','settings-faq','categories-faq','faqs','categories-career','post-job','job-management','categories-leadership','leadership','categories-document','documents'])
+        @canany(['sections-customization','partners-section','blog-section','team-section','testimonials-section','portfolio-section','call-to-action-section','statistics-section','approach-section','service-section','intro-section','features','hero-section','logo-text','useful-links','department-links','about-us-links', 'settings-services','category-services','services','portfolios','category-blog','blogs','archives','settings-gallery','categories-gallery','galleries','settings-faq','categories-faq','faqs','categories-career','post-job','job-management'])
         @includeIf('admin.partials.content-management')
+        @endcanany
+
+        {{-- Tenders Management --}}
+        @canany(['categories-tender', 'tenders'])
+        <li class="nav-item
+          @if(request()->path() == 'admin/tender_category') active
+          @elseif(request()->path() == 'admin/tenders') active
+          @elseif(request()->is('admin/tender/edit/*')) active
+          @elseif(request()->is('admin/tender/add')) active
+          @endif">
+          <a data-toggle="collapse" href="#tenders">
+            <i class="la flaticon-file"></i>
+            <p>Tenders Management</p>
+            <span class="caret"></span>
+          </a>
+          <div class="collapse
+            @if(request()->path() == 'admin/tender_category') show
+            @elseif(request()->path() == 'admin/tenders') show
+            @elseif(request()->path() == 'admin/tender/edit/*') show
+            @elseif(request()->path() == 'admin/tender/add') show
+            @endif" id="tenders">
+            <ul class="nav nav-collapse">
+              @can('categories-tender')
+              <li class="@if(request()->path() == 'admin/tender_category') active @endif">
+                <a href="{{route('admin.tcategory.index') . '?language=' . $default->code}}">
+                <span class="sub-item">Tender Category</span>
+                </a>
+              </li>
+              @endcan
+              @can('tenders')
+              <li class="@if(request()->path() == 'admin/tenders') active
+              @elseif(request()->is('admin/tender/edit/*')) active
+              @elseif(request()->is('admin/tender/add')) active
+                @endif">
+                <a href="{{route('admin.tenders.index') . '?language=' . $default->code}}">
+                <span class="sub-item">Tenders</span>
+                </a>
+              </li>
+              @endcan
+            </ul>
+          </div>
+        </li>
         @endcanany
 
         {{-- Leadership Management --}}
@@ -238,49 +280,27 @@ $data = \App\Models\BasicExtra::first();
         </li>
         @endcanany
 
-        {{-- Tenders Management --}}
-        @canany(['categories-tender', 'tenders'])
-        <li class="nav-item
-          @if(request()->path() == 'admin/tender_category') active
-          @elseif(request()->path() == 'admin/tenders') active
-          @elseif(request()->is('admin/tender/edit/*')) active
-          @elseif(request()->is('admin/tender/add')) active
-          @endif">
-          <a data-toggle="collapse" href="#tenders">
-            <i class="la flaticon-file"></i>
-            <p>Tenders Management</p>
-            <span class="caret"></span>
+        @can('history')
+        {{-- history --}}
+        <li class="nav-item">
+          <a href="{{route('admin.index')}}">
+            <i class="la flaticon-paint-palette"></i>
+            <p>History</p>
           </a>
-          <div class="collapse
-            @if(request()->path() == 'admin/tender_category') show
-            @elseif(request()->path() == 'admin/tenders') show
-            @elseif(request()->path() == 'admin/tender/edit/*') show
-            @elseif(request()->path() == 'admin/tender/add') show
-            @endif" id="tenders">
-            <ul class="nav nav-collapse">
-              @can('categories-tender')
-              <li class="@if(request()->path() == 'admin/tender_category') active @endif">
-                <a href="{{route('admin.tcategory.index') . '?language=' . $default->code}}">
-                <span class="sub-item">Tender Category</span>
-                </a>
-              </li>
-              @endcan
-              @can('tenders')
-              <li class="@if(request()->path() == 'admin/tenders') active
-              @elseif(request()->is('admin/tender/edit/*')) active
-              @elseif(request()->is('admin/tender/add')) active
-                @endif">
-                <a href="{{route('admin.tenders.index') . '?language=' . $default->code}}">
-                <span class="sub-item">Tenders</span>
-                </a>
-              </li>
-              @endcan
-            </ul>
-          </div>
         </li>
-        @endcanany
+        @endcan
 
+        @can('e-governance')
+        {{-- e-governance --}}
+        <li class="nav-item">
+          <a href="{{route('admin.egovernance.index')}}">
+            <i class="la flaticon-paint-palette"></i>
+            <p>E-Governance</p>
+          </a>
+        </li>
+        @endcan
 
+        
         @canany(['settings-page','create-page','pages'])
         {{-- Dynamic Pages --}}
         <li class="nav-item
@@ -1651,43 +1671,6 @@ $data = \App\Models\BasicExtra::first();
         </a>
       </li>
       @endcan
-
-
-      @can('history')
-      {{-- Dashboard --}}
-      <li class="nav-item">
-        <a href="{{route('admin.index')}}">
-          <i class="la flaticon-paint-palette"></i>
-          <p>History</p>
-        </a>
-      </li>
-      @endcan
-
-      @can('e-governance')
-      {{-- Dashboard --}}
-      <li class="nav-item">
-        <a href="{{route('admin.egovernance.index')}}">
-          <i class="la flaticon-paint-palette"></i>
-          <p>E-Governance</p>
-        </a>
-      </li>
-      @endcan
-
-      @can('Documents')
-      {{-- Dashboard --}}
-      <li class="nav-item">
-        <a href="{{route('admin.documents.index')}}">
-          <i class="la flaticon-paint-palette"></i>
-          <p>Document</p>
-        </a>
-      </li>
-      @endcan
-
-
-      
-
-
-
 
     </div>
   </div>
