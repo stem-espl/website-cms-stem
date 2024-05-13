@@ -97,7 +97,7 @@
                             <td>{{convertUtf8(strlen($event->title)) > 30 ? convertUtf8(substr($event->title, 0, 30)) . '...' : convertUtf8($event->title)}}</td>
                             <td>
                               @php
-                              $start = strtotime($event->start_date);
+                              $start = strtotime($event->date);
                               $start = date('Y-m-d H:i' ,$start);
                               @endphp
                               {{$start}}

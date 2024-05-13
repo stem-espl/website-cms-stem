@@ -129,8 +129,6 @@ class CalendarController extends Controller
         
             $event->title = $request->title;
             $event->date = $request->date;
-            $event->image = $filename; 
-            
             $event->save();
         
             Session::flash('success', 'News updated successfully!');
