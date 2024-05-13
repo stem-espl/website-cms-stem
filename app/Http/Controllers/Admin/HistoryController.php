@@ -51,7 +51,7 @@ class HistoryController extends Controller
         'file' => 'required',
         'title' => 'required|max:255',
         'years' => 'required|max:255',
-        'description' => 'required',
+        'description' => 'required|max:800',
       ];
   
       $validator = Validator::make($request->all(), $rules, $messages);
@@ -59,9 +59,7 @@ class HistoryController extends Controller
         $errmsgs = $validator->getMessageBag()->add('error', 'true');
         return response()->json($validator->errors());
       }
-  
       $history = new History;
-  
       if ($request->has('file')) {
         $destinationPath = '/assets/stem/history/'; 
         if(!File::exists(public_path($destinationPath))) {
