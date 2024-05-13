@@ -167,7 +167,7 @@ $data = \App\Models\BasicExtra::first();
         @canany(['categories-leadership', 'leadership'])
         {{-- Articles --}}
         <li class="nav-item
-          @if(request()->path() == 'leadership_categories') active
+          @if(request()->path() == 'admin/leadership_categories') active
     
           @endif">
           <a data-toggle="collapse" href="#leadership">
@@ -176,19 +176,19 @@ $data = \App\Models\BasicExtra::first();
             <span class="caret"></span>
           </a>
           <div class="collapse
-            @if(request()->path() == 'admin/lead_categories') show
+            @if(request()->path() == 'admin/leadership_categories') show
   
             @endif" id="leadership">
             <ul class="nav nav-collapse">
               @can('categories-leadership')
-              <li class="@if(request()->path() == '/leadership/categories') active @endif">
+              <li class="@if(request()->path() == 'admin/leadership_categories') active @endif">
                 <a href="{{route('admin.leadership_category.index') . '?language=' . $default->code}}">
                 <span class="sub-item">Leadership Category</span>
                 </a>
               </li>
               @endcan
               @can('leadership')
-              <li class="@if(request()->path() == 'leadership') show
+              <li class="@if(request()->path() == 'admin/leadership') show
                 
                 @endif">
                 <a href="{{route('admin.leadership.index') . '?language=' . $default->code}}">

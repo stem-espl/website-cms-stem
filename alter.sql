@@ -97,3 +97,4 @@ INSERT INTO `permissions` (`id`, `name`, `guard_name`, `group_name`, `status`, `
 ALTER TABLE `members` ADD `url` VARCHAR(255) NULL DEFAULT NULL AFTER `image`;
 
 ALTER TABLE `history` CHANGE `description` `description` LONGTEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL;
+ALTER TABLE `basic_settings_extra` ADD `url` VARCHAR(255) NULL DEFAULT NULL AFTER `contact_mails`;

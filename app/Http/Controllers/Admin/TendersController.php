@@ -56,7 +56,7 @@ class TendersController extends Controller
             'title_mr' => 'required|max:255',
             'description' => 'required',
             'description_mr' => 'required',
-            'tender_link' => 'required',
+            'tender_link' => 'nullable',
             'status' => 'required',
             'tender_doc' => 'required|max:2048|mimes:application/pdf,pdf',
         ],[
@@ -119,7 +119,7 @@ class TendersController extends Controller
             'title_mr' => 'required|max:255',
             'description' => 'required',
             'description_mr' => 'required',
-            'tender_link' => 'required',
+            'tender_link' => 'nullable',
             'status' => 'required',
             'tender_doc' => 'nullable|max:2048|mimes:application/pdf,pdf',
         ],[

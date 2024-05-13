@@ -103,6 +103,14 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
                     <p class="mb-0 text-danger">{{$errors->first('contact_mails')}}</p>
                   @endif
                 </div>
+                <div class="form-group">
+                  <label for="">URL</label>
+                  <input type="text" class="form-control ltr" name="url" value="{{$abex->url}}" placeholder="Enter URL">
+                  <p id="errurl" class="text-danger mb-0 em"></p>
+                  @if ($errors->has('url'))
+                    <p class="mb-0 text-danger">{{$errors->first('url')}}</p>
+                  @endif
+                </div>
 
                 <div class="form-group">
                   <label>Latitude </label>

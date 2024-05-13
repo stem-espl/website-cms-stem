@@ -104,7 +104,7 @@ else
                 </div>
 
                 <div class="form-group">
-                  <label for="">Tender E-Link **</label>
+                  <label for="">Tender E-Link</label>
                   <input type="text" class="form-control" name="tender_link" value="" placeholder="Enter Tender E-Link">
                   <p id="errtender_link" class="em text-danger mb-0"></p>
                 </div>
