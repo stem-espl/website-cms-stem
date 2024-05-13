@@ -89,3 +89,7 @@ CREATE TABLE `contact_query` (`id` INT(11) NOT NULL AUTO_INCREMENT , `name` VARC
 
 -- date---9/05/2024
 CREATE TABLE `stmp_cms`.`history` (`id` INT(11) NULL AUTO_INCREMENT , `language_id` INT(11) NULL DEFAULT NULL , `image` VARCHAR(255) NOT NULL , `years` VARCHAR(255) NOT NULL , `title` VARCHAR(255) NOT NULL , `description` VARCHAR(255) NOT NULL , `status` INT(11) NOT NULL DEFAULT '0' , `deleted_at` TIMESTAMP NULL DEFAULT NULL , `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP , `updated_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+
+-- date 13/05/2024
+
+INSERT INTO `permissions` (`id`, `name`, `guard_name`, `group_name`, `status`, `basic`, `created_at`, `updated_at`) VALUES (NULL, 'history', 'admin', 'history', '1', '0', '2024-04-19 14:45:27', '2024-04-19 14:45:27');

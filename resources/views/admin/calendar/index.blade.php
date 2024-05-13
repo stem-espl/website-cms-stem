@@ -67,8 +67,6 @@
           </div>
           <div class="card-body">
             <div class="row">
-
-              
               <div class="col-lg-12">
                 @if (count($events) == 0)
                   <h3 class="text-center">NO NEWS FOUND</h3>
