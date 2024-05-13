@@ -25,6 +25,11 @@ class GalleryController extends Controller
     $lang_id = $lang->id;
     $data['galleries'] = Gallery::where('language_id', $lang_id)->orderBy('id', 'DESC')->get();
 
+    foreach($data['galleries'] as $val)
+    {
+        $category=GalleryCategory::where('id',$val->name)->first();
+        $val->cat_name = isset($category->category_id) ? $category->category_id : '';
+    }
     $data['lang_id'] = $lang_id;
 
     $data['categoryInfo'] = BasicExtra::first();
