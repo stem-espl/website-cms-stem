@@ -1626,6 +1626,16 @@ $data = \App\Models\BasicExtra::first();
       </li>
       @endcan
 
+      @can('e-governance')
+      {{-- Dashboard --}}
+      <li class="nav-item">
+        <a href="{{route('admin.egovernance.index')}}">
+          <i class="la flaticon-paint-palette"></i>
+          <p>E-Governance</p>
+        </a>
+      </li>
+      @endcan
+
     </div>
   </div>
 </div>
