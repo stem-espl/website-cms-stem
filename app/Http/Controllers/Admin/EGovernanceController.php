@@ -21,6 +21,7 @@ class EGovernanceController extends Controller
 
         $lang_id = $lang->id;
         $data['egovernance'] = EGovernanceModel::where('language_id', $lang_id)->orderBy('id', 'DESC')->get();
+        // dd($data['egovernance']);
     
         $data['lang_id'] = $lang_id;
     
