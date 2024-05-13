@@ -72,7 +72,7 @@ class PageController extends Controller
                 }
             ],
             'status' => 'required',
-            'serial_number' => 'required|integer',
+            // 'serial_number' => 'required|integer',
         ];
 
         $validator = Validator::make($request->all(), $rules, $messages);
