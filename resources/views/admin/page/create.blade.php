@@ -80,7 +80,7 @@
                             </div>
                         </div>
                         <div class="col-lg-6">
-                            <div class="form-group">
+                            <div class="form-group d-none">
                                <label for="">Serial Number **</label>
                                <input type="number" class="form-control ltr" name="serial_number" value="" placeholder="Enter Serial Number">
                                <p id="errserial_number" class="mb-0 text-danger em"></p>

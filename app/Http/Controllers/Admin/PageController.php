@@ -72,7 +72,7 @@ class PageController extends Controller
                 }
             ],
             'status' => 'required',
-            'serial_number' => 'required|integer',
+            // 'serial_number' => 'required|integer',
         ];
 
         $validator = Validator::make($request->all(), $rules, $messages);
@@ -90,7 +90,7 @@ class PageController extends Controller
         $page->subtitle = $request->breadcrumb_subtitle;
         $page->slug = $slug;
         $page->status = $request->status;
-        $page->serial_number = $request->serial_number;
+        // $page->serial_number = $request->serial_number;
         $page->meta_keywords = $request->meta_keywords;
         $page->meta_description = $request->meta_description;
         if ($bex->custom_page_pagebuilder == 0) {
@@ -144,7 +144,7 @@ class PageController extends Controller
         $page->subtitle = $request->breadcrumb_subtitle;
         $page->slug = $slug;
         $page->status = $request->status;
-        $page->serial_number = $request->serial_number;
+        // $page->serial_number = $request->serial_number;
         $page->meta_keywords = $request->meta_keywords;
         $page->meta_description = $request->meta_description;
         if ($bex->custom_page_pagebuilder == 0) {
