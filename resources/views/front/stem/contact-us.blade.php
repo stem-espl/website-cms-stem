@@ -133,8 +133,10 @@
 					<!-- Google Map Start -->
 					<div class="mapouter fixed-height">
 						<div class="gmap_canvas">
-							<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d30144.129575814713!2d72.91804991083987!3d19.19449489999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7b98afd56474d%3A0xea24082cae5602ed!2sStem%20Water%20Distribution%20And%20Infrastructure%20Co.P.Ltd.!5e0!3m2!1sen!2sin!4v1698842740640!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-							<a href="https://www.whatismyip-address.com/"></a>
+							<iframe src="https://maps.google.com/maps?hl=en&amp;q={{$bex->latitude}},%20{{$bex->longitude}}+(My%20Business%20Name)&amp;t=&amp;iwloc=B&amp;output=embed" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+							<!-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d30144.129575814713!2d72.91804991083987!3d19.19449489999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7b98afd56474d%3A0xea24082cae5602ed!2sStem%20Water%20Distribution%20And%20Infrastructure%20Co.P.Ltd.!5e0!3m2!1sen!2sin!4v1698842740640!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+							<a href="https://www.whatismyip-address.com/"></a> -->
 						</div>
 					</div>
 					<!-- Google Map End -->
