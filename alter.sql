@@ -93,3 +93,5 @@ CREATE TABLE `stmp_cms`.`history` (`id` INT(11) NULL AUTO_INCREMENT , `language_
 -- date 13/05/2024
 
 INSERT INTO `permissions` (`id`, `name`, `guard_name`, `group_name`, `status`, `basic`, `created_at`, `updated_at`) VALUES (NULL, 'history', 'admin', 'history', '1', '0', '2024-04-19 14:45:27', '2024-04-19 14:45:27');
+---date ----13-05-2024
+ALTER TABLE `members` ADD `url` VARCHAR(255) NULL DEFAULT NULL AFTER `image`;
