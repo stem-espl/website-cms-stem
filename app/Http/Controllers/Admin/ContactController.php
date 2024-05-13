@@ -33,6 +33,7 @@ class ContactController extends Controller
             'contact_mails' => 'required',
             'latitude' => 'nullable|max:255',
             'longitude' => 'nullable|max:255',
+            'url' => 'nullable',
             // 'map_zoom' => 'nullable|max:255',
         ]);
 
@@ -47,6 +48,8 @@ class ContactController extends Controller
         $bex->contact_mails = $request->contact_mails;
         $bex->latitude = $request->latitude;
         $bex->longitude = $request->longitude;
+        $bex->url = $request->url;
+        // dd($bex->url);
         // $bex->map_zoom = $request->map_zoom ? $request->map_zoom : 0;
         $bex->save();
 
