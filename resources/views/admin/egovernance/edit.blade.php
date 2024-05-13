@@ -85,9 +85,11 @@
               <div class="form-group">
                 <label for="">Status**</label>
                 <select class="form-control" name="status" aria-label=".form-select-lg example">
-                  <option value="1">Active</option>
-                  <option value="0">Deactive</option>
+                <option value="1" <?php echo ($egovernan->status == 1) ? 'selected' : ''; ?>>Active</option>
+                  <option value="0" <?php echo ($egovernan->status == 0) ? 'selected' : ''; ?>>Deactive</option>
                 </select>
+
+               
               </div>
             </form>
           </div>

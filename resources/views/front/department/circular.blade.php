@@ -31,11 +31,11 @@
 						</tr>
 					</thead>
 					<tbody>
-						@foreach ($document as $data )		
+						@foreach ($document as $key => $data )		
 						<tr>
 							<!-- <td colspan="8" class="text-center"><button type="button" class="btn btn-outline-primary">NO Data Available.</button></td> -->
-							<td>{{$data->id}}</td>
-							<td class="text-left">{{$data->name_mr}}</td>
+							<td>{{$key + 1}}</td>
+							<td class="text-left">{{$data->name}}</td>
 							<td>
 								<a class="pdf-body d-block" href="{{ asset('assets/stem/documents/'.$data->files) }}" target="_blank" rel="noopener noreferrer" download>
 									<img src="{{ asset('assets/front/img/pdf.png') }}" class="text-center align-items-center" width="100">

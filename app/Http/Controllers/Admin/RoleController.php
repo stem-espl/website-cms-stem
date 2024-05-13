@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Admin;
 use Validator;
-use Session;
+use Session, Auth;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 use DB;
@@ -15,7 +15,14 @@ use Artisan;
 class RoleController extends Controller
 {
     public function index() {
-      $data['roles'] = Role::all();
+      $role = Auth::user()->role;
+      $role_id = isset($role['id']) ? $role['id'] : '';
+      if(empty($role_id) || $role_id == 1)
+      {
+        $data['roles'] = Role::all();
+      }else{
+        $data['roles'] = Role::where('id','!=',1)->get();
+      }
       return view('admin.role.index', $data);
     }
 
@@ -73,6 +80,12 @@ class RoleController extends Controller
 
     public function managePermissions($id) 
     {
+        $role = Auth::user()->role;
+        $role_id = isset($role['id']) ? $role['id'] : '';
+        if($role_id != 1 && $id == 1)
+        {
+          return redirect()->route('admin.role.index');
+        }
         $data['role'] = Role::find($id);
         $data['permissionByGroupNames'] = Permission::select('group_name');
         if(auth()->guard('admin')->user()->role_id != 1)

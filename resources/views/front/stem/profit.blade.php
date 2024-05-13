@@ -7,7 +7,7 @@
 			<div class="row">
 				<div class="col-xl-12 text-center">
 					<div class="page-title-content">
-						<h3 class="title bud-title">{{__('common.News')}}</h3>
+						<h3 class="title bud-title">{{__('common.Budget Reports')}}</h3>
 						<nav aria-label="breadcrumb">
 							<ol class="breadcrumb">
 								<li class="breadcrumb-item"><a href="stem.html">{{__('common.Home')}}</a></li>

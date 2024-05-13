@@ -97,7 +97,12 @@ class StemController extends Controller
       }
       public function contactUs()
       {
-          $lang_code = isset($request->language) ?  $request->language : 'en';
+          if (session()->has('lang')) {
+              $currentLang = Language::where('code', session()->get('lang'))->first();
+          } else {
+              $currentLang = Language::where('is_default', 1)->first();
+          }
+          $lang_code = isset($currentLang->code) ?  $currentLang->code : 'en';
           $language = Language::where('code', $lang_code)->first();
           $bs=BasicSetting::where('language_id', $language->id)->get(['contact_form_title','contact_form_subtitle',]);
           $bex=BasicExtra::where('language_id', $language->id)->get(['contact_addresses','contact_numbers','contact_mails','latitude','longitude']);
@@ -105,12 +110,28 @@ class StemController extends Controller
       }
 
       
-      public function circular($slug){
+      public function circular($slug)
+      {
+
+        if (session()->has('lang')) {
+            $currentLang = Language::where('code', session()->get('lang'))->first();
+        } else {
+            $currentLang = Language::where('is_default', 1)->first();
+        }
+        $lang_code = isset($currentLang->code) ?  $currentLang->code : 'en';
 
         $category = DocumentCategory::where('slug', $slug)->firstOrFail();
-      
-         $document = Document::select('id','document_category_id','name_mr','files')->where('status','1')->get();
-         $variable=$category->name;
+          
+        if($lang_code == 'mr')
+        {
+            $document = Document::select('id','document_category_id','name_mr as name','files');
+        }else{
+            $document = Document::select('id','document_category_id','name','files');
+        }
+        $document = $document->where('document_category_id',$category->id)
+                            ->where('status','1')
+                            ->get();
+        $variable=$category->name;
         return view('front.department.circular',compact('document','variable'));
       }
 
