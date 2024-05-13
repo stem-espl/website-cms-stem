@@ -173,7 +173,7 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
             <form id="ajaxForm" class="modal-form" action="{{route('admin.scategory.store')}}" method="POST">
                 @csrf
                 {{-- Image Part --}}
-                <div class="form-group">
+                <div class="form-group d-none">
                     <label for="">Image</label>
                     <br>
                     <div class="thumb-preview" id="thumbPreview1">

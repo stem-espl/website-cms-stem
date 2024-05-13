@@ -60,7 +60,7 @@
                 <input type="hidden" name="scategory_id" value="{{$scategory->id}}">
 
                 {{-- Image Part --}}
-                <div class="form-group">
+                <div class="form-group d-none">
                     <label for="">Image</label>
                     <br>
                     <div class="thumb-preview" id="thumbPreview1">
