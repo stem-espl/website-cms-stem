@@ -41,7 +41,6 @@ class GalleryController extends Controller
   public function edit(Request $request, $id)
   {
     $lang = Language::where('code', $request->language)->first();
-
     $data['categories'] = GalleryCategory::where('language_id', $lang->id)
       ->where('status', 1)
       ->get();
@@ -64,7 +63,6 @@ class GalleryController extends Controller
 
   public function store(Request $request)
   {
-
     $image = $request->file;
     $allowedExts = array('jpg', 'png', 'jpeg', 'svg');
     $messages = [

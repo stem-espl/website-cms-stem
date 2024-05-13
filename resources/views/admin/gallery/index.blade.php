@@ -146,7 +146,7 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
       <div class="modal-body">
         <form id="ajaxForm" class="modal-form" action="{{route('admin.gallery.store')}}" method="POST">
           @csrf
-          {{-- Image Part --}}
+
           <div class="form-group">
             <label for="">Image ** </label>
             <input class="form-control" type="file" id="file" name="file">
@@ -183,7 +183,8 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
             <p class="text-warning"><small>The higher the serial number is, the later the image will be shown.</small>
             </p>
           </div>
-        </form>
+
+       </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

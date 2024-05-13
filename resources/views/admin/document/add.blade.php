@@ -54,7 +54,6 @@ else
                 <div class="col-lg-10">
                     <div class="card-title">Document Add</div>
                 </div>
-       
             </div>
         </div>
         <div class="card-body pt-5 pb-4">
