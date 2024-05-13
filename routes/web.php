@@ -34,6 +34,7 @@ use app\Http\Controllers\Front\StemController;
 			Route::get('/news/img', 'Front\StemController@index')->name('front.stem.img'); 
 			Route::get('/galleries/{slug}', 'Front\GalleryController@index')->name('front.gallerys'); 
 			Route::get('/documents/{slug}', 'Front\StemController@circular')->name('front.circular'); 
+			Route::get('/history', 'Front\StemController@history')->name('front.stem.history'); 
 
 			Route::get("/committee/{slug}", "Front\StemController@showLeadership")->name( "front.leadership"); 
 			Route::get('/news', 'Front\FrontendController@news')->name('front.news'); 
@@ -1003,6 +1004,15 @@ use app\Http\Controllers\Front\StemController;
 			Route::post( "/package/subscription/delete", "Admin\SubscriptionController@subDelete" )->name("admin.package.subDelete")->middleware('can:subscriptions');   
 			Route::post( "/package/subscription/status", "Admin\SubscriptionController@status" )->name("admin.subscription.status")->middleware('can:subscriptions');   
 			Route::post( "/sub/bulk-delete", "Admin\SubscriptionController@bulkSubDelete" )->name("admin.sub.bulk.delete")->middleware('can:subscriptions');  
+
+
+			// Admin History Routes 
+
+			Route::get("/history", "Admin\HistoryController@index")->name("admin.index");
+			Route::post("/history/store", "Admin\HistoryController@store")->name("admin.history.store");
+			Route::get("/history/{id}/edit", "Admin\HistoryController@edit")->name("admin.history.edit");
+			Route::post("/history/update", "Admin\HistoryController@update")->name("admin.history.update");
+
 
 			// Admin Quote Form Builder Routes 
 			Route::get( "/quote/visibility", "Admin\QuoteController@visibility" )->name("admin.quote.visibility")->middleware('can:visibility');  

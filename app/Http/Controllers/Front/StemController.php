@@ -10,6 +10,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Language;
 use App\Models\LeadCategory;
 use App\Models\DocumentCategory;
+use App\Models\History;
 use App\Models\Document;
 use App\Models\Leadership;
 use App\Models\ContactQuery;
@@ -111,5 +112,10 @@ class StemController extends Controller
          $document = Document::select('id','document_category_id','name_mr','files')->where('status','1')->get();
          $variable=$category->name;
         return view('front.department.circular',compact('document','variable'));
+      }
+
+      public function history(){
+        $historyData=History::where('status','1')->get();
+        return view('front.history.history',compact('historyData'));
       }
 }
