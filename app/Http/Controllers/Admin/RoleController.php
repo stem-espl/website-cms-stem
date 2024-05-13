@@ -10,6 +10,7 @@ use Session;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 use DB;
+use Artisan;
 
 class RoleController extends Controller
 {
@@ -91,14 +92,16 @@ class RoleController extends Controller
     {
       DB::beginTransaction();
       try{
+          
+          \Artisan::call('cache:forget spatie.permission.cache');
           $role = Role::find($request->role_id);
           $role->syncPermissions($request->input('permission'));
           DB::commit();
           Session::flash('success', "Permissions updated successfully for '$role->name' role");
-          // dd($request->input('permission'));
           return redirect()->back();
       }catch(\Exception $e){
           DB::rollback();
+          Session::flash('error', $e->getMessage());
           return redirect()->back();
       }
 
