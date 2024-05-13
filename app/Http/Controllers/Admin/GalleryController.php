@@ -27,9 +27,10 @@ class GalleryController extends Controller
 
     foreach($data['galleries'] as $val)
     {
-        $category=GalleryCategory::where('id',$val->name)->first();
-        $val->cat_name = isset($category->category_id) ? $category->category_id : '';
+        $category=GalleryCategory::where('id',$val->category_id)->first();
+        $val->cat_name = isset($category->name) ? $category->name : '';
     }
+
     $data['lang_id'] = $lang_id;
 
     $data['categoryInfo'] = BasicExtra::first();

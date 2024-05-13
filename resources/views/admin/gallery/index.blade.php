@@ -98,7 +98,7 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
                     <td class="d-none">{{$gallery->serial_number}}</td>
                  
                       <td>{{$gallery->cat_name}}</td>
-    
+      
                     <td>
                       <a class="btn btn-secondary btn-sm"
                         href="{{route('admin.gallery.edit', $gallery->id) . '?language=' . request()->input('language')}}">

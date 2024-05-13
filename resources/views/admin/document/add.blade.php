@@ -54,16 +54,7 @@ else
                 <div class="col-lg-10">
                     <div class="card-title">Document Add</div>
                 </div>
-                <div class="col-lg-2">
-                    @if (!empty($langs))
-                        <select name="language" class="form-control" onchange="window.location='{{url()->current() . '?language='}}'+this.value">
-                            <option value="" selected disabled>Select a Language</option>
-                            @foreach ($langs as $lang)
-                                <option value="{{$lang->code}}" {{$lang->code == $selLang->code ? 'selected' : ''}}>{{$lang->name}}</option>
-                            @endforeach
-                        </select>
-                    @endif
-                </div>
+       
             </div>
         </div>
         <div class="card-body pt-5 pb-4">
