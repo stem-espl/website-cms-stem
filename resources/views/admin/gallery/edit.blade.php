@@ -109,3 +109,13 @@
   </div>
 </div>
 @endsection
+
+@section('scripts')
+<script>
+  $(document).ready(function() {
+    $("#fileInput1").on('change', function() {
+        preview.src=URL.createObjectURL(event.target.files[0]);
+    });
+  });
+</script>
+@endsection
