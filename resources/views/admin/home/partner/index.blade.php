@@ -159,7 +159,7 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
                     <p id="errtitle" class="mb-0 text-danger em"></p>
                 </div>
                 <div class="form-group">
-                    <label for="">URL **</label>
+                    <label for="">URL</label>
                     <input type="text" class="form-control ltr" name="url" value="" placeholder="Enter URL">
                     <p id="errurl" class="mb-0 text-danger em"></p>
                 </div>

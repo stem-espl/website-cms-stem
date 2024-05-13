@@ -85,7 +85,7 @@
                       <p id="errtitle" class="mb-0 text-danger em"></p>
                 </div>
                 <div class="form-group">
-                  <label for="">URL **</label>
+                  <label for="">URL</label>
                   <input type="text" class="form-control ltr" name="url" value="{{$partner->url}}" placeholder="Enter URL of social media account">
                   <p id="errurl" class="text-danger mb-0 em"></p>
                 </div>
