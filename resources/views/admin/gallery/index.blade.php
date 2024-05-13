@@ -34,7 +34,7 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
       <i class="flaticon-right-arrow"></i>
     </li>
     <li class="nav-item">
-      <a href="#">Gallery Image Management</a>
+      <a href="#">Gallery Image</a>
     </li>
   </ul>
 </div>
@@ -81,7 +81,7 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
                     </th>
                     <th scope="col">Image</th>
                     <th scope="col" class="d-none">Title</th>
-                    <th scope="col" class="d-none">Serial Number</th>
+                    <th scope="col" class="">Category Name</th>
                     <th scope="col">Actions</th>
                   </tr>
                 </thead>
@@ -96,6 +96,9 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
                       {{strlen($gallery->title) > 70 ? mb_substr($gallery->title, 0, 70, 'UTF-8') . '...' : $gallery->title}}
                     </td>
                     <td class="d-none">{{$gallery->serial_number}}</td>
+                 
+                      <td>{{$gallery->cat_name}}</td>
+    
                     <td>
                       <a class="btn btn-secondary btn-sm"
                         href="{{route('admin.gallery.edit', $gallery->id) . '?language=' . request()->input('language')}}">

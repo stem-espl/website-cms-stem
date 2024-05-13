@@ -159,7 +159,7 @@ $data = \App\Models\BasicExtra::first();
         @endcanany
 
         {{-- Content Management --}}
-        @canany(['sections-customization','partners-section','blog-section','team-section','testimonials-section','portfolio-section','call-to-action-section','statistics-section','approach-section','service-section','intro-section','features','hero-section','logo-text','useful-links','department-links','about-us-links', 'settings-services','category-services','services','portfolios','category-blog','blogs','archives','settings-gallery','categories-gallery','galleries','settings-faq','categories-faq','faqs','categories-career','post-job','job-management','categories-leadership','leadership'])
+        @canany(['sections-customization','partners-section','blog-section','team-section','testimonials-section','portfolio-section','call-to-action-section','statistics-section','approach-section','service-section','intro-section','features','hero-section','logo-text','useful-links','department-links','about-us-links', 'settings-services','category-services','services','portfolios','category-blog','blogs','archives','settings-gallery','categories-gallery','galleries','settings-faq','categories-faq','faqs','categories-career','post-job','job-management','categories-leadership','leadership','categories-document','documents'])
         @includeIf('admin.partials.content-management')
         @endcanany
 
@@ -193,6 +193,43 @@ $data = \App\Models\BasicExtra::first();
                 @endif">
                 <a href="{{route('admin.leadership.index') . '?language=' . $default->code}}">
                 <span class="sub-item">Leadership</span>
+                </a>
+              </li>
+              @endcan
+            </ul>
+          </div>
+        </li>
+        @endcanany
+        {{---Documents---}}
+        @canany(['categories-document', 'documents'])
+        {{-- Articles --}}
+        <li class="nav-item
+          @if(request()->path() == 'document_category') active
+    
+          @endif">
+          <a data-toggle="collapse" href="#document">
+            <i class="la flaticon-users"></i>
+            <p>Documents</p>
+            <span class="caret"></span>
+          </a>
+          <div class="collapse
+            @if(request()->path() == 'admin/document_category') show
+  
+            @endif" id="document">
+            <ul class="nav nav-collapse">
+              @can('categories-document')
+              <li class="@if(request()->path() == 'admin/document_category') active @endif">
+                <a href="{{route('admin.dcategory.index') . '?language=' . $default->code}}">
+                <span class="sub-item">Document Category</span>
+                </a>
+              </li>
+              @endcan
+              @can('documents')
+              <li class="@if(request()->path() == 'documents') show
+                
+                @endif">
+                <a href="{{route('admin.documents.index') . '?language=' . $default->code}}">
+                <span class="sub-item">Documents</span>
                 </a>
               </li>
               @endcan
@@ -1635,6 +1672,22 @@ $data = \App\Models\BasicExtra::first();
         </a>
       </li>
       @endcan
+
+      @can('Documents')
+      {{-- Dashboard --}}
+      <li class="nav-item">
+        <a href="{{route('admin.documents.index')}}">
+          <i class="la flaticon-paint-palette"></i>
+          <p>Document</p>
+        </a>
+      </li>
+      @endcan
+
+
+      
+
+
+
 
     </div>
   </div>
