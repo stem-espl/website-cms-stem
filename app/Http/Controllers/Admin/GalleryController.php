@@ -41,12 +41,10 @@ class GalleryController extends Controller
   public function edit(Request $request, $id)
   {
     $lang = Language::where('code', $request->language)->first();
-    $data['categories'] = GalleryCategory::where('language_id', $lang->id)
-      ->where('status', 1)
-      ->get();
+
+    $data['categories'] = GalleryCategory::all();
 
     $data['gallery'] = Gallery::findOrFail($id);
-
     $data['categoryInfo'] = BasicExtra::first();
 
     return view('admin.gallery.edit', $data);
@@ -119,70 +117,10 @@ class GalleryController extends Controller
     return "success";
   }
 
-
-
-  // public function update(Request $request)
-  // {
-  //   $categoryInfo = BasicExtra::first();
-
-  //   $message = [];
-
-  //   if ($categoryInfo->gallery_category_status == 1) {
-  //     $message['category_id.required'] = 'The category field is required';
-  //   }
-
-  //   $gallery = Gallery::find($request->gallery_id);
-  //   $image = $request->image;
-  //   $allowedExts = array('jpg', 'png', 'jpeg', 'svg');
-  //   $extImage = pathinfo($image, PATHINFO_EXTENSION);
-
-  //   $rules = [
-  //     'title' => 'required|max:255',
-  //     'serial_number' => 'required|integer',
-  //   ];
-
-  //   if ($categoryInfo->gallery_category_status == 1) {
-  //     $rules['category_id'] = 'required';
-  //   }
-
-  //   if ($request->filled('image')) {  
-  //     $rules['image'] = [
-  //       function ($attribute, $value, $fail) use ($extImage, $allowedExts) {
-  //         if (!in_array($extImage, $allowedExts)) {
-  //           return $fail("Only png, jpg, jpeg, svg image is allowed");
-  //         }
-  //       }
-  //     ];
-  //   }
-
-  //   $validator = Validator::make($request->all(), $rules);
-
-  //   if ($validator->fails()) {
-  //     $errmsgs = $validator->getMessageBag()->add('error', 'true');
-  //     return response()->json($validator->errors());
-  //   }
-
-  //   $gallery = Gallery::findOrFail($request->gallery_id);
-  //   $gallery->title = $request->title;
-  //   $gallery->serial_number = $request->serial_number;
-  //   $gallery->category_id = $request->category_id;
-
-  //   if ($request->filled('image')) {
-  //     @unlink('assets/front/img/gallery/' . $gallery->image);
-  //     $filename = uniqid() . '.' . $extImage;
-  //     @copy($image, 'assets/front/img/gallery/' . $filename);
-  //     $gallery->image = $filename;
-  //   }
-
-  //   $gallery->save();
-
-  //   Session::flash('success', 'Gallery updated successfully!');
-  //   return "success";
-  // }
-
   public function update(Request $request)
   {
       $event = Gallery::find($request->gallery_id);
+
       if(!empty($event))
       {
           $image = $request->image;
@@ -232,7 +170,6 @@ class GalleryController extends Controller
           $event->title = isset($request->title) ? $request->title : '';
           $event->serial_number = 1;
           $event->category_id = $request->category_id;
-          $event->image = $filename; 
           
           $event->save();
       

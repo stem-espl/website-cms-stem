@@ -144,13 +144,13 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
         </button>
       </div>
       <div class="modal-body">
-        <form id="ajaxForm" class="modal-form" action="{{route('admin.gallery.store')}}" method="POST">
+        <form id="ajaxForm" class="modal-form" action="{{route('admin.gallery.store')}}" method="post">
           @csrf
 
           <div class="form-group">
             <label for="">Image ** </label>
             <input class="form-control" type="file" id="file" name="file">
-            <p id="errcategory_id" class="mb-0 text-danger em"></p>
+            <p id="errfile" class="mb-0 text-danger em"></p>
           </div>
 
           <div class="form-group">
@@ -168,7 +168,7 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
             <select name="category_id" id="gallery_category_id" class="form-control" disabled>
               <option selected disabled>Select a category</option>
             </select>
-            <p id="errcategory_id" class="mb-0 text-danger em"></p>
+            <p id="errgallery_category_id" class="mb-0 text-danger em"></p>
           </div>
           <div class="form-group d-none" >
             <label for="">Title **</label>
