@@ -30,13 +30,13 @@
         <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-        <a href="#">Quote Management</a>
+        <a href="javascript:void(0)">Quote Management</a>
       </li>
       <li class="separator">
         <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-        <a href="#">Form Builder</a>
+        <a href="javascript:void(0)">Form Builder</a>
       </li>
     </ul>
   </div>

@@ -18,7 +18,7 @@
          <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-         <a href="#">Customer Details</a>
+         <a href="javascript:void(0)">Customer Details</a>
       </li>
    </ul>
 

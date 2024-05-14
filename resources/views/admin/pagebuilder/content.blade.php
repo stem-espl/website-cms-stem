@@ -646,7 +646,7 @@
                 <div class="card-body">
                     <h5 class="card-title">Card title</h5>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                    <a href="javascript:void(0)" class="btn btn-primary">Go somewhere</a>
                 </div>
             </div>`
         },
@@ -671,8 +671,8 @@
                     <li class="list-group-item">Vestibulum at eros</li>
                 </ul>
                 <div class="card-body">
-                    <a href="#" class="card-link">Card link</a>
-                    <a href="#" class="card-link">Another link</a>
+                    <a href="javascript:void(0)" class="card-link">Card link</a>
+                    <a href="javascript:void(0)" class="card-link">Another link</a>
                 </div>
             </div>`
         },
@@ -692,7 +692,7 @@
                 <div class="card-body">
                     <h5 class="card-title">Special title treatment</h5>
                     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                    <a href="javascript:void(0)" class="btn btn-primary">Go somewhere</a>
                 </div>
                 <div class="card-footer text-muted">
                     2 days ago
@@ -725,12 +725,12 @@
         attributes: {class:'fa fa-list'},
         content: {
             components: `<div class="list-group">
-                <a href="#" class="list-group-item list-group-item-action">
+                <a href="javascript:void(0)" class="list-group-item list-group-item-action">
                     Cras justo odio
                 </a>
-                <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
-                <a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>
-                <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
+                <a href="javascript:void(0)" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
+                <a href="javascript:void(0)" class="list-group-item list-group-item-action">Morbi leo risus</a>
+                <a href="javascript:void(0)" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
             </div>`
         },
         category: 'Basic'
@@ -770,7 +770,7 @@
         label: 'Button',
         attributes: {class:'fa fa-stop'},
         content: {
-            components: `<a href="#" class="btn btn-danger">Button Link</a>`
+            components: `<a href="javascript:void(0)" class="btn btn-danger">Button Link</a>`
         },
         category: 'Basic'
     });

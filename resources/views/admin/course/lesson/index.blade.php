@@ -13,13 +13,13 @@
       <i class="flaticon-right-arrow"></i>
     </li>
     <li class="nav-item">
-      <a href="#">Modules</a>
+      <a href="javascript:void(0)">Modules</a>
     </li>
     <li class="separator">
       <i class="flaticon-right-arrow"></i>
     </li>
     <li class="nav-item">
-      <a href="#">Lessons</a>
+      <a href="javascript:void(0)">Lessons</a>
     </li>
   </ul>
 </div>
@@ -37,7 +37,7 @@
 
           <div class="col-lg-4 offset-lg-1 mt-2 mt-lg-0">
             <a
-              href="#"
+              href="javascript:void(0)"
               class="btn btn-primary float-right btn-sm"
               data-toggle="modal"
               data-target="#createModal"

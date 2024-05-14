@@ -12,13 +12,13 @@
          <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-         <a href="#">Tickets</a>
+         <a href="javascript:void(0)">Tickets</a>
       </li>
       <li class="separator">
          <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-         <a href="#">Conversations</a>
+         <a href="javascript:void(0)">Conversations</a>
       </li>
    </ul>
 </div>

@@ -244,7 +244,7 @@
                             <div class="blog-item mb-40">
                                 <div class="post-thumb">
                                     <img class="lazy" data-src="{{asset('assets/front/img/blogs/'.$blog->main_image)}}" alt="">
-                                    <a href="#" class="cat">{{!empty($blog->bcategory) ? $blog->bcategory->name : ''}}</a>
+                                    <a href="javascript:void(0)" class="cat">{{!empty($blog->bcategory) ? $blog->bcategory->name : ''}}</a>
                                 </div>
                                 <div class="entry-content">
                                     <h3 class="title"><a href="{{route('front.blogdetails', [$blog->slug, $blog->id])}}">{{strlen($blog->title) > 40 ? mb_substr($blog->title, 0, 40, 'utf-8') . '...' : $blog->title}}</a></h3>
@@ -254,8 +254,8 @@
                                                 $blogDate = \Carbon\Carbon::parse($blog->created_at)->locale("$currentLang->code");
                                                 $blogDate = $blogDate->translatedFormat('jS F, Y');
                                             @endphp
-                                            <li><span><a href="#">{{$blogDate}}</a></span></li>
-                                            <li><span><a href="#">By {{__('Admin')}}</a></span></li>
+                                            <li><span><a href="javascript:void(0)">{{$blogDate}}</a></span></li>
+                                            <li><span><a href="javascript:void(0)">By {{__('Admin')}}</a></span></li>
                                         </ul>
                                     </div>
                                 </div>

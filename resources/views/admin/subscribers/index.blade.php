@@ -13,13 +13,13 @@
         <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-        <a href="#">Subscribers</a>
+        <a href="javascript:void(0)">Subscribers</a>
       </li>
       <li class="separator">
         <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-        <a href="#">Subscribers</a>
+        <a href="javascript:void(0)">Subscribers</a>
       </li>
     </ul>
   </div>

@@ -13,13 +13,13 @@
         <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-        <a href="#">Service Page</a>
+        <a href="javascript:void(0)">Service Page</a>
       </li>
       <li class="separator">
         <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-        <a href="#">Edit Category</a>
+        <a href="javascript:void(0)">Edit Category</a>
       </li>
     </ul>
   </div>

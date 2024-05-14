@@ -18,7 +18,7 @@
                         <div class="top_right d-flex">
                             @if (!empty($currentLang) && count($langs) > 1)
                                 <ul class="top-header-language">
-                                    <li><a href="#"><i class="fas fa-globe"></i>{{convertUtf8($currentLang->name)}} <i class="fa fa-angle-down"></i></a>
+                                    <li><a href="javascript:void(0)"><i class="fas fa-globe"></i>{{convertUtf8($currentLang->name)}} <i class="fa fa-angle-down"></i></a>
                                         <ul class="language-dropdown">
                                             @foreach ($langs as $key => $lang)
                                                 <li><a href='{{ route('changeLanguage', $lang->code) }}'>{{convertUtf8($lang->name)}}</a></li>
@@ -45,7 +45,7 @@
 
                             @auth
                             <ul class="top-header-language ml-4">
-                                <li><a href="#"><i class="far fa-user"></i>{{Auth::user()->username}} <i class="fa fa-angle-down"></i></a>
+                                <li><a href="javascript:void(0)"><i class="far fa-user"></i>{{Auth::user()->username}} <i class="fa fa-angle-down"></i></a>
                                     <ul class="language-dropdown">
                                         <li>
                                             <a href="{{route('user-dashboard')}}">{{__('Dashboard')}}</a>

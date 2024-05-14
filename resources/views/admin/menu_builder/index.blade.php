@@ -37,7 +37,7 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
             <i class="flaticon-right-arrow"></i>
         </li>
         <li class="nav-item">
-            <a href="#">Menu Builder</a>
+            <a href="javascript:void(0)">Menu Builder</a>
         </li>
     </ul>
 </div>

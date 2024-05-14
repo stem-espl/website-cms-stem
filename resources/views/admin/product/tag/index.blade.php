@@ -33,13 +33,13 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
         <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-        <a href="#">Shop Management</a>
+        <a href="javascript:void(0)">Shop Management</a>
       </li>
       <li class="separator">
         <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-        <a href="#">Popular Tags</a>
+        <a href="javascript:void(0)">Popular Tags</a>
       </li>
     </ul>
   </div>

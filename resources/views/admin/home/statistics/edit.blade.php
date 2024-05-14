@@ -29,13 +29,13 @@
         <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-        <a href="#">Home Page</a>
+        <a href="javascript:void(0)">Home Page</a>
       </li>
       <li class="separator">
         <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-        <a href="#">Statistics Section</a>
+        <a href="javascript:void(0)">Statistics Section</a>
       </li>
     </ul>
   </div>

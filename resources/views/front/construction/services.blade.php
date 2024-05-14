@@ -41,7 +41,7 @@
                                                     <p class="mb-0">
                                                         @if (strlen($service->summary) > 120)
                                                            {{mb_substr($service->summary, 0, 120, 'utf-8')}}<span style="display: none;">{{mb_substr($service->summary, 120, null, 'utf-8')}}</span>
-                                                           <a href="#" class="see-more">{{__('see more')}}...</a>
+                                                           <a href="javascript:void(0)" class="see-more">{{__('see more')}}...</a>
                                                         @else
                                                            {{convertUtf8($service->summary)}}
                                                         @endif

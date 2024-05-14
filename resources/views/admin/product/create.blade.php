@@ -7,7 +7,7 @@ $type = request()->input('type');
     <h4 class="page-title">Add Product</h4>
     <ul class="breadcrumbs">
         <li class="nav-home">
-            <a href="#">
+            <a href="javascript:void(0)">
                 <i class="flaticon-home"></i>
             </a>
         </li>
@@ -15,19 +15,19 @@ $type = request()->input('type');
             <i class="flaticon-right-arrow"></i>
         </li>
         <li class="nav-item">
-            <a href="#">Shop Management</a>
+            <a href="javascript:void(0)">Shop Management</a>
         </li>
         <li class="separator">
             <i class="flaticon-right-arrow"></i>
         </li>
         <li class="nav-item">
-            <a href="#">Manage Products</a>
+            <a href="javascript:void(0)">Manage Products</a>
         </li>
         <li class="separator">
             <i class="flaticon-right-arrow"></i>
         </li>
         <li class="nav-item">
-            <a href="#">Add Product</a>
+            <a href="javascript:void(0)">Add Product</a>
         </li>
     </ul>
 </div>

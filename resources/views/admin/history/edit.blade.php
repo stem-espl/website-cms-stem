@@ -30,13 +30,13 @@
       <i class="flaticon-right-arrow"></i>
     </li>
     <li class="nav-item">
-      <a href="#">History Page</a>
+      <a href="javascript:void(0)">History Page</a>
     </li>
     <li class="separator">
       <i class="flaticon-right-arrow"></i>
     </li>
     <li class="nav-item">
-      <a href="#">Edit History</a>
+      <a href="javascript:void(0)">Edit History</a>
     </li>
   </ul>
 </div>

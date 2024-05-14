@@ -1,7 +1,7 @@
 <ul class="nav nav-pills flex-column">
   @foreach($root_folders as $root_folder)
     <li class="nav-item">
-      <a class="nav-link" href="#" data-type="0" onclick="moveToNewFolder(`{{$root_folder->url}}`)">
+      <a class="nav-link" href="javascript:void(0)" data-type="0" onclick="moveToNewFolder(`{{$root_folder->url}}`)">
         @php
             if ($root_folder->name == 'Files') {
                 $root_folder->name = 'My Files';
@@ -18,7 +18,7 @@
     </li>
     @foreach($root_folder->children as $directory)
     <li class="nav-item sub-item">
-      <a class="nav-link" href="#" data-type="0" onclick="moveToNewFolder(`{{$directory->url}}`)">
+      <a class="nav-link" href="javascript:void(0)" data-type="0" onclick="moveToNewFolder(`{{$directory->url}}`)">
         <i class="fa fa-folder fa-fw"></i> {{ $directory->name }}
         <input type="hidden" id="goToFolder" name="goToFolder" value="{{ $directory->url }}">
         <div id="items">

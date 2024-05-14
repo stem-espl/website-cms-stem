@@ -102,7 +102,7 @@
                                     <p>
                                         @if (strlen($service->summary) > 120)
                                            {{mb_substr($service->summary, 0, 120, 'utf-8')}}<span style="display: none;">{{mb_substr($service->summary, 120, null, 'utf-8')}}</span>
-                                           <a href="#" class="see-more">{{__('see more')}}...</a>
+                                           <a href="javascript:void(0)" class="see-more">{{__('see more')}}...</a>
                                         @else
                                            {{$service->summary}}
                                         @endif
@@ -145,7 +145,7 @@
                                     <p>
                                        @if (strlen($scategory->short_text) > 112)
                                           {{mb_substr($scategory->short_text, 0, 112, 'utf-8')}}<span style="display: none;">{{mb_substr($scategory->short_text, 112,null, 'utf-8')}}</span>
-                                          <a href="#" class="see-more">{{__('see more')}}...</a>
+                                          <a href="javascript:void(0)" class="see-more">{{__('see more')}}...</a>
                                        @else
                                           {{$scategory->short_text}}
                                        @endif
@@ -187,7 +187,7 @@
                          <p>
                             @if (strlen($point->short_text) > 150)
                                 {{mb_substr($point->short_text, 0, 150, 'utf-8')}}<span style="display: none;">{{mb_substr($point->short_text, 150, null, 'utf-8')}}</span>
-                                <a href="#" class="see-more">{{__('see more')}}...</a>
+                                <a href="javascript:void(0)" class="see-more">{{__('see more')}}...</a>
                             @else
                                 {{$point->short_text}}
                             @endif

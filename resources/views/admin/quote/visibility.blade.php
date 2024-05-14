@@ -13,13 +13,13 @@
         <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-        <a href="#">Quote Management</a>
+        <a href="javascript:void(0)">Quote Management</a>
       </li>
       <li class="separator">
         <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-        <a href="#">Quote Page Visibility</a>
+        <a href="javascript:void(0)">Quote Page Visibility</a>
       </li>
     </ul>
   </div>

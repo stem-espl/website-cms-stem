@@ -13,13 +13,13 @@
         <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-        <a href="#">Roles Management</a>
+        <a href="javascript:void(0)">Roles Management</a>
       </li>
       <li class="separator">
         <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-        <a href="#">Roles</a>
+        <a href="javascript:void(0)">Roles</a>
       </li>
     </ul>
   </div>
@@ -29,7 +29,7 @@
       <div class="card">
         <div class="card-header">
           <div class="card-title d-inline-block">Roles</div>
-          <a href="#" class="btn btn-primary float-right" data-toggle="modal" data-target="#createModal"><i class="fas fa-plus"></i> Add Role</a>
+          <a href="javascript:void(0)" class="btn btn-primary float-right" data-toggle="modal" data-target="#createModal"><i class="fas fa-plus"></i> Add Role</a>
         </div>
         <div class="card-body">
           <div class="row">

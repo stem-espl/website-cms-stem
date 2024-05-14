@@ -32,13 +32,13 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
         <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-        <a href="#">RSS feeds</a>
+        <a href="javascript:void(0)">RSS feeds</a>
       </li>
       <li class="separator">
         <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-        <a href="#">Import RSS feed</a>
+        <a href="javascript:void(0)">Import RSS feed</a>
       </li>
     </ul>
   </div>

@@ -13,13 +13,13 @@
         <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-        <a href="#">Push Notification</a>
+        <a href="javascript:void(0)">Push Notification</a>
       </li>
       <li class="separator">
         <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-        <a href="#">Send Notification</a>
+        <a href="javascript:void(0)">Send Notification</a>
       </li>
     </ul>
   </div>

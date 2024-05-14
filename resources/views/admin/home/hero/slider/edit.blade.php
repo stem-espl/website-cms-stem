@@ -29,19 +29,19 @@
             <i class="flaticon-right-arrow"></i>
         </li>
         <li class="nav-item">
-            <a href="#">Home Page</a>
+            <a href="javascript:void(0)">Home Page</a>
         </li>
         <li class="separator">
             <i class="flaticon-right-arrow"></i>
         </li>
         <li class="nav-item">
-            <a href="#">Hero Section</a>
+            <a href="javascript:void(0)">Hero Section</a>
         </li>
         <li class="separator">
             <i class="flaticon-right-arrow"></i>
         </li>
         <li class="nav-item">
-            <a href="#">Edit Slider</a>
+            <a href="javascript:void(0)">Edit Slider</a>
         </li>
     </ul>
 </div>

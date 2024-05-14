@@ -33,13 +33,13 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
             <i class="flaticon-right-arrow"></i>
         </li>
         <li class="nav-item">
-            <a href="#">Home Page</a>
+            <a href="javascript:void(0)">Home Page</a>
         </li>
         <li class="separator">
             <i class="flaticon-right-arrow"></i>
         </li>
         <li class="nav-item">
-            <a href="#">Partners</a>
+            <a href="javascript:void(0)">Partners</a>
         </li>
     </ul>
 </div>
@@ -63,7 +63,7 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
                         @endif
                     </div>
                     <div class="col-lg-4 offset-lg-1 mt-2 mt-lg-0">
-                        <a href="#" class="btn btn-primary float-lg-right float-left" data-toggle="modal" data-target="#createModal"><i class="fas fa-plus"></i> Add Partner</a>
+                        <a href="javascript:void(0)" class="btn btn-primary float-lg-right float-left" data-toggle="modal" data-target="#createModal"><i class="fas fa-plus"></i> Add Partner</a>
                     </div>
                 </div>
             </div>

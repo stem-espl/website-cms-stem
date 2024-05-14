@@ -13,13 +13,13 @@
         <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-        <a href="#">Blogs</a>
+        <a href="javascript:void(0)">Blogs</a>
       </li>
       <li class="separator">
         <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-        <a href="#">Archives</a>
+        <a href="javascript:void(0)">Archives</a>
       </li>
     </ul>
   </div>
@@ -29,7 +29,7 @@
       <div class="card">
         <div class="card-header">
           <div class="card-title d-inline-block">Archives</div>
-          <a href="#" class="btn btn-primary float-right" data-toggle="modal" data-target="#createModal"><i class="fas fa-plus"></i> Add Archive</a>
+          <a href="javascript:void(0)" class="btn btn-primary float-right" data-toggle="modal" data-target="#createModal"><i class="fas fa-plus"></i> Add Archive</a>
         </div>
         <div class="card-body">
           <div class="row">

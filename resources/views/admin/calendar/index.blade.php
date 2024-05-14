@@ -36,7 +36,7 @@
           <i class="flaticon-right-arrow"></i>
         </li>
         <li class="nav-item">
-          <a href="#">News Section</a>
+          <a href="javascript:void(0)">News Section</a>
         </li>
       </ul>
     </div>
@@ -60,7 +60,7 @@
                       @endif
                   </div>
                   <div class="col-lg-4 offset-lg-1 mt-2 mt-lg-0">
-                      <a href="#" class="btn btn-primary float-right btn-sm" data-toggle="modal" data-target="#createModal"><i class="fas fa-plus"></i> Add News</a>
+                      <a href="javascript:void(0)" class="btn btn-primary float-right btn-sm" data-toggle="modal" data-target="#createModal"><i class="fas fa-plus"></i> Add News</a>
                       <button class="btn btn-danger float-right btn-sm mr-2 d-none bulk-delete" data-href="{{route('admin.calendar.bulk.delete')}}"><i class="flaticon-interface-5"></i> Delete</button>
                   </div>
               </div>

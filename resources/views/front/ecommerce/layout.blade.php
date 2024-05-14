@@ -131,7 +131,7 @@
         @endif
 
         <!--====== back-to-top ======-->
-        <a href="#" class="back-to-top" ><i class="fas fa-angle-up"></i></a>
+        <a href="javascript:void(0)" class="back-to-top" ><i class="fas fa-angle-up"></i></a>
 
         <!--====== Start Preloader ======-->
         @if ($bex->preloader_status == 1)

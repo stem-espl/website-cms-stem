@@ -26,13 +26,13 @@
         <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-        <a href="#">Package Management</a>
+        <a href="javascript:void(0)">Package Management</a>
       </li>
       <li class="separator">
         <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-        <a href="#">
+        <a href="javascript:void(0)">
           @if (request()->path()=='admin/pending/orders')
             Pending
           @elseif (request()->path()=='admin/all/orders')
@@ -170,7 +170,7 @@
                           </td>
                           <td>
                             @if (!empty($order->receipt))
-                              <a class="btn btn-sm btn-info" href="#" data-toggle="modal" data-target="#receiptModal{{$order->id}}">Show</a>
+                              <a class="btn btn-sm btn-info" href="javascript:void(0)" data-toggle="modal" data-target="#receiptModal{{$order->id}}">Show</a>
                             @else
                               -
                             @endif
@@ -181,8 +181,8 @@
                                   Select Action
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                  <a href="#" class="editbtn dropdown-item" data-target="#mailModal" data-toggle="modal" data-email={{$order->email}}> Send Mail</a>
-                                  <a href="#" class="dropdown-item" data-toggle="modal" data-target="#detailsModal{{$order->id}}" target="_blank"> Details</a>
+                                  <a href="javascript:void(0)" class="editbtn dropdown-item" data-target="#mailModal" data-toggle="modal" data-email={{$order->email}}> Send Mail</a>
+                                  <a href="javascript:void(0)" class="dropdown-item" data-toggle="modal" data-target="#detailsModal{{$order->id}}" target="_blank"> Details</a>
                                   <a class="dropdown-item" target="_blank" href="{{asset('assets/front/invoices/'.$order->invoice)}}"> Invoice</a>
                                     <form class="deleteform d-block" action="{{route('admin.package.order.delete')}}" method="post">
                                       @csrf

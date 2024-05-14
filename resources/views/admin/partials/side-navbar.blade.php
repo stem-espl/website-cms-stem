@@ -98,7 +98,7 @@ $data = \App\Models\BasicExtra::first();
               </li>
               @if ($bex->home_page_pagebuilder == 1)
               <li class="@if(request()->path() == 'admin/home-page') active @endif">
-                <a href="#" data-toggle="modal" data-target="#pbLangModal">
+                <a href="javascript:void(0)" data-toggle="modal" data-target="#pbLangModal">
                 <span class="sub-item">Home Page Content</span>
                 </a>
               </li>
@@ -321,21 +321,21 @@ $data = \App\Models\BasicExtra::first();
             @elseif(request()->is('admin/page/*/edit')) show
             @endif" id="pages">
             <ul class="nav nav-collapse">
-              @can('create-page')
+              @can('settings-page')
               <li class="@if(request()->path() == 'admin/page/settings') active @endif">
                 <a href="{{route('admin.page.settings')}}">
                 <span class="sub-item">Settings</span>
                 </a>
               </li>
               @endcan
-              @can('pages')
+              @can('create-page')
               <li class="@if(request()->path() == 'admin/page/create') active @endif">
                 <a href="{{route('admin.page.create') . '?language=' . $default->code}}">
                 <span class="sub-item">Create Page</span>
                 </a>
               </li>
               @endcan
-              @can('settings-page')
+              @can('pages')
               <li class="@if(request()->path() == 'admin/pages') active @endif">
                 <a href="{{route('admin.page.index') . '?language=' . $default->code}}">
                 <span class="sub-item">Pages</span>

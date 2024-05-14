@@ -15,19 +15,19 @@
         <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-        <a href="#">Shop Management</a>
+        <a href="javascript:void(0)">Shop Management</a>
       </li>
       <li class="separator">
         <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-        <a href="#">Manage Orders</a>
+        <a href="javascript:void(0)">Manage Orders</a>
       </li>
       <li class="separator">
         <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-        <a href="#">
+        <a href="javascript:void(0)">
             Report
         </a>
       </li>

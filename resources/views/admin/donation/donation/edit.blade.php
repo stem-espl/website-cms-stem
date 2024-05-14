@@ -29,13 +29,13 @@
         <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-        <a href="#">Donation Page</a>
+        <a href="javascript:void(0)">Donation Page</a>
       </li>
       <li class="separator">
         <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-        <a href="#">Edit Donation</a>
+        <a href="javascript:void(0)">Edit Donation</a>
       </li>
     </ul>
   </div>

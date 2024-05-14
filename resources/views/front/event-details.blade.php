@@ -299,10 +299,10 @@
                                     <h4><a href="{{route('front.event_details',[$moreEvent->slug])}}">{{convertUtf8($moreEvent->title)}}</a></h4>
                                     <div class="post-meta mb-2">
                                         @if (!empty($moreEvent->venue_location))
-                                        <span><a href="#">{{convertUtf8($moreEvent->venue_location)}}</a></span>
+                                        <span><a href="javascript:void(0)">{{convertUtf8($moreEvent->venue_location)}}</a></span>
                                         @endif
                                         <span>
-                                            <a href="#">{{date_format(date_create($moreEvent->date),"d M Y")}}</a>
+                                            <a href="javascript:void(0)">{{date_format(date_create($moreEvent->date),"d M Y")}}</a>
                                         </span>
                                     </div>
 

@@ -26,19 +26,19 @@
         <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-        <a href="#">Shop Management</a>
+        <a href="javascript:void(0)">Shop Management</a>
       </li>
       <li class="separator">
         <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-        <a href="#">Manage Orders</a>
+        <a href="javascript:void(0)">Manage Orders</a>
       </li>
       <li class="separator">
         <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-        <a href="#">
+        <a href="javascript:void(0)">
             @if (request()->path()=='admin/product/pending/orders')
             Pending
           @elseif (request()->path()=='admin/product/all/orders')
@@ -171,7 +171,7 @@
 
                           <td>
                               @if (!empty($order->receipt))
-                                <a class="btn btn-sm btn-info" href="#" data-toggle="modal" data-target="#receiptModal{{$order->id}}">Show</a>
+                                <a class="btn btn-sm btn-info" href="javascript:void(0)" data-toggle="modal" data-target="#receiptModal{{$order->id}}">Show</a>
                               @else
                                 -
                               @endif

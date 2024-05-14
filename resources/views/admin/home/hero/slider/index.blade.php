@@ -13,19 +13,19 @@
             <i class="flaticon-right-arrow"></i>
         </li>
         <li class="nav-item">
-            <a href="#">Home Page</a>
+            <a href="javascript:void(0)">Home Page</a>
         </li>
         <li class="separator">
             <i class="flaticon-right-arrow"></i>
         </li>
         <li class="nav-item">
-            <a href="#">Hero Section</a>
+            <a href="javascript:void(0)">Hero Section</a>
         </li>
         <li class="separator">
             <i class="flaticon-right-arrow"></i>
         </li>
         <li class="nav-item">
-            <a href="#">Sliders</a>
+            <a href="javascript:void(0)">Sliders</a>
         </li>
     </ul>
 </div>
@@ -49,7 +49,7 @@
                         @endif
                     </div>
                     <div class="col-lg-4 offset-lg-1 mt-2 mt-lg-0">
-                        <a href="#" class="btn btn-primary float-lg-right float-left" data-toggle="modal" data-target="#createModal"><i class="fas fa-plus"></i> Add Slider</a>
+                        <a href="javascript:void(0)" class="btn btn-primary float-lg-right float-left" data-toggle="modal" data-target="#createModal"><i class="fas fa-plus"></i> Add Slider</a>
                     </div>
                 </div>
             </div>

@@ -13,13 +13,13 @@
         <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-        <a href="#">{{$role->name}}</a>
+        <a href="javascript:void(0)">{{$role->name}}</a>
       </li>
       <li class="separator">
         <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-        <a href="#">Permissions Management</a>
+        <a href="javascript:void(0)">Permissions Management</a>
       </li>
     </ul>
   </div>

@@ -13,13 +13,13 @@
         <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-        <a href="#">Language Management</a>
+        <a href="javascript:void(0)">Language Management</a>
       </li>
       <li class="separator">
         <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-        <a href="#">Edit Language</a>
+        <a href="javascript:void(0)">Edit Language</a>
       </li>
     </ul>
   </div>

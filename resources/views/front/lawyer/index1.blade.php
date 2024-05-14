@@ -106,7 +106,7 @@
                                     <p>
                                         @if (strlen($scategory->short_text) > 100)
                                            {{mb_substr($scategory->short_text, 0, 100, 'utf-8')}}<span style="display: none;">{{mb_substr($scategory->short_text, 100, null, 'utf-8')}}</span>
-                                           <a href="#" class="see-more">{{__('see more')}}...</a>
+                                           <a href="javascript:void(0)" class="see-more">{{__('see more')}}...</a>
                                         @else
                                            {{$scategory->short_text}}
                                         @endif
@@ -132,7 +132,7 @@
                                     <p>
                                         @if (strlen($service->summary) > 120)
                                            {{mb_substr($service->summary, 0, 120, 'utf-8')}}<span style="display: none;">{{mb_substr($service->summary, 120, null, 'utf-8')}}</span>
-                                           <a href="#" class="see-more">{{__('see more')}}...</a>
+                                           <a href="javascript:void(0)" class="see-more">{{__('see more')}}...</a>
                                         @else
                                            {{$service->summary}}
                                         @endif
@@ -182,7 +182,7 @@
                                     <p>
                                         @if (strlen($point->short_text) > 150)
                                             {{mb_substr($point->short_text, 0, 150, 'utf-8')}}<span style="display: none;">{{mb_substr($point->short_text, 150, null, 'utf-8')}}</span>
-                                            <a href="#" class="see-more">{{__('see more')}}...</a>
+                                            <a href="javascript:void(0)" class="see-more">{{__('see more')}}...</a>
                                         @else
                                             {{$point->short_text}}
                                         @endif
@@ -433,8 +433,8 @@
                                         $blogDate = \Carbon\Carbon::parse($blog->created_at)->locale("$currentLang->code");
                                         $blogDate = $blogDate->translatedFormat('d M. Y');
                                     @endphp
-                                    <span><i class="far fa-user"></i><a href="#">{{__('By')}} {{__('Admin')}}</a></span>
-                                    <span><i class="far fa-calendar-alt"></i><a href="#">{{$blogDate}}</a></span>
+                                    <span><i class="far fa-user"></i><a href="javascript:void(0)">{{__('By')}} {{__('Admin')}}</a></span>
+                                    <span><i class="far fa-calendar-alt"></i><a href="javascript:void(0)">{{$blogDate}}</a></span>
                                 </div>
                                 <h3 class="post_title"><a href="{{route('front.blogdetails', [$blog->slug, $blog->id])}}">{{strlen($blog->title) > 40 ? mb_substr($blog->title, 0, 40, 'utf-8') . '...' : $blog->title}}</a></h3>
                                 <p>{!! strlen(strip_tags($blog->content)) > 100 ? mb_substr(strip_tags($blog->content), 0, 100, 'utf-8') . '...' : strip_tags($blog->content) !!}</p>

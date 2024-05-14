@@ -31,7 +31,7 @@
               >
                 <a
                   class="collapsed"
-                  href="#"
+                  href="javascript:void(0)"
                   data-toggle="collapse"
                   data-target="#{{ 'collapse' . $article_category->id }}"
                   aria-expanded="{{ $details->article_category_id == $article_category->id ? 'true' : 'false' }}"
@@ -56,7 +56,7 @@
 
                   @if (count($articles) == 0)
                   <ul class="list">
-                    <li><a href="#">{{ '0 ' . __('Articles in this category') }}</a></li>
+                    <li><a href="javascript:void(0)">{{ '0 ' . __('Articles in this category') }}</a></li>
                   </ul>
                   @else
                   <ul class="list">
@@ -100,10 +100,10 @@
         <div class="col-lg-6 col-md-6">
           <ul class="share-list">
             <li><span>{{ __('Share') }}:</span></li>
-            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-            <li><a href="#"><i class="fab fa-pinterest-p"></i></a></li>
-            <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+            <li><a href="javascript:void(0)"><i class="fab fa-facebook-f"></i></a></li>
+            <li><a href="javascript:void(0)"><i class="fab fa-twitter"></i></a></li>
+            <li><a href="javascript:void(0)"><i class="fab fa-pinterest-p"></i></a></li>
+            <li><a href="javascript:void(0)"><i class="fab fa-linkedin-in"></i></a></li>
           </ul>
         </div>
       </div>

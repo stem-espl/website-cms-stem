@@ -19,7 +19,7 @@
           </div>
           <div class="col-lg-6 header-top-right-part text-right col-md-6 col-sm-6 margin_tp">
             <div class="language">
-              <a class="language-btn" href="#"><i class="webexflaticon flaticon-internet"></i> {{isset($currentLang->name) ? $currentLang->name : 'English'}}</a>
+              <a class="language-btn" href="javascript:void(0)"><i class="webexflaticon flaticon-internet"></i> {{isset($currentLang->name) ? $currentLang->name : 'English'}}</a>
               <ul class="language-dropdown">
                 @foreach ($langs as $key => $lang)
                 <a class="dropdown-item" href='{{ route('changeLanguage', $lang->code) }}'>{{convertUtf8($lang->name)}}</a>

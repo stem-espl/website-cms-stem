@@ -33,13 +33,13 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
         <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-        <a href="#">Career Page</a>
+        <a href="javascript:void(0)">Career Page</a>
       </li>
       <li class="separator">
         <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-        <a href="#">Category</a>
+        <a href="javascript:void(0)">Category</a>
       </li>
     </ul>
   </div>
@@ -63,7 +63,7 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
                     @endif
                 </div>
                 <div class="col-lg-4 offset-lg-1 mt-2 mt-lg-0">
-                    <a href="#" class="btn btn-primary float-lg-right float-left btn-sm" data-toggle="modal" data-target="#createModal"><i class="fas fa-plus"></i> Add Category</a>
+                    <a href="javascript:void(0)" class="btn btn-primary float-lg-right float-left btn-sm" data-toggle="modal" data-target="#createModal"><i class="fas fa-plus"></i> Add Category</a>
                     <button class="btn btn-danger float-right btn-sm mr-2 d-none bulk-delete" data-href="{{route('admin.jcategory.bulk.delete')}}"><i class="flaticon-interface-5"></i> Delete</button>
                 </div>
             </div>

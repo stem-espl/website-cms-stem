@@ -23,13 +23,13 @@
         <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-        <a href="#">Home</a>
+        <a href="javascript:void(0)">Home</a>
       </li>
       <li class="separator">
         <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-        <a href="#">Statistics Section</a>
+        <a href="javascript:void(0)">Statistics Section</a>
       </li>
     </ul>
   </div>
@@ -107,7 +107,7 @@
                     <div class="card-title d-inline-block">Statistics</div>
                 </div>
                 <div class="col-lg-6 mt-2 mt-lg-0">
-                    <a href="#" class="btn btn-primary float-lg-right float-left" data-toggle="modal" data-target="#createStatisticModal"><i class="fas fa-plus"></i> Add Statistic</a>
+                    <a href="javascript:void(0)" class="btn btn-primary float-lg-right float-left" data-toggle="modal" data-target="#createStatisticModal"><i class="fas fa-plus"></i> Add Statistic</a>
                 </div>
             </div>
         </div>

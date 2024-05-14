@@ -30,13 +30,13 @@
       <i class="flaticon-right-arrow"></i>
     </li>
     <li class="nav-item">
-      <a href="#">E-Governance Page</a>
+      <a href="javascript:void(0)">E-Governance Page</a>
     </li>
     <li class="separator">
       <i class="flaticon-right-arrow"></i>
     </li>
     <li class="nav-item">
-      <a href="#">Edit E-Governance</a>
+      <a href="javascript:void(0)">Edit E-Governance</a>
     </li>
   </ul>
 </div>

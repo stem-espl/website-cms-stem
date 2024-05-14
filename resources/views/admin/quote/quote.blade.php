@@ -13,13 +13,13 @@
         <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-        <a href="#">Quote Management</a>
+        <a href="javascript:void(0)">Quote Management</a>
       </li>
       <li class="separator">
         <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-        <a href="#">Quotes</a>
+        <a href="javascript:void(0)">Quotes</a>
       </li>
     </ul>
   </div>
@@ -92,7 +92,7 @@
                             </form>
                           </td>
                           <td>
-                            <a href="#" class="btn btn-primary btn-sm editbtn" data-target="#mailModal" data-toggle="modal" data-email="{{$quote->email}}"><i class="far fa-envelope"></i> Send</a>
+                            <a href="javascript:void(0)" class="btn btn-primary btn-sm editbtn" data-target="#mailModal" data-toggle="modal" data-email="{{$quote->email}}"><i class="far fa-envelope"></i> Send</a>
                           </td>
                           <td>
                             <form class="deleteform d-inline-block" action="{{route('admin.quote.delete')}}" method="post">

@@ -73,7 +73,7 @@
     <!-- About Section End -->
     <!-- Service Section Start -->
     @if(!empty($bs->service_section_title) || count($scategory) > 0)
-    <section class="serivce-section bg-silver-light pdt-105 pdb-80" data-background="{{asset('assets/stem/images/bg/abs-bg7.png')}}">
+    <section class="serivce-section bg-silver-light pdt-105 pdb-80" data-background="{{asset('assets/stem/images/abs-bg7.png')}}">
       @if(!empty($bs->service_section_title))
       <div class="section-title">
         <div class="container">
@@ -107,7 +107,7 @@
                 </div>
                 <div class="service-content">
                   <div class="title">
-                    <a href="#">
+                    <a href="javascript:void(0)">
                       <h3>{{$service->name}}</h3>
                     </a>
                   </div>
@@ -128,7 +128,7 @@
     @if (count($members) > 0)
     <!-- Service Section End -->
     <!-- Team Section Titile Start -->
-    <section class="pdt-110 pdb-150 section-white-typo" data-background="{{asset('assets/stem/images/bg/5.jpg')}}" data-overlay-dark="8">
+    <section class="pdt-110 pdb-150 section-white-typo" data-background="{{asset('assets/stem/images/5.jpg')}}" data-overlay-dark="8">
       <div class="section-title text-center wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
         <div class="container">
           <div class="row">
@@ -146,7 +146,7 @@
     </section>
     <!-- Team Section Titile End -->
     <!-- Team Section Start -->
-    <section class="pdt-0 pdb-20 pdb-md-110 minus-mrt-130 bg-pos-center-bottom" data-background="{{asset('assets/stem/images/bg/abs-bg1.png')}}">
+    <section class="pdt-0 pdb-20 pdb-md-110 minus-mrt-130 bg-pos-center-bottom" data-background="{{asset('assets/stem/images/abs-bg1.png')}}">
       <div class="section-content">
         <div class="container">
           <div class="row">
@@ -191,7 +191,7 @@
     </section>
     <!-- Team Section Titile End -->
     <!-- Team Section Start -->
-    <section class="pdt-0 pdb-md-110 minus-mrt-130 bg-pos-center-bottom" data-background="{{asset('assets/stem/images/bg/abs-bg1.png')}}">
+    <section class="pdt-0 pdb-md-110 minus-mrt-130 bg-pos-center-bottom" data-background="{{asset('assets/stem/images/abs-bg1.png')}}">
       <div class="section-content">
         <div class="container">
           <div class="row">
@@ -217,7 +217,7 @@
 
     @if(count($event) > 0)
     <!-- News Section Start -->
-    <section class="bg-silver-light pdt-105 pdb-80" data-background="{{asset('assets/stem/images/bg/abs-bg4.png')}}">
+    <section class="bg-silver-light pdt-105 pdb-80" data-background="{{asset('assets/stem/images/abs-bg4.png')}}">
       <div class="section-title mrb-30 mrb-md-60">
         <div class="container">
           <div class="row">

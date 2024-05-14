@@ -19,7 +19,7 @@
       <div class="col-lg-7 col-xl-7">
         <div class="project-ss-carousel owl-carousel owl-theme common-carousel">
           @foreach ($portfolio->portfolio_images as $key => $pi)
-          <a href="#" class="single-ss" data-id="{{$pi->id}}">
+          <a href="javascript:void(0)" class="single-ss" data-id="{{$pi->id}}">
             <img class="lazy" data-src="{{asset('assets/front/img/portfolios/sliders/'.$pi->image)}}" alt="">
           </a>
           @endforeach
