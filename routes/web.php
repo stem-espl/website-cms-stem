@@ -843,7 +843,7 @@ use app\Http\Controllers\Front\StemController;
 			Route::post( "/news/store", "Admin\CalendarController@store" )->name("admin.news.store")->middleware('can:news');    
 			Route::post( "/news/update", "Admin\CalendarController@update" )->name("admin.news.update")->middleware('can:news');    
 			Route::get( "/news/{id}/edit", "Admin\CalendarController@edit" )->name("admin.news.edit")->middleware('can:news');    
-			Route::post( "/news/delete", "Admin\CalendarController@delete" )->name("admin.calenewsndar.delete")->middleware('can:news');    
+			Route::post( "/news/delete", "Admin\CalendarController@delete" )->name("admin.news.delete")->middleware('can:news');    
 			Route::post( "/news/bulk-delete", "Admin\CalendarController@bulkDelete" )->name("admin.news.bulk.delete")->middleware('can:news');
 
 			Route::get("/news/img", "Admin\CalendarController@img")->name( "admin.news.img" )->middleware('can:news'); 
