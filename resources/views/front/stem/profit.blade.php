@@ -54,20 +54,6 @@ src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
   "2023-24 Expected",
   ],
   datasets: [
-    // {
-    //   label: "Revenue",
-    //   backgroundColor: "#F875AA",
-    //   borderColor: "pink",
-    //   borderWidth: 1,
-    //   data: [152.65,130.39,130.52,131.1,195.05,107.23]
-    // },
-    // {
-    //   label: "Expenses",
-    //   backgroundColor: "#01b0f1",
-    //   borderColor: "#blue",
-    //   borderWidth: 1,
-    //   data: [129.35,98.17,84.57,77.08,43.78,93.62]
-    // },
     {
       label: "Profit",
       backgroundColor: "#42955f",
@@ -75,13 +61,6 @@ src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
       borderWidth: 1,
       data: [23.3,32.22,45.95,54.02,43.78,13.61]
     },
-    // {
-    //   label: "Taxes",
-    //   backgroundColor: "#C69774",
-    //   borderColor: "brown",
-    //   borderWidth: 1,
-    //   data: [6,9.28,12.19,12.67,10.62,3.58]
-    // }
   ]
 };
 
