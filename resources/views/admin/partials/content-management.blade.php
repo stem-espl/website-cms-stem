@@ -119,7 +119,7 @@
     @endif" id="webContents">
     <ul class="nav nav-collapse">
 
-      @canany(['sections-customization','partners-section','blog-section','team-section','testimonials-section','portfolio-section','call-to-action-section','statistics-section','approach-section','service-section','intro-section','features','hero-section'])
+      @canany(['sections-customization','shareholder-section','blog-section','team-section','testimonials-section','portfolio-section','call-to-action-section','statistics-section','approach-section','service-section','intro-section','features','hero-section'])
       {{-- Home Page Sections --}}
       <li class="
         @if(request()->path() == 'admin/features') selected
@@ -328,7 +328,7 @@
             @endif
             @endcan
 
-            @can('partners-section')
+            @can('shareholder-section')
             <li class="
               @if(request()->path() == 'admin/partners') active
               @elseif(request()->is('admin/partner/*/edit')) active

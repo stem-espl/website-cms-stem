@@ -61,7 +61,7 @@
                   </div>
                   <div class="col-lg-4 offset-lg-1 mt-2 mt-lg-0">
                       <a href="javascript:void(0)" class="btn btn-primary float-right btn-sm" data-toggle="modal" data-target="#createModal"><i class="fas fa-plus"></i> Add News</a>
-                      <button class="btn btn-danger float-right btn-sm mr-2 d-none bulk-delete" data-href="{{route('admin.calendar.bulk.delete')}}"><i class="flaticon-interface-5"></i> Delete</button>
+                      <button class="btn btn-danger float-right btn-sm mr-2 d-none bulk-delete" data-href="{{route('admin.news.bulk.delete')}}"><i class="flaticon-interface-5"></i> Delete</button>
                   </div>
               </div>
           </div>
@@ -106,13 +106,13 @@
                             </td>
 
                             <td>
-                              <a class="btn btn-secondary btn-sm editbtn" href="{{route('admin.calendar.edit',$event->id)}}">
+                              <a class="btn btn-secondary btn-sm editbtn" href="{{route('admin.news.edit',$event->id)}}">
                                 <span class="btn-label">
                                   <i class="fas fa-edit"></i>
                                 </span>
                                 Edit
                               </a>
-                              <form class="deleteform d-inline-block" action="{{route('admin.calendar.delete')}}" method="post">
+                              <form class="deleteform d-inline-block" action="{{route('admin.news.delete')}}" method="post">
                                 @csrf
                                 <input type="hidden" name="event_id" value="{{$event->id}}">
                                 <button type="submit" class="btn btn-danger btn-sm deletebtn">
@@ -148,7 +148,7 @@
             </button>
           </div>
           <div class="modal-body">
-            <form id="ajaxForm" class="modal-form create" action="{{route('admin.calendar.store')}}" method="POST">
+            <form id="ajaxForm" class="modal-form create" action="{{route('admin.news.store')}}" method="POST">
               @csrf
               <div class="form-group">
                   <label for="">Language **</label>
@@ -201,7 +201,7 @@
             </button>
           </div>
           <div class="modal-body">
-            <form id="ajaxEditForm" class="" action="{{route('admin.calendar.update')}}" method="POST">
+            <form id="ajaxEditForm" class="" action="{{route('admin.news.update')}}" method="POST">
               @csrf
               <input id="inevent_id" type="hidden" name="event_id" value="">
               <div class="form-group">

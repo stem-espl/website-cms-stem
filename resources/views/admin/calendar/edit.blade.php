@@ -46,7 +46,7 @@
       <div class="card-header">
         <div class="card-title d-inline-block">Edit News Section</div>
         <a class="btn btn-info btn-sm float-right d-inline-block"
-          href="{{route('admin.calendar.index') . '?language=' . request()->input('language')}}">
+          href="{{route('admin.news.index') . '?language=' . request()->input('language')}}">
           <span class="btn-label">
             <i class="fas fa-backward" style="font-size: 12px;"></i>
           </span>
@@ -56,7 +56,7 @@
       <div class="card-body pt-5 pb-5">
         <div class="row">
           <div class="col-lg-6 offset-lg-3">
-            <form id="ajaxForm" class="" action="{{route('admin.calendar.update')}}" method="post" enctype="multipart/form-data">
+            <form id="ajaxForm" class="" action="{{route('admin.news.update')}}" method="post" enctype="multipart/form-data">
               @csrf
               <input type="hidden" name="id" value="{{$event->id}}">
 

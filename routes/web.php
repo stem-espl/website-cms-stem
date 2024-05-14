@@ -485,11 +485,11 @@ use app\Http\Controllers\Front\StemController;
 			Route::get( "/blogsection", "Admin\BlogsectionController@index" )->name("admin.blogsection.index")->middleware('can:blog-section'); 
 			Route::post( "/blogsection/{langid}/update", "Admin\BlogsectionController@update" )->name("admin.blogsection.update")->middleware('can:blog-section');
 			// Admin Partner Routes 
-			Route::get("/partners", "Admin\PartnerController@index")->name( "admin.partner.index" )->middleware('can:partners-section'); 
-			Route::post( "/partner/store", "Admin\PartnerController@store" )->name("admin.partner.store")->middleware('can:partners-section');  
-			Route::get( "/partner/{id}/edit", "Admin\PartnerController@edit" )->name("admin.partner.edit")->middleware('can:partners-section');  
-			Route::post( "/partner/update", "Admin\PartnerController@update" )->name("admin.partner.update")->middleware('can:partners-section');  
-			Route::post( "/partner/delete", "Admin\PartnerController@delete" )->name("admin.partner.delete")->middleware('can:partners-section');  
+			Route::get("/partners", "Admin\PartnerController@index")->name( "admin.partner.index" )->middleware('can:shareholder-section'); 
+			Route::post( "/partner/store", "Admin\PartnerController@store" )->name("admin.partner.store")->middleware('can:shareholder-section');  
+			Route::get( "/partner/{id}/edit", "Admin\PartnerController@edit" )->name("admin.partner.edit")->middleware('can:shareholder-section');  
+			Route::post( "/partner/update", "Admin\PartnerController@update" )->name("admin.partner.update")->middleware('can:shareholder-section');  
+			Route::post( "/partner/delete", "Admin\PartnerController@delete" )->name("admin.partner.delete")->middleware('can:shareholder-section');  
 			// Admin Member Routes 
 			Route::get("/members", "Admin\MemberController@index")->name( "admin.member.index" )->middleware('can:team-section');  
 			Route::get("/member/create", "Admin\MemberController@create")->name( "admin.member.create" )->middleware('can:team-section'); 
@@ -839,14 +839,14 @@ use app\Http\Controllers\Front\StemController;
 			Route::get( "/donation/export", "Admin\DonationController@exportReport" )->name("admin.donation.export")->middleware('can:report-donation');
 
 			// Admin Event Calendar Routes 
-			Route::get("/calendars", "Admin\CalendarController@index")->name( "admin.calendar.index" )->middleware('can:calendars');    
-			Route::post( "/calendar/store", "Admin\CalendarController@store" )->name("admin.calendar.store")->middleware('can:calendars');    
-			Route::post( "/calendar/update", "Admin\CalendarController@update" )->name("admin.calendar.update")->middleware('can:calendars');    
-			Route::get( "/calendar/{id}/edit", "Admin\CalendarController@edit" )->name("admin.calendar.edit")->middleware('can:calendars');    
-			Route::post( "/calendar/delete", "Admin\CalendarController@delete" )->name("admin.calendar.delete")->middleware('can:calendars');    
-			Route::post( "/calendar/bulk-delete", "Admin\CalendarController@bulkDelete" )->name("admin.calendar.bulk.delete")->middleware('can:calendars');
+			Route::get("/news", "Admin\CalendarController@index")->name( "admin.news.index" )->middleware('can:news');    
+			Route::post( "/news/store", "Admin\CalendarController@store" )->name("admin.news.store")->middleware('can:news');    
+			Route::post( "/news/update", "Admin\CalendarController@update" )->name("admin.news.update")->middleware('can:news');    
+			Route::get( "/news/{id}/edit", "Admin\CalendarController@edit" )->name("admin.news.edit")->middleware('can:news');    
+			Route::post( "/news/delete", "Admin\CalendarController@delete" )->name("admin.calenewsndar.delete")->middleware('can:news');    
+			Route::post( "/news/bulk-delete", "Admin\CalendarController@bulkDelete" )->name("admin.news.bulk.delete")->middleware('can:news');
 
-			Route::get("/news/img", "Admin\CalendarController@img")->name( "admin.calendar.img" )->middleware('can:calendars'); 
+			Route::get("/news/img", "Admin\CalendarController@img")->name( "admin.news.img" )->middleware('can:news'); 
 
 			// Admin Article Category Routes 
 			Route::get( "/article_categories", "Admin\ArticleCategoryController@index" )->name("admin.article_category.index")->middleware('can:categories-acknowledged');  
