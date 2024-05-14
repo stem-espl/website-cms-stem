@@ -55,8 +55,8 @@ class StemController extends Controller
            }        
          $lang_code = isset($currentLang->code) ?  $currentLang->code : 'en';
          $language = Language::where('code', $lang_code)->first();
-        $data=News::where('language_id', $language->id)->get();
-        return view('admin.calendar.news',compact('data'));
+         $data=News::where('language_id', $language->id)->get();
+         return view('admin.calendar.news',compact('data'));
       }
 
       // public function aboutus()
