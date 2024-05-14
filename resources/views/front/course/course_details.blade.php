@@ -223,10 +223,10 @@
             <p class="text-danger payment-warning" style="display: none;">*Please select a payment method</p>
           </form>
           <ul class="social-link">
-            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-            <li><a href="#"><i class="fab fa-pinterest-p"></i></a></li>
-            <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+            <li><a href="javascript:void(0)"><i class="fab fa-facebook-f"></i></a></li>
+            <li><a href="javascript:void(0)"><i class="fab fa-twitter"></i></a></li>
+            <li><a href="javascript:void(0)"><i class="fab fa-pinterest-p"></i></a></li>
+            <li><a href="javascript:void(0)"><i class="fab fa-linkedin-in"></i></a></li>
           </ul>
         </div>
       </div>
@@ -266,7 +266,7 @@
                 <div class="accordion" id="accordionExample">
                   @foreach ($modules as $module)
                   <div class="card">
-                    <a class="card-header collapsed" href="#" id="headingone" data-toggle="collapse"
+                    <a class="card-header collapsed" href="javascript:void(0)" id="headingone" data-toggle="collapse"
                       data-target="{{ '#collapse' . $module->id }}"
                       aria-expanded="{{ $loop->first ? 'true' : 'false' }}"
                       aria-controls="collapseone">{{ $module->name }}<span class="toggle_btn"></span>

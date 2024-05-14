@@ -29,13 +29,13 @@
         <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-        <a href="#">Event Page</a>
+        <a href="javascript:void(0)">Event Page</a>
       </li>
       <li class="separator">
         <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-        <a href="#">Edit Event</a>
+        <a href="javascript:void(0)">Edit Event</a>
       </li>
     </ul>
   </div>

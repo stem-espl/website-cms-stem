@@ -5,7 +5,7 @@
    <h4 class="page-title">Choose a Popup Type</h4>
    <ul class="breadcrumbs">
       <li class="nav-home">
-         <a href="#">
+         <a href="javascript:void(0)">
          <i class="flaticon-home"></i>
          </a>
       </li>
@@ -13,13 +13,13 @@
          <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-         <a href="#">Announcement Popup</a>
+         <a href="javascript:void(0)">Announcement Popup</a>
       </li>
       <li class="separator">
          <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-         <a href="#">Types</a>
+         <a href="javascript:void(0)">Types</a>
       </li>
    </ul>
 </div>

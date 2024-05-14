@@ -33,13 +33,13 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
          <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-         <a href="#">Event Page</a>
+         <a href="javascript:void(0)">Event Page</a>
       </li>
       <li class="separator">
          <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-         <a href="#">Events</a>
+         <a href="javascript:void(0)">Events</a>
       </li>
    </ul>
 </div>
@@ -63,7 +63,7 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
                </div>
 
                <div class="col-lg-4 offset-lg-1 mt-2 mt-lg-0">
-                  <a href="#" class="btn btn-primary float-right btn-sm" data-toggle="modal" data-target="#createModal"><i class="fas fa-plus" style="color: white !important;"></i> Add Event</a>
+                  <a href="javascript:void(0)" class="btn btn-primary float-right btn-sm" data-toggle="modal" data-target="#createModal"><i class="fas fa-plus" style="color: white !important;"></i> Add Event</a>
                   <button class="btn btn-danger float-right btn-sm mr-2 d-none bulk-delete" data-href="{{route('admin.event.bulk.delete')}}"><i class="flaticon-interface-5"></i> Delete</button>
                </div>
             </div>

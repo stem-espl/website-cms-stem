@@ -69,10 +69,10 @@
                     @foreach ($socials as $social)
                     <li><a href="{{$social['url']}}"><i class="{{$social['icon']}}"></i></a></li>
                     @endforeach
-						<!-- <li><a href="#"><i class="fab fa-facebook"></i></a></li>
-						<li><a href="#"><i class="fab fa-twitter"></i></a></li>
-						<li><a href="#"><i class="fab fa-instagram"></i></a></li>
-						<li><a href="#"><i class="fab fa-google-plus"></i></a></li> -->
+						<!-- <li><a href="javascript:void(0)"><i class="fab fa-facebook"></i></a></li>
+						<li><a href="javascript:void(0)"><i class="fab fa-twitter"></i></a></li>
+						<li><a href="javascript:void(0)"><i class="fab fa-instagram"></i></a></li>
+						<li><a href="javascript:void(0)"><i class="fab fa-google-plus"></i></a></li> -->
 					</ul>
 				</div>
 				<div class="col-lg-7 col-xl-7">

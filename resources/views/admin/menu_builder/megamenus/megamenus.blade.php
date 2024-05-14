@@ -13,13 +13,13 @@
         <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-        <a href="#">Webiste Menu Builder</a>
+        <a href="javascript:void(0)">Webiste Menu Builder</a>
       </li>
       <li class="separator">
         <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-        <a href="#">Mega Menus Management</a>
+        <a href="javascript:void(0)">Mega Menus Management</a>
       </li>
     </ul>
   </div>

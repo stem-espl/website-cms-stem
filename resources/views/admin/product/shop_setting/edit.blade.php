@@ -29,16 +29,16 @@
           <i class="flaticon-right-arrow"></i>
         </li>
         <li class="nav-item">
-          <a href="#">Shipping</a>
+          <a href="javascript:void(0)">Shipping</a>
         </li>
         <li class="separator">
           <i class="flaticon-right-arrow"></i>
         </li>
         <li class="nav-item">
-          <a href="#">Shipping Charge</a>
+          <a href="javascript:void(0)">Shipping Charge</a>
         </li>
         <li class="nav-item">
-          <a href="#">Edit</a>
+          <a href="javascript:void(0)">Edit</a>
         </li>
     </ul>
   </div>

@@ -13,13 +13,13 @@
             <i class="flaticon-right-arrow"></i>
         </li>
         <li class="nav-item">
-            <a href="#">User Management</a>
+            <a href="javascript:void(0)">User Management</a>
         </li>
         <li class="separator">
             <i class="flaticon-right-arrow"></i>
         </li>
         <li class="nav-item">
-            <a href="#">Edit User</a>
+            <a href="javascript:void(0)">Edit User</a>
         </li>
     </ul>
 </div>

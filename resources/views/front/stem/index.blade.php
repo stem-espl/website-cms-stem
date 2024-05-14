@@ -107,7 +107,7 @@
                 </div>
                 <div class="service-content">
                   <div class="title">
-                    <a href="#">
+                    <a href="javascript:void(0)">
                       <h3>{{$service->name}}</h3>
                     </a>
                   </div>

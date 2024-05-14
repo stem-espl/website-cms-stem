@@ -136,7 +136,7 @@
                         <p class="footer-para">
                             @if (strlen(convertUtf8($bs->footer_text)) > 140)
                                 {{substr(convertUtf8($bs->footer_text), 0, 140)}}<span style="display: none;">{{substr(convertUtf8($bs->footer_text), 140)}}</span>
-                                <a href="#" class="see-more">{{__('see more')}}...</a>
+                                <a href="javascript:void(0)" class="see-more">{{__('see more')}}...</a>
                             @else
                                 {{convertUtf8($bs->footer_text)}}
                             @endif

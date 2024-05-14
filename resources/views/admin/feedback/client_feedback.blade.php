@@ -13,7 +13,7 @@
         <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-        <a href="#">Client Feedbacks</a>
+        <a href="javascript:void(0)">Client Feedbacks</a>
       </li>
     </ul>
   </div>
@@ -68,7 +68,7 @@
                         <td class="text-capitalize">{{ $sub }}</td>
                         <td>{{ $feedback->rating }}</td>
                         <td>
-                          <a class="btn btn-sm btn-info" href="#" data-toggle="modal" data-target="#feedbackModal{{ $feedback->id }}">Show</a>
+                          <a class="btn btn-sm btn-info" href="javascript:void(0)" data-toggle="modal" data-target="#feedbackModal{{ $feedback->id }}">Show</a>
                         </td>
                         <td>
                           <form class="deleteform d-inline-block" action="{{route('admin.delete_feedback')}}" method="post">

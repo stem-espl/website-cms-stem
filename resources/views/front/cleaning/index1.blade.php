@@ -73,7 +73,7 @@
                                     <p>
                                         @if (strlen($scat->short_text) > 100)
                                            {{mb_substr($scat->short_text, 0, 100, 'utf-8')}}<span style="display: none;">{{mb_substr($scat->short_text, 100, null, 'utf-8')}}</span>
-                                           <a href="#" class="see-more">{{__('see more')}}...</a>
+                                           <a href="javascript:void(0)" class="see-more">{{__('see more')}}...</a>
                                         @else
                                            {{convertUtf8($scat->short_text)}}
                                         @endif
@@ -100,7 +100,7 @@
                                     <p>
                                         @if (strlen(convertUtf8($service->summary)) > 100)
                                            {{mb_substr($service->summary, 0, 100, 'utf-8')}}<span style="display: none;">{{mb_substr($service->summary, 100, null, 'utf-8')}}</span>
-                                           <a href="#" class="see-more">{{__('see more')}}...</a>
+                                           <a href="javascript:void(0)" class="see-more">{{__('see more')}}...</a>
                                         @else
                                            {{convertUtf8($service->summary)}}
                                         @endif
@@ -141,7 +141,7 @@
                                 <span>
                                     @if (strlen($point->short_text) > 150)
                                         {{mb_substr($point->short_text, 0, 150, 'utf-8')}}<span style="display: none;">{{mb_substr($point->short_text, 150, null, 'utf-8')}}</span>
-                                        <a href="#" class="see-more">{{__('see more')}}...</a>
+                                        <a href="javascript:void(0)" class="see-more">{{__('see more')}}...</a>
                                     @else
                                         {{convertUtf8($point->short_text)}}
                                     @endif

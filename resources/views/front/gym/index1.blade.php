@@ -84,7 +84,7 @@
                                     <div class="summary text-center mt-2">
                                         @if (strlen($scat->short_text) > 112)
                                            {{mb_substr($scat->short_text, 0, 112, 'utf-8')}}<span style="display: none;">{{mb_substr($scat->short_text, 112, null, 'utf-8')}}</span>
-                                           <a href="#" class="see-more">{{__('see more')}}...</a>
+                                           <a href="javascript:void(0)" class="see-more">{{__('see more')}}...</a>
                                         @else
                                            {{convertUtf8($scat->short_text)}}
                                         @endif
@@ -114,7 +114,7 @@
                                     <div class="summary text-center mt-2">
                                         @if (strlen($service->summary) > 100)
                                            {{mb_substr($service->summary, 0, 100, 'utf-8')}}<span style="display: none;">{{mb_substr($service->summary, 100, null, 'utf-8')}}</span>
-                                           <a href="#" class="see-more">{{__('see more')}}...</a>
+                                           <a href="javascript:void(0)" class="see-more">{{__('see more')}}...</a>
                                         @else
                                            {{convertUtf8($service->summary)}}
                                         @endif
@@ -197,7 +197,7 @@
                                         <p>
                                            @if (strlen($point->short_text) > 150)
                                                {{mb_substr($point->short_text, 0, 150, 'utf-8')}}<span style="display: none;">{{mb_substr($point->short_text, 150, null, 'utf-8')}}</span>
-                                               <a href="#" class="see-more">{{__('see more')}}...</a>
+                                               <a href="javascript:void(0)" class="see-more">{{__('see more')}}...</a>
                                            @else
                                                {{convertUtf8($point->short_text)}}
                                            @endif
@@ -465,8 +465,8 @@
                                                 $blogDate = $blogDate->translatedFormat('jS F, Y');
                                             @endphp
                                             <div class="post_meta">
-                                                <span><i class="far fa-user"></i><a href="#">{{__('By')}} {{__('Admin')}}</a></span>
-                                                <span><i class="far fa-calendar-alt"></i><a href="#">{{$blogDate}}</a></span>
+                                                <span><i class="far fa-user"></i><a href="javascript:void(0)">{{__('By')}} {{__('Admin')}}</a></span>
+                                                <span><i class="far fa-calendar-alt"></i><a href="javascript:void(0)">{{$blogDate}}</a></span>
                                             </div>
                                             <h3 class="post_title"><a href="{{route('front.blogdetails', [$blog->slug, $blog->id])}}">{{strlen($blog->title) > 40 ? mb_substr($blog->title, 0, 40, 'utf-8') . '...' : $blog->title}}</a></h3>
                                             <p>{!! strlen(strip_tags($blog->content)) > 100 ? mb_substr(strip_tags($blog->content), 0, 100, 'utf-8') . '...' : strip_tags($blog->content) !!}</p>

@@ -29,13 +29,13 @@
         <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-        <a href="#">Career Page</a>
+        <a href="javascript:void(0)">Career Page</a>
       </li>
       <li class="separator">
         <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-        <a href="#">Edit Job</a>
+        <a href="javascript:void(0)">Edit Job</a>
       </li>
     </ul>
   </div>

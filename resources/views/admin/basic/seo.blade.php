@@ -29,13 +29,13 @@
         <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-        <a href="#">Basic Settings</a>
+        <a href="javascript:void(0)">Basic Settings</a>
       </li>
       <li class="separator">
         <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-        <a href="#">SEO Informations</a>
+        <a href="javascript:void(0)">SEO Informations</a>
       </li>
     </ul>
   </div>

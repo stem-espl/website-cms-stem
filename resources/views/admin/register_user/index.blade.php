@@ -15,7 +15,7 @@
         <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-        <a href="#">Registered Users</a>
+        <a href="javascript:void(0)">Registered Users</a>
       </li>
     </ul>
   </div>

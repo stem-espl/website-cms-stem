@@ -34,13 +34,13 @@
                 <i class="flaticon-right-arrow"></i>
             </li>
             <li class="nav-item">
-                <a href="#">Events Management</a>
+                <a href="javascript:void(0)">Events Management</a>
             </li>
             <li class="separator">
                 <i class="flaticon-right-arrow"></i>
             </li>
             <li class="nav-item">
-                <a href="#">Event Bookings</a>
+                <a href="javascript:void(0)">Event Bookings</a>
             </li>
         </ul>
     </div>
@@ -133,7 +133,7 @@
                                                 </td>
                                                 <td>
                                                     @if (!empty($event->receipt))
-                                                        <a class="btn btn-sm btn-info" href="#" data-toggle="modal"
+                                                        <a class="btn btn-sm btn-info" href="javascript:void(0)" data-toggle="modal"
                                                            data-target="#receiptModal{{$event->id}}">Show</a>
                                                     @else
                                                         -
@@ -141,7 +141,7 @@
                                                 </td>
                                                 <td>
                                                     @if (!empty($event->name !== "anonymous"))
-                                                        <a class="btn btn-sm btn-info" href="#" data-toggle="modal"
+                                                        <a class="btn btn-sm btn-info" href="javascript:void(0)" data-toggle="modal"
                                                            data-target="#detailsModal{{$event->id}}">Detail</a>
                                                     @else
                                                         -

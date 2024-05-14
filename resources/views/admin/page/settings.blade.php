@@ -13,13 +13,13 @@
             <i class="flaticon-right-arrow"></i>
         </li>
         <li class="nav-item">
-            <a href="#">Theme & Home</a>
+            <a href="javascript:void(0)">Theme & Home</a>
         </li>
         <li class="separator">
             <i class="flaticon-right-arrow"></i>
         </li>
         <li class="nav-item">
-            <a href="#">Settings</a>
+            <a href="javascript:void(0)">Settings</a>
         </li>
     </ul>
 </div>

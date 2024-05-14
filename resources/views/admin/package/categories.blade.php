@@ -35,13 +35,13 @@
         <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-        <a href="#">Package Management</a>
+        <a href="javascript:void(0)">Package Management</a>
       </li>
       <li class="separator">
         <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-        <a href="#">Categories</a>
+        <a href="javascript:void(0)">Categories</a>
       </li>
     </ul>
   </div>
@@ -69,7 +69,7 @@
             </div>
 
             <div class="col-lg-4 offset-lg-1 mt-2 mt-lg-0">
-              <a href="#" data-toggle="modal" data-target="#createModal" class="btn btn-primary btn-sm float-lg-right float-left">
+              <a href="javascript:void(0)" data-toggle="modal" data-target="#createModal" class="btn btn-primary btn-sm float-lg-right float-left">
                 <i class="fas fa-plus"></i> Add Category
               </a>
 
@@ -117,7 +117,7 @@
                           </td>
                           <td>{{ $category->serial_number }}</td>
                           <td>
-                            <a class="btn btn-secondary btn-sm mr-1 editbtn" href="#" data-toggle="modal" data-target="#editModal" data-id="{{ $category->id }}" data-name="{{ $category->name }}" data-status="{{ $category->status }}" data-serial_number="{{ $category->serial_number }}">
+                            <a class="btn btn-secondary btn-sm mr-1 editbtn" href="javascript:void(0)" data-toggle="modal" data-target="#editModal" data-id="{{ $category->id }}" data-name="{{ $category->name }}" data-status="{{ $category->status }}" data-serial_number="{{ $category->serial_number }}">
                               <span class="btn-label">
                                 <i class="fas fa-edit"></i>
                               </span>

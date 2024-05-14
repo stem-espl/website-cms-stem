@@ -43,7 +43,7 @@
                             <p>{{$history->description}}</p>
                         </div>
                         <!-- <div class="link">
-                            <a href="#"><i class="fas fa-long-arrow-alt-right"></i></a>
+                            <a href="javascript:void(0)"><i class="fas fa-long-arrow-alt-right"></i></a>
                         </div> -->
                     </div>
                 </div>

@@ -543,7 +543,7 @@ if (!empty($admin->role)) {
                                                     <button class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#detailsModal{{$quote->id}}"><i class="fas fa-eye"></i> View</button>
                                                 </td>
                                                 <td>
-                                                    <a href="#" class="btn btn-primary btn-sm editbtn" data-target="#mailModal" data-toggle="modal" data-email="{{$quote->email}}"><i class="far fa-envelope"></i> Send</a>
+                                                    <a href="javascript:void(0)" class="btn btn-primary btn-sm editbtn" data-target="#mailModal" data-toggle="modal" data-email="{{$quote->email}}"><i class="far fa-envelope"></i> Send</a>
                                                 </td>
                                                 <td>
                                                     <form class="deleteform d-inline-block" action="{{route('admin.quote.delete')}}" method="post">

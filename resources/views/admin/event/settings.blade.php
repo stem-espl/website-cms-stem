@@ -7,7 +7,7 @@
    <h4 class="page-title">Settings</h4>
    <ul class="breadcrumbs">
       <li class="nav-home">
-         <a href="#">
+         <a href="javascript:void(0)">
          <i class="flaticon-home"></i>
          </a>
       </li>
@@ -15,13 +15,13 @@
          <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-         <a href="#">Events Management</a>
+         <a href="javascript:void(0)">Events Management</a>
       </li>
       <li class="separator">
          <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-         <a href="#">Settings</a>
+         <a href="javascript:void(0)">Settings</a>
       </li>
    </ul>
 </div>

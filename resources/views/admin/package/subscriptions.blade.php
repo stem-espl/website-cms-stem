@@ -26,19 +26,19 @@
         <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-        <a href="#">Package Management</a>
+        <a href="javascript:void(0)">Package Management</a>
       </li>
       <li class="separator">
         <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-        <a href="#">Subscriptions</a>
+        <a href="javascript:void(0)">Subscriptions</a>
       </li>
       <li class="separator">
         <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-        <a href="#">
+        <a href="javascript:void(0)">
             @if (request()->input('type')=='all')
                 All
             @elseif (request()->input('type')=='active')
@@ -166,7 +166,7 @@
                           </td>
                           <td>
                               @if (!empty($sub->receipt))
-                                <a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#receiptModal{{$sub->id}}">Receipt</a>
+                                <a href="javascript:void(0)" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#receiptModal{{$sub->id}}">Receipt</a>
                               @else
                                 -
                               @endif

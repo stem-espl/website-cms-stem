@@ -13,7 +13,7 @@
       <i class="flaticon-right-arrow"></i>
     </li>
     <li class="nav-item">
-      <a href="#">Language Management</a>
+      <a href="javascript:void(0)">Language Management</a>
     </li>
   </ul>
 </div>
@@ -24,7 +24,7 @@
       <div class="card-header">
         <div class="card-title d-inline-block">Languages</div>
         <a
-          href="#"
+          href="javascript:void(0)"
           class="btn btn-primary float-right"
           data-toggle="modal"
           data-target="#createModal"

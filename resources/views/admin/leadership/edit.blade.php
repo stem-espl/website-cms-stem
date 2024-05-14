@@ -30,13 +30,13 @@
       <i class="flaticon-right-arrow"></i>
     </li>
     <li class="nav-item">
-      <a href="#">Leadership Page</a>
+      <a href="javascript:void(0)">Leadership Page</a>
     </li>
     <li class="separator">
       <i class="flaticon-right-arrow"></i>
     </li>
     <li class="nav-item">
-      <a href="#">Edit Leadership</a>
+      <a href="javascript:void(0)">Edit Leadership</a>
     </li>
   </ul>
 </div>

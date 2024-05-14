@@ -29,13 +29,13 @@
             <i class="flaticon-right-arrow"></i>
         </li>
         <li class="nav-item">
-            <a href="#">Home</a>
+            <a href="javascript:void(0)">Home</a>
         </li>
         <li class="separator">
             <i class="flaticon-right-arrow"></i>
         </li>
         <li class="nav-item">
-            <a href="#">Approach Section</a>
+            <a href="javascript:void(0)">Approach Section</a>
         </li>
     </ul>
 </div>
@@ -120,7 +120,7 @@
         <div class="card">
             <div class="card-header">
                 <div class="card-title d-inline-block">Points</div>
-                <a href="#" class="btn btn-primary float-right" data-toggle="modal" data-target="#createPointModal"><i class="fas fa-plus"></i> Add Point</a>
+                <a href="javascript:void(0)" class="btn btn-primary float-right" data-toggle="modal" data-target="#createPointModal"><i class="fas fa-plus"></i> Add Point</a>
             </div>
             <div class="card-body">
                 <div class="row">

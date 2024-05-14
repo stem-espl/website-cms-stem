@@ -42,7 +42,7 @@
                 <div class="card">
                   <a
                     class="card-header collapsed py-3"
-                    href="#"
+                    href="javascript:void(0)"
                     id="headingone"
                     data-toggle="collapse"
                     data-target="{{'#collapse' . $module->id}}"
@@ -64,7 +64,7 @@
                           $lessons = App\Models\Lesson::where('module_id', $module->id)->get();
                         @endphp
                         @foreach ($lessons as $lesson)
-                          <li><a href="#" class="videoLesson" data-video_file="{{$lesson->video_file}}" data-video_link="{{$lesson->video_link}}"><i class="fas fa-play"></i> {{$lesson->name}} <span class="duration">{{$lesson->duration}}</span></a></li>
+                          <li><a href="javascript:void(0)" class="videoLesson" data-video_file="{{$lesson->video_file}}" data-video_link="{{$lesson->video_link}}"><i class="fas fa-play"></i> {{$lesson->name}} <span class="duration">{{$lesson->duration}}</span></a></li>
                         @endforeach
                       </ul>
                     </div>

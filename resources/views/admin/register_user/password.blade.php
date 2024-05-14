@@ -5,7 +5,7 @@
     <h4 class="page-title">Password</h4>
     <ul class="breadcrumbs">
         <li class="nav-home">
-            <a href="#">
+            <a href="javascript:void(0)">
                 <i class="flaticon-home"></i>
             </a>
         </li>
@@ -13,13 +13,13 @@
             <i class="flaticon-right-arrow"></i>
         </li>
         <li class="nav-item">
-            <a href="#">Registered Users</a>
+            <a href="javascript:void(0)">Registered Users</a>
         </li>
         <li class="separator">
             <i class="flaticon-right-arrow"></i>
         </li>
         <li class="nav-item">
-            <a href="#">Password</a>
+            <a href="javascript:void(0)">Password</a>
         </li>
     </ul>
 </div>

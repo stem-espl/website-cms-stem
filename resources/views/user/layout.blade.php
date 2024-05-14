@@ -164,7 +164,7 @@
 
               @if (!empty($currentLang))
               <div class="language">
-                <a class="language-btn" href="#">
+                <a class="language-btn" href="javascript:void(0)">
                   <i class="flaticon-worldwide"></i> {{convertUtf8($currentLang->name)}}
                 </a>
                 <ul class="language-dropdown">
@@ -177,7 +177,7 @@
 
               @auth
                 <div class="language dashboard">
-                    <a class="language-btn" href="#">
+                    <a class="language-btn" href="javascript:void(0)">
                         <i class="far fa-user"></i> {{Auth::user()->username}}
                     </a>
                     <ul class="language-dropdown">

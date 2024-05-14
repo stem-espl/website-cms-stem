@@ -13,13 +13,13 @@
         <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-        <a href="#">Shop Management</a>
+        <a href="javascript:void(0)">Shop Management</a>
       </li>
       <li class="separator">
         <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-        <a href="#">Coupons</a>
+        <a href="javascript:void(0)">Coupons</a>
       </li>
     </ul>
   </div>
@@ -33,7 +33,7 @@
                     <div class="card-title d-inline-block">Coupons</div>
                 </div>
                 <div class="col-lg-4 mt-2 mt-lg-0">
-                    <a href="#" class="btn btn-primary float-right btn-sm" data-toggle="modal" data-target="#createModal"><i class="fas fa-plus"></i> Add New</a>
+                    <a href="javascript:void(0)" class="btn btn-primary float-right btn-sm" data-toggle="modal" data-target="#createModal"><i class="fas fa-plus"></i> Add New</a>
                 </div>
             </div>
         </div>

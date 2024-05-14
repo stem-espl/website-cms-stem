@@ -25,7 +25,7 @@
             <div class="col-lg-4 col-md-6 col-sm-12">
               <div class="knowledge-box mb-40">
                 <div class="title">
-                  <h3><a href="#">{{ $article_category->name }}</a></h3>
+                  <h3><a href="javascript:void(0)">{{ $article_category->name }}</a></h3>
                 </div>
                 @php
                 $articles = App\Article::where('article_category_id', $article_category->id)

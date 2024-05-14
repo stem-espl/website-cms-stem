@@ -34,7 +34,7 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
       <i class="flaticon-right-arrow"></i>
     </li>
     <li class="nav-item">
-      <a href="#">Gallery Image</a>
+      <a href="javascript:void(0)">Gallery Image</a>
     </li>
   </ul>
 </div>
@@ -59,7 +59,7 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
             @endif
           </div>
           <div class="col-lg-4 offset-lg-1 mt-2 mt-lg-0">
-            <a href="#" class="btn btn-primary float-right btn-sm" data-toggle="modal" data-target="#createModal"><i
+            <a href="javascript:void(0)" class="btn btn-primary float-right btn-sm" data-toggle="modal" data-target="#createModal"><i
                 class="fas fa-plus"></i> Add Image</a>
             <button class="btn btn-danger float-right btn-sm mr-2 d-none bulk-delete"
               data-href="{{route('admin.gallery.bulk.delete')}}"><i class="flaticon-interface-5"></i> Delete</button>

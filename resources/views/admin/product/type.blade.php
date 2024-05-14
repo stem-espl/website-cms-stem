@@ -8,7 +8,7 @@
    <h4 class="page-title">Choose Product Type</h4>
    <ul class="breadcrumbs">
       <li class="nav-home">
-         <a href="#">
+         <a href="javascript:void(0)">
          <i class="flaticon-home"></i>
          </a>
       </li>
@@ -16,13 +16,13 @@
          <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-         <a href="#">Product Management</a>
+         <a href="javascript:void(0)">Product Management</a>
       </li>
       <li class="separator">
          <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-         <a href="#">Product Type</a>
+         <a href="javascript:void(0)">Product Type</a>
       </li>
    </ul>
 </div>

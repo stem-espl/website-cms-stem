@@ -34,13 +34,13 @@
                 <i class="flaticon-right-arrow"></i>
             </li>
             <li class="nav-item">
-                <a href="#">Donations</a>
+                <a href="javascript:void(0)">Donations</a>
             </li>
             <li class="separator">
                 <i class="flaticon-right-arrow"></i>
             </li>
             <li class="nav-item">
-                <a href="#">Donation History Page</a>
+                <a href="javascript:void(0)">Donation History Page</a>
             </li>
         </ul>
     </div>
@@ -146,7 +146,7 @@
                                                 <td>{{convertUtf8($donation->payment_method)}}</td>
                                                 <td>
                                                     @if (!empty($donation->receipt))
-                                                        <a class="btn btn-sm btn-info" href="#" data-toggle="modal"
+                                                        <a class="btn btn-sm btn-info" href="javascript:void(0)" data-toggle="modal"
                                                            data-target="#receiptModal{{$donation->id}}">Show</a>
                                                     @else
                                                         -
@@ -154,7 +154,7 @@
                                                 </td>
                                                 <td>
                                                     @if (!empty($donation->name !== "anonymous"))
-                                                        <a class="btn btn-sm btn-info" href="#" data-toggle="modal"
+                                                        <a class="btn btn-sm btn-info" href="javascript:void(0)" data-toggle="modal"
                                                            data-target="#detailsModal{{$donation->id}}">Detail</a>
                                                     @else
                                                     @endif

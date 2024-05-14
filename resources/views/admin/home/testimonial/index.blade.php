@@ -30,13 +30,13 @@
             <i class="flaticon-right-arrow"></i>
         </li>
         <li class="nav-item">
-            <a href="#">Home Page</a>
+            <a href="javascript:void(0)">Home Page</a>
         </li>
         <li class="separator">
             <i class="flaticon-right-arrow"></i>
         </li>
         <li class="nav-item">
-            <a href="#">Testimonials</a>
+            <a href="javascript:void(0)">Testimonials</a>
         </li>
     </ul>
 </div>
@@ -102,7 +102,7 @@
         <div class="card">
             <div class="card-header">
                 <div class="card-title d-inline-block">Testimonials</div>
-                <a href="#" class="btn btn-primary float-right btn-sm" data-toggle="modal" data-target="#createModal"><i class="fas fa-plus"></i> Add Testimonial</a>
+                <a href="javascript:void(0)" class="btn btn-primary float-right btn-sm" data-toggle="modal" data-target="#createModal"><i class="fas fa-plus"></i> Add Testimonial</a>
             </div>
             <div class="card-body">
                 <div class="row">

@@ -15,13 +15,13 @@
         <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-        <a href="#">Course Management</a>
+        <a href="javascript:void(0)">Course Management</a>
       </li>
       <li class="separator">
         <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-        <a href="#">Enrolls</a>
+        <a href="javascript:void(0)">Enrolls</a>
       </li>
     </ul>
   </div>

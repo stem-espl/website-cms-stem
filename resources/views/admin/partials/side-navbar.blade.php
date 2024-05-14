@@ -98,7 +98,7 @@ $data = \App\Models\BasicExtra::first();
               </li>
               @if ($bex->home_page_pagebuilder == 1)
               <li class="@if(request()->path() == 'admin/home-page') active @endif">
-                <a href="#" data-toggle="modal" data-target="#pbLangModal">
+                <a href="javascript:void(0)" data-toggle="modal" data-target="#pbLangModal">
                 <span class="sub-item">Home Page Content</span>
                 </a>
               </li>

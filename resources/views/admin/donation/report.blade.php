@@ -15,13 +15,13 @@
         <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-        <a href="#">Donations & Causes</a>
+        <a href="javascript:void(0)">Donations & Causes</a>
       </li>
       <li class="separator">
         <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-        <a href="#">Report</a>
+        <a href="javascript:void(0)">Report</a>
       </li>
     </ul>
   </div>

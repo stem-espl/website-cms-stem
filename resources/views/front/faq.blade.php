@@ -49,7 +49,7 @@
 
                             @foreach ($qas as $qa)
                                 <div class="card mb-30">
-                                <a class="collapsed card-header" id="heading1" href="#" data-toggle="collapse" data-target="{{ '#collapse' . $qa->id }}" aria-expanded="{{ $loop->iteration == 1 ? 'true' : 'false' }}" aria-controls="{{ 'collapse' . $qa->id }}">
+                                <a class="collapsed card-header" id="heading1" href="javascript:void(0)" data-toggle="collapse" data-target="{{ '#collapse' . $qa->id }}" aria-expanded="{{ $loop->iteration == 1 ? 'true' : 'false' }}" aria-controls="{{ 'collapse' . $qa->id }}">
                                     {{ $qa->question }}<span class="toggle_btn"></span>
                                 </a>
                                 <div id="{{ 'collapse' . $qa->id }}" class="collapse {{ $loop->iteration == 1 ? 'show' : '' }}" aria-labelledby="heading1" data-parent="{{ '#accordion' . $category->id }}">

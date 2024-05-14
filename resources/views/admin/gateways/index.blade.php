@@ -13,7 +13,7 @@
         <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-        <a href="#">Payment Gateways</a>
+        <a href="javascript:void(0)">Payment Gateways</a>
       </li>
     </ul>
   </div>

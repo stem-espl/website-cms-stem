@@ -9,7 +9,7 @@
     <h4 class="page-title">Profile</h4>
     <ul class="breadcrumbs">
       <li class="nav-home">
-        <a href="#">
+        <a href="javascript:void(0)">
           <i class="flaticon-home"></i>
         </a>
       </li>
@@ -17,13 +17,13 @@
         <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-        <a href="#">Profile Settings</a>
+        <a href="javascript:void(0)">Profile Settings</a>
       </li>
       <li class="separator">
         <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-        <a href="#">Profile</a>
+        <a href="javascript:void(0)">Profile</a>
       </li>
     </ul>
   </div>

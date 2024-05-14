@@ -27,7 +27,7 @@
       <ul class="navbar-nav topbar-nav ml-md-auto align-items-center">
 
         <li class="nav-item dropdown hidden-caret">
-          <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false">
+          <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="javascript:void(0)" aria-expanded="false">
             <div class="avatar-sm">
               @if (!empty(Auth::guard('admin')->user()->image))
                 <img src="{{asset('assets/admin/img/propics/'.Auth::guard('admin')->user()->image)}}" alt="..." class="avatar-img rounded-circle">

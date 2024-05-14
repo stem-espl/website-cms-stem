@@ -17,14 +17,14 @@
             $phones = explode(',', $bex->contact_numbers);
             @endphp
             @foreach ($phones as $phone)
-            <div class="mrb-10"><a href="#" class="text-light-gray"><i class="fas fa-phone-alt mrr-10"></i>{{$phone}}</a></div>
+            <div class="mrb-10"><a href="javascript:void(0)" class="text-light-gray"><i class="fas fa-phone-alt mrr-10"></i>{{$phone}}</a></div>
             @endforeach
 
                 @php
                   $mails = explode(',', $bex->contact_mails);
                   @endphp
                   @foreach ($mails as $mail)
-                  <div class="mrb-10"><a href="#" class="text-light-gray"><i class="fas fa-envelope mrr-10"></i>{{$mail}}</a>
+                  <div class="mrb-10"><a href="javascript:void(0)" class="text-light-gray"><i class="fas fa-envelope mrr-10"></i>{{$mail}}</a>
                   @endforeach
                 </div>
 

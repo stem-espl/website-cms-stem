@@ -116,7 +116,7 @@
 
                      @if (!empty($currentLang) && count($langs) > 1)
                        <div class="language">
-                          <a class="language-btn" href="#"><i class="flaticon-worldwide"></i> {{convertUtf8($currentLang->name)}}</a>
+                          <a class="language-btn" href="javascript:void(0)"><i class="flaticon-worldwide"></i> {{convertUtf8($currentLang->name)}}</a>
                           <ul class="language-dropdown">
                             @foreach ($langs as $key => $lang)
                             <li><a href='{{ route('changeLanguage', $lang->code) }}'>{{convertUtf8($lang->name)}}</a></li>
@@ -134,7 +134,7 @@
                     @endguest
                      @auth
                      <div class="language dashboard">
-                         <a class="language-btn" href="#">
+                         <a class="language-btn" href="javascript:void(0)">
                              <i class="far fa-user"></i> {{Auth::user()->username}}
                          </a>
                          <ul class="language-dropdown">
@@ -257,7 +257,7 @@
                      <p class="footer-txt">
                         @if (strlen($bs->footer_text) > 194)
                            {{mb_substr($bs->footer_text, 0, 194, 'UTF-8')}}<span style="display: none;">{{mb_substr($bs->footer_text, 194, null, 'UTF-8')}}</span>
-                           <a href="#" class="see-more">{{__('see more')}}...</a>
+                           <a href="javascript:void(0)" class="see-more">{{__('see more')}}...</a>
                         @else
                            {{$bs->footer_text}}
                         @endif

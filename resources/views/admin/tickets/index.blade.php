@@ -27,13 +27,13 @@
          <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-         <a href="#">Tickets</a>
+         <a href="javascript:void(0)">Tickets</a>
       </li>
       <li class="separator">
          <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-         <a href="#">
+         <a href="javascript:void(0)">
           @if (request()->path()=='admin/all/tickets')
             All
           @elseif (request()->path()=='admin/pending/tickets')
