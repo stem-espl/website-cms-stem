@@ -69,7 +69,7 @@ else
                     <option value="{{$cat->id}}">{{$cat->name}}</option>
                     @endforeach 
                   </select>
-                  <p id="errtender_category" class="em text-danger mb-0"></p>
+                  <p id="errdocument_category" class="em text-danger mb-0"></p>
                 </div>
                 <div class="form-group">
                   <label for="">Name in English **</label>

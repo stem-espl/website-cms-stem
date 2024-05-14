@@ -2763,7 +2763,7 @@ select {
 /*========================================*/
 .page-title-section {
   background-color: #f8f8f8;
-  background-image: url(/assets/about.jpg);
+  background-image: url(../images/about.jpg);
   color: #fff;
   background-position: center;
   background-repeat: no-repeat;

@@ -55,6 +55,7 @@ class DocumentController extends Controller
   public function store(Request $request)
   {
   		$request->validate([
+            'document_category' => 'required',
             'title' => 'required|max:255',
             'title_mr' => 'required|max:255',
             'status' => 'required',
