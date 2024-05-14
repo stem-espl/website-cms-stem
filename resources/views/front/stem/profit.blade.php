@@ -21,7 +21,7 @@
 	</section>
 
 	<!-- Price Section Start -->
-	<section class="feature-section pdt-20 pdb-130 bg-silver-light bg-no-repeat" data-background="images/bg/abs-bg5.png">
+	<section class="feature-section pdt-20 pdb-130 bg-silver-light bg-no-repeat" data-background="{{asset('assets/stem/images/abs-bg5.png')}}">
 		<div class="container">
 			<div class="row">
 			<div class=" col-sm-12 col-lg-12 col-md-12 col-xl-12 text-center mt-5">

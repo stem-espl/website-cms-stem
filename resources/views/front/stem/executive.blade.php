@@ -20,7 +20,7 @@
   </div>
 </section>
 <!-- Team Section Start -->
-<section class="pdt-10 pdb-80 position-relative z-index-2" data-background="images/bg/abs-bg1.png">
+<section class="pdt-10 pdb-80 position-relative z-index-2" data-background="{{asset('assets/stem/images/abs-bg1.png')}}">
       <div class="section-content">
         <div class="container">
           <div class="row">
