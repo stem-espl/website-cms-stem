@@ -18,7 +18,7 @@ class DocumentController extends Controller
 {
   public function index(Request $request)
   {
-  	if(!empty($request->language))
+  	if(!empty($request->language))  
     	$lang = Language::where('code', $request->language)->first();
     else
     	$lang = Language::where('is_default', 1)->first();

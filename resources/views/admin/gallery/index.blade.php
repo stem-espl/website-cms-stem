@@ -34,7 +34,7 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
       <i class="flaticon-right-arrow"></i>
     </li>
     <li class="nav-item">
-      <a href="#">Gallery Image</a>
+      <a href="#">Gallery Images</a>
     </li>
   </ul>
 </div>
@@ -62,7 +62,7 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
             <a href="#" class="btn btn-primary float-right btn-sm" data-toggle="modal" data-target="#createModal"><i
                 class="fas fa-plus"></i> Add Image</a>
             <button class="btn btn-danger float-right btn-sm mr-2 d-none bulk-delete"
-              data-href="{{route('admin.gallery.bulk.delete')}}"><i class="flaticon-interface-5"></i> Delete</button>
+              data-href="{{route('admin.leadership.bulk_delete')}}"><i class="flaticon-interface-5"></i> Delete</button>
           </div>
         </div>
       </div>
@@ -80,28 +80,24 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
                       <input type="checkbox" class="bulk-check" data-val="all">
                     </th>
                     <th scope="col">Image</th>
-                    <th scope="col" class="d-none">Title</th>
-                    <th scope="col" class="">Category Name</th>
+                    <th scope="col">Category Name</th>
                     <th scope="col">Actions</th>
                   </tr>
                 </thead>
                 <tbody>
                   @foreach ($galleries as $key => $gallery)
+
                   <tr>
                     <td>
                       <input type="checkbox" class="bulk-check" data-val="{{$gallery->id}}">
                     </td>
                     <td><img src="{{asset('assets/stem/gallery/'.$gallery->image)}}" alt="" width="80"></td>
-                    <td class="d-none">
-                      {{strlen($gallery->title) > 70 ? mb_substr($gallery->title, 0, 70, 'UTF-8') . '...' : $gallery->title}}
-                    </td>
-                    <td class="d-none">{{$gallery->serial_number}}</td>
-                 
-                      <td>{{$gallery->cat_name}}</td>
-      
+                    <td>{{$gallery->cat_name}}</td>
+
+                    
                     <td>
                       <a class="btn btn-secondary btn-sm"
-                        href="{{route('admin.gallery.edit', $gallery->id) . '?language=' . request()->input('language')}}">
+                      href="{{route('admin.gallery.edit', $gallery->id) . '?language=' . request()->input('language')}}">
                         <span class="btn-label">
                           <i class="fas fa-edit"></i>
                         </span>
@@ -110,6 +106,7 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
                       <form class="deleteform d-inline-block" action="{{route('admin.gallery.delete')}}" method="post">
                         @csrf
                         <input type="hidden" name="gallery_id" value="{{$gallery->id}}">
+
                         <button type="submit" class="btn btn-danger btn-sm deletebtn">
                           <span class="btn-label">
                             <i class="fas fa-trash"></i>
@@ -144,13 +141,13 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
         </button>
       </div>
       <div class="modal-body">
-        <form id="ajaxForm" class="modal-form" action="{{route('admin.gallery.store')}}" method="post">
+        <form id="ajaxForm" class="modal-form" action="{{route('admin.gallery.store')}}" method="POST" enctype="multipart/form-data">
           @csrf
 
           <div class="form-group">
             <label for="">Image ** </label>
             <input class="form-control" type="file" id="file" name="file">
-            <p id="errfile" class="mb-0 text-danger em"></p>
+            <p id="errcategory_id" class="mb-0 text-danger em"></p>
           </div>
 
           <div class="form-group">
@@ -168,7 +165,7 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
             <select name="category_id" id="gallery_category_id" class="form-control" disabled>
               <option selected disabled>Select a category</option>
             </select>
-            <p id="errgallery_category_id" class="mb-0 text-danger em"></p>
+            <p id="errcategory_id" class="mb-0 text-danger em"></p>
           </div>
           <div class="form-group d-none" >
             <label for="">Title **</label>
@@ -185,6 +182,7 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
           </div>
 
        </form>
+
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -194,6 +192,19 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
   </div>
 </div>
 
+<!-- Image LFM Modal -->
+<div class="modal fade lfm-modal" id="lfmModal1" tabindex="-1" role="dialog" aria-labelledby="lfmModalTitle"
+  aria-hidden="true">
+  <i class="fas fa-times-circle"></i>
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-body p-0">
+        <iframe src="{{url('laravel-filemanager')}}?serial=1"
+          style="width: 100%; height: 500px; overflow: hidden; border: none;"></iframe>
+      </div>
+    </div>
+  </div>
+</div>
 @endsection
 
 @section('scripts')
@@ -259,3 +270,5 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
   });
 </script>
 @endsection
+
+

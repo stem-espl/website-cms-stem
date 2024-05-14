@@ -631,7 +631,7 @@ use app\Http\Controllers\Front\StemController;
 			Route::get('/gallerys', 'Admin\GalleryCategoryController@getdata')->name('admin.gallerys')->middleware('can:galleries'); 
 			Route::get("/gallery", "Admin\GalleryController@index")->name( "admin.gallery.index" )->middleware('can:galleries'); 
 			Route::get( "/gallery/{langId}/get_categories", "Admin\GalleryController@getCategories" )->middleware('can:galleries'); 
-			Route::post( "/gallery/store", "Admin\GalleryController@store" )->name("admin.gallery.store")->middleware('can:galleries'); 
+			Route::post( "/gallery/store", "Admin\GalleryController@store" )->name("admin.gallery.store"); 
 			Route::get( "/gallery/{id}/edit", "Admin\GalleryController@edit" )->name("admin.gallery.edit")->middleware('can:galleries'); 
 			Route::post( "/gallery/update", "Admin\GalleryController@update" )->name("admin.gallery.update")->middleware('can:galleries'); 
 			Route::post( "/gallery/delete", "Admin\GalleryController@delete" )->name("admin.gallery.delete")->middleware('can:galleries'); 
