@@ -43,13 +43,14 @@
 <div class="row">
     <div class="col-md-12">
     
+
         <div class="card">
             <div class="card-header">
-                <div class="row">
-                  <div class="col-lg-4">
-                        <div class="card-title d-inline-block">Team Section</div>
-                    </div>
-                    <div class="col-lg-3">
+            <div class="row">
+            <div class="col-lg-4">
+                <div class="card-title d-inline-block">Members</div>
+                </div>
+                <div class="col-lg-3">
                         @if (!empty($langs))
                         <select name="language" class="form-control" onchange="window.location='{{url()->current() . '?language='}}'+this.value">
                             <option value="" selected disabled>Select a Language</option>
@@ -59,76 +60,10 @@
                         </select>
                         @endif
                     </div>
-                </div>
-            </div>
-
-            <form class="d-none" action="{{route('admin.teamtext.update', $lang_id)}}" method="post">
-                @csrf
-                <div class="card-body">
-                    <div class="row">
-                        @if ($be->theme_version == 'default' || $be->theme_version == 'dark')
-
-                        <div class="col-lg-6 offset-lg-3">
-                            {{-- Background Part --}}
-                            <div class="form-group">
-                                <label for="">Background ** </label>
-                                <br>
-                                <div class="thumb-preview" id="thumbPreview1">
-                                    <img src="{{asset('assets/stem/members/'.$abs->team_bg)}}" alt="Background">
-                                </div>
-                                <br>
-                                <br>
-
-
-                                <input id="fileInput1" type="file" name="image" accept="image/*" hidden>
-                                <label for="fileInput1" class="choose-image btn btn-primary">Choose Image</label>
-
-
-                                <p class="text-warning mb-0">JPG, PNG, JPEG, SVG images are allowed</p>
-                                @if ($errors->has('background'))
-                                <p class="text-danger mb-0">{{$errors->first('background')}}</p>
-                                @endif
-                            </div>
-                        </div>
-                        @endif
-
-                        <div class="col-lg-6 offset-lg-3">
-                            <div class="form-group">
-                                <label>Title **</label>
-                                <input class="form-control" name="team_section_title" value="{{$abs->team_section_title}}" placeholder="Enter Title">
-                                @if ($errors->has('team_section_title'))
-                                <p class="mb-0 text-danger">{{$errors->first('team_section_title')}}</p>
-                                @endif
-                            </div>
-                        </div>
-                        <div class="col-lg-6 offset-lg-3">
-                            <div class="form-group">
-                                <label>Subtitle **</label>
-                                <input class="form-control" name="team_section_subtitle" value="{{$abs->team_section_subtitle}}" placeholder="Enter Subtitle">
-                                @if ($errors->has('team_section_subtitle'))
-                                <p class="mb-0 text-danger">{{$errors->first('team_section_subtitle')}}</p>
-                                @endif
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-footer">
-                    <div class="form">
-                        <div class="form-group from-show-notify row">
-                            <div class="col-12 text-center">
-                                <button type="submit" id="displayNotif" class="btn btn-success">Update</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </form>
-        </div>
- 
-
-        <div class="card">
-            <div class="card-header">
-                <div class="card-title d-inline-block">Members</div>
+                    <div class="col-lg-4 offset-lg-1 mt-2 mt-lg-0">
                 <a href="{{route('admin.member.create') . '?language=' . request()->input('language')}}" class="btn btn-primary float-right"><i class="fas fa-plus"></i> Add Member</a>
+</div>
+</div>
             </div>
             <div class="card-body">
                 <div class="row">
