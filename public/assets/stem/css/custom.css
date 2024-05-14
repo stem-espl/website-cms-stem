@@ -108,11 +108,11 @@
 }
 
 .bg-light-gradient-color-with-img {
-  background: url(../images/bg/abs-bg3.png), linear-gradient(200deg, #fffdfd, rgba(168, 122, 33, 0.15)) !important;
+  background: url(../images/abs-bg3.png), linear-gradient(200deg, #fffdfd, rgba(168, 122, 33, 0.15)) !important;
 }
 
 .bg-light-gradient-color-with-img2 {
-  background: url(../images/bg/abs-bg4.png), linear-gradient(45deg, #0E90D5, #3032A2) !important;
+  background: url(../images/abs-bg4.png), linear-gradient(45deg, #0E90D5, #3032A2) !important;
 }
 
 /*========================================*/
@@ -556,15 +556,15 @@ section.anim-object {
 }
 
 .slide-bg-1 {
-  background-image: url(../images/bg/bg1.html);
+  background-image: url(../images/bg1.html);
 }
 
 .slide-bg-2 {
-  background-image: url(../images/bg/bg2.html);
+  background-image: url(../images/bg2.html);
 }
 
 .slide-bg-3 {
-  background-image: url(../images/bg/bg3.html);
+  background-image: url(../images/bg3.html);
 }
 
 .homepage-slides .owl-nav button.owl-prev,
@@ -1240,7 +1240,7 @@ section.anim-object {
 .anim-object:before {
   position: absolute;
   content: "";
-  background-image: url(../images/objects/1.png);
+  background-image: url(../images/1_object.png);
   height: 260px;
   width: 260px;
   top: 10%;
@@ -1263,7 +1263,7 @@ section.anim-object {
 .anim-object2:before {
   position: absolute;
   content: "";
-  background-image: url(../images/objects/3.png);
+  background-image: url(../images/3_object.png);
   height: 325px;
   width: 325px;
   top: 35%;
@@ -2715,7 +2715,7 @@ select {
 /*========================================*/
 .page-title-section {
   background-color: #f8f8f8;
-  background-image: url(/images/webimages/1.jpg);
+  background-image: url(/images/1_1.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   opacity: 0.5;
@@ -4063,7 +4063,7 @@ select {
 
 .service-box:after {
   position: absolute;
-  background: url(/images/bg/pumpstation.jpg);
+  background: url(/images/pumpstation.jpg);
   height: 100%;
   width: 100%;
   left: 0;
@@ -5422,35 +5422,35 @@ select {
 }
 
 .section-bg1 {
-  background: url(../images/bg/1.jpg);
+  background: url(../images/1.jpg);
 }
 
 .section-bg2 {
-  background: url(../images/bg/2.jpg);
+  background: url(../images/2.jpg);
 }
 
 .section-bg3 {
-  background: url(../images/bg/3.jpg);
+  background: url(../images/3.jpg);
 }
 
 .section-bg4 {
-  background: url(../images/bg/4.jpg);
+  background: url(../images/4.jpg);
 }
 
 .section-bg5 {
-  background: url(../images/bg/5.jpg);
+  background: url(../images/5.jpg);
 }
 
 .abs-bg1 {
-  background: url(../images/bg/abs-bg1.png);
+  background: url(../images/abs-bg1.png);
 }
 
 .abs-bg2 {
-  background: url(../images/bg/abs-bg2.png);
+  background: url(../images/abs-bg2.png);
 }
 
 .contact-from-bg {
-  background: url(../images/bg/contact-form-bg.png);
+  background: url(../images/contact-form-bg.png);
 }
 
 [class*=section-bg] {
