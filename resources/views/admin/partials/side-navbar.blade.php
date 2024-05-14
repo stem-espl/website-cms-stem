@@ -284,7 +284,7 @@ $data = \App\Models\BasicExtra::first();
         {{-- history --}}
         <li class="nav-item">
           <a href="{{route('admin.index')}}">
-            <i class="la flaticon-paint-palette"></i>
+            <i class="fas fa-book-open"></i>
             <p>History</p>
           </a>
         </li>
@@ -294,8 +294,19 @@ $data = \App\Models\BasicExtra::first();
         {{-- e-governance --}}
         <li class="nav-item">
           <a href="{{route('admin.egovernance.index')}}">
-            <i class="la flaticon-paint-palette"></i>
+            <i class="la flaticon-web-1"></i>
             <p>E-Governance</p>
+          </a>
+        </li>
+        @endcan
+
+
+        @can('profit-budget-chart')
+        {{-- profit-budget-chart --}}
+        <li class="nav-item">
+          <a href="{{route('admin.profit.index')}}">
+            <i class="la flaticon-graph"></i>
+            <p>Profit Budget</p>
           </a>
         </li>
         @endcan

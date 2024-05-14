@@ -519,6 +519,8 @@ use app\Http\Controllers\Front\StemController;
 			Route::get("/alink/{id}/edit", "Admin\AlinkController@edit")->name( "admin.alink.edit" )->middleware('can:about-us-links'); 
 			Route::post("/alink/update", "Admin\AlinkController@update")->name( "admin.alink.update" )->middleware('can:about-us-links'); 
 			Route::post("/alink/delete", "Admin\AlinkController@delete")->name( "admin.alink.delete" )->middleware('can:about-us-links'); 
+
+			
 			// Admin dlink Routes 
 			Route::get("/dlinks", "Admin\DlinkController@index")->name( "admin.dlink.index" )->middleware('can:department-links'); 
 			Route::get("/dlink/create", "Admin\DlinkController@create")->name( "admin.dlink.create" )->middleware('can:department-links'); 
@@ -1055,7 +1057,14 @@ use app\Http\Controllers\Front\StemController;
 			Route::post("/e-governance/store", "Admin\EGovernanceController@store")->name("admin.egovernance.store")->middleware('can:e-governance');
 			Route::get("/e-governance/{id}/edit", "Admin\EGovernanceController@edit")->name("admin.egovernance.edit")->middleware('can:e-governance'); 
 			Route::post("/egovernance/update", "Admin\EGovernanceController@update")->name("admin.egovernance.update" )->middleware('can:e-governance'); 
-			Route::post("/egovernance/delete", "Admin\EGovernanceController@delete")->name( "admin.egovernance.delete" )->middleware('can:e-governance'); 
+			Route::post("/egovernance/delete", "Admin\EGovernanceController@delete")->name( "admin.egovernance.delete" )->middleware('can:e-governance');
+
+			// Admin profit Routes 
+			Route::get("/profit", "Admin\ProfitController@index")->name( "admin.profit.index" )->middleware('can:profit-budget-chart'); 
+			Route::post("/profit/store", "Admin\ProfitController@store")->name("admin.profit.store")->middleware('can:profit-budget-chart');
+			Route::get("/profit/{id}/edit", "Admin\ProfitController@edit")->name("admin.profit.edit")->middleware('can:profit-budget-chart'); 
+			Route::post("/profit/update", "Admin\ProfitController@update")->name("admin.profit.update" )->middleware('can:profit-budget-chart'); 
+			Route::post("/profit/delete", "Admin\ProfitController@delete")->name( "admin.profit.delete" )->middleware('can:profit-budget-chart'); 
 
 			// Admin View Client Feedbacks Routes 
 			Route::get( "/feedbacks", "Admin\FeedbackController@feedbacks" )->name("admin.client_feedbacks")->middleware('can:client-feedback'); 

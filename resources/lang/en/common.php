@@ -52,6 +52,7 @@ return [
     'Messages' =>'Messages',
     'Submit Now' =>'Submit Now',
     'Download' =>'Download',
+    'Profit in Last Years' =>'Profit in Last Years',
     'Sr No' =>'Sr No',
     
 ];

@@ -51,5 +51,6 @@ return [
     'Messages' =>'संदेश',
     'Submit Now' =>'आता सबमिट करा',
     'Download' =>'डाउनलोड करा',
+    'Profit in Last Years' =>'गेल्या वर्षांत नफा',
     'Sr No' =>'अनु. क्र',
 ];

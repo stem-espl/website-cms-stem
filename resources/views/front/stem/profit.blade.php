@@ -10,7 +10,7 @@
 						<h3 class="title bud-title">{{__('common.Budget Reports')}}</h3>
 						<nav aria-label="breadcrumb">
 							<ol class="breadcrumb">
-								<li class="breadcrumb-item"><a href="stem.html">{{__('common.Home')}}</a></li>
+								<li class="breadcrumb-item"><a href="/">{{__('common.Home')}}</a></li>
 								<li class="breadcrumb-item active" aria-current="page">{{__('common.Budget Reports')}}</li>
 							</ol>
 						</nav>
@@ -25,7 +25,7 @@
 		<div class="container">
 			<div class="row">
 			<div class=" col-sm-12 col-lg-12 col-md-12 col-xl-12 text-center mt-5">
-				<h3>Profit in Last 6 Years (In Crores)</h3>
+				<h3>{{__('common.Profit in Last Years')}} (In Crores)</h3>
 			</div>
 			<div class="col-md-12 col-xl-12">
 				<div class="container">
@@ -43,23 +43,21 @@ src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
 </script>
 
 <script type="text/javascript">
- 
+ 	var label_name = '{!! (json_encode($label)); !!}';
+  var amt = '{!! json_encode($amt, JSON_NUMERIC_CHECK); !!}';
+
+  label_name = JSON.parse(label_name);
+  amt = JSON.parse(amt);
+
 	var barChartData = {
-  labels: [
-  "2018-19",
-  "2019-20",
-  "2020-21",
-  "2021-22",
-  "2022-23",
-  "2023-24 Expected",
-  ],
+		labels: label_name,
   datasets: [
     {
       label: "Profit",
       backgroundColor: "#42955f",
       borderColor: "lightgreen",
       borderWidth: 1,
-      data: [23.3,32.22,45.95,54.02,43.78,13.61]
+      data: amt
     },
   ]
 };
