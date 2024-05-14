@@ -1,7 +1,10 @@
 @extends('admin.layout')
 
 @php
-$selLang = \App\Models\Language::where('code', request()->input('language'))->first();
+if(!empty(request()->input('language')))
+  $selLang = \App\Models\Language::where('code', request()->input('language'))->first();
+else
+  $selLang = \App\Models\Language::where('is_default', 1)->first();
 @endphp
 @if(!empty($selLang) && $selLang->rtl == 1)
 @section('styles')
@@ -47,16 +50,14 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
             <div class="card-title d-inline-block">History</div>
           </div>
           <div class="col-lg-3">
-            @if (!empty($langs))
-            <select name="language" class="form-control"
-              onchange="window.location='{{url()->current() . '?language='}}'+this.value">
-              <option value="" selected disabled>Select a Language</option>
-              @foreach ($langs as $lang)
-              <option value="{{$lang->code}}" {{$lang->code == request()->input('language') ? 'selected' : ''}}>
-                {{$lang->name}}</option>
-              @endforeach
-            </select>
-            @endif
+          @if (!empty($langs))
+                        <select name="language" class="form-control" onchange="window.location='{{url()->current() . '?language='}}'+this.value">
+                            <option value="" selected disabled>Select a Language</option>
+                            @foreach ($langs as $lang)
+                                <option value="{{$lang->code}}" {{$lang->code == $selLang->code ? 'selected' : ''}}>{{$lang->name}}</option>
+                            @endforeach
+                        </select>
+                    @endif
           </div>
           <div class="col-lg-4 offset-lg-1 mt-2 mt-lg-0">
             <a href="javascript:void(0)" class="btn btn-primary float-right btn-sm" data-toggle="modal" data-target="#createModal"><i

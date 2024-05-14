@@ -13,7 +13,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Session;
-
 use Image;
 
 
@@ -26,14 +25,12 @@ class HistoryController extends Controller
      */
     public function index(Request $request)
     {
-
-        $lang = Language::where('code', $request->language)->first();
         $lang_code = isset($request->language) ?  $request->language : 'en';
         $lang = Language::where('code', $lang_code)->first();
         $lang_id = $lang->id;
-
-         $data['history'] = History::where('language_id', $lang_id)->orderBy('id', 'DESC')->get();
-        // $data['event_categories'] = EventCategory::where('lang_id', $lang_id)->where('status', '1')->get();
+        $data['lang_id'] = $lang_id;
+        $data['abx'] = $lang->basic_extra;
+        $data['history'] = History::where('language_id', $lang_id)->orderBy('id', 'DESC')->get();
         return view('admin.history.index',$data);
     }  
 
