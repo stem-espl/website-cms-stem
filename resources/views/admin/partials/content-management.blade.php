@@ -334,7 +334,7 @@
               @elseif(request()->is('admin/partner/*/edit')) active
               @endif">
               <a href="{{route('admin.partner.index') . '?language=' . $default->code}}">
-              <span class="sub-item">Partners</span>
+              <span class="sub-item">Shareholding</span>
               </a>
             </li>
             @endcan

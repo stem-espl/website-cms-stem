@@ -22,7 +22,7 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
 
 @section('content')
 <div class="page-header">
-    <h4 class="page-title">Partners</h4>
+    <h4 class="page-title">Shareholding</h4>
     <ul class="breadcrumbs">
         <li class="nav-home">
             <a href="{{route('admin.dashboard')}}">
@@ -39,7 +39,7 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
             <i class="flaticon-right-arrow"></i>
         </li>
         <li class="nav-item">
-            <a href="javascript:void(0)">Partners</a>
+            <a href="javascript:void(0)">Shareholding</a>
         </li>
     </ul>
 </div>
@@ -50,7 +50,7 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
             <div class="card-header">
                 <div class="row">
                     <div class="col-lg-4">
-                        <div class="card-title d-inline-block">Partners</div>
+                        <div class="card-title d-inline-block">Shareholding</div>
                     </div>
                     <div class="col-lg-3">
                         @if (!empty($langs))
