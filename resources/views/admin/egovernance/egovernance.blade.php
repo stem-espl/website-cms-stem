@@ -97,7 +97,11 @@ else
                     <td>
                       {{strlen($egovernanc->title) > 70 ? mb_substr($egovernanc->title, 0, 70, 'UTF-8') . '...' : $egovernanc->title}}
                     </td>
-                    <td>{{$egovernanc->url}}</td>
+                      @if(!empty($egovernanc->url))
+                          <td>{{$egovernanc->url}}</td>
+                      @else
+                          <td>NA</td>
+                      @endif
                     <td>
                       @if ($egovernanc->status == 1)
                       <h2 class="d-inline-block"><span class="badge badge-success">Active</span></h2>

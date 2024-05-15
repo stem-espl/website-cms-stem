@@ -20,7 +20,7 @@
 
 @section('content')
   <div class="page-header">
-    <h4 class="page-title">Edit Partner</h4>
+    <h4 class="page-title">Edit Shareholding</h4>
     <ul class="breadcrumbs">
       <li class="nav-home">
         <a href="{{route('admin.dashboard')}}">
@@ -37,7 +37,7 @@
         <i class="flaticon-right-arrow"></i>
       </li>
       <li class="nav-item">
-        <a href="javascript:void(0)">Edit Partner</a>
+        <a href="javascript:void(0)">Edit Shareholding</a>
       </li>
     </ul>
   </div>
@@ -45,7 +45,7 @@
     <div class="col-md-12">
       <div class="card">
         <div class="card-header">
-          <div class="card-title d-inline-block">Edit Partner</div>
+          <div class="card-title d-inline-block">Edit Shareholding</div>
           <a class="btn btn-info btn-sm float-right d-inline-block" href="{{route('admin.partner.index') . '?language=' . request()->input('language')}}">
             <span class="btn-label">
               <i class="fas fa-backward" style="font-size: 12px;"></i>

@@ -171,7 +171,7 @@ class FrontendController extends Controller
                 $data['event'] = News::where('language_id', $lang_id)->take(3)->get();
                 $data['partners'] = Partner::where('language_id', $lang_id)->orderBy('serial_number', 'ASC')->get();
                 $data['features'] = Feature::where('language_id', $lang_id)->orderBy('serial_number', 'ASC')->get();
-                $data['members'] = Member::where('language_id', $lang_id)->orderBy('id', 'ASC')->get();
+                $data['members'] = Member::where('language_id', $lang_id)->orderBy('id', 'ASC')->take(3)->get();
                 // dd($data['members']);
                 return view('front.stem.index', $data);
             } else {

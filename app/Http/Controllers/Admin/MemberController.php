@@ -54,6 +54,7 @@ class MemberController extends Controller
             'name' => 'required|max:50',
             'rank' => 'required|max:50',
             'url' => 'nullable',
+            'serial_number' => 'required',
             // 'facebook' => 'nullable|max:50',
             // 'twitter' => 'nullable|max:50',
             // 'linkedin' => 'nullable|max:50',
@@ -76,13 +77,14 @@ class MemberController extends Controller
         }
 
         $member = new Member;
-        $count = member::where('language_id',$request->language_id)->get()->count();
-        if($count < 3) {
+        $count = Member::where('language_id',$request->language_id)->get()->count();
+     
             $member->language_id = $request->language_id;
             $member->image = $request->member_image;
             $member->name = $request->name;
             $member->rank = $request->rank;
             $member->url = $request->url;
+            $member->serial_number = $request->serial_number;
             // $member->facebook = $request->facebook;
             // $member->twitter = $request->twitter;
             // $member->linkedin = $request->linkedin;
@@ -113,12 +115,7 @@ class MemberController extends Controller
             }
 
             $member->save();
-        }
-        else
-        {
-            Session::flash('error', 'You cant Add more than Three Records!');
-            return "success";
-        }
+       
         Session::flash('success', 'Member added successfully!');
         return "success";
     }
@@ -133,6 +130,7 @@ class MemberController extends Controller
             'name' => 'required|max:50',
             'rank' => 'required|max:50',
             'url' => 'nullable',
+            // 'serial_number' => 'serial_number',
             // 'facebook' => 'nullable|max:50',
             // 'twitter' => 'nullable|max:50',
             // 'linkedin' => 'nullable|max:50',
@@ -159,6 +157,7 @@ class MemberController extends Controller
         $member->name = $request->name;
         $member->rank = $request->rank;
         $member->url = $request->url;
+        $member->serial_number = $request->serial_number;
         // $member->facebook = $request->facebook;
         // $member->twitter = $request->twitter;
         // $member->linkedin = $request->linkedin;
