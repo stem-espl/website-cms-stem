@@ -81,6 +81,7 @@
                           <th scope="col">Image</th>
                           <th scope="col">Title</th>
                           <th scope="col">Date</th>
+                          <th scope="col">Description</th>
                           <th scope="col">News By</th>
                           <th scope="col">Actions</th>
                         </tr>
@@ -100,7 +101,9 @@
                               @endphp
                               {{$start}}
                             </td>
-
+                                 <td>
+                               {{$event->description}}
+                                  </td>
                             <td>
                         {{$usename}}
                             </td>
@@ -180,6 +183,23 @@
                 <input type="date" name="datetimes" class="form-control ltr" placeholder="Enter News Date" autocomplete="off"/>
                 <p id="errdatetimes" class="mb-0 text-danger em"></p>
               </div>
+
+            <div class="form-group">
+              <label for="">Description **</label>
+              <textarea
+              class="form-control summernote"
+              name="description" id="description"
+              rows="8"
+              cols="80"
+              placeholder="Enter description"
+              ></textarea>
+              <p
+              id="errcontent"
+              class="mb-0 text-danger em"
+              ></p>
+          </div>
+
+            
             </form>
           </div>
           <div class="modal-footer">
@@ -237,65 +257,6 @@
   @section('scripts')
   <script type="text/javascript" src="{{asset('assets/admin/js/plugin/daterangepicker/moment.min.js')}}"></script>
   <script type="text/javascript" src="{{asset('assets/admin/js/plugin/daterangepicker/daterangepicker.js')}}"></script>
-
-  <!-- <script type="text/javascript">
-      $(function() {
-
-        $('input[name="datetimes"]').daterangepicker({
-            autoUpdateInput: false,
-            timePicker: true,
-            locale: {
-                cancelLabel: 'Clear'
-            }
-        });
-
-        $('input[name="datetimes"]').on('apply.daterangepicker', function(ev, picker) {
-            $(this).val(picker.startDate.format('MM/DD/YYYY hh:mm A') + ' - ' + picker.endDate.format('MM/DD/YYYY hh:mm A'));
-            $("#start_date").val(picker.startDate.format('MM/DD/YYYY hh:mm A'));
-            $("#end_date").val(picker.endDate.format('MM/DD/YYYY hh:mm A'));
-        });
-
-        $('input[name="datetimes"]').on('cancel.daterangepicker', function(ev, picker) {
-            $(this).val('');
-            $("#start_date").val('');
-            $("#end_date").val('');
-        });
-
-      });
-
-  </script>
-
-  <script>
-    $(document).ready(function() {
-      $(".editbtn").on('click', function() {
-        let startDate = $(this).data('start_date');
-        let endDate = $(this).data('end_date');
-
-        $('input[name="edatetimes"]').daterangepicker({
-          timePicker: true,
-          startDate: startDate,
-          endDate: endDate,
-          locale: {
-            format: 'MM/DD/YYYY hh:mm A'
-          }
-        });
-
-        $('input[name="edatetimes"]').on('apply.daterangepicker', function(ev, picker) {
-            $(this).val(picker.startDate.format('MM/DD/YYYY hh:mm A') + ' - ' + picker.endDate.format('MM/DD/YYYY hh:mm A'));
-            $("#instart_date").val(picker.startDate.format('MM/DD/YYYY hh:mm A'));
-            $("#inend_date").val(picker.endDate.format('MM/DD/YYYY hh:mm A'));
-        });
-
-        $('input[name="edatetimes"]').on('cancel.daterangepicker', function(ev, picker) {
-            $(this).val('');
-            $("#instart_date").val('');
-            $("#inend_date").val('');
-        });
-
-      });
-    });
-  </script>
-  -->
 
   <script>
       $(document).ready(function() {

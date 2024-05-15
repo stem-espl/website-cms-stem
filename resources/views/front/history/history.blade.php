@@ -5,11 +5,11 @@
         <div class="row">
             <div class="col-xl-12 text-center">
                 <div class="page-title-content">
-                    <h3 class="title text-white history-title">Water Delivered, Hassle-Free</h3>
+                    <h3 class="title text-white history-title">{{__('common.Water Delivered, Hassle-Free')}}</h3>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="stem.html">Home</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Water Delivered, Hassle-Free</li>
+                            <li class="breadcrumb-item"><a href="stem.html">{{__('common.Home')}}</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">{{__('common.Water Delivered, Hassle-Free')}}</li>
                         </ol>
                     </nav>
                 </div>
@@ -21,7 +21,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 pdt-40 pdb-40 text-center">
-                <h1>Water Delivered, Hassle-Free</h1>
+                <h1>{{__('common.Water Delivered, Hassle-Free')}}</h1>
             </div>
             @foreach($historyData as $history)
             <div class="col-md-6 col-xl-4">
