@@ -11,7 +11,7 @@
 						<h3 class="title text-white">{{__('common.Contact Us')}}</h3>
 						<nav aria-label="breadcrumb">
 							<ol class="breadcrumb">
-								<li class="breadcrumb-item"><a href="index.html">{{__('common.Home')}}</a></li>
+								<li class="breadcrumb-item"><a href="/">{{__('common.Home')}}</a></li>
 								<li class="breadcrumb-item active" aria-current="page">{{__('common.Contact Us')}}</li>
 							</ol>
 						</nav>

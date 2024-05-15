@@ -87,7 +87,7 @@ class RoleController extends Controller
           return redirect()->route('admin.role.index');
         }
         $data['role'] = Role::find($id);
-        $data['permissionByGroupNames'] = Permission::select('group_name');
+        $data['permissionByGroupNames'] = Permission::select('group_name')->where('status','1');
         if(auth()->guard('admin')->user()->role_id != 1)
         {
           $data['permissionByGroupNames'] = $data['permissionByGroupNames']->where('basic','0');

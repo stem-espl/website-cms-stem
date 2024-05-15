@@ -31,6 +31,10 @@ class StemController extends Controller
           
           $lang_code = isset($currentLang->code) ? $currentLang->code : 'en';
 
+          $date = date('Y-m-d');
+
+          Tender::whereDate('deadline','<',$date)->where('status','1')->update(['status' => '0']);
+
           if($lang_code == 'mr')
           {
             $data['tenders'] = Tender::select('tenders.title_mr as title','tenders.description_mr as description','tenders.files','tenders.id','tenders.tender_link','tender_category.name_mr as name');
@@ -40,7 +44,7 @@ class StemController extends Controller
 
           $data['tenders'] = $data['tenders']->leftJoin('tender_category','tenders.tender_category','=','tender_category.id')
                                             ->where('tenders.status','1')
-                                            ->where('tender_category.status','1')
+                                            // ->where('tender_category.status','1')
                                             ->whereNull('tender_category.deleted_at')
                                             ->orderBy('tenders.id','DESC')
                                             ->paginate(10);
@@ -60,11 +64,6 @@ class StemController extends Controller
          
          return view('front.stem.news',compact('data'));
       }
-
-      // public function aboutus()
-      // {
-      //    return view('front.stem.about');
-      // }
 
       public function profitReport()
       {

@@ -4,7 +4,7 @@
     @if (count($sliders) > 0)
     <section class="banner-section">
       <div class="home-carousel owl-theme owl-carousel carousel-slide">
-        @foreach ($sliders as $key => $slider)
+        @foreach ($sliders as $key1 => $slider)
         <div class="slide-item">
           <div class="image-layer" data-background="{{asset('assets/stem/sliders/'.$slider->image)}}"></div>
           <div class="auto-container">
@@ -99,11 +99,19 @@
       <div class="section-content">
         <div class="container">
           <div class="row">
-            @foreach ($scategory as $key => $service)
+            @foreach ($scategory as $key2 => $service)
             <div class="col-md-6 col-xl-3">
               <div class="service-box">
                 <div class="service-icon">
+                  @if($key2 == 1)
+                  <span class="webexflaticon flaticon-meeting"></span>
+                  @elseif($key2 == 2)
+                  <span class="webexflaticon flaticon-growth"></span>
+                  @elseif($key2 == 3)
+                  <span class="webexflaticon flaticon-benchmark"></span>
+                  @else
                   <span class="webexflaticon flaticon-plan"></span>
+                  @endif
                 </div>
                 <div class="service-content">
                   <div class="title">
@@ -150,7 +158,7 @@
       <div class="section-content">
         <div class="container">
           <div class="row">
-              @foreach ($members as $key => $member)                
+              @foreach ($members as $key3 => $member)                
                 <div class="col-md-6 col-lg-6 col-xl-3 mx-5 left_margin">
                   <div class="team-block mrb-30 margin-rigt">
                     <div class="team-upper-part img_sizeset">
@@ -158,7 +166,7 @@
                     
                     </div>
                     <div class="team-bottom-part">
-                      <h4 class="team-title mrb-5 name"><a href="page-single-team.html">{{$member->name}}</a></h4>
+                      <h4 class="team-title mrb-5 name"><a href="{{$member->url}}">{{$member->name}}</a></h4>
                       <h6 class="designation">{{$member->rank}}</h6>
                     </div>
                   </div>
@@ -195,7 +203,7 @@
       <div class="section-content">
         <div class="container">
           <div class="row">
-            @foreach($partners as $key => $partner)
+            @foreach($partners as $key4 => $partner)
             <div class="col-md-6 col-lg-6 col-xl-3">
               <div class="mrb-30">
                 <div class="team-upper-part">
