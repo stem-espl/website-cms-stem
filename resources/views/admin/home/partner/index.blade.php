@@ -63,7 +63,7 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
                         @endif
                     </div>
                     <div class="col-lg-4 offset-lg-1 mt-2 mt-lg-0">
-                        <a href="javascript:void(0)" class="btn btn-primary float-lg-right float-left" data-toggle="modal" data-target="#createModal"><i class="fas fa-plus"></i> Add Partner</a>
+                        <a href="javascript:void(0)" class="btn btn-primary float-lg-right float-left" data-toggle="modal" data-target="#createModal"><i class="fas fa-plus"></i> Add Shareholding</a>
                     </div>
                 </div>
             </div>
@@ -116,7 +116,7 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Add Partner</h5>
+                <h5 class="modal-title" id="exampleModalLongTitle">Add Shareholding</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -167,7 +167,7 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
                     <label for="">Serial Number **</label>
                     <input type="number" class="form-control ltr" name="serial_number" value="" placeholder="Enter Serial Number">
                     <p id="errserial_number" class="mb-0 text-danger em"></p>
-                    <p class="text-warning"><small>The higher the serial number is, the later the partner will be shown.</small></p>
+                    <p class="text-warning"><small>The higher the serial number is, the later the Shareholding will be shown.</small></p>
                 </div>
             </form>
         </div>
