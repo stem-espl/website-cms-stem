@@ -18,7 +18,6 @@ class EGovernanceController extends Controller
         // $lang = Language::where('code', $request->language)->first();
         $lang_code = isset($request->language) ?  $request->language : 'en';
         $lang = Language::where('code', $lang_code)->first();
-
         $lang_id = $lang->id;
         $data['egovernance'] = EGovernanceModel::where('language_id', $lang_id)->orderBy('id', 'DESC')->get();
         // dd($data['egovernance']);

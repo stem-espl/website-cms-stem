@@ -20,6 +20,7 @@
 	</section>
 	<!-- Page Title End -->
 	<!-- Price Section Start -->
+
 	<section class="feature-section pdt-110 pdb-130 bg-silver-light bg-no-repeat" data-background="images/bg/abs-bg5.png">
 		<div class="container">
 			<div class="row">
@@ -27,7 +28,7 @@
 				<div class="col-md-6 col-xl-4 mt-3">
 					 <div class="feature-box mrb-lg-60">
 						<div class="feature-thumb img-wrapper">					
-                                <img src="{{asset('assets/stem/egovernance')}}/{{ $egover->image}}"></img>
+                                <a href="{{ $egover->url}}"><img src="{{asset('assets/stem/egovernance')}}/{{ $egover->image}}"></img></a>
 						</div>
 						<div class="feature-content">
 							<div class="title">
