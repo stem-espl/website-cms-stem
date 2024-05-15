@@ -94,6 +94,12 @@
                   <input type="text" class="form-control ltr" name="url" value="{{$member->url}}" placeholder="Enter URL">
                   <p id="errurl" class="text-danger mb-0 em"></p>
                 </div>
+                <div class="form-group">
+                  <label for="">Serial Number **</label>
+                  <input type="number" class="form-control ltr" name="serial_number" value="{{$member->serial_number}}" placeholder="Enter Serial Number">
+                  <p id="errserial_number" class="mb-0 text-danger em"></p>
+                  <p class="text-warning"><small>The higher the serial number is, the later the feature will be shown.</small></p>
+                </div>
                 <div class="form-group d-none">
                   <label for="">Facebook</label>
                   <input type="text" class="form-control ltr" name="facebook" value="{{$member->facebook}}" placeholder="Enter facebook url">
