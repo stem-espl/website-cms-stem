@@ -6,11 +6,11 @@
 			<div class="row">
 				<div class="col-xl-12 text-center">
 					<div class="page-title-content">
-						<h3 class="title e-title">e-Governance</h3>
+						<h3 class="title e-title">{{__('common.e-Governance')}}</h3>
 						<nav aria-label="breadcrumb">
 							<ol class="breadcrumb">
-								<li class="breadcrumb-item"><a href="stem.html">Home</a></li>
-								<li class="breadcrumb-item active" aria-current="page">e-Governance</li>
+								<li class="breadcrumb-item"><a href="stem.html">{{__('common.Home')}}</a></li>
+								<li class="breadcrumb-item active" aria-current="page">{{__('common.e-Governance')}}</li>
 							</ol>
 						</nav>
 					</div>

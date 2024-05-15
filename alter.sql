@@ -102,3 +102,7 @@ ALTER TABLE `basic_settings_extra` ADD `url` VARCHAR(255) NULL DEFAULT NULL AFTE
 ---date ----14-05-2024
 CREATE TABLE `profit_chart` (`id` INT NOT NULL AUTO_INCREMENT , `label` VARCHAR(250) NULL DEFAULT NULL , `amount` VARCHAR(250) NOT NULL DEFAULT '0' , `deleted_at` TIMESTAMP NULL DEFAULT NULL , `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP , `updated_at` TIMESTAMP on update CURRENT_TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP , PRIMARY KEY (`id`)) ENGINE = InnoDB;
 ALTER TABLE `members` ADD `serial_number` INT(11) NULL DEFAULT NULL AFTER `url`;
+INSERT INTO `permissions` (`id`, `name`, `guard_name`, `group_name`, `status`, `basic`, `created_at`, `updated_at`) VALUES (NULL, 'profit-budget-chart', 'admin', 'profit-budget-chart', '1', '0', '2024-04-19 14:45:27', '2024-04-19 14:45:27');
+
+-- date 15/05/2024
+ALTER TABLE `e_governance` ADD `url` VARCHAR(255) NULL DEFAULT NULL AFTER `title`;

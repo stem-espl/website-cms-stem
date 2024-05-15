@@ -40,6 +40,7 @@
     </li>
   </ul>
 </div>
+
 <div class="row">
   <div class="col-md-12">
     <div class="card">
@@ -86,6 +87,19 @@
                 <input type="date" class="form-control" name="date" value="{{$event->date}}" placeholder="Enter title">
                 <p id="errtitle" class="mb-0 text-danger em"></p>
               </div>
+  
+            <div class="form-group">
+              <label for="">Description **</label>
+              <textarea
+                  class="form-control summernote"
+                  name="description" id="description"
+                  rows="8"
+                  cols="80"
+              >{{$event->description}}</textarea>
+              <p id="errdescription" class="mb-0 text-danger em"></p>
+          </div>
+          
+
             </form>
           </div>
         </div>

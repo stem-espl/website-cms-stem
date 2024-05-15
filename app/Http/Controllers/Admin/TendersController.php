@@ -51,7 +51,7 @@ class TendersController extends Controller
   public function store(Request $request)
   {
   		$request->validate([
-            'tender_category' => 'required',
+            // 'tender_category' => 'required',
             'title' => 'required|max:255',
             'title_mr' => 'required|max:255',
             'description' => 'required',
@@ -59,6 +59,7 @@ class TendersController extends Controller
             'tender_link' => 'nullable',
             'status' => 'required',
             'tender_doc' => 'required|max:2048|mimes:application/pdf,pdf',
+            'deadline' => 'nullable|after_or_equal:' . date('Y-m-d'),
         ],[
         	'title.required' => 'The title in english field is required.',
         	'title_mr.required' => 'The title in marathi field is required.',
@@ -69,7 +70,7 @@ class TendersController extends Controller
 
 
   		$tender = new Tender();
-  		$tender->tender_category = $request->tender_category;
+  		$tender->tender_category = isset($request->tender_category) ? $request->tender_category : null;
   		if ($request->hasFile('tender_doc')) {
           $file = $request->file('tender_doc');
           $rand = rand(000,999);
@@ -82,7 +83,7 @@ class TendersController extends Controller
       $tender->title_mr = $request->title_mr;
       $tender->description = $request->description;
       $tender->description_mr = $request->description_mr;
-      $tender->tender_link = $request->tender_link;
+      $tender->tender_link = isset($request->tender_link) ? $request->tender_link : null;
       $tender->status = $request->status;
       $tender->deadline = isset($request->deadline) ? $request->deadline : null;
 
@@ -114,7 +115,7 @@ class TendersController extends Controller
   public function update(Request $request)
   {
   		$request->validate([
-            'tender_category' => 'required',
+            // 'tender_category' => 'required',
             'title' => 'required|max:255',
             'title_mr' => 'required|max:255',
             'description' => 'required',
@@ -131,7 +132,7 @@ class TendersController extends Controller
 
 
   		$tender = Tender::findOrFail($request->tender_id);
-  		$tender->tender_category = $request->tender_category;
+  		$tender->tender_category = isset($request->tender_category) ? $request->tender_category : null;
   		if ($request->hasFile('tender_doc')) {
           $file = $request->file('tender_doc');
           $rand = rand(000,999);
@@ -146,7 +147,7 @@ class TendersController extends Controller
       $tender->title_mr = $request->title_mr;
       $tender->description = $request->description;
       $tender->description_mr = $request->description_mr;
-      $tender->tender_link = $request->tender_link;
+      $tender->tender_link = isset($request->tender_link) ? $request->tender_link : null;
       $tender->status = $request->status;
       $tender->deadline = isset($request->deadline) ? $request->deadline : null;
 

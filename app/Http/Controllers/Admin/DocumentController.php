@@ -22,7 +22,7 @@ class DocumentController extends Controller
     	$lang = Language::where('code', $request->language)->first();
     else
     	$lang = Language::where('is_default', 1)->first();
-    $lang_id = $lang->id;
+        $lang_id = $lang->id;
     
     $data['documents'] = Document::orderBy('id', 'DESC')->paginate(10);
     foreach($data['documents'] as $val)
@@ -244,7 +244,6 @@ class DocumentController extends Controller
           Session::flash('warning', 'First, delete all the documents under this category!');
           return back();
       }
-
       $tcategory->delete();
       Session::flash('success', 'Documents category deleted successfully!');
       return back();

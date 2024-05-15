@@ -9,7 +9,7 @@
           <h3 class="title text-white">{{ convertUtf8($name) }}</h3>
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="stem.html">{{__('common.Home')}}</a></li>
+              <li class="breadcrumb-item"><a href="/">{{__('common.Home')}}</a></li>
               <li class="breadcrumb-item active" data-filter="" aria-current="page">{{ convertUtf8($name) }}</li>
             </ol>
           </nav>

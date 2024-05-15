@@ -82,6 +82,7 @@ else
                     </th>
                     <th scope="col">Image</th>
                     <th scope="col">Title</th>
+                    <th scope="col">URL</th>
                     <th scope="col">Status</th>
                     <th scope="col">Actions</th>
                   </tr>
@@ -96,6 +97,7 @@ else
                     <td>
                       {{strlen($egovernanc->title) > 70 ? mb_substr($egovernanc->title, 0, 70, 'UTF-8') . '...' : $egovernanc->title}}
                     </td>
+                    <td>{{$egovernanc->url}}</td>
                     <td>
                       @if ($egovernanc->status == 1)
                       <h2 class="d-inline-block"><span class="badge badge-success">Active</span></h2>
@@ -142,7 +144,7 @@ else
   <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Add Image</h5>
+        <h5 class="modal-title" id="exampleModalLongTitle">E-Governance</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -174,6 +176,12 @@ else
             <p id="errtitle" class="mb-0 text-danger em"></p>
           </div>
 
+          <div class="form-group">
+            <label for="">URL**</label>
+            <input type="text" class="form-control" name="url" id="url" placeholder="Enter url" value="">
+            <p id="errurl" class="mb-0 text-danger em"></p>
+          </div>
+
         </form>
       </div>
       <div class="modal-footer">
@@ -197,64 +205,4 @@ else
     </div>
   </div>
 </div>
-@endsection
-
-@section('scripts')
-<script>
-  $(document).ready(function() {
-    $("select[name='language_id']").on('change', function() {
-      $("#gallery_category_id").removeAttr('disabled');
-
-      let langId = $(this).val();
-      let url = "{{url('/')}}/admin/gallery/" + langId + "/get_categories";
-
-      $.get(url, function(data) {
-        let options = `<option value="" disabled selected>Select a category</option>`;
-
-        if (data.length == 0) {
-          options += `<option value="" disabled>${'No Category Exists'}</option>`;
-        } else {
-          for (let i = 0; i < data.length; i++) {
-            options +=`<option value="${data[i].id}">${data[i].name}</option>`;
-          }
-        }
-
-        $("#gallery_category_id").html(options);
-      });
-    });
-
-    // make input fields RTL
-    $("select[name='language_id']").on('change', function() {
-      $(".request-loader").addClass("show");
-      let url = "{{url('/')}}/admin/rtlcheck/" + $(this).val();
-      console.log(url);
-      $.get(url, function(data) {
-        $(".request-loader").removeClass("show");
-        if (data == 1) {
-          $("form input").each(function() {
-            if (!$(this).hasClass('ltr')) {
-              $(this).addClass('rtl');
-            }
-          });
-          $("form select").each(function() {
-            if (!$(this).hasClass('ltr')) {
-              $(this).addClass('rtl');
-            }
-          });
-          $("form textarea").each(function() {
-            if (!$(this).hasClass('ltr')) {
-              $(this).addClass('rtl');
-            }
-          });
-          $("form .nicEdit-main").each(function() {
-            $(this).addClass('rtl text-right');
-          });
-        } else {
-          $("form input, form select, form textarea").removeClass('rtl');
-          $("form .nicEdit-main").removeClass('rtl text-right');
-        }
-      });
-    });
-  });
-</script>
 @endsection

@@ -83,6 +83,12 @@
               </div>
 
               <div class="form-group">
+                <label for="">URL **</label>
+                <input type="text" class="form-control" name="url" value="{{$egovernan->url}}" placeholder="Enter title">
+                <p id="errurl" class="mb-0 text-danger em"></p>
+              </div>
+
+              <div class="form-group">
                 <label for="">Status**</label>
                 <select class="form-control" name="status" aria-label=".form-select-lg example">
                 <option value="1" <?php echo ($egovernan->status == 1) ? 'selected' : ''; ?>>Active</option>

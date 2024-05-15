@@ -78,7 +78,7 @@ class EGovernanceController extends Controller
   
       $egovernance->language_id = $request->language_id;
       $egovernance->title = $request->title;
-  
+      $egovernance->url = $request->url;
       $egovernance->save();
   
       Session::flash('success', 'E-Governance added successfully!');
@@ -146,6 +146,7 @@ class EGovernanceController extends Controller
             }
             $event->title = $request->title;
             $event->status = $request->status;
+            $event->url = $request->url;
             $event->save();
         
             Session::flash('success', 'E-Governance updated successfully!');

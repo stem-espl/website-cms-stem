@@ -72,7 +72,7 @@ else
               <form id="ajaxForm" action="{{route('admin.tenders.update')}}" method="post">
                 <input type="hidden" name="tender_id" value="{{$tender->id}}">
                 @csrf
-                <div class="form-group">
+                <div class="form-group d-none">
                   <label for="">Tender Category **</label>
                   <select class="form-control" name="tender_category">
                     <option value="">Select</option>
@@ -132,7 +132,7 @@ else
                   <div class="row ">
                     <div class="col-sm-3 col-md-2 col-lg-6 col-xl-4">
                       <div class="pdf">
-                          <a href="javascript:void(0)" class="delete_file pdf-delete img-circle"><strong>&times;</strong></a>
+                          <!-- <a href="javascript:void(0)" class="delete_file pdf-delete img-circle"><strong>&times;</strong></a> -->
                         <a class="pdf-body d-block" href="{{asset('assets/stem/tenders')}}/{{$tender->files}}" download><img src="{{asset('assets/front/img/pdf.png')}}" class="text-center align-items-center" width="100"></a>
                       </div>
                     </div>

@@ -35,8 +35,14 @@
             <tr>
               <td width="15%">{{$row->id}}</td>
               <td width="50%">{{$row->title}}</td>
-              <td width="20%"><a href="{{$row->tender_link}}">{{__('common.Click Here')}}</a></td>
-              <td width="15%"><a href="{{asset('assets/stem/tenders')}}/{{$row->files}}" download><i class="fa-solid fa-file-pdf fa-2xl"></i></a></td>
+              <td width="20%">
+                @if(!empty($row->tender_link))
+                <a href="{{$row->tender_link}}">{{__('common.Click Here')}}</a>
+                @else
+                  NA
+                @endif
+              </td>
+              <td width="15%"><a href="{{asset('assets/stem/tenders')}}/{{$row->files}}" download><img src="{{asset('assets/front/img/pdf.png')}}" class="text-center align-items-center" width="100"></a></td>
             </tr>
             @endforeach
           </tbody>

@@ -71,7 +71,7 @@ else
             <div class="col-lg-6 offset-lg-3">
               <form id="ajaxForm" action="{{route('admin.tenders.store')}}" method="post">
                 @csrf
-                <div class="form-group">
+                <div class="form-group  d-none">
                   <label for="">Tender Category **</label>
                   <select class="form-control" name="tender_category">
                     <option value="">Select</option>
