@@ -54,5 +54,10 @@ return [
     'Download' =>'Download',
     'Profit in Last Years' =>'Profit in Last Years',
     'Sr No' =>'Sr No',
+    'Circulars'=>'Circulars',
+    'Gallery'=>'Gallery',
+    'e-Governance'=>'e-Governance',
+    'Water Delivered, Hassle-Free'=>'Water Delivered, Hassle-Free',
+
     
 ];

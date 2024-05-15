@@ -5,11 +5,11 @@
 			<div class="row">
 				<div class="col-xl-12 text-center">
 					<div class="page-title-content">
-						<h3 class="title text-white circular-title">{{__($variable)}}</h3>
+						<h3 class="title text-white circular-title">{{__('common.Circulars')}}</h3>
 						<nav aria-label="breadcrumb">
 							<ol class="breadcrumb">
-								<li class="breadcrumb-item"><a href="stem.html">Home</a></li>
-								<li class="breadcrumb-item active" aria-current="page">{{__($variable)}}</li>
+								<li class="breadcrumb-item"><a href="stem.html">{{__('common.Home')}}</a></li>
+								<li class="breadcrumb-item active" aria-current="page">{{__('common.Circulars')}}</li>
 							</ol>
 						</nav>
 					</div>
@@ -24,9 +24,9 @@
 				<table class="table table-bordered table-striped table-hover text-center">
 					<thead class="back_color">
 						<tr>
-							<th>Sr No</th>
-							<th>{{__($variable)}}</th>	
-							<th>Download</th>
+							<th>{{__('common.Sr No')}}</th>
+							<th>{{__('common.Circulars')}}</th>	
+							<th>{{__('common.Download')}}</th>
 							
 						</tr>
 					</thead>

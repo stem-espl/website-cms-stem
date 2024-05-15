@@ -35,6 +35,7 @@ class CalendarController extends Controller
             'title' => 'required|max:255',
             'datetimes' => 'required',
             'img' =>   'required',
+            'description' =>'required',
         ];
         
         $validator = Validator::make($request->all(), $rules);
@@ -68,8 +69,9 @@ class CalendarController extends Controller
         
         $calendar->language_id = $request->language_id;
         $calendar->title = $request->title;
-        $calendar->date = $request->datetimes;    
-        $calendar->created_by = auth()->id(); 
+        $calendar->date = $request->datetimes;  
+        $calendar->description = $request->description;    
+        $calendar->created_by = auth()->id();
         $calendar->save();
         Session::flash('success', 'Event added to calendar successfully!');
         return "success";
@@ -87,6 +89,7 @@ class CalendarController extends Controller
             $rules = [
                 'title' => 'required|max:255',
                 'date' => 'required',
+                'description' =>'required',
             ];
 
             if ($request->has('image')) {
@@ -125,6 +128,7 @@ class CalendarController extends Controller
             }
         
             $event->title = $request->title;
+            $event->description = $request->description;
             $event->date = $request->date;
             $event->save();
         
