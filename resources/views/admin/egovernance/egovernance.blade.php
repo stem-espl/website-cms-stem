@@ -82,6 +82,7 @@ else
                     </th>
                     <th scope="col">Image</th>
                     <th scope="col">Title</th>
+                    <th scope="col">URL</th>
                     <th scope="col">Status</th>
                     <th scope="col">Actions</th>
                   </tr>
@@ -96,6 +97,7 @@ else
                     <td>
                       {{strlen($egovernanc->title) > 70 ? mb_substr($egovernanc->title, 0, 70, 'UTF-8') . '...' : $egovernanc->title}}
                     </td>
+                    <td>{{$egovernanc->url}}</td>
                     <td>
                       @if ($egovernanc->status == 1)
                       <h2 class="d-inline-block"><span class="badge badge-success">Active</span></h2>
@@ -142,7 +144,7 @@ else
   <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Add Image</h5>
+        <h5 class="modal-title" id="exampleModalLongTitle">E-Governance</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -172,6 +174,12 @@ else
             <label for="">Title **</label>
             <input type="text" class="form-control" name="title" placeholder="Enter title" value="">
             <p id="errtitle" class="mb-0 text-danger em"></p>
+          </div>
+
+          <div class="form-group">
+            <label for="">URL**</label>
+            <input type="text" class="form-control" name="url" id="url" placeholder="Enter url" value="">
+            <p id="errurl" class="mb-0 text-danger em"></p>
           </div>
 
         </form>
