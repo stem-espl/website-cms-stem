@@ -15,6 +15,7 @@ use App\Models\Document;
 use App\Models\Leadership;
 use App\Models\ContactQuery;
 use App\Models\BasicSetting;
+use App\Models\ProfitChart;
 use App\Models\BasicExtra;
 use Illuminate\Support\Facades\Validator;
 
@@ -67,7 +68,14 @@ class StemController extends Controller
 
       public function profitReport()
       {
-         return view('front.stem.profit');
+        $data = [];
+        $profits = ProfitChart::orderBy('label','ASC')->get();
+        foreach ($profits as $key => $value) {
+          $data['label'][] = $value->label;
+          $data['amt'][] = $value->amount;
+        }
+        $data['count'] = count($profits);
+         return view('front.stem.profit', $data);
       }
 
       public function showLeadership($slug){
