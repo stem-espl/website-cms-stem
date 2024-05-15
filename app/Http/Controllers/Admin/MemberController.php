@@ -130,7 +130,7 @@ class MemberController extends Controller
             'name' => 'required|max:50',
             'rank' => 'required|max:50',
             'url' => 'nullable',
-            'serial_number' => 'serial_number',
+            // 'serial_number' => 'serial_number',
             // 'facebook' => 'nullable|max:50',
             // 'twitter' => 'nullable|max:50',
             // 'linkedin' => 'nullable|max:50',
