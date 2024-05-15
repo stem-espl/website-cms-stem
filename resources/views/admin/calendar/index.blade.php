@@ -103,6 +103,7 @@
                             </td>
                                  <td>
                                {{$event->description}}
+                               
                                   </td>
                             <td>
                         {{$usename}}

@@ -95,7 +95,7 @@
                   name="description" id="description"
                   rows="8"
                   cols="80"
-              >{{$event->description}}</textarea>
+              >{{strip_tags($event->description)}}</textarea>
               <p id="errdescription" class="mb-0 text-danger em"></p>
           </div>
           
