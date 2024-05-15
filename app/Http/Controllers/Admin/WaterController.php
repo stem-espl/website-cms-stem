@@ -52,7 +52,7 @@ class WaterController extends Controller
       
       $teriff->save();
   
-      Session::flash('success', 'Water Teriff Record added successfully!');
+      Session::flash('success', 'Water Tariff Record added successfully!');
       return "success";
     }
 
@@ -79,11 +79,11 @@ class WaterController extends Controller
             
             $teriff->save();
         
-            Session::flash('success', 'Water Teriff Record updated successfully!');
+            Session::flash('success', 'Water Tariff Record updated successfully!');
             // return redirect()->route('admin.profit.index');
             
         }else{
-            Session::flash('error', 'Water Teriff Record not found');
+            Session::flash('error', 'Water Tariff Record not found');
         }
         return "success";
     }
@@ -95,7 +95,7 @@ class WaterController extends Controller
       $teriffModel = WaterTeriff::findOrFail($request->teriff_id);
       $teriffModel->delete();
   
-      Session::flash('success', 'Water Teriff Record deleted successfully!');
+      Session::flash('success', 'Water Tariff Record deleted successfully!');
       return back();
     }
  

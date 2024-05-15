@@ -26,7 +26,7 @@ else
 
 @section('content')
 <div class="page-header">
-  <h4 class="page-title">Water Teriff</h4>
+  <h4 class="page-title">Water Tariff</h4>
   <ul class="breadcrumbs">
     <li class="nav-home">
       <a href="{{route('admin.dashboard')}}">
@@ -37,7 +37,7 @@ else
       <i class="flaticon-right-arrow"></i>
     </li>
     <li class="nav-item">
-      <a href="javascript:void(0)">Water Teriff</a>
+      <a href="javascript:void(0)">Water Tariff</a>
     </li>
   </ul>
 </div>
@@ -47,14 +47,14 @@ else
       <div class="card-header">
         <div class="row">
           <div class="col-lg-4">
-            <div class="card-title d-inline-block">Water-Tariff</div>
+            <div class="card-title d-inline-block">Water Tariff</div>
           </div>
           <div class="col-lg-3">
                   
           </div>
           <div class="col-lg-4 offset-lg-1 mt-2 mt-lg-0">
             <a href="javascript:void(0)" class="btn btn-primary float-right btn-sm" data-toggle="modal" data-target="#createModal"><i
-                class="fas fa-plus"></i> Add Water Teriff</a>
+                class="fas fa-plus"></i> Add Water Tariff</a>
             <button class="btn btn-danger float-right btn-sm mr-2 d-none bulk-delete"
               data-href="{{route('admin.gallery.bulk.delete')}}"><i class="flaticon-interface-5"></i> Delete</button>
           </div>
@@ -139,8 +139,8 @@ else
           </div>
 
           <div class="form-group">
-            <label for="">Water Teriff **</label>
-            <input type="text" class="form-control"   name="amount" maxlength="20" placeholder="Enter Water Teriff Charge" value="">
+            <label for="">Water Tariff **</label>
+            <input type="text" class="form-control"   name="amount" maxlength="20" placeholder="Enter Water Tariff Charge" value="">
             <p id="errteriff" class="mb-0 text-danger em"></p>
           </div>
 
@@ -162,7 +162,7 @@ else
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">Water Teriff</h5>
+          <h5 class="modal-title" id="exampleModalLongTitle">Water Tariff</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -183,8 +183,8 @@ else
           </div>
 
           <div class="form-group">
-            <label for="">Water Teriff **</label>
-            <input type="text" class="form-control" name="amount" id="inamount" maxlength="20" placeholder="Enter Water Teriff Charge" value="">
+            <label for="">Water Tariff **</label>
+            <input type="text" class="form-control" name="amount" id="inamount" maxlength="20" placeholder="Enter Water Tariff Charge" value="">
             <p id="errteriff" class="mb-0 text-danger em"></p>
           </div>
 

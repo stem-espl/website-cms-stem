@@ -284,7 +284,7 @@ $data = \App\Models\BasicExtra::first();
         <li class="nav-item">
           <a href="{{route('admin.water.index')}}">
             <i class="fas fa-book-open"></i>
-            <p>Water Terrif</p>
+            <p>Water Tarrif</p>
           </a>
         </li>
         @endcan
