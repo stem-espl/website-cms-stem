@@ -27,9 +27,16 @@
                 @foreach ($egovernance as $egover )
 				<div class="col-md-6 col-xl-4 mt-3">
 					 <div class="feature-box mrb-lg-60">
+						@if(!empty($egover->url))
 						<div class="feature-thumb img-wrapper">					
-                                <a href="{{ $egover->url}}"><img src="{{asset('assets/stem/egovernance')}}/{{ $egover->image}}"></img></a>
+                                <a href="{{$egover->url}}"><img src="{{asset('assets/stem/egovernance')}}/{{ $egover->image}}"></img></a>
 						</div>
+						@else
+						
+						<div class="feature-thumb img-wrapper">
+							<img class="img-full" src="{{asset('assets/stem/egovernance')}}/{{ $egover->image}}" alt="" loading="lazy"  onclick="openImagePopup(this)">
+						</div>
+						@endif
 						<div class="feature-content">
 							<div class="title">
 								<h6>{{$egover->title}}</h6>
@@ -43,3 +50,28 @@
 	</section>
 
     @endsection
+	
+	<script>
+		function openImagePopup(element) {
+			var imageUrl = element.src;
+			var imagePopup = document.createElement('div');
+			imagePopup.className = 'image-popup';
+			
+			var popupImage = document.createElement('img');
+			popupImage.className = 'popup-image';
+			popupImage.src = imageUrl;
+			imagePopup.appendChild(popupImage);
+			
+			// Close button
+			var closeButton = document.createElement('span');
+			closeButton.className = 'close-button';
+			closeButton.innerHTML = '&times;';
+			closeButton.onclick = function() {
+				imagePopup.style.display = 'none';
+			};
+			imagePopup.appendChild(closeButton);
+			
+			document.body.appendChild(imagePopup);
+			imagePopup.style.display = 'block';
+		}
+	</script>
