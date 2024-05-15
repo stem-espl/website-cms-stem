@@ -581,6 +581,13 @@ use app\Http\Controllers\Front\StemController;
 			Route::post( "/document/delete", "Admin\DocumentController@delete" )->name("admin.documents.delete")->middleware('can:documents'); 
 			Route::post( "/document/bulk-delete", "Admin\DocumentController@bulkDelete" )->name("admin.documents.bulk.delete")->middleware('can:documents'); 
 
+			// Water Teriff
+			Route::get("/water", "Admin\WaterController@index")->name("admin.water.index");
+			Route::post("/water/store", "Admin\WaterController@store")->name("admin.water.store");
+			Route::get("/water/{id}/edit", "Admin\WaterController@edit")->name("admin.water.edit");
+			Route::post("/water/update", "Admin\WaterController@update")->name("admin.water.update");
+			Route::post("/water/delete", "Admin\WaterController@delete")->name("admin.water.delete");
+
 			// Admin Tender Category Routes 
 			Route::get("/tender_category", "Admin\TendersController@category_index")->name( "admin.tcategory.index" )->middleware('can:categories-tender'); 
 			Route::post( "/tender_category/store", "Admin\TendersController@category_store" )->name("admin.tcategory.store")->middleware('can:categories-tender'); 

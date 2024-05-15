@@ -279,7 +279,15 @@ $data = \App\Models\BasicExtra::first();
           </div>
         </li>
         @endcanany
-
+        @can('water-teriff-charges')
+        {{-- history --}}
+        <li class="nav-item">
+          <a href="{{route('admin.water.index')}}">
+            <i class="fas fa-book-open"></i>
+            <p>Water Terrif</p>
+          </a>
+        </li>
+        @endcan
         @can('history')
         {{-- history --}}
         <li class="nav-item">
