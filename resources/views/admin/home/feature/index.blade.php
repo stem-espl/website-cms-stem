@@ -168,7 +168,7 @@
             <div class="form-group">
               <label for="">Total Number **</label>
               <input type="number" class="form-control ltr" name="total_numbers" value="" placeholder="Enter total Number">
-              <p id="errtotal_number" class="mb-0 text-danger em"></p>
+              <p id="errtotal_numbers" class="mb-0 text-danger em"></p>
           
             </div>
 

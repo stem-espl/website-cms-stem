@@ -27,7 +27,7 @@
             <li class="list-group-item"> <img src="{{ asset('assets/stem/news/' . $data->image) }}" class="rounded" alt="News Image"></li>
        
             <ul class="list-group list-group-flush">
-            <li class="list-group-item" style="font-size: 140%;"><b>{{__('common.Title')}}:-</b>{{ $data->title }}</li>
+            <li class="list-group-item" style="font-size: 140%;"><b style="text-decoration: underline">{{__('common.Title')}}:-</b>{{ $data->title }}</li>
             <li class="list-group-item" style="font-size: 140%;"><b>{{__('common.Date')}}</b>:-{{ $data->date }}</li>
             <li class="list-group-item" style="text-wrap: pretty;"><b style="font-size: 149%;">{{__('common.Description')}}</b>:-{{ strip_tags($data->description) }}</li>
             </ul>

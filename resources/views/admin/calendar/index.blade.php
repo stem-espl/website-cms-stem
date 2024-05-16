@@ -167,7 +167,7 @@
               <div class="form-group">
                 <label for="">Image **</label>
                 <input type="file" class="form-control" id="img" name="img" value="">
-                <p id="errtitle" class="mb-0 text-danger em"></p>
+                <p id="errimg" class="mb-0 text-danger em"></p>
               </div>
 
               <div class="form-group">
@@ -184,20 +184,17 @@
                 <p id="errdatetimes" class="mb-0 text-danger em"></p>
               </div>
 
-            <div class="form-group">
-              <label for="">Description **</label>
-              <textarea
-              class="form-control summernote"
-              name="description" id="description"
-              rows="8"
-              cols="80"
-              placeholder="Enter description"
-              ></textarea>
-              <p
-              id="errcontent"
-              class="mb-0 text-danger em"
-              ></p>
-          </div>
+              <div class="form-group">
+                <label for="">Description **</label>
+                <textarea
+                class="form-control"
+                name="description" id="description"
+                rows="8"
+                cols="80"
+                placeholder="Enter description" autocomplete="off"
+                ></textarea>
+                <p id="errdescription" class="mb-0 text-danger em"></p>
+             </div>
 
             
             </form>
@@ -210,48 +207,6 @@
       </div>
     </div>
 
-    <!-- Edit Event Modal -->
-    {{-- <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle">Edit News</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <form id="ajaxEditForm" class="" action="{{route('admin.news.update')}}" method="POST">
-              @csrf
-              <input id="inevent_id" type="hidden" name="event_id" value="">
-              <div class="form-group">
-                <label for="">Title **</label>
-                <input id="intitle" name="title" class="form-control" placeholder="Enter Title" type="text" value="">
-                <p id="eerrtitle" class="mb-0 text-danger em"></p>
-              </div>
-
-             <div class="form-group">
-            <label for="">Image **</label>
-            <img id="image" class="form-control" src="" alt="News Image" style="max-width: 100%; height: auto;">
-            <input type="file" name="image" class="form-control" style="display: none;">
-            <p id="eerrtitle" class="mb-0 text-danger em"></p>
-           </div>
-
-              <div class="form-group">
-              <label for="">Date **</label>
-                  <input type="date" name="edatetimes" class="form-control" placeholder="Enter News Date"/>
-                  <input type="hidden" id="instart_date" name="start_date" value="">
-                  <p id="eerrdate" class="mb-0 text-danger em"></p>
-              </div>
-            </form>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button id="updateBtn" type="button" class="btn btn-primary">Save Changes</button>
-          </div>
-        </div>
-      </div>
-    </div> --}}
   @endsection
 
   @section('scripts')

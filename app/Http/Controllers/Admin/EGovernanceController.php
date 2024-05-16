@@ -79,7 +79,6 @@ class EGovernanceController extends Controller
       $egovernance->title = $request->title;
       $egovernance->url = $request->url;
       $egovernance->save();
-  
       Session::flash('success', 'E-Governance added successfully!');
       return "success";
     }
@@ -106,7 +105,8 @@ class EGovernanceController extends Controller
             $extImage = pathinfo($image, PATHINFO_EXTENSION);
   
             $rules = [
-            //   'title' => 'required|max:255',
+              'title' => 'required|max:255',
+              'status' => 'required',
             ];
   
             if ($request->has('image')) {

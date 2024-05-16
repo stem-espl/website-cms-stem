@@ -196,8 +196,10 @@ public function leadStore(Request $request)
 
   $rules = [
     'language_id' => 'required',
-    'file' => 'required',
+    'lead_category_id' => 'required',
     'title' => 'required|max:255',
+    'postname' => 'required',
+    'file' => 'required',
     'status' => 'required',
     // 'serial_number' => 'required|integer',/
   ];
@@ -236,10 +238,9 @@ public function leadStore(Request $request)
   $leadership->language_id = $request->language_id;
   $leadership->name = $request->title;
 //   $leadership->serial_number = $request->serial_number;
-  $leadership->category_id = $request->category_id;
+  $leadership->category_id = $request->lead_category_id;
   $leadership->post = $request->postname;
   $leadership->status = $request->status;
-
   $leadership->save();
 
   Session::flash('success', 'Image added successfully!');
@@ -258,8 +259,8 @@ public function leadupdate(Request $request)
         $extImage = pathinfo($image, PATHINFO_EXTENSION);
 
         $rules = [
-          'title' => 'required|max:255',
-        // 'serial_number' => 'required|integer',
+          'title' => 'required',
+          'postname' => 'required',
         ];
 
         if ($request->has('image')) {

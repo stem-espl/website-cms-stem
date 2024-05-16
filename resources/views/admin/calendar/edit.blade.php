@@ -73,7 +73,7 @@
                 <input id="fileInput1" type="file" name="image" accept="image/*" hidden>
                 <label for="fileInput1" class="choose-image btn btn-primary">Choose Image</label>
                 <p class="text-warning mb-0">JPG, PNG, JPEG, SVG images are allowed</p>
-                <p class="em text-danger mb-0" id="errimage"></p>
+                <p class="em text-danger mb-0" id="errfileInput1"></p>
             </div>
 
               <div class="form-group">
@@ -85,13 +85,13 @@
               <div class="form-group">
                 <label for="">Date **</label>
                 <input type="date" class="form-control" name="date" value="{{$event->date}}" placeholder="Enter title">
-                <p id="errtitle" class="mb-0 text-danger em"></p>
+                <p id="errdate" class="mb-0 text-danger em"></p>
               </div>
   
             <div class="form-group">
               <label for="">Description **</label>
               <textarea
-                  class="form-control summernote"
+                  class="form-control"
                   name="description" id="description"
                   rows="8"
                   cols="80"
