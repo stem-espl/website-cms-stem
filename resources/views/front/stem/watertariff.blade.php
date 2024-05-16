@@ -38,7 +38,9 @@
 						</tr>
 					</thead>
 					<tbody>
-                    @if (count($data) > 0)
+					@if (count($data) == 0)
+           				 <h3 class="text-center">NO DATA FOUND</h3>
+           			@else
                     @foreach ($data as $key=>$val)
 						<tr>
 							<td class="text-center">{{$key+1}} </td>
