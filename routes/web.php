@@ -34,6 +34,7 @@ use app\Http\Controllers\Front\StemController;
 			Route::get('/news/img', 'Front\StemController@index')->name('front.stem.img'); 
 			Route::get('/galleries/{slug}', 'Front\GalleryController@index')->name('front.gallerys'); 
 			Route::get('/documents/{slug}', 'Front\StemController@circular')->name('front.circular'); 
+			Route::get('/water/tariff', 'Front\StemController@waterTariff')->name('front.water.tariff'); 
 			Route::get('/history', 'Front\StemController@history')->name('front.stem.history'); 
 
 			Route::get("/committee/{slug}", "Front\StemController@showLeadership")->name( "front.leadership"); 
@@ -581,6 +582,14 @@ use app\Http\Controllers\Front\StemController;
 			Route::post( "/document/update", "Admin\DocumentController@update" )->name("admin.documents.update")->middleware('can:documents'); 
 			Route::post( "/document/delete", "Admin\DocumentController@delete" )->name("admin.documents.delete")->middleware('can:documents'); 
 			Route::post( "/document/bulk-delete", "Admin\DocumentController@bulkDelete" )->name("admin.documents.bulk.delete")->middleware('can:documents'); 
+
+			// Water Teriff
+			Route::get("/water", "Admin\WaterController@index")->name("admin.water.index");
+			Route::post("/water/store", "Admin\WaterController@store")->name("admin.water.store");
+			Route::get("/water/{id}/edit", "Admin\WaterController@edit")->name("admin.water.edit");
+			Route::post("/water/update", "Admin\WaterController@update")->name("admin.water.update");
+			Route::post("/water/delete", "Admin\WaterController@delete")->name("admin.water.delete");
+			Route::post("/water/apply", "Admin\WaterController@applyDate")->name("admin.water.apply");
 
 			// Admin Tender Category Routes 
 			Route::get("/tender_category", "Admin\TendersController@category_index")->name( "admin.tcategory.index" )->middleware('can:categories-tender'); 
