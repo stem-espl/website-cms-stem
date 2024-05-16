@@ -178,9 +178,10 @@ class StemController extends Controller
         }
         $lang_code = isset($currentLang->code) ?  $currentLang->code : 'en';
         $language = Language::where('code', $lang_code)->first();
-        $data = WaterTeriff::get(); 
+        $data = WaterTeriff::where('language_id', $language->id)->get(); 
         $tdate = TariffDate::where('status',1)->first();
         $date = Carbon::parse($tdate->tdate)->format('d-m-Y');
+        // dd($date);
         return view('front.stem.watertariff',compact('data','date'));
       }
 }

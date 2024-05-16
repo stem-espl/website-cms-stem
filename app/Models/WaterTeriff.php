@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class WaterTeriff extends Model
 {
     protected $table = 'water_teriff';
+
+    public function language() {
+        return $this->belongsTo('App\Models\Language');
+    }
 }

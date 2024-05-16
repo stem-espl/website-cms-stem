@@ -20,8 +20,6 @@ else
     direction: rtl;
     text-align: right;
   }
-
-
 </style>
 @endsection
 @endif
@@ -161,15 +159,24 @@ else
           
             <input type="text" class="form-control" name="institution" placeholder="Enter Institution Name" value="">
          
-            <p id="errinst" class="mb-0 text-danger em"></p>
+            <p id="errinstitution" class="mb-0 text-danger em"></p>
           </div>
 
           <div class="form-group">
             <label for="">Water Tariff **</label>
             <input type="text" class="form-control"   name="amount" maxlength="20" placeholder="Enter Water Tariff Charge" value="">
-            <p id="errteriff" class="mb-0 text-danger em"></p>
+            <p id="erramount" class="mb-0 text-danger em"></p>
           </div>
-
+          <div class="form-group">
+                <label for="">Language *</label>
+                <select name="language_id" class="form-control">
+                    <option value="" selected disabled>Select a Language</option>
+                    @foreach ($langs as $lang)
+                        <option value="{{$lang->id}}">{{$lang->name}}</option>
+                    @endforeach
+                </select>
+                <p id="errlanguage_id" class="mt-1 mb-0 text-danger em"></p>
+            </div>
    
 
         </form>
@@ -205,13 +212,13 @@ else
           
             <input type="text" class="form-control" id="ininstitution"  name="institution" placeholder="Enter Institution Name" value="">
          
-            <p id="errinst" class="mb-0 text-danger em"></p>
+            <p id="eerrinstitution" class="mb-0 text-danger em"></p>
           </div>
 
           <div class="form-group">
             <label for="">Water Tariff **</label>
             <input type="text" class="form-control" name="amount" id="inamount" maxlength="20" placeholder="Enter Water Tariff Charge" value="">
-            <p id="errteriff" class="mb-0 text-danger em"></p>
+            <p id="eerramount" class="mb-0 text-danger em"></p>
           </div>
 
        
