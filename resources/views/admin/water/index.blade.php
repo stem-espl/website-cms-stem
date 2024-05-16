@@ -50,7 +50,14 @@ else
             <div class="card-title d-inline-block">Water Tariff</div>
           </div>
           <div class="col-lg-3">
-                  
+                    @if (!empty($langs))
+                        <select name="language" class="form-control" onchange="window.location='{{url()->current() . '?language='}}'+this.value">
+                            <option value="" selected disabled>Select a Language</option>
+                            @foreach ($langs as $lang)
+                                <option value="{{$lang->code}}" {{$lang->code == $selLang->code ? 'selected' : ''}}>{{$lang->name}}</option>
+                            @endforeach
+                        </select>
+                    @endif
           </div>
           <div class="col-lg-4 offset-lg-1 mt-2 mt-lg-0">
             <a href="javascript:void(0)" class="btn btn-primary float-right btn-sm" data-toggle="modal" data-target="#createModal"><i
@@ -70,7 +77,7 @@ else
               <table class="table table-striped mt-3" id="basic-datatables">
                 <thead>
                   <tr>
-                    <th scope="col">Institution</th>
+                    <th scope="col">Institution Name</th>
                     <th scope="col">Water Tariff </th>
                     <th scope="col">Actions
                     </th>
