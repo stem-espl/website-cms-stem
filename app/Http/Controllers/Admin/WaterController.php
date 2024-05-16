@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\BasicExtra;
 use App\Models\WaterTeriff;
+use App\Models\TariffDate;
 use App\Models\Language;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
@@ -98,6 +99,42 @@ class WaterController extends Controller
       Session::flash('success', 'Water Tariff Record deleted successfully!');
       return back();
     }
- 
+    
+    public function applyDate(Request $request)
+    {
+      // dd($request->all());
+       $exhistFirst = TariffDate::all();
+       if(count($exhistFirst) > 0 && $request->status == '1')
+       {
+          $TariffDate = TariffDate::where('status', 1)->first();
+          
+          if(!empty( $TariffDate))
+          $TariffDate->delete();
+       
+          if($request->status==1)
+          {
+            $teriffdate = new TariffDate;
+            $teriffdate->tdate = isset($request->apply) ? $request->apply:Null;
+            $teriffdate->status = isset($request->status) ? $request->status:0;
+            $teriffdate->save();  
+          }
+          Session::flash('success', 'Water Tariff Date Record Updated successfully!');
+          return back();
+
+       }
+      else{
+            $teriffdate = new TariffDate;
+            $teriffdate->tdate = isset($request->apply) ? $request->apply:Null;
+            $teriffdate->status = isset($request->status) ? $request->status:0;
+            $teriffdate->save();
+            Session::flash('success', 'Water Tariff Date  Record Updated successfully!');
+            return back();
+        }
+          
+      
+        
+    
+       }
+    
  
 }

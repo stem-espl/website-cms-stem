@@ -108,8 +108,10 @@ INSERT INTO `permissions` (`id`, `name`, `guard_name`, `group_name`, `status`, `
 ALTER TABLE `e_governance` ADD `url` VARCHAR(255) NULL DEFAULT NULL AFTER `title`;
 
 CREATE TABLE `water_teriff` (`id` INT NOT NULL AUTO_INCREMENT , `institution` VARCHAR(255) NULL DEFAULT NULL , `water_tariff` VARCHAR(255) NULL DEFAULT NULL , `tariff_date` DATE NOT NULL , `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP , `updated_at` TIMESTAMP on update CURRENT_TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP , `deleted_at` TIMESTAMP NULL DEFAULT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+ALTER TABLE `water_teriff` ADD `language_id` INT NULL DEFAULT NULL AFTER `id`;
 INSERT INTO `permissions` (`id`, `name`, `guard_name`, `group_name`, `status`, `basic`, `created_at`, `updated_at`) VALUES (NULL, 'water-teriff-charges', 'admin', 'water-teriff-charges', '1', '0', '2024-04-19 14:45:27', '2024-04-19 14:45:27');
 ALTER TABLE `water_teriff` CHANGE `tariff_date` `tariff_date` DATE NULL DEFAULT NULL;
+CREATE TABLE `date_table` (`id` INT(11) NOT NULL AUTO_INCREMENT , `tdate` DATE NULL DEFAULT NULL , `status` TINYINT(4) NULL DEFAULT '0' , `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP , `updated_at` TIMESTAMP on update CURRENT_TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP , `deleted_at` TIMESTAMP NULL DEFAULT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
 
                                                                                                                                
                                                                                                                               

@@ -20,6 +20,8 @@ else
     direction: rtl;
     text-align: right;
   }
+
+
 </style>
 @endsection
 @endif
@@ -69,6 +71,23 @@ else
       </div>
       <div class="card-body">
         <div class="row">
+
+              <form class="d-inline-block " action="{{route('admin.water.apply')}}" method="post">
+                @csrf
+                  <div class="form-group d-inline-block">
+                      <label for="">Date:</label>
+                      <input type="date"  class="form-control" name="apply" value=""  placeholder="Choose Date To Apply" required>
+                      <p id="errapp" class="mb-0 text-danger em"></p>
+                  </div>
+                  <div class="form-group d-inline-block">
+                      <input class="form-control-input" type="checkbox" value="1" id="flexCheckChecked"  name="status">
+                      <label class="form-control-label" for="flexCheckChecked">
+                      Is Date Apply
+                      </label>
+                  </div>
+                  <button id="subappBtn" type="submit" class="btn btn-primary">Apply Date</button>
+            </form>
+
           <div class="col-lg-12">
             @if (count($teriffs) == 0)
             <h3 class="text-center">NO DATA FOUND</h3>
@@ -208,5 +227,12 @@ else
 </div>
 
 @endsection
-
-
+<script>
+    // JavaScript to handle form submission
+    document.querySelector('form').addEventListener('submit', function(event) {
+        var checkbox = document.getElementById('flexCheckChecked');
+        if (!checkbox.checked) {
+            event.preventDefault(); // Prevent form submission
+        }
+    });
+</script>

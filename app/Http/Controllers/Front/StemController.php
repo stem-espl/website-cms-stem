@@ -12,11 +12,14 @@ use App\Models\LeadCategory;
 use App\Models\DocumentCategory;
 use App\Models\History;
 use App\Models\Document;
+use App\Models\WaterTeriff;
+use App\Models\TariffDate;
 use App\Models\Leadership;
 use App\Models\ContactQuery;
 use App\Models\BasicSetting;
 use App\Models\ProfitChart;
 use App\Models\BasicExtra;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Validator;
 
 class StemController extends Controller
@@ -165,5 +168,19 @@ class StemController extends Controller
       public function details( $id,Request $request){
         $data = News::findOrFail($id); 
         return view('front.stem.newsdetails',compact('data'));
+      }
+
+      public function waterTariff(){
+      if (session()->has('lang')) {
+        $currentLang = Language::where('code', session()->get('lang'))->first();
+        } else {
+          $currentLang = Language::where('is_default', 1)->first();
+        }
+        $lang_code = isset($currentLang->code) ?  $currentLang->code : 'en';
+        $language = Language::where('code', $lang_code)->first();
+        $data = WaterTeriff::get(); 
+        $tdate = TariffDate::where('status',1)->first();
+        $date = Carbon::parse($tdate->tdate)->format('d-m-Y');
+        return view('front.stem.watertariff',compact('data','date'));
       }
 }
