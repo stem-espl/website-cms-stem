@@ -102,7 +102,7 @@
                               {{$start}}
                             </td>
                                  <td>
-                               {{$event->description}}
+                                  {{ strip_tags($event->description) }}
                                   </td>
                             <td>
                         {{$usename}}

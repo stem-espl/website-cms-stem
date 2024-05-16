@@ -57,5 +57,9 @@ return [
     'Gallery'=>'गॅलरी',
     'e-Governance'=>'ई-शासन',
     'Water Delivered, Hassle-Free'=>'पाणी वितरित, त्रास-मुक्त',
+    'News Details'=>'बातम्या तपशील',
+    'Title'=>'शीर्षक',
+    'Date'=>'तारीख',
+    'Description'=>'वर्णन',
     
 ];

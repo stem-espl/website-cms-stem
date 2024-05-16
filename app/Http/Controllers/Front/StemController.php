@@ -161,4 +161,9 @@ class StemController extends Controller
         $historyData=History::where('language_id', $language->id)->where('status','1')->get();
         return view('front.history.history',compact('historyData'));
       }
+
+      public function details( $id,Request $request){
+        $data = News::findOrFail($id); 
+        return view('front.stem.newsdetails',compact('data'));
+      }
 }

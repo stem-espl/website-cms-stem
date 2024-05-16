@@ -58,6 +58,10 @@ return [
     'Gallery'=>'Gallery',
     'e-Governance'=>'e-Governance',
     'Water Delivered, Hassle-Free'=>'Water Delivered, Hassle-Free',
+    'News Details'=>'News Details',
+    'Title'=>'Title',
+    'Date'=>'Date',
+    'Description'=>'Description',
 
     
 ];

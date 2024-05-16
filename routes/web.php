@@ -38,6 +38,7 @@ use app\Http\Controllers\Front\StemController;
 
 			Route::get("/committee/{slug}", "Front\StemController@showLeadership")->name( "front.leadership"); 
 			Route::get('/news', 'Front\FrontendController@news')->name('front.news'); 
+			Route::get('/news/details/{id}', 'Front\StemController@details')->name('front.news.details'); 
 			Route::get('/egovernance', 'Front\EgoveranceController@index')->name('front.egoverance'); 
 			Route::group(["prefix" => "donation"], function () { 
 				Route::get( "/paystack/success", "Payment\causes\PaystackController@successPayment" )->name("donation.paystack.success"); 
