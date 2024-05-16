@@ -70,11 +70,11 @@
                 <br>
                 <br>
 
-                <input id="fileInput1" type="file" name="image" accept="image/*" hidden>
+                <input id="image" type="file" name="image" accept="image/*" hidden>
                 <label for="fileInput1" class="choose-image btn btn-primary">Choose Image</label>
                 <p class="text-warning mb-0">JPG, PNG, JPEG, SVG images are allowed</p>
                 <p class="em text-danger mb-0" id="errimage"></p>
-            </div>
+               </div>
 
               <div class="form-group">
                 <label for="">Title **</label>
@@ -93,6 +93,7 @@
                 <select class="form-control" name="status" aria-label=".form-select-lg example">
                 <option value="1" <?php echo ($egovernan->status == 1) ? 'selected' : ''; ?>>Active</option>
                   <option value="0" <?php echo ($egovernan->status == 0) ? 'selected' : ''; ?>>Deactive</option>
+                  <p id="errstatus" class="mb-0 text-danger em"></p>
                 </select>
 
                

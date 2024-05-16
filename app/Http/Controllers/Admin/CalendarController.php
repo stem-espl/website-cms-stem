@@ -32,10 +32,11 @@ class CalendarController extends Controller
     public function store(Request $request)
     {
         $rules = [
+            'language_id' => 'required',
             'title' => 'required|max:255',
             'datetimes' => 'required',
             'img' =>   'required',
-            'description' =>'required',
+            'description' =>'required'
         ];
         
         $validator = Validator::make($request->all(), $rules);
@@ -87,9 +88,10 @@ class CalendarController extends Controller
             $extImage = pathinfo($image, PATHINFO_EXTENSION);
 
             $rules = [
+
                 'title' => 'required|max:255',
                 'date' => 'required',
-                'description' =>'required',
+                'description' =>'required'
             ];
 
             if ($request->has('image')) {

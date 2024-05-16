@@ -72,8 +72,7 @@ class GalleryController extends Controller
     $rules = [
       'language_id' => 'required',
       'file' => 'required',
-      // 'title' => 'required|max:255',
-      // 'serial_number' => 'required|integer',
+       'gallery_category_id' =>'required'
     ];
 
     $validator = Validator::make($request->all(), $rules, $messages);
@@ -110,8 +109,7 @@ class GalleryController extends Controller
     $gallery->language_id = $request->language_id;
     $gallery->title = isset($request->title) ? $request->title : '';
     $gallery->serial_number = 1;
-    $gallery->category_id = $request->category_id;
-
+    $gallery->category_id = $request->gallery_category_id;
     $gallery->save();
 
     Session::flash('success', 'Image added successfully!');

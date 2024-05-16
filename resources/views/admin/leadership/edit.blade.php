@@ -94,7 +94,7 @@
               <div class="form-group">
                 <label for="">Post **</label>
                 <input type="text" class="form-control" name="postname" value="{{$leadership->post}}" placeholder="Enter Post Name">
-                <p id="errpost" class="mb-0 text-danger em"></p>
+                <p id="errpostname" class="mb-0 text-danger em"></p>
               </div>
 
               <div class="form-group">

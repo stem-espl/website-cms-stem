@@ -160,7 +160,7 @@ else
           <div class="form-group">
             <label for="">Image ** </label>
             <input class="form-control" type="file" id="file" name="file">
-            <p id="errcategory_id" class="mb-0 text-danger em"></p>
+            <p id="errfile" class="mb-0 text-danger em"></p>
           </div>
 
           <div class="form-group">

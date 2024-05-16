@@ -155,7 +155,7 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
           <div class="form-group">
             <label for="">Image ** </label>
             <input class="form-control" type="file" id="file" name="file">
-            <p id="errcategory_id" class="mb-0 text-danger em"></p>
+            <p id="errfile" class="mb-0 text-danger em"></p>
           </div>
 
           <div class="form-group">
@@ -170,10 +170,10 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
           </div>
           <div class="form-group {{ $categoryInfo->gallery_category_status == 0 ? 'd-none' : '' }}">
             <label for="">Category **</label>
-            <select name="category_id" class="form-control" id="lead_category_id"  disabled>
+            <select name="lead_category_id" class="form-control" id="lead_category_id"  disabled>
               <option selected disabled>Select a category</option>
-            </select>
-            <p id="errcategory_id" class="mb-0 text-danger em"></p>
+            </select> 
+            <p id="errlead_category_id" class="mb-0 text-danger em"></p>
           </div>
           <div class="form-group">
             <label for="">Title **</label>
@@ -183,7 +183,7 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
           <div class="form-group">
             <label for="">Post **</label>
             <input type="text" class="form-control" name="postname" placeholder="Enter Post Name" value="">
-            <p id="errpost" class="mb-0 text-danger em"></p>
+            <p id="errpostname" class="mb-0 text-danger em"></p>
           </div>
           <div class="form-group">
             <label for="">Status*</label>
