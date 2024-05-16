@@ -5,7 +5,7 @@
 			<div class="row">
 				<div class="col-xl-12 text-center">
 					<div class="page-title-content">
-						<h3 class="title text-white circular-title">{{__('common.Circulars')}}</h3>
+						<h3 class="title text-white circular-title">{{$variable}}</h3>
 						<nav aria-label="breadcrumb">
 							<ol class="breadcrumb">
 								<li class="breadcrumb-item"><a href="stem.html">{{__('common.Home')}}</a></li>
@@ -25,7 +25,7 @@
 					<thead class="back_color">
 						<tr>
 							<th>{{__('common.Sr No')}}</th>
-							<th>{{__('common.Circulars')}}</th>	
+							<th>{{$variable}}</th>	
 							<th>{{__('common.Download')}}</th>
 							
 						</tr>
