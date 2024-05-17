@@ -23,21 +23,34 @@ class LeadershipController extends Controller
     // $language = Language::where('code', $request->language)->first();
     $lang_code = isset($request->language) ?  $request->language : 'en';
     $language = Language::where('code', $lang_code)->first();
-
-    $categories = LeadCategory::where('language_id', $language->id)
+    
+    if($lang_code == 'mr')
+    {
+      $categories = LeadCategory::select('id','name','status','name_mr','name_mr as title', 'slug')
       ->orderBy('id', 'desc')
       ->paginate(10);
+    }else{
+      $categories = LeadCategory::select('id','name','status','name_mr','name as title', 'slug')
+      ->orderBy('id', 'desc')
+      ->paginate(10);
+    }
+
+    // $categories = LeadCategory::where('language_id', $language->id)
+    //   ->orderBy('id', 'desc')
+    //   ->paginate(10);
 
     return view('admin.leadership.categories', compact('categories'));
   }
 
   public function store(Request $request)
   {
+
       $rules = [
-          'language_id' => 'required',
+   
           'name' => 'required|unique:lead_categories,name',
+          'name_mr' => 'required|unique:lead_categories,name_mr',
           'status' => 'required',
-        //   'serial_number' => 'required'
+       
       ];
   
       $validator = Validator::make($request->all(), $rules);
@@ -50,10 +63,10 @@ class LeadershipController extends Controller
     
       $ramdam=rand(10,10042);
       $lead_category = new LeadCategory;
-      $lead_category->language_id = $request->language_id;
+      $lead_category->language_id = isset($request->language_id) ? $request->language_id : Null;
       $lead_category->name = $request->name;
+      $lead_category->name_mr = $request->name_mr;
       $lead_category->status = $request->status;
-    //   $lead_category->serial_number = $request->serial_number;
       $lead_category->slug =Str::slug($request->name.'-'.rand(10,10042), '-');
       $lead_category->save();
   
@@ -64,12 +77,14 @@ class LeadershipController extends Controller
   public function update(Request $request)
   {
     // dd($request->all());
-    $event = LeadCategory::findOrFail($request->categoryId);
+   
     
     $rules = [
       'name' => 'required',
+      'name_mr' => 'required',
       'status' => 'required',
-    //   'serial_number' => 'required'
+  
+   
     ];
 
     $validator = Validator::make($request->all(), $rules);
@@ -80,11 +95,14 @@ class LeadershipController extends Controller
       return response()->json($validator->errors());
     }
 
-   $event= LeadCategory::findOrFail($request->categoryId);
-    $event->name = $request->name;
-  
-    $event->status = $request->status;
-    $event->save();
+    $lead_category =  LeadCategory::findOrFail($request->categoryId);
+    $lead_category->name = $request->name;
+    $lead_category->name_mr = $request->name_mr;
+    $lead_category->status = $request->status;
+    // $lead_category->slug =Str::slug($request->name.'-'.rand(10,10042), '-');
+    $lead_category->save();
+
+    // LeadCategory::findOrFail($request->categoryId)->update($request->all());
 
     Session::flash('success', 'Leadership category updated successfully.');
 
@@ -145,7 +163,22 @@ public function leadIndex(Request $request)
   $lang = Language::where('code', $lang_code)->first();
 
   $lang_id = $lang->id;
-  $data['leaderships'] = Leadership::where('language_id', $lang_id)->orderBy('id', 'DESC')->get();
+  // $data['leaderships'] = Leadership::orderBy('id', 'DESC')->get();
+
+  if($lang_code == 'mr')
+  {
+    $data['leaderships'] = Leadership::select('id','name','status','post','image','name_mr','name_mr as title')
+    ->orderBy('id', 'desc')
+    ->paginate(10);
+    
+    $data['lead_cat'] = LeadCategory::select('id','name_mr as title')->where('status',1)->get();
+  }else{
+    $data['leaderships'] = Leadership::select('id','name','status','image','name_mr','name as title')
+    ->orderBy('id', 'desc')
+    ->paginate(10);
+
+    $data['lead_cat'] = LeadCategory::select('id','name as title')->where('status',1)->get();
+  }
 
 
   $data['lang_id'] = $lang_id;
@@ -155,24 +188,35 @@ public function leadIndex(Request $request)
   return view('admin.leadership.index', $data);
 }
 
-public function getLeadCategories(Request $request)
+public function getCategories($langId)
 {
-    // dd($request->all());
-    $langId = $request->langId;
-  $lead_categories = LeadCategory::where('language_id', $langId)
-    ->where('status', 1)
-    ->get();
+  $lang = Language::where('id', $langId)->first();
+  $lang_code = isset($lang->code) ? $lang->code : 'en';
+  
+
+    if($lang_code == 'mr')
+    {
+      $lead_categories=LeadCategory::select('id','name_mr as name')->where('status',1)->get();
+    }else{
+      $lead_categories=LeadCategory::select('id','name')->where('status',1)->get();
+    }
 // dd($lead_categories);
   return $lead_categories;
 }
 
 public function leadEdit(Request $request, $id)
 {
-  $lang = Language::where('code', $request->language)->first();
+  // $lang = Language::where('code', $request->language)->first();
 
-  $data['categories'] = LeadCategory::where('language_id', $lang->id)
-    ->where('status', 1)
-    ->get();
+  $lang_code = isset($request->language) ? $request->language : 'en';
+  
+
+  if($lang_code == 'mr')
+  {
+    $data['categories'] =LeadCategory::select('id','name_mr as name')->get();
+  }else{
+    $data['categories'] =LeadCategory::select('id','name')->get();
+  }
 
   $data['leadership'] = Leadership::findOrFail($id);
   // dd($data['leadership']);
@@ -190,15 +234,20 @@ public function leadStore(Request $request)
   $image = $request->file;
   $allowedExts = array('jpg', 'png', 'jpeg', 'svg');
   $messages = [
-    'language_id.required' => 'The language field is required',
+    'title.required' => 'The title in english is required',
+    'title_mr.required' => 'The title in marathi is required',
+    'postname.required' => 'The post name in english is required',
+    'postname_mr.required' => 'The post name in marathi is required',
     'file.required' => 'The Image field is required',
   ];
 
   $rules = [
-    'language_id' => 'required',
+    // 'language_id' => 'required',
     'lead_category_id' => 'required',
     'title' => 'required|max:255',
     'postname' => 'required',
+    'title_mr' => 'required|max:255',
+    'postname_mr' => 'required',
     'file' => 'required',
     'status' => 'required',
     // 'serial_number' => 'required|integer',/
@@ -235,11 +284,13 @@ public function leadStore(Request $request)
     }
 }
 
-  $leadership->language_id = $request->language_id;
+  $leadership->language_id = isset($request->language_id) ? $request->language_id : null;
   $leadership->name = $request->title;
+  $leadership->name_mr = $request->title_mr;
 //   $leadership->serial_number = $request->serial_number;
   $leadership->category_id = $request->lead_category_id;
   $leadership->post = $request->postname;
+  $leadership->post_mr = $request->postname_mr;
   $leadership->status = $request->status;
   $leadership->save();
 
@@ -251,8 +302,8 @@ public function leadStore(Request $request)
 public function leadupdate(Request $request)
 {
   // dd($request->all());
-    $event = Leadership::find($request->leadership_id);
-    if(!empty($event))
+    $leadership = Leadership::find($request->leadership_id);
+    if(!empty($leadership))
     {
         $image = $request->image;
         $allowedExts = array('jpg', 'png', 'jpeg', 'svg');
@@ -261,6 +312,8 @@ public function leadupdate(Request $request)
         $rules = [
           'title' => 'required',
           'postname' => 'required',
+          'title_mr' => 'required|max:255',
+          'postname_mr' => 'required',
         ];
 
         if ($request->has('image')) {
@@ -286,7 +339,7 @@ public function leadupdate(Request $request)
             //image resize logic
             $new_image = Image::make($image->getRealPath());
             if($new_image != null){
-                @unlink('assets/stem/leadership/' . $event->image);
+                @unlink('assets/stem/leadership/' . $leadership->image);
                 $filename = uniqid() .'.'. $request->file('image')->extension();
                 $image_width= $new_image->width();
                 $image_height= $new_image->height();
@@ -294,15 +347,17 @@ public function leadupdate(Request $request)
                 $new_height= 480;
                 $new_image->resize($new_width, $new_height);         
                 $new_image->save(public_path('assets/stem/leadership/' .$filename));
-                $event->image = $filename;
+                $leadership->image = $filename;
             }
         }
         
-        $event->name = $request->title;
-        $event->post = $request->postname;
-        $event->category_id = $request->category_id;
-        $event->status = $request->status;
-        $event->save();
+        $leadership->name = $request->title;
+        $leadership->name_mr = $request->title_mr;
+        $leadership->post = $request->postname;
+        $leadership->category_id = $request->category_id;
+        $leadership->status = $request->status;
+        $leadership->post_mr = $request->postname_mr;
+        $leadership->save();
     
         Session::flash('success', 'Leadership updated successfully!');
         

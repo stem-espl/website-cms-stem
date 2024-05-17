@@ -1,7 +1,14 @@
 @extends('admin.layout')
 
 @php
-$selLang = \App\Models\Language::where('code', request()->input('language'))->first();
+if(!empty(request()->input('language')))
+  {
+    $selLang = \App\Models\Language::where('code', request()->input('language'))->first();
+  }else{
+    $selLang = \App\Models\Language::where('code', 'en')->first();
+  }
+  
+
 @endphp
 @if(!empty($selLang) && $selLang->rtl == 1)
 @section('styles')
@@ -20,6 +27,7 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
 </style>
 @endsection
 @endif
+
 
 @section('content')
 <div class="page-header">
@@ -52,7 +60,7 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
               onchange="window.location='{{url()->current() . '?language='}}'+this.value">
               <option value="" selected disabled>Select a Language</option>
               @foreach ($langs as $lang)
-              <option value="{{$lang->code}}" {{$lang->code == request()->input('language') ? 'selected' : ''}}>
+              <option value="{{$lang->code}}" {{$lang->code == $selLang->code ? 'selected' : ''}}>
                 {{$lang->name}}</option>
               @endforeach
             </select>
@@ -76,9 +84,6 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
               <table class="table table-striped mt-3" id="basic-datatables">
                 <thead>
                   <tr>
-                    <th scope="col">
-                      <input type="checkbox" class="bulk-check" data-val="all">
-                    </th>
                     <th scope="col">Image</th>
                     <th scope="col">Status</th>
                     <th scope="col">Title</th>
@@ -89,9 +94,6 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
                 <tbody>
                   @foreach ($leaderships as $key => $lead)
                   <tr>
-                    <td>
-                      <input type="checkbox" class="bulk-check" data-val="{{$lead->id}}">
-                    </td>
                     <td><img src="{{asset('assets/stem/leadership/'.$lead->image)}}" alt="" width="80"></td>
                     <td>
                             @if ($lead->status == 1)
@@ -101,12 +103,13 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
                             @endif
                       </td>
                     <td>
-                      {{strlen($lead->title) > 70 ? mb_substr($lead->name, 0, 70, 'UTF-8') . '...' : $lead->name}}
+                      {{strlen($lead->title) > 70 ? mb_substr($lead->title, 0, 70, 'UTF-8') . '...' : $lead->title}}
+                      
                     </td>
                     
                     <td>
                       <a class="btn btn-secondary btn-sm"
-                        href="{{route('admin.leadership.edit', $lead->id) . '?language=' . request()->input('language')}}">
+                        href="{{route('admin.leadership.edit', $lead->id) . '?language=' . $selLang->code}}">
                         <span class="btn-label">
                           <i class="fas fa-edit"></i>
                         </span>
@@ -158,7 +161,7 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
             <p id="errfile" class="mb-0 text-danger em"></p>
           </div>
 
-          <div class="form-group">
+          <div class="form-group d-none">
             <label for="">Language **</label>
             <select name="language_id" class="form-control">
               <option value="" selected disabled>Select a language</option>
@@ -168,22 +171,35 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
             </select>
             <p id="errlanguage_id" class="mb-0 text-danger em"></p>
           </div>
-          <div class="form-group {{ $categoryInfo->gallery_category_status == 0 ? 'd-none' : '' }}">
+          <div class="form-group">
             <label for="">Category **</label>
-            <select name="lead_category_id" class="form-control" id="lead_category_id"  disabled>
-              <option selected disabled>Select a category</option>
+            <select name="lead_category_id" class="form-control" id="lead_category_id" >
+              <option selected >Select a category</option>
+              @foreach($lead_cat as $lead_val)
+              <option value="{{$lead_val->id}}" >{{$lead_val->title}}</option>
+              @endforeach
             </select> 
             <p id="errlead_category_id" class="mb-0 text-danger em"></p>
           </div>
           <div class="form-group">
             <label for="">Title **</label>
-            <input type="text" class="form-control" name="title" placeholder="Enter title" value="">
+            <input type="text" class="form-control" name="title" placeholder="Enter title in English" value="">
             <p id="errtitle" class="mb-0 text-danger em"></p>
           </div>
           <div class="form-group">
-            <label for="">Post **</label>
-            <input type="text" class="form-control" name="postname" placeholder="Enter Post Name" value="">
+            <label for="">Title in Marathi**</label>
+            <input type="text" class="form-control" name="title_mr" placeholder="Enter title in Marathi" value="">
+            <p id="errtitle_mr" class="mb-0 text-danger em"></p>
+          </div>
+          <div class="form-group">
+            <label for="">Post in English**</label>
+            <input type="text" class="form-control" name="postname" placeholder="Enter Post Name in English" value="">
             <p id="errpostname" class="mb-0 text-danger em"></p>
+          </div>
+          <div class="form-group">
+            <label for="">Post in Marathi**</label>
+            <input type="text" class="form-control" name="postname_mr" placeholder="Enter Post Name in Marathi" value="">
+            <p id="errpostname_mr" class="mb-0 text-danger em"></p>
           </div>
           <div class="form-group">
             <label for="">Status*</label>
@@ -228,34 +244,35 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
 @endsection
 
 @section('scripts')
-<script>
-  $(document).ready(function() {
-    $("select[name='language_id']").on('change', function() {
-      $("#lead_category_id").removeAttr('disabled');
-         var id = $(this).attr('id');
-          var langId = $(this).val();
-          // alert(langId);
-          $.ajax({
-            method: 'GET',
-            url: '{{ route('get_leadcategory') }}',
-                data: { langId: langId , _token: '{{ csrf_token() }}' },
-            
-              success: function( lead_categories ) {
-                var options = "";
-                // let options = "<option value="" disabled selected>Select a category</option>";
-                $.each(lead_categories, function(index, category) {
-                    options += "<option value='" + category.id + "'>" + category.name + "</option>";
-                });
-                // Create new dropdown element with generated options
-                // var newDropdown = $("<select class ='form-controle'>").attr("id", "lead_category_id").html(options);
-                // Replace existing dropdown with new one
-                // $("#lead_category_id").replaceWith(newDropdown);
-                $("#lead_category_id").html(options);
-          
-              }
-        });
-      });
+ <script>
+ 
 
-  });
+
+  $(document).ready(function() {
+    $("#fileInput1").on('change', function() {
+        preview.src=URL.createObjectURL(event.target.files[0]);
+    });
+    
+   
+      // $("#lead_category_id").removeAttr('disabled');
+
+      // let langId = "{{$selLang->id}}";
+      // let url = "{{url('/')}}/admin/lead/" + langId + "/get_categories";
+
+      // $.get(url, function(data) {
+      //   let options = `<option value="" disabled selected>Select a category</option>`;
+
+      //   if (data.length == 0) {
+      //     options += `<option value="" disabled>${'No Category Exists'}</option>`;
+      //   } else {
+      //     for (let i = 0; i < data.length; i++) {
+      //       options +=`<option value="${data[i].id}">${data[i].name}</option>`;
+      //     }
+      //   }
+
+      //   $("#lead_category_id").html(options);
+      // })
+     
+    });
 </script>
 @endsection

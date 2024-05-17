@@ -87,18 +87,28 @@
                 <p id="eerrcategory_id" class="mb-0 text-danger em"></p>
               </div>
               <div class="form-group">
-                <label for="">Title **</label>
-                <input type="text" class="form-control" name="title" value="{{$leadership->name}}" placeholder="Enter title">
+                <label for="">Title in English**</label>
+                <input type="text" class="form-control" name="title" value="{{$leadership->name}}" placeholder="Enter title in English">
                 <p id="errtitle" class="mb-0 text-danger em"></p>
               </div>
               <div class="form-group">
-                <label for="">Post **</label>
-                <input type="text" class="form-control" name="postname" value="{{$leadership->post}}" placeholder="Enter Post Name">
+                <label for="">Title in Marathi**</label>
+                <input type="text" class="form-control" name="title_mr" value="{{$leadership->name_mr}}" placeholder="Enter title in Marathi">
+                <p id="errtitle_mr" class="mb-0 text-danger em"></p>
+              </div>
+              <div class="form-group">
+                <label for="">Post in English**</label>
+                <input type="text" class="form-control" name="postname" value="{{$leadership->post}}" placeholder="Enter Post Name in English">
                 <p id="errpostname" class="mb-0 text-danger em"></p>
+              </div>
+              <div class="form-group">
+                <label for="">Post in Marathi**</label>
+                <input type="text" class="form-control" name="postname_mr" value="{{$leadership->post_mr}}" placeholder="Enter Post Name in Marathi">
+                <p id="errpostname_mr" class="mb-0 text-danger em"></p>
               </div>
 
               <div class="form-group">
-                <label for="">Category Status*</label>
+                <label for="">Status*</label>
                 <select name="status" id="instatus" class="form-control">
                
                   <option disabled>Select a Status</option>

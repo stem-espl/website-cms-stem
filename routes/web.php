@@ -656,9 +656,9 @@ use app\Http\Controllers\Front\StemController;
 			Route::post('/leadership_category/delete', 'admin\LeadershipController@delete')->name('admin.leadership_category.delete')->middleware('can:categories-leadership'); 
 			Route::post('/leadership_category/bulk_delete', 'admin\LeadershipController@bulkdelete')->name('admin.leadership_category.bulk_delete')->middleware('can:categories-leadership'); 
 
-			// Admin Leadership Routes 
+			// Admin Leadership Routes /gallery/{langId}/get_categories
 			Route::get('/leadership', 'admin\leadershipcontroller@leadIndex')->name('admin.leadership.index')->middleware('can:leadership');  
-			Route::get('/leadership/get_leadcategories', 'Admin\LeadershipController@getLeadCategories')->name('get_leadcategory')->middleware('can:leadership');  
+			Route::get('/leadership/{langId}/get_categories', 'Admin\LeadershipController@getCategories')->name('get_leadcategory')->middleware('can:leadership');  
 			Route::post('/leadership/store', 'admin\LeadershipController@leadstore')->name('admin.leadership.store')->middleware('can:leadership');  
 			Route::get('/leadership/{id}/edit', 'admin\LeadershipController@leadEdit')->name('admin.leadership.edit')->middleware('can:leadership'); 
 			Route::post('/leadership/update', 'admin\LeadershipController@leadupdate')->name('admin.leadership.update')->middleware('can:leadership'); 

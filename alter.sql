@@ -117,6 +117,13 @@ ALTER TABLE `galleries` CHANGE `language_id` `language_id` INT(11) NULL DEFAULT 
 ALTER TABLE `gallery_categories` ADD `name_mr` VARCHAR(255) NULL DEFAULT NULL AFTER `name`;
 ALTER TABLE `gallery_categories` CHANGE `language_id` `language_id` BIGINT(20) UNSIGNED NULL DEFAULT NULL;
 
+---date 17-05-2024
+ALTER TABLE `lead_categories` ADD `name_mr` VARCHAR(255) NULL DEFAULT NULL AFTER `name`;
+ALTER TABLE `lead_categories` CHANGE `language_id` `language_id` INT(11) NULL DEFAULT NULL;
+ALTER TABLE `leadership` ADD `name_mr` VARCHAR(255) NULL DEFAULT NULL AFTER `name`;
+ALTER TABLE `leadership` ADD `post_mr` VARCHAR(255) NULL DEFAULT NULL AFTER `post`;
+ALTER TABLE `leadership` CHANGE `language_id` `language_id` INT(11) NULL DEFAULT NULL;
+
 
                                                                                                                                
                                                                                                                               
