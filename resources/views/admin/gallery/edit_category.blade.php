@@ -14,9 +14,15 @@
           <input type="hidden" name="categoryId" id="inid">
 
           <div class="form-group">
-            <label for="">Category Name*</label>
-            <input type="text" id="inname" class="form-control" name="name" placeholder="Enter Category Name">
+            <label for="">Category Name in English*</label>
+            <input type="text" id="inname" class="form-control" name="name" placeholder="Enter Category Name in English">
             <p id="eerrname" class="mt-1 mb-0 text-danger em"></p>
+          </div>
+
+          <div class="form-group">
+            <label for="">Category Name in Marathi*</label>
+            <input type="text" id="inname_mr" class="form-control" name="name_mr" placeholder="Enter Category Name in Marathi">
+            <p id="eerrname_mr" class="mt-1 mb-0 text-danger em"></p>
           </div>
 
           <div class="form-group">

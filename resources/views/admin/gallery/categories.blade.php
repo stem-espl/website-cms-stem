@@ -106,7 +106,7 @@
                             <input type="checkbox" class="bulk-check" data-val="{{ $category->id }}">
                           </td>
                           <td>
-                            {{ strlen($category->name) > 100 ? convertUtf8(substr($category->name, 0, 100)) . '...' : convertUtf8($category->name) }}
+                            {{ strlen($category->title) > 100 ? convertUtf8(substr($category->title, 0, 100)) . '...' : convertUtf8($category->title) }}
                           </td>
                           <td>
                             @if ($category->status == 1)
@@ -120,7 +120,7 @@
                             {{$category->slug}}
                           </td>
                           <td>
-                            <a class="btn btn-secondary btn-sm mr-1 editbtn" href="javascript:void(0)" data-toggle="modal" data-target="#editModal" data-id="{{ $category->id }}" data-name="{{ $category->name }}" data-status="{{ $category->status }}" data-serial_number="{{ $category->serial_number }}">
+                            <a class="btn btn-secondary btn-sm mr-1 editbtn" href="javascript:void(0)" data-toggle="modal" data-target="#editModal" data-id="{{ $category->id }}" data-name="{{ $category->name }}" data-name_mr="{{ $category->name_mr }}" data-status="{{ $category->status }}" data-serial_number="{{ $category->serial_number }}">
                               <span class="btn-label">
                                 <i class="fas fa-edit"></i>
                               </span>
