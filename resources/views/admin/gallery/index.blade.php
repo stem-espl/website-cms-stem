@@ -1,7 +1,14 @@
 @extends('admin.layout')
 
 @php
-$selLang = \App\Models\Language::where('code', request()->input('language'))->first();
+  if(!empty(request()->input('language')))
+  {
+    $selLang = \App\Models\Language::where('code', request()->input('language'))->first();
+  }else{
+    $selLang = \App\Models\Language::where('code', 'en')->first();
+  }
+  
+
 @endphp
 @if(!empty($selLang) && $selLang->rtl == 1)
 @section('styles')
@@ -52,7 +59,7 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
               onchange="window.location='{{url()->current() . '?language='}}'+this.value">
               <option value="" selected disabled>Select a Language</option>
               @foreach ($langs as $lang)
-              <option value="{{$lang->code}}" {{$lang->code == request()->input('language') ? 'selected' : ''}}>
+              <option value="{{$lang->code}}" {{$lang->code == $selLang->code ? 'selected' : ''}}>
                 {{$lang->name}}</option>
               @endforeach
             </select>
@@ -150,7 +157,7 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
             <p id="errfile" class="mb-0 text-danger em"></p>
           </div>
 
-          <div class="form-group">
+          <div class="form-group d-none">
             <label for="">Language **</label>
             <select name="language_id" class="form-control">
               <option value="" selected disabled>Select a language</option>
@@ -162,8 +169,8 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
           </div>
           <div class="form-group {{ $categoryInfo->gallery_category_status == 0 ? 'd-none' : '' }}">
             <label for="">Category **</label>
-            <select name="gallery_category_id" id="gallery_category_id" class="form-control" disabled>
-              <option selected disabled>Select a category</option>
+            <select name="gallery_category_id" id="gallery_category_id" class="form-control">
+              <option selected ></option>
             </select>
             <p id="errgallery_category_id" class="mb-0 text-danger em"></p>
           </div>
@@ -214,10 +221,10 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
         preview.src=URL.createObjectURL(event.target.files[0]);
     });
     
-    $("select[name='language_id']").on('change', function() {
+   
       $("#gallery_category_id").removeAttr('disabled');
 
-      let langId = $(this).val();
+      let langId = "{{$selLang->id}}";
       let url = "{{url('/')}}/admin/gallery/" + langId + "/get_categories";
 
       $.get(url, function(data) {
@@ -232,7 +239,7 @@ $selLang = \App\Models\Language::where('code', request()->input('language'))->fi
         }
 
         $("#gallery_category_id").html(options);
-      });
+     
     });
 
     // make input fields RTL

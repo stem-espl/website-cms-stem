@@ -23,17 +23,24 @@ class GalleryController extends Controller
     $lang = Language::where('code', $lang_code)->first();
 
     $lang_id = $lang->id;
-    $data['galleries'] = Gallery::where('language_id', $lang_id)->orderBy('id', 'DESC')->get();
+    $data['galleries'] = Gallery::orderBy('id', 'DESC')->get();
 
     foreach($data['galleries'] as $val)
     {
-        $category=GalleryCategory::where('id',$val->category_id)->first();
+      if($lang_code == 'mr')
+      {
+        $category=GalleryCategory::select('id','name_mr as name')->where('id',$val->category_id)->first();
+      }else{
+        $category=GalleryCategory::select('id','name')->where('id',$val->category_id)->first();
+      }
+        
         $val->cat_name = isset($category->name) ? $category->name : '';
     }
 
     $data['lang_id'] = $lang_id;
 
     $data['categoryInfo'] = BasicExtra::first();
+    
 
     return view('admin.gallery.index', $data);
   }
@@ -41,8 +48,15 @@ class GalleryController extends Controller
   public function edit(Request $request, $id)
   {
     $lang = Language::where('code', $request->language)->first();
+    $lang_code = isset($lang->code) ? $lang->code : 'en';
+    if($lang_code == 'mr')
+    {
+      $data['categories']=GalleryCategory::select('id','name_mr as name')->get();
+    }else{
+      $data['categories']=GalleryCategory::select('id','name')->get();
+    }
 
-    $data['categories'] = GalleryCategory::all();
+
 
     $data['gallery'] = Gallery::findOrFail($id);
     $data['categoryInfo'] = BasicExtra::first();
@@ -52,10 +66,14 @@ class GalleryController extends Controller
 
   public function getCategories($langId)
   {
-    $gallery_categories = GalleryCategory::where('language_id', $langId)
-      ->where('status', 1)
-      ->get();
-
+    $lang = Language::where('id', $langId)->first();
+    $lang_code = isset($lang->code) ? $lang->code : 'en';
+    if($lang_code == 'mr')
+    {
+      $gallery_categories=GalleryCategory::select('id','name_mr as name')->where('status',1)->get();
+    }else{
+      $gallery_categories=GalleryCategory::select('id','name')->where('status',1)->get();
+    }
     return $gallery_categories;
   }
 
@@ -65,12 +83,11 @@ class GalleryController extends Controller
     $image = $request->file;
     $allowedExts = array('jpg', 'png', 'jpeg', 'svg');
     $messages = [
-      'language_id.required' => 'The language field is required',
+      // 'language_id.required' => 'The language field is required',
       'file.required' => 'The Image field is required',
     ];
-
     $rules = [
-      'language_id' => 'required',
+      // 'language_id' => 'required',
       'file' => 'required',
        'gallery_category_id' =>'required'
     ];
@@ -106,7 +123,7 @@ class GalleryController extends Controller
       }
   }
 
-    $gallery->language_id = $request->language_id;
+    $gallery->language_id = isset($request->language_id) ? $request->language_id : null;
     $gallery->title = isset($request->title) ? $request->title : '';
     $gallery->serial_number = 1;
     $gallery->category_id = $request->gallery_category_id;

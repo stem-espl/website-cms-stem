@@ -43,9 +43,18 @@ class GalleryCategoryController extends Controller
     $lang_code = isset($request->language) ?  $request->language : 'en';
     $language = Language::where('code', $lang_code)->first();
 
-    $categories = GalleryCategory::where('language_id', $language->id)
+    if($lang_code == 'mr')
+    {
+      $categories = GalleryCategory::select('id','name','status','serial_number','name_mr','name_mr as title', 'slug')
       ->orderBy('id', 'desc')
       ->paginate(10);
+    }else{
+      $categories = GalleryCategory::select('id','name','status','serial_number','name_mr','name as title', 'slug')
+      ->orderBy('id', 'desc')
+      ->paginate(10);
+    }
+
+    
 
     return view('admin.gallery.categories', compact('categories'));
   }
@@ -53,8 +62,9 @@ class GalleryCategoryController extends Controller
   public function store(Request $request)
   {
       $rules = [
-          'language_id' => 'required',
+          // 'language_id' => 'required',
           'name' => 'required|unique:gallery_categories,name',
+          'name_mr' => 'required|unique:gallery_categories,name_mr',
           'status' => 'required',
           // 'serial_number' => 'required'
       ];
@@ -69,8 +79,9 @@ class GalleryCategoryController extends Controller
     
       $ramdam=rand(10,10042);
       $gallerycategory = new GalleryCategory;
-      $gallerycategory->language_id = $request->language_id;
+      $gallerycategory->language_id = isset($request->language_id) ? $request->language_id : '';
       $gallerycategory->name = $request->name;
+      $gallerycategory->name_mr = $request->name_mr;
       $gallerycategory->status = $request->status;
       $gallerycategory->serial_number = 1;
       $gallerycategory->slug =Str::slug($request->name.'-'.rand(10,10042), '-');
@@ -84,6 +95,7 @@ class GalleryCategoryController extends Controller
   {
     $rules = [
       'name' => 'required',
+      'name_mr' => 'required',
       'status' => 'required',
       'serial_number' => 'required'
     ];

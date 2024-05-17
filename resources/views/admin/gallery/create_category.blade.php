@@ -11,7 +11,7 @@
       <div class="modal-body">
         <form id="ajaxForm" class="modal-form" action="{{ route('admin.gallery.store_category', ['language' => request()->input('language')]) }}" method="post">
           @csrf
-            <div class="form-group">
+            <div class="form-group d-none">
                 <label for="">Language *</label>
                 <select name="language_id" class="form-control">
                     <option value="" selected disabled>Select a Language</option>
@@ -23,9 +23,15 @@
             </div>
 
           <div class="form-group">
-            <label for="">Category Name*</label>
-            <input type="text" class="form-control" name="name" placeholder="Enter Category Name">
+            <label for="">Category Name in English*</label>
+            <input type="text" class="form-control" name="name" placeholder="Enter Category Name in English">
             <p id="errname" class="mt-1 mb-0 text-danger em"></p>
+          </div>
+
+          <div class="form-group">
+            <label for="">Category Name in Marathi*</label>
+            <input type="text" class="form-control" name="name_mr" placeholder="Enter Category Name in Marathi">
+            <p id="errname_mr" class="mt-1 mb-0 text-danger em"></p>
           </div>
 
           <div class="form-group">
