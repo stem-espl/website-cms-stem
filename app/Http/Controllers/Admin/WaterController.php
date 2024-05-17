@@ -18,26 +18,22 @@ use Image;
 class WaterController extends Controller
 {
     public function index(Request $request) {
-        // dd('hi');
         $lang_code = isset($request->language) ?  $request->language : 'en';
         $lang = Language::where('code', $lang_code)->first();
-
         $lang_id = $lang->id;
-        $data['teriffs'] = WaterTeriff::orderBy('id', 'DESC')->get();
-        // dd($data['profit']);
-    
+        $data['teriffs'] = WaterTeriff::where('language_id', $lang_id)->orderBy('id', 'DESC')->get();
         $data['lang_id'] = $lang_id;
-    
         $data['categoryInfo'] = BasicExtra::first();
         return view('admin.water.index',$data);
     }
 
     public function store(Request $request)
     {
- 
+        
       $rules = [
         'institution' => 'required|unique:water_teriff,institution,NULL,id,deleted_at,NULL',
         'amount' => 'required',
+        'language_id' => 'required',
       ];
   
       $validator = Validator::make($request->all(), $rules);
@@ -50,6 +46,7 @@ class WaterController extends Controller
       $teriff = new WaterTeriff;
       $teriff->institution = $request->institution;
       $teriff->water_tariff = $request->amount;
+      $teriff->language_id = $request->language_id;
       
       $teriff->save();
   
@@ -102,39 +99,33 @@ class WaterController extends Controller
     
     public function applyDate(Request $request)
     {
-      // dd($request->all());
+    
        $exhistFirst = TariffDate::all();
-       if(count($exhistFirst) > 0 && $request->status == '1')
-       {
-          $TariffDate = TariffDate::where('status', 1)->first();
-          
-          if(!empty( $TariffDate))
-          $TariffDate->delete();
-       
-          if($request->status==1)
-          {
-            $teriffdate = new TariffDate;
-            $teriffdate->tdate = isset($request->apply) ? $request->apply:Null;
-            $teriffdate->status = isset($request->status) ? $request->status:0;
-            $teriffdate->save();  
-          }
-          Session::flash('success', 'Water Tariff Date Record Updated successfully!');
-          return back();
-
-       }
-      else{
-            $teriffdate = new TariffDate;
-            $teriffdate->tdate = isset($request->apply) ? $request->apply:Null;
-            $teriffdate->status = isset($request->status) ? $request->status:0;
-            $teriffdate->save();
-            Session::flash('success', 'Water Tariff Date  Record Updated successfully!');
+        if(count($exhistFirst) > 0 && $request->status == '1')
+        {
+            $TariffDate = TariffDate::where('status', 1)->first();
+            if(!empty( $TariffDate))
+            $TariffDate->delete();  
+            if($request->status==1)
+            {
+              $teriffdate = new TariffDate;
+              $teriffdate->tdate = isset($request->apply) ? $request->apply:Null;
+              $teriffdate->status = isset($request->status) ? $request->status:0;
+              $teriffdate->save();  
+            }
+            Session::flash('success', 'Water Tariff Date Record Updated successfully!');
             return back();
+
         }
-          
+        else{
+              $teriffdate = new TariffDate;
+              $teriffdate->tdate = isset($request->apply) ? $request->apply:Null;
+              $teriffdate->status = isset($request->status) ? $request->status:0;
+              $teriffdate->save();
+              Session::flash('success', 'Water Tariff Date  Record Updated successfully!');
+              return back();
+          }
       
-        
-    
        }
     
- 
 }

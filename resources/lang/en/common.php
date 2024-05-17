@@ -62,6 +62,11 @@ return [
     'Title'=>'Title',
     'Date'=>'Date',
     'Description'=>'Description',
+    'Water Tariff And Charges'=>'Water Tariff And Charges',
+    'Sr.No'=>'Sr.No',
+    'Institution'=>'Institution',
+    'Water Rate Dt.'=>'Water Rate Dt.',
+    'From'=>'From',
 
     
 ];
