@@ -147,8 +147,8 @@ class StemController extends Controller
             $document = Document::select('id','document_category_id','name','files');
         }
         $document = $document->where('document_category_id',$category->id)
-                            ->where('status','1')
-                            ->get();
+                             ->where('status','1')
+                             ->get();
         $variable=$category->name;
         return view('front.department.circular',compact('document','variable'));
       }
@@ -179,6 +179,7 @@ class StemController extends Controller
         $lang_code = isset($currentLang->code) ?  $currentLang->code : 'en';
         $language = Language::where('code', $lang_code)->first();
         $data = WaterTeriff::get(); 
+        dd($data);
         $tdate = TariffDate::where('status',1)->first();
         $date = Carbon::parse($tdate->tdate)->format('d-m-Y');
         return view('front.stem.watertariff',compact('data','date'));
