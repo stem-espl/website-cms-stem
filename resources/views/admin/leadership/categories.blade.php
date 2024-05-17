@@ -1,7 +1,12 @@
 @extends('admin.layout')
 
 @php
-  $selLang = \App\Models\Language::where('code', request()->input('language'))->first();
+if(!empty(request()->input('language')))
+  {
+    $selLang = \App\Models\Language::where('code', request()->input('language'))->first();
+  }else{
+    $selLang = \App\Models\Language::where('code', 'en')->first();
+  }
 @endphp
 
 @if(!empty($selLang) && $selLang->rtl == 1)
@@ -60,7 +65,7 @@
                 <select name="language" class="form-control" onchange="window.location='{{url()->current() . '?language='}}' + this.value">
                   <option selected disabled>Select a Language</option>
                   @foreach ($langs as $lang)
-                    <option value="{{$lang->code}}" {{$lang->code == request()->input('language') ? 'selected' : ''}}>
+                    <option value="{{$lang->code}}" {{$lang->code == $selLang->code ? 'selected' : ''}}>
                       {{$lang->name}}
                     </option>
                   @endforeach
@@ -107,7 +112,7 @@
                             <input type="checkbox" class="bulk-check" data-val="{{ $category->id }}">
                           </td>
                           <td>
-                            {{ strlen($category->name) > 100 ? convertUtf8(substr($category->name, 0, 100)) . '...' : convertUtf8($category->name) }}
+                          {{ strlen($category->title) > 100 ? convertUtf8(substr($category->title, 0, 100)) . '...' : convertUtf8($category->title) }}
                           </td>
                           <td>
                             @if ($category->status == 1)
@@ -123,7 +128,7 @@
                             {{$category->slug}}
                           </td>
                           <td>
-                            <a class="btn btn-secondary btn-sm mr-1 editbtn" href="javascript:void(0)" data-toggle="modal" data-target="#editModal" data-id="{{ $category->id }}" data-name="{{ $category->name }}" data-status="{{ $category->status }}">
+                            <a class="btn btn-secondary btn-sm mr-1 editbtn" href="javascript:void(0)" data-toggle="modal" data-target="#editModal" data-target="#editModal" data-id="{{ $category->id }}" data-name="{{ $category->name }}" data-name_mr="{{ $category->name_mr }}" data-status="{{ $category->status }}">
                               <span class="btn-label">
                                 <i class="fas fa-edit"></i>
                               </span>

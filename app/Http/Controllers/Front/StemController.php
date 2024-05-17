@@ -80,11 +80,29 @@ class StemController extends Controller
          return view('front.stem.profit', $data);
       }
 
-      public function showLeadership($slug){
+      public function showLeadership($slug)
+      {
+        if (session()->has('lang')) {
+            $currentLang = Language::where('code', session()->get('lang'))->first();
+        } else {
+            $currentLang = Language::where('is_default', 1)->first();
+        }
+        
+        $lang_code = isset($currentLang->code) ? $currentLang->code : 'en';
 
-        $category = LeadCategory::where('slug', $slug)->firstOrFail();
-        $leadership = Leadership::where('category_id', $category->id)->where('status','1')->get();
-        $name=$category->name;
+        if($lang_code == 'mr')
+        {
+          $category = LeadCategory::where('slug', $slug)->select('id','name_mr as name')->firstOrFail();
+          $leadership = Leadership::select('id','name_mr as name','post_mr as post','image')->where('category_id', $category->id)
+                      ->where('status','1')->get();
+          $name=$category->name;
+        }else{
+          $category = LeadCategory::where('slug', $slug)->firstOrFail();
+          $leadership = Leadership::where('category_id', $category->id)->where('status','1')->get();
+          $name=$category->name;
+        }
+
+        
         return view('front.stem.executive',compact('leadership','name'));
       }
 
