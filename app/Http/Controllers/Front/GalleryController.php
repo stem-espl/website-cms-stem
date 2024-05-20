@@ -35,7 +35,7 @@ class GalleryController extends Controller
     }
       $gallery = Gallery::where('category_id', $category->id)->get();
      
-      return view('front.gallery.gallery',compact('gallery','name'));
+      return view('front.stem.gallery',compact('gallery','name'));
   }
 
 }
