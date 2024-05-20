@@ -213,4 +213,41 @@ class StemController extends Controller
         // dd($date);
         return view('front.stem.watertariff',compact('data','date'));
       }
+
+      public function egovernance(){
+
+        if (session()->has('lang')) {
+            $currentLang = Language::where('code', session()->get('lang'))->first();
+        } else {
+            $currentLang = Language::where('is_default', 1)->first();
+        }
+        $lang_code = isset($currentLang->code) ?  $currentLang->code : 'en';
+        $language = Language::where('code', $lang_code)->first();
+        $egovernance=EGovernanceModel::where('language_id', $language->id)->where('status',1)->get();
+        
+
+        return view('front.stem.egoverance',compact('egovernance'));
+      }
+
+      public function gallery($slug){
+    
+          if (session()->has('lang')) {
+              $currentLang = Language::where('code', session()->get('lang'))->first();
+          } else {
+              $currentLang = Language::where('is_default', 1)->first();
+          }  
+          
+          $lang_code = isset($currentLang->code) ? $currentLang->code : 'en';
+            if($lang_code == 'mr')
+          {
+              $category = GalleryCategory::select('id','gallery_categories.name_mr as name')->where('slug', $slug)->firstOrFail();
+              $name = $category->name;
+          }else{
+              $category = GalleryCategory::select('id','gallery_categories.name as name')->where('slug', $slug)->firstOrFail();
+              $name = $category->name;
+          }
+            $gallery = Gallery::where('category_id', $category->id)->get();
+           
+            return view('front.stem.gallery',compact('gallery','name'));
+        }
 }
