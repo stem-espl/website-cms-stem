@@ -243,10 +243,10 @@ class StemController extends Controller
           $lang_code = isset($currentLang->code) ? $currentLang->code : 'en';
             if($lang_code == 'mr')
           {
-              $category = GalleryCategory::select('id','gallery_categories.name_mr as name')->where('slug', $slug)->firstOrFail();
+              $category = GalleryCategory::select('id','gallery_categories.name_mr as name')->where('status','1')->where('slug', $slug)->firstOrFail();
               $name = $category->name;
           }else{
-              $category = GalleryCategory::select('id','gallery_categories.name as name')->where('slug', $slug)->firstOrFail();
+              $category = GalleryCategory::select('id','gallery_categories.name as name')->where('status','1')->where('slug', $slug)->firstOrFail();
               $name = $category->name;
           }
             $gallery = Gallery::where('category_id', $category->id)->get();
