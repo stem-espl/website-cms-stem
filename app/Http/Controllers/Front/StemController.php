@@ -159,19 +159,19 @@ class StemController extends Controller
         }
         $lang_code = isset($currentLang->code) ?  $currentLang->code : 'en';
 
-        $category = DocumentCategory::where('slug', $slug)->firstOrFail();
+        $category = DocumentCategory::where('slug', $slug)->where('status','1')->firstOrFail();
           
         if($lang_code == 'mr')
         {
             $document = Document::select('id','document_category_id','name_mr as name','files')
-            ->where('status','1')
+            ->where('status','1')->where('document_category_id', $category->id)
             ->get();
             $category = DocumentCategory::where('slug', $slug)->firstOrFail();
             
             $variable=$category->name_mr;
         }else{
             $document = Document::select('id','document_category_id','name','files')
-            ->where('status','1')
+            ->where('status','1')->where('document_category_id', $category->id)
             ->get();
             $category = DocumentCategory::where('slug', $slug)->firstOrFail();
             
