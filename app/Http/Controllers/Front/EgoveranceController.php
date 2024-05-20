@@ -27,7 +27,7 @@ class EgoveranceController extends Controller
     $egovernance=EGovernanceModel::where('language_id', $language->id)->where('status',1)->get();
     
 
-    return view('front.egoverance.egoverance',compact('egovernance'));
+    return view('front.stem.egoverance',compact('egovernance'));
   }
 
 }

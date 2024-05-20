@@ -150,7 +150,8 @@ class StemController extends Controller
                              ->where('status','1')
                              ->get();
         $variable=$category->name;
-        return view('front.department.circular',compact('document','variable'));
+
+        return view('front.stem.circular',compact('document','variable'));
       }
 
       public function history(){
@@ -162,7 +163,7 @@ class StemController extends Controller
         $lang_code = isset($currentLang->code) ?  $currentLang->code : 'en';
         $language = Language::where('code', $lang_code)->first();
         $historyData=History::where('language_id', $language->id)->where('status','1')->get();
-        return view('front.history.history',compact('historyData'));
+        return view('front.stem.history',compact('historyData'));
       }
 
       public function details( $id,Request $request){
