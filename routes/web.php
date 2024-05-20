@@ -32,7 +32,7 @@ use app\Http\Controllers\Front\StemController;
 			Route::get('/tenders', 'Front\StemController@tenders')->name('front.tenders'); 
 			Route::get('/budget/report', 'Front\StemController@profitReport')->name('budget.report'); 
 			Route::get('/news/img', 'Front\StemController@index')->name('front.stem.img'); 
-			Route::get('/galleries/{slug}', 'Front\GalleryController@index')->name('front.gallerys'); 
+			Route::get('/galleries/{slug}', 'Front\StemController@gallery')->name('front.gallerys'); 
 			Route::get('/documents/{slug}', 'Front\StemController@circular')->name('front.circular'); 
 			Route::get('/water/tariff', 'Front\StemController@waterTariff')->name('front.water.tariff'); 
 			Route::get('/history', 'Front\StemController@history')->name('front.stem.history'); 
@@ -40,7 +40,7 @@ use app\Http\Controllers\Front\StemController;
 			Route::get("/committee/{slug}", "Front\StemController@showLeadership")->name( "front.leadership"); 
 			Route::get('/news', 'Front\FrontendController@news')->name('front.news'); 
 			Route::get('/news/details/{id}', 'Front\StemController@details')->name('front.news.details'); 
-			Route::get('/egovernance', 'Front\EgoveranceController@index')->name('front.egoverance'); 
+			Route::get('/egovernance', 'Front\StemController@egovernance')->name('front.egoverance'); 
 			Route::group(["prefix" => "donation"], function () { 
 				Route::get( "/paystack/success", "Payment\causes\PaystackController@successPayment" )->name("donation.paystack.success"); 
 			}); 
