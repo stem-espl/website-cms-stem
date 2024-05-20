@@ -52,6 +52,16 @@ class LeadershipController extends Controller
           'status' => 'required',
        
       ];
+      $messages = [
+        'name.required' => 'The Catergory Name field in English is required',
+        'name_mr.required' => 'The Category Name field in Marathi is required'
+    ];
+  
+    $validator = Validator::make($request->all(), $rules, $messages);
+    if ($validator->fails()) {
+        $errmsgs = $validator->getMessageBag()->add('error', 'true');
+        return response()->json($validator->errors());
+    }
   
       $validator = Validator::make($request->all(), $rules);
   
@@ -76,24 +86,25 @@ class LeadershipController extends Controller
   }
   public function update(Request $request)
   {
-    // dd($request->all());
-   
     
-    $rules = [
-      'name' => 'required',
-      'name_mr' => 'required',
-      'status' => 'required',
-  
-   
-    ];
+        $rules = [
+          'name' => 'required',
+          'name_mr' => 'required',
+          'status' => 'required',
+      
+      
+        ];
 
-    $validator = Validator::make($request->all(), $rules);
+        $messages = [
+          'name.required' => 'The Category Name field in English is required',
+          'name_mr.required' => 'The Category Name field in Marathi is required'
+      ];
 
-    if ($validator->fails()) {
-      $validator->getMessageBag()->add('error', 'true');
-
-      return response()->json($validator->errors());
-    }
+      $validator = Validator::make($request->all(), $rules, $messages);
+      if ($validator->fails()) {
+          $errmsgs = $validator->getMessageBag()->add('error', 'true');
+          return response()->json($validator->errors());
+      }
 
     $lead_category =  LeadCategory::findOrFail($request->categoryId);
     $lead_category->name = $request->name;
