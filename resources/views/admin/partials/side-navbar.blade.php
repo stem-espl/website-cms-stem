@@ -283,7 +283,7 @@ $data = \App\Models\BasicExtra::first();
         {{-- history --}}
         <li class="nav-item">
           <a href="{{route('admin.water.index')}}">
-            <i class="fas fa-book-open"></i>
+            <i class="fas fa-pen-fancy"></i>
             <p>Water Tarrif</p>
           </a>
         </li>
