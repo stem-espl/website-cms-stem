@@ -166,22 +166,14 @@ class StemController extends Controller
             $document = Document::select('id','document_category_id','name_mr as name','files')
             ->where('status','1')->where('document_category_id', $category->id)
             ->get();
-            $category = DocumentCategory::where('slug', $slug)->firstOrFail();
-            
             $variable=$category->name_mr;
         }else{
             $document = Document::select('id','document_category_id','name','files')
             ->where('status','1')->where('document_category_id', $category->id)
             ->get();
-            $category = DocumentCategory::where('slug', $slug)->firstOrFail();
             
             $variable=$category->name;
         }
-        // $document = $document->where('document_category_id',$category->id)
-        //                      ->where('status','1')
-        //                      ->get();
-      
-
         return view('front.stem.circular',compact('document','variable'));
       }
 
