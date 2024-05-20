@@ -209,34 +209,35 @@ class DocumentController extends Controller
 
   public function category_update(Request $request)
   {
-    
-  	$messages = [
-            'name.required' => 'The name in english is required',
-            'name_mr.required' => 'The name in marathi is required',
-        ];
+      $messages = [
+          'name.required' => 'The name in English is required',
+          'name_mr.required' => 'The name in Marathi is required',
+      ];
+
+      $tcategory = DocumentCategory::findOrFail($request->dcategory_id);
+  
       $rules = [
-          'name' => 'required|max:255|unique:document_categories,name',
+          'name' => 'required|max:255|unique:document_categories,name,' . $tcategory->id,
           'name_mr' => 'required|max:255',
           'status' => 'required',
       ];
-
+  
       $validator = Validator::make($request->all(), $rules, $messages);
       if ($validator->fails()) {
           $errmsgs = $validator->getMessageBag()->add('error', 'true');
           return response()->json($validator->errors());
       }
-
-      $tcategory = DocumentCategory::findOrFail($request->dcategory_id);
-
+  
+      // Update the category with new values
       $tcategory->name = $request->name;
       $tcategory->name_mr = $request->name_mr;
       $tcategory->status = $request->status;
       $tcategory->save();
-
+  
       Session::flash('success', 'Document category updated successfully!');
       return "success";
   }
-
+  
   public function category_delete(Request $request)
   {
       $tcategory = DocumentCategory::findOrFail($request->tcategory_id);
