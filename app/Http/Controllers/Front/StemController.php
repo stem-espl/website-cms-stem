@@ -165,8 +165,8 @@ class StemController extends Controller
             $document = Document::select('id','document_category_id','name','files');
         }
         $document = $document->where('document_category_id',$category->id)
-                            ->where('status','1')
-                            ->get();
+                             ->where('status','1')
+                             ->get();
         $variable=$category->name;
         return view('front.department.circular',compact('document','variable'));
       }
