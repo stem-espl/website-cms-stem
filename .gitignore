@@ -28,3 +28,4 @@ yarn-error.log
 composer.lock
 public/assets/front/img/*
 public/assets/lfm/*
+public/assets/stem_old/*

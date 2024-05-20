@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="author" content="Novaly">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="Novaly Business Consulting HTML5 Template">
-    <meta name="keywords" content=" Business, Consulting, Marketing, Agency, Creative, multipage, template" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <title>{{$bs->website_title}} @yield('pagename')</title>
     <link href="{{asset('assets/stem/favicon/'.$bs->favicon)}}" rel="shortcut icon" type="image/png">
     <!-- Main Stylesheet -->
