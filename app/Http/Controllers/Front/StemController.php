@@ -92,12 +92,12 @@ class StemController extends Controller
 
         if($lang_code == 'mr')
         {
-          $category = LeadCategory::where('slug', $slug)->select('id','name_mr as name')->firstOrFail();
+          $category = LeadCategory::where('slug', $slug)->where('status','1')->select('id','name_mr as name')->firstOrFail();
           $leadership = Leadership::select('id','name_mr as name','post_mr as post','image')->where('category_id', $category->id)
                       ->where('status','1')->get();
           $name=$category->name;
         }else{
-          $category = LeadCategory::where('slug', $slug)->firstOrFail();
+          $category = LeadCategory::where('slug', $slug)->where('status','1')->firstOrFail();
           $leadership = Leadership::where('category_id', $category->id)->where('status','1')->get();
           $name=$category->name;
         }
@@ -160,14 +160,24 @@ class StemController extends Controller
           
         if($lang_code == 'mr')
         {
-            $document = Document::select('id','document_category_id','name_mr as name','files');
+            $document = Document::select('id','document_category_id','name_mr as name','files')
+            ->where('status','1')
+            ->get();
+            $category = DocumentCategory::where('slug', $slug)->firstOrFail();
+            
+            $variable=$category->name_mr;
         }else{
-            $document = Document::select('id','document_category_id','name','files');
+            $document = Document::select('id','document_category_id','name','files')
+            ->where('status','1')
+            ->get();
+            $category = DocumentCategory::where('slug', $slug)->firstOrFail();
+            
+            $variable=$category->name;
         }
-        $document = $document->where('document_category_id',$category->id)
-                             ->where('status','1')
-                             ->get();
-        $variable=$category->name;
+        // $document = $document->where('document_category_id',$category->id)
+        //                      ->where('status','1')
+        //                      ->get();
+      
 
         return view('front.stem.circular',compact('document','variable'));
       }
