@@ -657,7 +657,7 @@ use app\Http\Controllers\Front\StemController;
 			Route::post('/leadership_category/bulk_delete', 'Admin\LeadershipController@bulkdelete')->name('admin.leadership_category.bulk_delete')->middleware('can:categories-leadership'); 
 
 			// Admin Leadership Routes /gallery/{langId}/get_categories
-			Route::get('/leadership', 'Admin\leadershipcontroller@leadIndex')->name('admin.leadership.index')->middleware('can:leadership');  
+			Route::get('/leadership', 'Admin\LeadershipController@leadIndex')->name('admin.leadership.index')->middleware('can:leadership');  
 			Route::get('/leadership/{langId}/get_categories', 'Admin\LeadershipController@getCategories')->name('get_leadcategory')->middleware('can:leadership');  
 			Route::post('/leadership/store', 'Admin\LeadershipController@leadstore')->name('admin.leadership.store')->middleware('can:leadership');  
 			Route::get('/leadership/{id}/edit', 'Admin\LeadershipController@leadEdit')->name('admin.leadership.edit')->middleware('can:leadership'); 
