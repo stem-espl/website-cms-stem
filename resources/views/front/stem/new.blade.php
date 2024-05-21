@@ -17,7 +17,7 @@
     </div>
   </div>
 </section>
-<section class="feature-section pdt-60 pdb-60 bg-silver-light bg-no-repeat" data-background="images/bg/abs-bg4.png">
+<section class="feature-section pdt-60 pdb-60 bg-silver-light bg-no-repeat" data-background="{{asset('assets/stem/images/abs-bg4.png')}}">
   <div class="container">
     <div class="container-inner">
       <div class="row">

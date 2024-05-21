@@ -21,7 +21,7 @@
 	<!-- Page Title End -->
 	<!-- Price Section Start -->
 
-	<section class="feature-section pdt-110 pdb-130 bg-silver-light bg-no-repeat" data-background="images/bg/abs-bg5.png">
+	<section class="feature-section pdt-110 pdb-130 bg-silver-light bg-no-repeat" data-background="{{asset('assets/stem/images/abs-bg1.png')}}">
 		<div class="container">
 			<div class="row">
                 @foreach ($egovernance as $egover )
