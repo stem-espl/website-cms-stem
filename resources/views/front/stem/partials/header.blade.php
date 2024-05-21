@@ -41,7 +41,8 @@
                 <img id="logo-image" class="img-center img-width" src="{{asset('assets/stem/logo/'.$bs->logo)}}" alt="" loading="lazy">
                 </a>
                 <div class="title-full topText" >
-                  <p><span>{{$bs->website_heading}}</span></p>
+                  <p>{{$bs->website_heading}} <br>{{$bs->website_subheading}}</p>
+               
                 </div>
               </div>
               <div class="col-sm-12 col-md-5 col-lg-3 img_padding">

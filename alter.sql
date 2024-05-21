@@ -125,5 +125,9 @@ ALTER TABLE `leadership` ADD `post_mr` VARCHAR(255) NULL DEFAULT NULL AFTER `pos
 ALTER TABLE `leadership` CHANGE `language_id` `language_id` INT(11) NULL DEFAULT NULL;
 
 
+----date 21-05-2024
+ALTER TABLE `basic_settings` ADD `website_subheading` VARCHAR(255) NULL DEFAULT NULL AFTER `website_heading`;
+
+
                                                                                                                                
                                                                                                                               
