@@ -37,7 +37,7 @@
               <td width="50%">{{$row->title}}</td>
               <td width="20%">
                 @if(!empty($row->tender_link))
-                <a href="{{$row->tender_link}}">{{__('common.Click Here')}}</a>
+                <a href="{{$row->tender_link}}" target="_blank">{{__('common.Click Here')}}</a>
                 @else
                   NA
                 @endif
