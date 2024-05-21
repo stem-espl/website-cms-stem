@@ -39,6 +39,7 @@ class BasicController extends Controller
         $favicon = $request->favicon;
         $breadcrumb = $request->breadcrumb;
         $website_heading = $request->website_heading;
+        $website_subheading = $request->website_subheading;
 
         $allowedExts = array('jpg', 'png', 'jpeg', 'svg');
         $extLogo = pathinfo($logo, PATHINFO_EXTENSION);
@@ -53,6 +54,17 @@ class BasicController extends Controller
             $website_heading = $request->website_heading;
             foreach ($bss as $key => $bs) {
                 $bs->website_heading = $website_heading;
+                $bs->save();
+            }
+            
+        }
+
+        if(!empty($request->website_subheading))
+        {
+            $bss = BasicSetting::all();
+            $website_subheading = $request->website_subheading;
+            foreach ($bss as $key => $bs) {
+                $bs->website_subheading = $website_subheading;
                 $bs->save();
             }
             

@@ -44,6 +44,13 @@
                 <p class="mb-0 text-danger">{{$errors->first('website_heading')}}</p>
                 @endif
               </div>
+              <div class="form-group">
+                <label>Website Sub Heading **</label>
+                <input class="form-control" name="website_subheading" value="{{$abs->website_subheading}}" placeholder="Enter Sub Titlte">
+                @if ($errors->has('website_subheading'))
+                <p class="mb-0 text-danger">{{$errors->first('website_subheading')}}</p>
+                @endif
+              </div>
               {{-- Logo Part --}}
               <div class="form-group">
                 <label for="">Logo ** </label>
