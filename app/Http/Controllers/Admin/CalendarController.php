@@ -89,7 +89,6 @@ class CalendarController extends Controller
             $rules = [
 
                 'title' => 'required|max:255',
-                'date' => 'required',
                 'description' =>'required'
             ];
 
@@ -130,7 +129,7 @@ class CalendarController extends Controller
         
             $event->title = $request->title;
             $event->description = $request->description;
-            $event->date = $request->date;
+            $event->url = $request->url;
             $event->save();
         
             Session::flash('success', 'News updated successfully!');
