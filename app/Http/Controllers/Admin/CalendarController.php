@@ -34,7 +34,6 @@ class CalendarController extends Controller
         $rules = [
             'language_id' => 'required',
             'title' => 'required|max:255',
-            'datetimes' => 'required',
             'img' =>   'required',
             'description' =>'required'
         ];
@@ -70,7 +69,7 @@ class CalendarController extends Controller
         
         $calendar->language_id = $request->language_id;
         $calendar->title = $request->title;
-        $calendar->date = $request->datetimes;  
+        $calendar->url = $request->url;  
         $calendar->description = $request->description;    
         $calendar->created_by = auth()->id();
         $calendar->save();
@@ -90,7 +89,6 @@ class CalendarController extends Controller
             $rules = [
 
                 'title' => 'required|max:255',
-                'date' => 'required',
                 'description' =>'required'
             ];
 
@@ -131,7 +129,7 @@ class CalendarController extends Controller
         
             $event->title = $request->title;
             $event->description = $request->description;
-            $event->date = $request->date;
+            $event->url = $request->url;
             $event->save();
         
             Session::flash('success', 'News updated successfully!');

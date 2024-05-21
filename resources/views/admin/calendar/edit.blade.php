@@ -83,9 +83,9 @@
               </div>
 
               <div class="form-group">
-                <label for="">Date **</label>
-                <input type="date" class="form-control" name="date" value="{{$event->date}}" placeholder="Enter title">
-                <p id="errdate" class="mb-0 text-danger em"></p>
+                <label for="">Url **</label>
+                <input type="text" class="form-control" name="url" value="{{$event->url}}" placeholder="Enter title">
+             
               </div>
   
             <div class="form-group">
