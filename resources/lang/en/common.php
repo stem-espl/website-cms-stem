@@ -67,6 +67,7 @@ return [
     'Institution'=>'Institution',
     'Water Rate Dt.'=>'Water Rate Dt.',
     'From'=>'From',
+    'Read More'=>'Read More',
 
     
 ];

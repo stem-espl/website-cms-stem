@@ -66,5 +66,6 @@ return [
     'Institution'=>'संस्थान',
     'Water Rate Dt.'=>'जल दर दि.',
     'From'=>'पासून',
+    'Read More'=>'पुढे वाचा',
     
 ];

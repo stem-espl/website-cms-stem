@@ -252,15 +252,12 @@
                     <span class="entry-category">{{__('common.News')}}</span>
                   </div>
                 </div></a>
-                <div class="news-details">
+              
                   <div class="news-description mb-20">
                     <h4 class="the-title mrb-30">    <a href="{{ route('front.news.details', ['id' => $newsdata->id]) }}">{{$newsdata->title}}</a></h4>
-                    <div class="news-bottom-meta">
-                      <span class="entry-date mrr-20"><i class="far fa-calendar-alt mrr-10 text-primary-color"></i>{{$newsdata->date}}</span>
-                      <span class="entry-author"><i class="far fa-user mrr-10 text-primary-color"></i>Admin</span>
-                    </div>
+                 
                   </div>
-                </div>
+                
               </div>
             </div>
             @endforeach
