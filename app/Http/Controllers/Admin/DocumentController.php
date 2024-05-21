@@ -215,7 +215,7 @@ class DocumentController extends Controller
       ];
 
       $tcategory = DocumentCategory::findOrFail($request->dcategory_id);
-  
+
       $rules = [
           'name' => 'required|max:255|unique:document_categories,name,' . $tcategory->id,
           'name_mr' => 'required|max:255',

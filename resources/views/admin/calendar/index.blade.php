@@ -80,7 +80,7 @@
                           </th>
                           <th scope="col">Image</th>
                           <th scope="col">Title</th>
-                          <th scope="col">Date</th>
+                          <th scope="col">url</th>
                           <th scope="col">Description</th>
                           <th scope="col">News By</th>
                           <th scope="col">Actions</th>
@@ -94,13 +94,12 @@
                             </td>
                             <td><img src="{{asset('assets/stem/news')}}/{{$event->image}}" alt="" width="50"></td>
                             <td>{{convertUtf8(strlen($event->title)) > 30 ? convertUtf8(substr($event->title, 0, 30)) . '...' : convertUtf8($event->title)}}</td>
-                            <td>
-                              @php
-                              $start = strtotime($event->date);
-                              $start = date('Y-m-d H:i' ,$start);
-                              @endphp
-                              {{$start}}
-                            </td>
+              
+                            @if(!empty($event->url))
+                            <td>{{$event->url}}</td>
+                            @else
+                                <td>NA</td>
+                            @endif
                                  <td>
                                   {{ strip_tags($event->description) }}
                                   </td>
@@ -179,9 +178,8 @@
 
 
               <div class="form-group">
-                <label for="">Date **</label>
-                <input type="date" name="datetimes" class="form-control ltr" placeholder="Enter News Date" autocomplete="off"/>
-                <p id="errdatetimes" class="mb-0 text-danger em"></p>
+                <label for="">URL **</label>
+                <input type="text" name="url" class="form-control ltr" placeholder="Enter URL" autocomplete="off"/>
               </div>
 
               <div class="form-group">
