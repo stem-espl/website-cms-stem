@@ -245,4 +245,18 @@ class StemController extends Controller
            
             return view('front.stem.gallery',compact('gallery','name'));
         }
+
+
+        public function new(){
+          if (session()->has('lang')) {
+               $currentLang = Language::where('code', session()->get('lang'))->first();
+              } else {
+                $currentLang = Language::where('is_default', 1)->first();
+             }        
+           $lang_code = isset($currentLang->code) ?  $currentLang->code : 'en';
+           $language = Language::where('code', $lang_code)->first();
+          //  $data=News::where('language_id', $language->id)->get();
+           
+           return view('front.stem.new');
+        }
 }
