@@ -24,25 +24,25 @@
         <table id="example12" class="table table-bordered table-striped table-hover text-center">
           <thead>
             <tr>
-              <th width="15%">{{__('common.Tender Number')}}</th>
-              <th width="50%">{{__('common.Tender Information')}}</th>
-              <th width="20%">{{__('common.E-Tender link')}}</th>
-              <th width="15%">{{__('common.Tender File')}}</th>
+              <th>{{__('common.Tender Number')}}</th>
+              <th>{{__('common.Tender Information')}}</th>
+              <th>{{__('common.E-Tender link')}}</th>
+              <th>{{__('common.Tender File')}}</th>
             </tr>
           </thead>
           <tbody>
             @foreach($tenders as $row)
             <tr>
-              <td width="15%">{{$row->id}}</td>
-              <td width="50%">{{$row->title}}</td>
-              <td width="20%">
+              <td>{{$row->id}}</td>
+              <td class="text-left">{{$row->title}}</td>
+              <td>
                 @if(!empty($row->tender_link))
                 <a href="{{$row->tender_link}}">{{__('common.Click Here')}}</a>
                 @else
                   NA
                 @endif
               </td>
-              <td width="15%"><a href="{{asset('assets/stem/tenders')}}/{{$row->files}}" download><img src="{{asset('assets/front/img/pdf.png')}}" class="text-center align-items-center" width="100"></a></td>
+              <td><a href="{{asset('assets/stem/tenders')}}/{{$row->files}}" download><img src="{{asset('assets/front/img/pdf.png')}}" class="text-center align-items-center" width="100"></a></td>
             </tr>
             @endforeach
           </tbody>

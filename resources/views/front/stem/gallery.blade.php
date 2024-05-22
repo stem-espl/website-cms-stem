@@ -21,7 +21,7 @@
 </section>
 	<!-- Page Title End -->
 	<!-- Project Section Start -->
-	<section class="bg-silver-light pdt-60 pdb-80" data-background="images/bg/abs-bg4.png">
+	<section class="bg-silver-light pdt-60 pdb-80" data-background="{{asset('assets/stem/images/abs-bg4.png')}}">
 		<div class="section-content">
 			<div class="container">
 				<div class="row">

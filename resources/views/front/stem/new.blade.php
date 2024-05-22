@@ -1,12 +1,5 @@
 @extends('front.stem.layout')
 @section('content')
-<style>
-   .imgsize{
-    height:50px !important;
-    width: 81px;
-    display: flex;
-   }
-</style>
 <section class="page-title-section_3">
   <div class="container">
     <div class="row">
@@ -24,7 +17,7 @@
     </div>
   </div>
 </section>
-<section class="feature-section pdt-60 pdb-60 bg-silver-light bg-no-repeat" data-background="images/bg/abs-bg4.png">
+<section class="feature-section pdt-60 pdb-60 bg-silver-light bg-no-repeat" data-background="{{asset('assets/stem/images/abs-bg4.png')}}">
   <div class="container">
     <div class="container-inner">
       <div class="row">
@@ -35,11 +28,11 @@
             <div class="article-details " itemscope itemtype="https://schema.org/Article">
               <meta itemprop="inLanguage" content="en-GB">
               <div class="article-full-image float-left">
-                <img src="{{ asset('assets/stem/news/' . $data->image) }}" itemprop="image" alt="Tech Entrepreneur Credits Paper For Success" width="775" height="575" loading="lazy">   
+                <img src="{{asset('assets/stem/news/6641a16c8d64b.jpg')}}" itemprop="image" alt="Tech Entrepreneur Credits Paper For Success" width="775" height="575" loading="lazy">   
               </div>
               <div class="article-header">
                 <h1 itemprop="headline">
-                {{ $data->title }}
+                  Tech Entrepreneur Credits Paper For Success     
                 </h1>
               </div>
               <div class="article-can-edit d-flex flex-wrap justify-content-between">
@@ -56,18 +49,12 @@
                                 <div id="sppb-addon-wrapper-1658515400620" class="sppb-addon-wrapper">
                                   <div id="sppb-addon-1658515400620" class="clearfix "     >
                                     <div class="sppb-addon sppb-addon-text-block  ">
-                                      <p class="sppb-addon-title"><?php $string =strip_tags($data->description) ?>
-                                     
-                                    {{str_replace("&nbsp;", "", $string)}} </p>
-                                    @if(!empty($data->url))
-                                    <a href="{{$data->url}}" class="cs-btn-one btn-gradient-color btn-lg">{{__('common.Read More')}}</a>
-                                    @endif
-
+                                      <p class="sppb-addon-title">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem rerum voluptas harum provident fugiat tempora architecto mollitia quos maiores perspiciatis, obcaecati, placeat aut. Architecto eaque accusamus minima quis in earum dignissimos suscipit esse, saepe repudiandae similique, expedita sed quam dolore impedit deleniti atque, dolorum quasi repellendus quos sapiente.</p>
                                       <div class="sppb-addon-content"></div>
                                     </div>
                                   </div>
                                 </div>
-                                <!-- <div id="sppb-addon-wrapper-1658515400623" class="sppb-addon-wrapper">
+                                <div id="sppb-addon-wrapper-1658515400623" class="sppb-addon-wrapper">
                                   <div id="sppb-addon-1658515400623" class="clearfix "     >
                                     <div class="sppb-addon sppb-addon-raw-html ">
                                       <div class="sppb-addon-content">
@@ -78,15 +65,15 @@
                                       </div>
                                     </div>
                                   </div>
-                                </div> -->
+                                </div>
                                 <div id="sppb-addon-wrapper-1658515596803" class="sppb-addon-wrapper">
                                   <div id="sppb-addon-1658515596803" class="clearfix "     >
-                                    <!-- <div class="sppb-addon sppb-addon-text-block  ">
+                                    <div class="sppb-addon sppb-addon-text-block  ">
                                       <p class="sppb-addon-title">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus dolor eaque officia impedit corporis exercitationem vel nulla iure sequi ipsam.</p>
                                       <div class="sppb-addon-content">
                                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem rerum voluptas harum provident fugiat tempora architecto mollitia quos maiores perspiciatis, obcaecati, placeat aut. Architecto eaque accusamus minima quis in earum dignissimos suscipit esse, saepe repudiandae similique, expedita sed quam dolore impedit deleniti atque.</p>
                                       </div>
-                                    </div> -->
+                                    </div>
                                   </div>
                                 </div>
                               </div>
@@ -117,24 +104,35 @@
                                   <div id="sppb-addon-1658514147642" class="clearfix "     >
                                     <div class="sppb-addon sppb-addon-module sidebar-widget">
                                       <div class="sppb-addon-content">
-                                        <h4 class="sppb-addon-title" style ='color: #000000;'>Latest news</h4>
+                                        <h4 class="sppb-addon-title">Latest Posts</h4>
                                         <ul class="recent_post_item ">
-                                            
-                                        @foreach ($news as $newsdata ) 
                                           <li class="single-recent-post">
                                             <div class="thumb">
-                                              <img src="{{asset('assets/stem/news')}}/{{ $newsdata->image}}" class ="imgsize">
+                                              <img src="/images/footer/recent-post_01.png#joomlaImage://local-images/footer/recent-post_01.png?width=70&height=70"/>
                                             </div>
                                             <div class="post-data">
-                                              <h5 class="sidebar-title">
-                                              <a href="{{ route('front.news.details', ['id' => $newsdata->id]) }}" itemprop="url">
-                                              {{ $newsdata->title }} </a>
-                                            </h5>
-                                              <!-- <span class="time">20 July 2022</span> -->
+                                              <h5 class="sidebar-title"><a href="/en/blog-defaults-6/finance/business-solution" itemprop="url"> Business Solution </a></h5>
+                                              <span class="time">20 July 2022</span>
                                             </div>
                                           </li>
-                                          @endforeach
-                                        
+                                          <li class="single-recent-post">
+                                            <div class="thumb">
+                                              <img src="/images/footer/recent-post_02.png#joomlaImage://local-images/footer/recent-post_02.png?width=70&height=70"/>
+                                            </div>
+                                            <div class="post-data">
+                                              <h5 class="sidebar-title"><a href="/en/blog-defaults-6/finance/business-solution-2" itemprop="url"> Business Solution </a></h5>
+                                              <span class="time">20 July 2022</span>
+                                            </div>
+                                          </li>
+                                          <li class="single-recent-post">
+                                            <div class="thumb">
+                                              <img src="/images/footer/recent-post_03.png#joomlaImage://local-images/footer/recent-post_03.png?width=70&height=70"/>
+                                            </div>
+                                            <div class="post-data">
+                                              <h5 class="sidebar-title"><a href="/en/blog-defaults-6/finance/business-solution-3" itemprop="url"> Business Solution </a></h5>
+                                              <span class="time">20 July 2022</span>
+                                            </div>
+                                          </li>
                                         </ul>
                                       </div>
                                     </div>

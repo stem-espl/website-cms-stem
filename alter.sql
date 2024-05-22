@@ -128,5 +128,9 @@ ALTER TABLE `leadership` CHANGE `language_id` `language_id` INT(11) NULL DEFAULT
 ALTER TABLE `news` ADD `url` TEXT NULL DEFAULT NULL AFTER `title`;
 
 
+----date 21-05-2024
+ALTER TABLE `basic_settings` ADD `website_subheading` VARCHAR(255) NULL DEFAULT NULL AFTER `website_heading`;
+
+
                                                                                                                                
                                                                                                                               
