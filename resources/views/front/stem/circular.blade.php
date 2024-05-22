@@ -25,7 +25,7 @@
 					<thead class="back_color">
 						<tr>
 							<th style="display: block;
-							width: max-content;">{{__('common.Sr No')}}</th>
+							width: max-content;height: 100%;">{{__('common.Sr No')}}</th>
 							<th>{{$variable}}</th>	
 							<th>{{__('common.Download')}}</th>
 							
