@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <title>{{$bs->website_title}} @yield('pagename')</title>
     <link href="{{asset('assets/stem/favicon/'.$bs->favicon)}}" rel="shortcut icon" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
     <!-- Main Stylesheet -->
     <link rel="stylesheet" href="{{asset('assets/stem/css/style.css')}}">
     <link rel="stylesheet" href="{{asset('assets/stem/css/responsive.css')}}">
