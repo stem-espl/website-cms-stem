@@ -59,8 +59,8 @@ class CalendarController extends Controller
                 $filename = uniqid() .'.'. $request->file('img')->extension();
                 $image_width= $new_image->width();
                 $image_height= $new_image->height();
-                $new_width= 720;
-                $new_height= 480;
+                $new_width= 480;
+                $new_height= 720;
                 $new_image->resize($new_width, $new_height);         
                 $new_image->save(public_path('assets/stem/news/' .$filename));
                 $calendar->image = $filename;
