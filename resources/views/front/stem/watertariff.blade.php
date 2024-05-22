@@ -34,7 +34,11 @@
 							<!-- <th> Sr. No.</th> -->
 							<th>{{__('common.Sr.No')}}.</th>
 							<th>{{__('common.Institution')}}</th>
-							<th>{{__('common.Water Rate Dt.')}} {{$date}} {{__('common.From')}}</th>
+							<th>{{__('common.Water Rate')}} 
+								@if(!empty($date))
+								({{__('common.Dt.')}} {{$date}} {{__('common.From')}})
+								@endif
+							</th>
 						</tr>
 					</thead>
 					<tbody>

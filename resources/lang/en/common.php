@@ -65,7 +65,8 @@ return [
     'Water Tariff And Charges'=>'Water Tariff And Charges',
     'Sr.No'=>'Sr.No',
     'Institution'=>'Institution',
-    'Water Rate Dt.'=>'Water Rate Dt.',
+    'Water Rate'=>'Water Rate',
+    'Dt.' => 'Dt.',
     'From'=>'From',
     'Read More'=>'Read More',
 
