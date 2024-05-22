@@ -1,6 +1,20 @@
 /* XL Device :1200px */
+.new-post{
+    width:70px;
+    height: 70px !important;
+}
+.nex-side-box{
+    width:30%;
+
+}
+.new-header{
+    font-size: 45px;
+}
+.new-detail{
+    width:70%;
+}
 @media (min-width: 1200px) and (max-width: 1500px) {
-	
+
 }
 
 /* LG Device :992px */
@@ -128,7 +142,7 @@
 	.header-top-area .header-top-left-part .phone {
 		padding-left: 4px !important;
 	}
-	
+
 	.title-full {
 		font-size: 20px !important;
 		color: #283891;
@@ -136,7 +150,7 @@
 		margin-top: 20px !important;
 		display: none !important;
 	}
-	  
+
 	.side-panel{
 		display: none;
 	}
@@ -167,7 +181,7 @@
 	   }
 	.img_width{
 		width: 200px !important;
-		height: auto !important;	
+		height: auto !important;
 	}
 	.img_padding{
 		padding-left: 0px !important;
@@ -182,8 +196,8 @@
 	.menutabs_1{
 		background-color: transparent !important;
 		padding: 0px !important;
-		margin-bottom: -15px !important; 
-		
+		margin-bottom: -15px !important;
+
 	  }
 	  .govern-council {
 		width: 73%;
@@ -587,7 +601,7 @@
 	}
 }
 @media (max-width: 600px) {
-	
+
 }
 
 @media (max-width: 576px) {
@@ -717,14 +731,14 @@
 		left: 36%;
 		top: 42%;
 	}
-	
+
 	/* .header-top-area {
 		font-size: 11px !important;
 		color: #fff;
 		padding: 0px 0;
 		font-weight: 400 !important;
 	} */
-	
+
 	.title-full {
 		font-size: 18px !important;
 		color: #283891;
@@ -830,7 +844,7 @@
 		text-decoration: none;
 		cursor: pointer;
 	  }
-	
+
 	.header-top-area .header-top-right-part .language .language-btn:hover {
 		color: #ffffff !important;
 	}
@@ -864,8 +878,8 @@
 	.menutabs_1{
 		background-color: transparent !important;
 		padding: 0px !important;
-		margin-bottom: -15px !important; 
-		
+		margin-bottom: -15px !important;
+
 	  }
 	  .bg-sec-color{
 		background-color: transparent !important;
@@ -899,7 +913,7 @@
 	   }
 	.img_width{
 		width: 120px !important;
-		height: auto !important;	
+		height: auto !important;
 	}
 	.img_padding{
 		padding-left: 0px !important;

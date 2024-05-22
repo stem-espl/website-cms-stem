@@ -2,10 +2,13 @@
 @section('content')
 <style>
    .imgsize{
-    height:50px !important;
-    width: 81px;
+
     display: flex;
    }
+   .sidebar-widget {
+    padding: 2px;
+
+ }
 </style>
 <section class="page-title-section_3">
   <div class="container">
@@ -35,10 +38,10 @@
             <div class="article-details " itemscope itemtype="https://schema.org/Article">
               <meta itemprop="inLanguage" content="en-GB">
               <div class="article-full-image float-left">
-                <img src="{{ asset('assets/stem/news/' . $data->image) }}" itemprop="image" alt="Tech Entrepreneur Credits Paper For Success" width="775" height="575" loading="lazy">   
+                <img src="{{ asset('assets/stem/news/' . $data->image) }}" itemprop="image" alt="Tech Entrepreneur Credits Paper For Success" width="775" height="575" loading="lazy">
               </div>
               <div class="article-header">
-                <h1 itemprop="headline">
+                <h1 itemprop="headline" class="new-header">
                 {{ $data->title }}
                 </h1>
               </div>
@@ -55,9 +58,9 @@
                               <div class="sppb-column-addons">
                                 <div id="sppb-addon-wrapper-1658515400620" class="sppb-addon-wrapper">
                                   <div id="sppb-addon-1658515400620" class="clearfix "     >
-                                    <div class="sppb-addon sppb-addon-text-block  ">
+                                    <div class="sppb-addon sppb-addon-text-block  mt-4">
                                       <p class="sppb-addon-title"><?php $string =strip_tags($data->description) ?>
-                                     
+
                                     {{str_replace("&nbsp;", "", $string)}} </p>
                                     @if(!empty($data->url))
                                     <a href="{{$data->url}}" class="cs-btn-one btn-gradient-color btn-lg">{{__('common.Read More')}}</a>
@@ -117,15 +120,15 @@
                                   <div id="sppb-addon-1658514147642" class="clearfix "     >
                                     <div class="sppb-addon sppb-addon-module sidebar-widget">
                                       <div class="sppb-addon-content">
-                                        <h4 class="sppb-addon-title" style ='color: #000000;'>Latest news</h4>
+                                        <h4 class="sppb-addon-title px-0" style ='color: #000000;'>Latest news</h4>
                                         <ul class="recent_post_item ">
-                                            
-                                        @foreach ($news as $newsdata ) 
+
+                                        @foreach ($news as $newsdata )
                                           <li class="single-recent-post">
-                                            <div class="thumb">
-                                              <img src="{{asset('assets/stem/news')}}/{{ $newsdata->image}}" class ="imgsize">
+                                            <div class="thumb nex-side-box">
+                                              <img src="{{asset('assets/stem/news')}}/{{ $newsdata->image}}" class ="imgsize new-post">
                                             </div>
-                                            <div class="post-data">
+                                            <div class="post-data new-detail">
                                               <h5 class="sidebar-title">
                                               <a href="{{ route('front.news.details', ['id' => $newsdata->id]) }}" itemprop="url">
                                               {{ $newsdata->title }} </a>
@@ -134,7 +137,7 @@
                                             </div>
                                           </li>
                                           @endforeach
-                                        
+
                                         </ul>
                                       </div>
                                     </div>
