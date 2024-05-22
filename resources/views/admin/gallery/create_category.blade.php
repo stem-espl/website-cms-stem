@@ -11,7 +11,7 @@
       <div class="modal-body">
         <form id="ajaxForm" class="modal-form" action="{{ route('admin.gallery.store_category', ['language' => request()->input('language')]) }}" method="post">
           @csrf
-            <div class="form-group d-none">
+            <div class="form-group">
                 <label for="">Language *</label>
                 <select name="language_id" class="form-control">
                     <option value="" selected disabled>Select a Language</option>
