@@ -66,8 +66,7 @@ class StemController extends Controller
            }        
          $lang_code = isset($currentLang->code) ?  $currentLang->code : 'en';
          $language = Language::where('code', $lang_code)->first();
-         $data=News::where('language_id', $language->id)->get();
-         
+         $data = News::where('language_id', $language->id)->paginate(6);
          return view('front.stem.news',compact('data'));
       }
 

@@ -37,7 +37,7 @@
 							<td>{{$key + 1}}</td>
 							<td class="text-left">{{$data->name}}</td>
 							<td>
-								<a class="pdf-body d-block" href="{{ asset('assets/stem/documents/'.$data->files) }}" target="_blank" rel="noopener noreferrer" download>
+								<a class="pdf-body d-block" href="{{ asset('assets/stem/documents/'.$data->files) }}" target="_blank" rel="noopener noreferrer">
 									<img src="{{ asset('assets/front/img/pdf.png') }}" class="text-center align-items-center" width="100">
 								</a>
 							</td>

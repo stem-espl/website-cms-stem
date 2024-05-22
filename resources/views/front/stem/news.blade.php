@@ -1,6 +1,9 @@
 @extends('front.stem.layout')
 @section('content')
 
+   <style>
+  .pagination>li>a, .pagination>li>span { border-radius: 50% !important;margin: 0 5px;}
+  </style>
 
 <section class="page-title-section_3">
   <div class="container">
@@ -48,5 +51,10 @@
       </div>
     </div>
   </div>
-  
+  <nav aria-label="..." style="margin-left: 40%;">
+    <ul class="pagination pagination-lg rounded-circle" style="margin-bottom: 2%;">
+      <li class="rounded-circle">{{ $data->links() }}</li>
+    </ul>
+  </nav>
+
 @endsection
