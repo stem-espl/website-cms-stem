@@ -839,10 +839,21 @@
 		position: relative;
 		font-size: 11px !important;
 	}
-	.header-top-area .header-top-left-part .phone {
+	/* .header-top-area .header-top-left-part .phone {
 		padding-left: 4px !important;
 		font-size: 11px !important;
-	}
+	} */
+	.header-top-area .header-top-left-part .phone {
+        margin-top: -10px;
+        padding-left: 0px !important;
+        font-size: 11px !important;
+    }
+	.header-top-left-part {
+		display: flex;
+			padding: 0px;
+			flex-direction: column;
+			padding: 0px 6px 0px;
+		}
 	.title-full {
 		font-size: 18px !important;
 		color: #283891;
@@ -904,6 +915,7 @@
 		display: inline-block;
 		margin-left: 25px;
 		position: relative;
+		padding-right: 10px;
 	}
 	.header-top-area .header-top-right-part .language .language-btn {
 		
