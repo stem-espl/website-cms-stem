@@ -62,7 +62,7 @@ return [
     'Date'=>'तारीख',
     'Description'=>'वर्णन',
     'Water Tariff And Charges'=>'पाणी दर आणि शुल्क',
-    'Sr.No'=>'अ.क्र.',
+    'Sr.No'=>'अ.क्र',
     'Institution'=>'संस्थान',
     'Water Rate'=>'जल दर',
     'Dt.' => 'दि.',

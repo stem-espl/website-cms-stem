@@ -42,7 +42,10 @@
                   NA
                 @endif
               </td>
-              <td><a href="{{asset('assets/stem/tenders')}}/{{$row->files}}" download><img src="{{asset('assets/front/img/pdf.png')}}" class="text-center align-items-center" width="100"></a></td>
+              <td>
+                <a class="pdf-body d-block" href="{{asset('assets/stem/tenders')}}/{{$row->files}}" target="_blank"> <img src="{{asset('assets/front/img/pdf.png')}}" class="text-center align-items-center" width="100">
+								</a>
+              </td>
             </tr>
             @endforeach
           </tbody>

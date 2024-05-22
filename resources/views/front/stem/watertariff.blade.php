@@ -32,7 +32,7 @@
 					<thead class="back_color">
 						<tr>
 							<!-- <th> Sr. No.</th> -->
-							<th>{{__('common.Sr.No')}}.</th>
+							<th>{{__('common.Sr.No')}}</th>
 							<th>{{__('common.Institution')}}</th>
 							<th>{{__('common.Water Rate')}} 
 								@if(!empty($date))

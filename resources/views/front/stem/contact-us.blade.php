@@ -116,7 +116,7 @@
 								</div>
 								<div class="col-lg-8">
 									<div class="form-group">
-										<button type="submit" name="submit" class="cs-btn-one btn-md btn-round btn-primary-color element-shadow">{{__('common.Submit Now')}}</button>
+										<button type="submit" name="submit" class="cs-btn-one btn-md btn btn-primary element-shadow"  style="color: white;">{{__('common.Submit Now')}}</button>
 									</div>
 								</div>
 							</div>
