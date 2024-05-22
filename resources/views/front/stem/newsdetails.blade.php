@@ -59,7 +59,7 @@
                                 <div id="sppb-addon-wrapper-1658515400620" class="sppb-addon-wrapper">
                                   <div id="sppb-addon-1658515400620" class="clearfix "     >
                                     <div class="sppb-addon sppb-addon-text-block  mt-4">
-                                      <p class="sppb-addon-title"><?php $string =strip_tags($data->description) ?>
+                                      <p class="sppb-addon-title" style="word-break: break-all;"><?php $string =strip_tags($data->description) ?>
 
                                     {{str_replace("&nbsp;", "", $string)}} </p>
                                     @if(!empty($data->url))
