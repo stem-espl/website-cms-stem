@@ -67,6 +67,11 @@ class DocumentController extends Controller
   		$document = new Document();
   		// $document->document_category_id = $request->document_category_id;
   		if ($request->hasFile('files')) {
+          $destinationPath = '/assets/stem/documents/'; 
+          if(!File::exists(public_path($destinationPath))) {
+            File::makeDirectory(public_path($destinationPath), $mode = 0777, true, true);
+          }
+
           $file = $request->file('files');
           $rand = rand(000,999);
           $filename = $rand.'-'.time() . '.' . $file->getClientOriginalExtension();
@@ -117,6 +122,10 @@ class DocumentController extends Controller
   		$document = Document::findOrFail($request->document_id);
   		// $document->document_category_id = $request->document_category_id;
   		if ($request->hasFile('documents')) {
+          $destinationPath = '/assets/stem/documents/'; 
+          if(!File::exists(public_path($destinationPath))) {
+            File::makeDirectory(public_path($destinationPath), $mode = 0777, true, true);
+          }
           $file = $request->file('documents');
           $rand = rand(000,999);
           $filename = $rand.'-'.time() . '.' . $file->getClientOriginalExtension();
