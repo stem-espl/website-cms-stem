@@ -13,7 +13,7 @@ if (!empty($admin->role)) {
 
 <div class="row">
     <div class="col-lg-12">
-        <div class="row row-card-no-pd">
+        {{-- <div class="row row-card-no-pd">
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
@@ -30,7 +30,7 @@ if (!empty($admin->role)) {
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
     </div>
 </div>
 
