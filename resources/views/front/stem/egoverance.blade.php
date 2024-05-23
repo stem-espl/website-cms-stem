@@ -1,6 +1,10 @@
 @extends('front.stem.layout')
 @section('content')
 	<!-- Page Title Start -->
+	<style>
+		.pagination>li>a, .pagination>li>span { border-radius: 50% !important;margin: 0 5px;}
+		</style>
+
 	<section class="page-title-section_3">
 		<div class="container">
 			<div class="row">
@@ -47,8 +51,12 @@
                 @endforeach
 			</div>
 		</div>
+		<nav aria-label="..." style="margin-left: 40%;">
+			<ul class="pagination pagination-lg rounded-circle">
+			  <li class="rounded-circle">{{ $egovernance->links() }}</li>
+			</ul>
+		  </nav>
 	</section>
-
     @endsection
 	
 	<script>
