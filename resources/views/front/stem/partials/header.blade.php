@@ -68,8 +68,9 @@
                   <span class="bar3"></span>
                 </div>
               </div>
-              <div class="side-panel-content">
-                <div class="panel-header-menu">                <div class="close-icon">
+              <div class="side-panel-content add-panel d-none">
+                <div class="panel-header-menu">
+                              <div class="close-icon">
                   <button><i class="webex-icon-cross"></i></button>
                 </div>
                 <div class="side-panel-logo mrb-30">
@@ -124,7 +125,7 @@
       </div>
     </div>
   </div>
-  </div>
+  </div><div></div>
 </header>
 <script>
   function change_lang(lang)

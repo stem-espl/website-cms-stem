@@ -7,7 +7,7 @@
               <img src="{{asset('assets/stem/footer')}}/{{$bs->footer_logo}}" alt="" class="mrb-20" style="height: 42px;
               width: 152px;">
               <address class="mrb-25">
-                @php                
+                @php
                 $addresses = explode(PHP_EOL, $bex->contact_addresses);
               @endphp
               @foreach ($addresses as $address)
@@ -30,11 +30,14 @@
                 </div>
 
 
-                <div class="mrb-0"><a href="{{$bex->url}}" class="text-light-gray"><i class="fas fa-globe mrr-10"></i>{{$bex->url}}</a></div>
+                <div class="mrb-0"><a href="{{$bex->url}}" class="text-light-gray website-mode"><i class="fas fa-globe mrr-10"></i>
+                     <p > {{$bex->url}}</p>
+                   </a>
+                </div>
                 <!-- <div class="mrb-0 mt-3">
-           
+
                     <p class="text-light-gray">{{convertUtf8($bs->contact_form_title)}}</p>
-             
+
                 </div> -->
               </address>
             </div>
@@ -61,7 +64,7 @@
                 @foreach ($alinks as $alink)
                 <li><a href="{{ $alink['url'] }}">{{ $alink['name'] }}</a></li>
                 @endforeach
-              
+
               </ul>
             </div>
           </div>
@@ -74,12 +77,12 @@
               <ul class="footer-widget-list">
                 @foreach ($dlinks as $dlink)
                 <li><a href="{{ $dlink['url'] }}">{{ $dlink['name'] }}</a></li>
-                @endforeach        
+                @endforeach
               </ul>
             </div>
           </div>
           @endif
-          
+
         </div>
       </div>
     </div>
