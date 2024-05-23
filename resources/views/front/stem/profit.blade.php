@@ -29,7 +29,10 @@
 			</div>
 			<div class="col-md-12 col-xl-12">
 				<div class="container">
-					<canvas id="canvas" class="mt-3 canvas_1"></canvas>
+                    <div class="canvas-bar-chart">
+                        <canvas id="canvas" class="mt-3" ></canvas>
+                    </div>
+
 				</div>
 			</div>
 
@@ -64,6 +67,7 @@ src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
 
 var chartOptions = {
   responsive: true,
+  maintainAspectRatio: false,
   legend: {
     position: "top"
   },

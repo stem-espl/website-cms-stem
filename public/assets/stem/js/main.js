@@ -91,12 +91,26 @@
 		/*----------- [_Side_Panel_Start] -------------*/
 		/*=============================================*/
 		$('.side-panel-trigger').on('click', function() {
-			$('.side-panel-content').addClass('side-panel-open');
+
+            setTimeout(function() {
+                $('.panel-header-menu').removeClass('d-none');
+                $('.side-panel-content').removeClass('add-panel');
+
+              }, 10);
+            setTimeout(function() {
+                $('.side-panel-content').addClass('side-panel-open');
+
+            }, 200);
+
+
 		})
 
 		$('.close-icon').on('click', function() {
 			$('.side-panel-content').removeClass('side-panel-open');
+            $('.side-panel-content').addClass('add-panel');
+            $('.panel-header-menu').addClass('d-none');
 		})
+
 		/*=============================================*/
 		/*---------- [_Mobile_Menu_Start] -------------*/
 		/*=============================================*/
