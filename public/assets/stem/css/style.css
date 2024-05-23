@@ -127,7 +127,7 @@
   align-items: center;
  }
  .title-full{
-  font-size: 17px !important;
+  font-size: 18px !important;
   color: #283891;
   font-weight: 500;
   margin-top: 20px !important;
@@ -401,7 +401,7 @@ h1, h2, h3, h4, h5, h6 {
     line-height: 1.25 !important;
     letter-spacing: -.02em !important;
   }
-  
+
 .name{
   font-size: 15px !important;
   line-height: 32px !important;
@@ -4225,7 +4225,7 @@ select {
   position: relative;
   z-index: 2;
   color: #fff;
-  
+
 }
 
 /*========================================*/
@@ -5716,7 +5716,7 @@ select {
   display: flex !important;
   flex-wrap: wrap !important;
   margin-left: 20%;
- 
+
 }
 .govern-council{
   width: 40%;
@@ -5785,11 +5785,11 @@ select {
 } */
 /* #effect
 {
- 
- position:fixed;	
+
+ position:fixed;
   width:380px;
  height:220px;
- margin-left:300px; 
+ margin-left:300px;
  z-index: 1000;
 } */
 /* #effect p
