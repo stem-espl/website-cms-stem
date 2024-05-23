@@ -17,7 +17,9 @@
 			</div>
 		</div>
 	</section>
-
+	<style>
+	.pagination>li>a, .pagination>li>span { border-radius: 50% !important;margin: 0 5px;}
+</style>
 	<section class="content pdt-60 pdb-50 table_padding">
 		<div class="container">
 			<div class="table-responsive">
@@ -51,4 +53,10 @@
 			</div>
 		</div>
 	</section>
+
+	<nav aria-label="..." class="col-md-6 col-lg-12 col-sm-12" style="margin-left: 39%;">
+		<ul class="pagination pagination-lg rounded-circle" style="margin-bottom: 2%;">
+		  <li class="rounded-circle">{{ $document->links() }}</li>
+		</ul>
+	  </nav>
     @endsection
