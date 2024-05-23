@@ -98,11 +98,11 @@
                   <p id="errstatus" class="mb-0 text-danger em"></p>
                 </div>
 
-             <div class="form-group">
-              <label for="">Meta Description**</label>
-              <input type="text" class="form-control" name="description" value="{{$history->description}}" placeholder="Enter title">
-              <p id="errtitle" class="mb-0 text-danger em"></p>
-            </div>
+                <div class="form-group">
+                  <label for="description">Meta Description**</label>
+                  <input type="text" class="form-control" name="description" id="description" value="{{$history->description}}" placeholder="Enter description">
+                  <p id="errtitle" class="mb-0 text-danger em"></p>
+              </div>
              
             </form>
           </div>
@@ -122,3 +122,50 @@
   </div>
 </div>
 @endsection
+
+
+<script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Create a hidden textarea to replace the input field
+        var inputField = document.getElementById('description');
+        var textarea = document.createElement('textarea');
+        textarea.setAttribute('name', 'test');
+        textarea.setAttribute('id', 'ckeditor_description');
+        textarea.style.display = 'none';
+        inputField.parentNode.insertBefore(textarea, inputField.nextSibling);
+        
+        // Initialize CKEditor on the hidden textarea
+        CKEDITOR.replace('ckeditor_description', {
+            height: 300, // Customize the editor's height
+            toolbarGroups: [
+                { name: 'clipboard', groups: [ 'clipboard', 'undo' ] },
+                { name: 'editing', groups: [ 'find', 'selection', 'spellchecker' ] },
+                { name: 'links' },
+                { name: 'insert' },
+                { name: 'tools' },
+                { name: 'document', groups: [ 'mode', 'document', 'doctools' ] },
+                { name: 'others' },
+                '/',
+                { name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] },
+                { name: 'paragraph', groups: [ 'list', 'indent', 'blocks', 'align', 'bidi' ] },
+                { name: 'styles' },
+                { name: 'colors' },
+                { name: 'about' }
+            ]
+        });
+
+        // Copy the value from the input field to the CKEditor
+        textarea.value = inputField.value;
+        CKEDITOR.instances['ckeditor_description'].setData(inputField.value);
+
+        // Hide the input field
+        inputField.style.display = 'none';
+        
+        // Update the input field whenever CKEditor's content changes
+        CKEDITOR.instances['ckeditor_description'].on('change', function() {
+            inputField.value = CKEDITOR.instances['ckeditor_description'].getData();
+        });
+    });
+</script>
+
