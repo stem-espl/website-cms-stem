@@ -40,7 +40,7 @@
                             <h5>{{$history->title}}</h5>
                         </div>
                         <div class="para">
-                            <p>{{$history->description}}</p>
+                            <p>{!! $history->description !!}</p>
                         </div>
                         <!-- <div class="link">
                             <a href="javascript:void(0)"><i class="fas fa-long-arrow-alt-right"></i></a>
