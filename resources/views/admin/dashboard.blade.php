@@ -13,7 +13,7 @@ if (!empty($admin->role)) {
 
 <div class="row">
     <div class="col-lg-12">
-        {{-- <div class="row row-card-no-pd">
+        <div class="row row-card-no-pd">
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
@@ -21,16 +21,10 @@ if (!empty($admin->role)) {
                             <h3 class="card-title">Welcome Back, {{Auth::guard('admin')->user()->first_name}} {{Auth::guard('admin')->user()->last_name}}!</h3>
                         </div>
                     </div>
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                
-                            </div>
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
-        </div> --}}
+        </div>
     </div>
 </div>
 
