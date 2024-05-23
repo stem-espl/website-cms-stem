@@ -51,7 +51,7 @@ return [
     'Messages' =>'संदेश',
     'Submit Now' =>'आता सबमिट करा',
     'Download' =>'डाउनलोड करा',
-    'Profit in Last Years' =>'गेल्या वर्षांत नफा',
+    'Profit in Last Years' =>'गेल्या 6 वर्षात नफा',
     'Sr No' =>'अनु. क्र',
     'Circulars'=>'परिपत्रके',
     'Gallery'=>'गॅलरी',
