@@ -4,7 +4,7 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-6 header-top-left-part col-md-6 col-sm-6">
-            @php 
+            @php
             $addresses = explode(PHP_EOL, $bex->contact_addresses);
             @endphp
             @foreach ($addresses as $address)
@@ -32,22 +32,22 @@
     </div>
     <div class="bt_blank_nav"></div>
     <div class="header-navigation-area two-layers-header header-middlee bt_stick bt_sticky">
-      <div class="container">
+      <div class="container mob_container">
         <div class="row">
           <div class="col-md-12 col-lg-12 col-sm-12">
-            <div class="containerNew">
-              <div class="col-sm-12 col-md-5 col-lg-9 img_padding">
-                <a class="navbar-brand logo f-left mrt-5 mrt-md-0 mrb-5 mrb-md-0 pdt-10 pdb-10 padding_right"  href="{{route('front.index')}}" id="logo_1" style="border-right: 1px solid #000; padding-right: 12px;">
+            <div class="containerNew ">
+              <div class="col-sm-6 col-md-5 col-lg-9 img_padding">
+                <a class="navbar-brand logo f-left mrt-5 mrt-md-0 mrb-5 mrb-md-0 pdt-10 pdb-10 padding_right logo-right-bor"  href="{{route('front.index')}}" id="logo_1" style="">
                 <img id="logo-image" class="img-center img-width" src="{{asset('assets/stem/logo/'.$bs->logo)}}" alt="" loading="lazy">
                 </a>
                 <div class="title-full topText" >
                   <p>{{$bs->website_heading}} <br>{{$bs->website_subheading}}</p>
-               
+
                 </div>
               </div>
-              <div class="col-sm-12 col-md-5 col-lg-3 img_padding">
+              <div class="col-sm-6 col-md-5 col-lg-3 img_padding">
                 <a class="navbar-brand logo mrt-5  mrt-md-0 mrb-5 mrb-md-0 pdt-10 pdb-5" href="{{route('front.index')}}" id="logo_1" class="mx-5">
-                <img id="logo-image" class="img-center header-top-right-image img_width" src="{{asset('assets/stem/header_logo/'.$bs->header_logo)}}" alt="" loading="lazy">
+                <img id="logo-image" class="img-center header-img header-top-right-image img_width" src="{{asset('assets/stem/header_logo/'.$bs->header_logo)}}" alt="" loading="lazy">
                 </a>
               </div>
             </div>
@@ -56,10 +56,11 @@
       </div>
       <div class="header-top-area d-lg-block bg-secondary-color bg-sec-color">
         <div class="container">
+            <div class="mobile-menu-right"></div>
           <div class="row menutabs_1">
             <!-- <div class="row mx-0 menutabs_1"> -->
             <div class="col-md-12 col-lg-12 col-sm-12">
-              <div class="mobile-menu-right"></div>
+
               <div class="header-searchbox-style-two d-xl-block">
                 <div class="side-panel side-panel-trigger text-right d-lg-block">
                   <span class="bar1"></span>
@@ -76,12 +77,12 @@
                   <img src="{{asset('assets/stem/logo/'.$bs->logo)}}" width="261" hight="74" alt=""/>
                   </a>
                 </div>
-                <div class="side-info mrb-30">
+                <div class="side-info mrb-30 d-none">
                   <div class="side-panel-element mrb-25">
                     <h4 class="mrb-10">{{__('common.Office Address')}}</h4>
                     <ul class="list-items">
                       <li>
-                        @php 
+                        @php
                         $addresses = explode(PHP_EOL, $bex->contact_addresses);
                         @endphp
                         @foreach ($addresses as $address)
@@ -108,7 +109,7 @@
                 <ul class="social-list">
                   @foreach ($socials as $social)
                   <li><a href="{{$social['url']}}"><i class="{{$social['icon']}}"></i></a></li>
-                  @endforeach               
+                  @endforeach
                 </ul>
                 @endif
               </div>
@@ -126,7 +127,7 @@
 <script>
   function change_lang(lang)
   {
-    
+
     var lg = lang;
     alert(lg)
           $.ajax({
@@ -135,8 +136,8 @@
               data: { lang: lg , _token: '{{ csrf_token() }}' },
               success: function(response) {
                 window.location="{{route('front.index')}}";
-                
+
               }
           });
-  }  
+  }
 </script>
