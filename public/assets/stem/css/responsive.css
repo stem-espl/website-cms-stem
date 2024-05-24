@@ -1231,6 +1231,10 @@
 width: 100%;
 
     }
+	.sr-ias {
+		width: 100% !important;
+		height: 234px !important;
+	}
     .menutabs_1 {
         background-color: #17305E !important;
 
