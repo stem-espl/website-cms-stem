@@ -26,8 +26,8 @@
 <div class="section-content">
     <div class="container">
       <div class="row">
-   
-  @foreach ($data as $newsdata ) 
+
+  @foreach ($data as $newsdata )
         <div class="col-md-6 col-lg-6 col-xl-4">
           <div class="news-wrapper mrb-30 mrb-sm-40">
             <div class="news-thumb">
@@ -36,7 +36,7 @@
                 <span class="entry-category">{{__('common.News')}}</span>
               </div>
             </div>
-          
+
               <div class="news-description mb-20">
                 <h4 class="the-title mrb-30">
                   <a href="{{ route('front.news.details', ['id' => $newsdata->id]) }}">
@@ -44,14 +44,14 @@
                   </a>
                </h4>
               </div>
-       
+
           </div>
         </div>
         @endforeach
       </div>
     </div>
   </div>
-  <nav aria-label="..." style="margin-left: 40%;">
+  <nav aria-label="..." >
     <ul class="pagination pagination-lg rounded-circle" style="margin-bottom: 2%;">
       <li class="rounded-circle">{{ $data->links() }}</li>
     </ul>
