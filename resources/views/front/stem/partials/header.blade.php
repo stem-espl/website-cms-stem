@@ -68,8 +68,9 @@
                   <span class="bar3"></span>
                 </div>
               </div>
-              <div class="side-panel-content">
-                <div class="close-icon">
+              <div class="side-panel-content add-panel d-none">
+                <div class="panel-header-menu">
+                              <div class="close-icon">
                   <button><i class="webex-icon-cross"></i></button>
                 </div>
                 <div class="side-panel-logo mrb-30">
@@ -77,7 +78,7 @@
                   <img src="{{asset('assets/stem/logo/'.$bs->logo)}}" width="261" hight="74" alt=""/>
                   </a>
                 </div>
-                <div class="side-info mrb-30 d-none">
+                <div class="side-info mrb-30 ">
                   <div class="side-panel-element mrb-25">
                     <h4 class="mrb-10">{{__('common.Office Address')}}</h4>
                     <ul class="list-items">
@@ -112,6 +113,8 @@
                   @endforeach
                 </ul>
                 @endif
+            </div>
+
               </div>
               @includeIf('front.stem.partials.menu')
               <div class="main-menu menu-colour">
@@ -122,7 +125,7 @@
       </div>
     </div>
   </div>
-  </div>
+  </div><div></div>
 </header>
 <script>
   function change_lang(lang)

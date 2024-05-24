@@ -56,8 +56,8 @@
 	/*=============================================*/
 	/*------------- [_Header_Height] --------------*/
 	/*=============================================*/
-	var headerHeight = $('.header-style-two').height();
-	$('.header-style-two').css('height', headerHeight);
+	// var headerHeight = $('.header-style-two').height();
+	// $('.header-style-two').css('height', headerHeight);
 
 	/*=============================================*/
 	/*-------------- [_Sticky_Header] -------------*/
@@ -91,12 +91,29 @@
 		/*----------- [_Side_Panel_Start] -------------*/
 		/*=============================================*/
 		$('.side-panel-trigger').on('click', function() {
-			$('.side-panel-content').addClass('side-panel-open');
+
+            setTimeout(function() {
+                $('.panel-header-menu').removeClass('d-none');
+                $('.side-panel-content').removeClass('add-panel');
+                $('.side-panel-content').removeClass('d-none');
+
+              }, 10);
+            setTimeout(function() {
+                $('.side-panel-content').addClass('side-panel-open');
+
+            }, 200);
+
+
 		})
 
 		$('.close-icon').on('click', function() {
+            setTimeout(function() {
 			$('.side-panel-content').removeClass('side-panel-open');
+            $('.side-panel-content').addClass('add-panel');
+            $('.panel-header-menu').addClass('d-none');
+        }, 200);
 		})
+
 		/*=============================================*/
 		/*---------- [_Mobile_Menu_Start] -------------*/
 		/*=============================================*/
