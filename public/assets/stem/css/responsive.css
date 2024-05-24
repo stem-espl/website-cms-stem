@@ -3,12 +3,31 @@
     width:70px;
     height: 70px !important;
 }
+#scrollUp {
+    padding: 3px 0px 0px;
+}
 .nex-side-box{
     width:30%;
 
 }
+.header-style-two{
+    height:208px;
+}
 .new-header{
     font-size: 45px;
+}
+.pagination {
+    justify-content: center;
+    margin: 10px 0px;
+    flex-wrap: wrap
+}
+.page-item.active .page-link {
+
+    background-color: #1d3990 !important;
+    border-color: #1d3990 !important;
+}
+.email-break{
+    word-break: break-all;
 }
 .new-detail{
     width:70%;
@@ -857,15 +876,47 @@
 	}
 }
 @media (min-width :320px) and (max-width:576px){
+    .pagination-lg .page-link {
+         padding: 0px;
+        font-size: 12px;
+        line-height: 32px;
+        height: 35px;
+        width: 35px;
+        text-align: center;
+    }
+    #skip-content-div {
+        margin-top: -10px;
+    }
   .pagebuilder-content{
     margin-top:-45px;
   }
+  .with-divider {
+    width: 90%;
+    margin: 0px auto;
+
+}
+  .footer-widget {
+
+    width: 100%;
+}
+.website-mode p {
+
+    margin: 0px;
+}
+  .header-top-area .header-top-right-part .language .language-btn::after {
+
+    top: 1px;
+
+}
+.header-top-area .header-top-left-part .address:after {
+   display: none;
+}
     .home-carousel .content-box h1 {
         font-size: 26px;
         line-height: 32px;
     }
     .banner-section {
-        margin-top: -29px;
+        margin-top: -16px;
         z-index: 99;
 
     }
@@ -1112,7 +1163,44 @@
 		font-size: 30px !important;
 	}
 }
-@media screen and (min-width:577px) and   (max-width: 768px) {
+@media screen and (min-width:577px) and  (max-width: 768px) {
+    .with-divider {
+        width: 90%;
+        margin: 0px auto;
+
+    }
+    .pagination-lg .page-link {
+        padding: unset;
+       font-size: 12px;
+
+       height: 35px;
+       width: 35px;
+       text-align: center;
+       line-height: 32px;
+   }
+    #skip-content-div {
+        margin-top: -10px;
+    }
+    .team-block {
+        width: 270px;
+        margin: 34px auto !important;
+    }
+    .footer-widget {
+
+        width: 100%;
+    }
+    .website-mode p {
+
+        margin: 0px;
+    }
+    .img_sizeset {
+        width: 100% !important;
+        height: 197px !important;
+    }
+    .sr-ias {
+        width: 100% !important;
+        height: 100% !important;
+    }
 	.request-a-call-back-form {
 		margin-left: 0;
 	}
@@ -1124,7 +1212,7 @@
       }
     .banner-section {
         position: relative;
-        margin-top: -60px;
+        margin-top: -19px;
         z-index: 99;
     }
 	.modal {
@@ -1180,6 +1268,9 @@
         width: 135px !important;
         height: 55px;
     }
+    .header-top-area .header-top-left-part .address:after {
+     display: none;
+    }
     .mean-container a.meanmenu-reveal {
 
         position: absolute;
@@ -1196,6 +1287,7 @@
     .header-top-area .header-top-left-part .phone {
          padding-left: 0px;
         display: block;
+        margin: -17px 0px 0px;
     }
 	/* .logo img {
 		width: 134px !important;
@@ -1225,10 +1317,21 @@
 
 }
 @media screen and (min-width:769px) and (max-width:1023px){
+    #skip-content-div {
+        margin-top: -10px;
+    }
+    .pagination-lg .page-link {
+        padding: 0px;
+       font-size: 12px;
+       line-height: 42px;
+       height: 45px;
+       width: 45px;
+       text-align: center;
+   }
     .header-style-two {
         height: inherit !important;
         display: inline-block;
-width: 100%;
+        width: 100%;
 
     }
 	.sr-ias {
@@ -1244,6 +1347,17 @@ width: 100%;
         margin-top: -13px;
         z-index: 99;
     }
+
+}
+@media screen and (min-width:1024px) and (max-width:1200px){
+    .team-block {
+        width: 270px;
+        margin: 34px auto !important;
+    }
+    .sr-ias {
+		width: 100% !important;
+		height: 234px !important;
+	}
 
 }
 

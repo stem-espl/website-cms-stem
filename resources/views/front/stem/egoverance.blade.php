@@ -1,5 +1,10 @@
 @extends('front.stem.layout')
 @section('content')
+<style>
+    #scrollUp {
+    padding: 10px 0px 0px;
+}
+</style>
 	<!-- Page Title Start -->
 	<style>
 		.pagination>li>a, .pagination>li>span { border-radius: 50% !important;margin: 0 5px;}
@@ -32,11 +37,11 @@
 				<div class="col-md-6 col-xl-4 mt-3">
 					 <div class="feature-box mrb-lg-60">
 						@if(!empty($egover->url))
-						<div class="feature-thumb img-wrapper">					
+						<div class="feature-thumb img-wrapper">
                                 <a href="{{$egover->url}}"><img src="{{asset('assets/stem/egovernance')}}/{{ $egover->image}}"></img></a>
 						</div>
 						@else
-						
+
 						<div class="feature-thumb img-wrapper">
 							<img class="img-full" src="{{asset('assets/stem/egovernance')}}/{{ $egover->image}}" alt="" loading="lazy"  onclick="openImagePopup(this)">
 						</div>
@@ -46,30 +51,30 @@
 								<h6>{{$egover->title}}</h6>
 							</div>
 						</div>
-					</div> 
+					</div>
 				</div>
                 @endforeach
 			</div>
 		</div>
-		<nav aria-label="..." style="margin-left: 40%;">
+		<nav aria-label="...">
 			<ul class="pagination pagination-lg rounded-circle">
 			  <li class="rounded-circle">{{ $egovernance->links() }}</li>
 			</ul>
 		  </nav>
 	</section>
     @endsection
-	
+
 	<script>
 		function openImagePopup(element) {
 			var imageUrl = element.src;
 			var imagePopup = document.createElement('div');
 			imagePopup.className = 'image-popup';
-			
+
 			var popupImage = document.createElement('img');
 			popupImage.className = 'popup-image';
 			popupImage.src = imageUrl;
 			imagePopup.appendChild(popupImage);
-			
+
 			// Close button
 			var closeButton = document.createElement('span');
 			closeButton.className = 'close-button';
@@ -78,7 +83,7 @@
 				imagePopup.style.display = 'none';
 			};
 			imagePopup.appendChild(closeButton);
-			
+
 			document.body.appendChild(imagePopup);
 			imagePopup.style.display = 'block';
 		}

@@ -30,7 +30,7 @@
 						<div class="contact-icon">
 							<i class="webex-icon-map1"></i>
 						</div>
-                        
+
 						<div class="contact-details mrl-30">
 							<h5 class="icon-box-title mrb-10">{{__('common.Our Address')}}</h5>
 							<p class="mrb-0">{{$bex->contact_addresses}}</p>
@@ -55,7 +55,7 @@
 						</div>
 						<div class="contact-details mrl-30">
 							<h5 class="icon-box-title mrb-10">{{__('common.Email Us')}}</h5>
-							<p class="mrb-0">{{$bex->contact_mails}}</p>
+							<p class="mrb-0 email-break">{{$bex->contact_mails}}</p>
 						</div>
 					</div>
 				</div>
@@ -79,7 +79,7 @@
 					<div class="contact-form">
 						<form action="{{route('contact.query')}}" method="post" >
                             @csrf
-                          
+
 							<div class="row">
 								<div class="col-lg-6">
 									<div class="form-group mrb-25">
@@ -90,7 +90,7 @@
 									</div>
 								</div>
 								<div class="col-lg-6">
-                              
+
 									<div class="form-group mrb-25">
 										<input type="text" id="phone" name="phone" placeholder="{{__('common.Phone')}}" class="form-control"  maxlength="10" oninput="this.value = this.value.replace(/[^0-9.-]/g, '').replace(/(\..*?)\..*/g, '$1');" required>
                                         @if ($errors->has('phone'))
@@ -145,5 +145,5 @@
 		</div>
 	</div>
 	<!-- Contact Section End -->
-  
+
 @endsection
