@@ -62,27 +62,27 @@
 	/*=============================================*/
 	/*-------------- [_Sticky_Header] -------------*/
 	/*=============================================*/
-	wind.on('scroll', function() {
-		var sticky_one_layer = $('.header-navigation-area.one-layer-header');
-		var sticky_two_layers = $('.header-navigation-area.two-layers-header');
-		var sticky_three_layers = $('.header-navigation-area.three-layers-header');
-		var scroll = wind.scrollTop();
-		if (scroll < 0) {
-			sticky_one_layer.removeClass('fixed');
-		} else {
-			sticky_one_layer.addClass('fixed');
-		}
-		if (scroll < 36) {
-			sticky_two_layers.removeClass('fixed');
-		} else {
-			sticky_two_layers.addClass('fixed');
-		}
-		if (scroll < 152) {
-			sticky_three_layers.removeClass('fixed');
-		} else {
-			sticky_three_layers.addClass('fixed');
-		}
-	});
+	// wind.on('scroll', function() {
+	// 	var sticky_one_layer = $('.header-navigation-area.one-layer-header');
+	// 	var sticky_two_layers = $('.header-navigation-area.two-layers-header');
+	// 	var sticky_three_layers = $('.header-navigation-area.three-layers-header');
+	// 	var scroll = wind.scrollTop();
+	// 	if (scroll < 0) {
+	// 		sticky_one_layer.removeClass('fixed');
+	// 	} else {
+	// 		sticky_one_layer.addClass('fixed');
+	// 	}
+	// 	if (scroll < 36) {
+	// 		sticky_two_layers.removeClass('fixed');
+	// 	} else {
+	// 		sticky_two_layers.addClass('fixed');
+	// 	}
+	// 	if (scroll < 208) {
+	// 		sticky_three_layers.removeClass('fixed');
+	// 	} else {
+	// 		sticky_three_layers.addClass('fixed');
+	// 	}
+	// });
 
 
 	jQuery(document).on('ready', function() {

@@ -10,7 +10,7 @@
 				<div class="page-title-content">
 					<!-- <h3 class="title text-white">Gallery</h3> -->
 					<nav aria-label="breadcrumb">
-						
+
 						<ol class="breadcrumb">
 							<li class="breadcrumb-item"><a href="index.html">{{__('common.Home')}}</a></li>
 							<li class="breadcrumb-item active" aria-current="page">{{__('common.Gallery')}}</li>
@@ -27,7 +27,7 @@
 		<div class="section-content">
 			<div class="container">
 				<div class="row">
-                    <div class="col-md-12 pdb-40 text-center">					
+                    <div class="col-md-12 pdb-40 text-center">
 						<h3>{{$name}}</h3>
 					</div>
                     @foreach ($gallery as $galleries)
@@ -38,17 +38,17 @@
 							</div>
 						</div>
 					</div>
-					
+
                     @endforeach
 				</div>
 			</div>
 		</div>
-		<nav aria-label="..." style="margin-left: 40%;">
+		<nav aria-label="...">
 			<ul class="pagination pagination-lg rounded-circle" style="margin-bottom: 1%;">
 			  <li class="rounded-circle">{{ $gallery->links() }}</li>
 			</ul>
 		  </nav>
 	</section>
-	
+
 
 @endsection

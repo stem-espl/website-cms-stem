@@ -28,13 +28,13 @@
 						<tr>
 							<th style="display: block;
 							width: max-content;height: 100%;">{{__('common.Sr No')}}</th>
-							<th>{{$variable}}</th>	
+							<th>{{$variable}}</th>
 							<th>{{__('common.Download')}}</th>
-							
+
 						</tr>
 					</thead>
 					<tbody>
-						@foreach ($document as $key => $data )		
+						@foreach ($document as $key => $data )
 						<tr>
 							<!-- <td colspan="8" class="text-center"><button type="button" class="btn btn-outline-primary">NO Data Available.</button></td> -->
 							<td>{{$key + 1}}</td>
@@ -44,7 +44,7 @@
 									<img src="{{ asset('assets/front/img/pdf.png') }}" class="text-center align-items-center" width="100">
 								</a>
 							</td>
-							
+
 						</tr>
 						<!-- Add more rows as needed -->
 						@endforeach
@@ -52,11 +52,12 @@
 				</table>
 			</div>
 		</div>
-	</section>
 
-	<nav aria-label="..." class="col-md-6 col-lg-12 col-sm-12" style="margin-left: 39%;">
-		<ul class="pagination pagination-lg rounded-circle" style="margin-bottom: 2%;">
+
+	<nav aria-label="..." class="col-md-6 col-lg-12 col-sm-12" >
+		<ul class="pagination pagination-lg rounded-circle">
 		  <li class="rounded-circle">{{ $document->links() }}</li>
 		</ul>
 	  </nav>
+    </section>
     @endsection

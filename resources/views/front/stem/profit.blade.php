@@ -1,7 +1,11 @@
 @extends('front.stem.layout')
 @section('content')
 
-
+<style>
+    #scrollUp {
+    padding: 10px 0px 0px;
+}
+</style>
 <section class="page-title-section_3">
 		<div class="container">
 			<div class="row">
