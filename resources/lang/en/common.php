@@ -53,7 +53,7 @@ return [
     'Submit Now' =>'Submit Now',
     'Download' =>'Download',
     'Profit in Last Years' =>'Profit in Last 6 Years',
-    'Sr No' =>'Sr No',
+    'Sr.No.' =>'Sr.No.',
     'Circulars'=>'Circulars',
     'Gallery'=>'Gallery',
     'e-Governance'=>'e-Governance',
