@@ -20,6 +20,7 @@
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="index.html">{{__('common.Home')}}</a></li>
               <li class="breadcrumb-item active" aria-current="page">{{__('common.News Details')}}</li>
+              <li class="breadcrumb-item active" aria-current="page">{{ $data->title}}</li>
             </ol>
           </nav>
         </div>
@@ -36,14 +37,14 @@
             <div id="system-message-container" aria-live="polite">
             </div>
             <div class="article-details " itemscope itemtype="https://schema.org/Article">
+              <meta itemprop="inLanguage" content="en-GB">
+              <div class="article-full-image float-left">
+                <img src="{{ asset('assets/stem/news/' . $data->image) }}" itemprop="image" alt="Tech Entrepreneur Credits Paper For Success" width="775" height="575" loading="lazy">
+              </div>
               <div class="article-header">
                 <h1 itemprop="headline" class="new-header">
                 {{ $data->title }}
                 </h1>
-              </div>
-              <meta itemprop="inLanguage" content="en-GB">
-              <div class="article-full-image float-left">
-                <img src="{{ asset('assets/stem/news/' . $data->image) }}" itemprop="image" alt="Tech Entrepreneur Credits Paper For Success" width="775" height="575" loading="lazy">
               </div>
               <div class="article-can-edit d-flex flex-wrap justify-content-between">
               </div>
