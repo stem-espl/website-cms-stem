@@ -5834,3 +5834,6 @@ select {
 
 
 /*# sourceMappingURL=style.css.map */
+.about-section ,.section-title-right-part ,.feature-box ,.contact-section{
+    text-align: justify;
+}
