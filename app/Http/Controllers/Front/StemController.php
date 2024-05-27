@@ -69,7 +69,7 @@ class StemController extends Controller
            }        
          $lang_code = isset($currentLang->code) ?  $currentLang->code : 'en';
          $language = Language::where('code', $lang_code)->first();
-         $data = News::where('language_id', $language->id)->paginate(4);
+         $data = News::where('language_id', $language->id)->paginate(6);
          return view('front.stem.news',compact('data'));
       }
 
@@ -242,12 +242,12 @@ class StemController extends Controller
         {
             $document = Document::select('id','document_category_id','name_mr as name','files')
             ->where('status','1')->where('document_category_id', $category->id)
-            ->paginate(5);
+            ->paginate(10);
             $variable=$category->name_mr;
         }else{
             $document = Document::select('id','document_category_id','name','files')
             ->where('status','1')->where('document_category_id', $category->id)
-            ->paginate(5);
+            ->paginate(10);
             
             $variable=$category->name;
         }
@@ -303,7 +303,7 @@ class StemController extends Controller
         }
         $lang_code = isset($currentLang->code) ?  $currentLang->code : 'en';
         $language = Language::where('code', $lang_code)->first();
-        $egovernance=EGovernanceModel::where('language_id', $language->id)->where('status',1)->paginate(3);
+        $egovernance=EGovernanceModel::where('language_id', $language->id)->where('status',1)->paginate(6);
         
 
         return view('front.stem.egoverance',compact('egovernance'));
@@ -326,7 +326,7 @@ class StemController extends Controller
               $category = GalleryCategory::select('id','gallery_categories.name as name')->where('status','1')->where('slug', $slug)->firstOrFail();
               $name = $category->name;
           }
-            $gallery = Gallery::where('category_id', $category->id)->paginate(6);
+            $gallery = Gallery::where('category_id', $category->id)->paginate(9);
            
             return view('front.stem.gallery',compact('gallery','name'));
         }
