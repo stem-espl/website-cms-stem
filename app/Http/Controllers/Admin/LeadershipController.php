@@ -28,11 +28,11 @@ class LeadershipController extends Controller
     {
       $categories = LeadCategory::select('id','name','status','name_mr','name_mr as title', 'slug')
       ->orderBy('id', 'desc')
-      ->paginate(10);
+      ->get();
     }else{
       $categories = LeadCategory::select('id','name','status','name_mr','name as title', 'slug')
       ->orderBy('id', 'desc')
-      ->paginate(10);
+      ->get();
     }
 
     // $categories = LeadCategory::where('language_id', $language->id)
@@ -180,13 +180,13 @@ public function leadIndex(Request $request)
   {
     $data['leaderships'] = Leadership::select('id','name','status','post','image','name_mr','name_mr as title')
     ->orderBy('id', 'desc')
-    ->paginate(10);
+    ->get();
     
     $data['lead_cat'] = LeadCategory::select('id','name_mr as title')->where('status',1)->get();
   }else{
     $data['leaderships'] = Leadership::select('id','name','status','image','name_mr','name as title')
     ->orderBy('id', 'desc')
-    ->paginate(10);
+    ->get();
 
     $data['lead_cat'] = LeadCategory::select('id','name as title')->where('status',1)->get();
   }

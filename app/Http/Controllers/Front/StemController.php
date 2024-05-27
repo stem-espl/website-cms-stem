@@ -98,8 +98,7 @@ class StemController extends Controller
         if($lang_code == 'mr')
         {
           $category = LeadCategory::where('slug', $slug)->where('status','1')->select('id','name_mr as name')->firstOrFail();
-          $leadership = Leadership::select('id','name_mr as name','post_mr as post','image')->where('category_id', $category->id)
-                      ->where('status','1')->get();
+          $leadership = Leadership::select('id','name_mr as name','post_mr as post','image')->where('category_id', $category->id)->where('status','1')->get();
           $name=$category->name;
         }else{
           $category = LeadCategory::where('slug', $slug)->where('status','1')->firstOrFail();
