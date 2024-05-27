@@ -5842,13 +5842,14 @@ select {
 .about-section ,.section-title-right-part ,.feature-box ,.contact-section{
     text-align: justify;
 }
-.section-content {
-    margin-top: 54px;
-}
+
 .news-thumb img {
     width: 100%;
     height: 275px;
 }
 .sppb-addon-title{
     text-align: justify;
+}
+.margin-to-40{
+    margin-top:40px;
 }
