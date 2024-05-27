@@ -37,7 +37,8 @@
 						@foreach ($document as $key => $data )
 						<tr>
 							<!-- <td colspan="8" class="text-center"><button type="button" class="btn btn-outline-primary">NO Data Available.</button></td> -->
-							<td>{{$key+1}}</td>
+							<td>{{ $document->firstItem() + $key }}</td>
+
 							<td class="text-left">{{$data->name}}</td>
 							<td>
 								<a class="pdf-body d-block" href="{{ asset('assets/stem/documents/'.$data->files) }}" target="_blank" rel="noopener noreferrer">
