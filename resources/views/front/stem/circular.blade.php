@@ -26,8 +26,7 @@
 				<table class="table table-bordered table-striped table-hover text-center">
 					<thead class="back_color">
 						<tr>
-							<th style="display: block;
-							height: 100%;width: 100px;">{{__('common.Sr.No.')}}</th>
+							<th style="width:10%;border:none">{{__('common.Sr.No.')}}</th>
 							<th>{{$variable}}</th>
 							<th>{{__('common.Download')}}</th>
 
