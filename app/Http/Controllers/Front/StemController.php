@@ -24,6 +24,9 @@ use App\Models\ProfitChart;
 use App\Models\BasicExtra;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Validator;
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
 
 class StemController extends Controller
 {
@@ -66,7 +69,7 @@ class StemController extends Controller
            }        
          $lang_code = isset($currentLang->code) ?  $currentLang->code : 'en';
          $language = Language::where('code', $lang_code)->first();
-         $data = News::where('language_id', $language->id)->paginate(4);
+         $data = News::where('language_id', $language->id)->paginate(6);
          return view('front.stem.news',compact('data'));
       }
 
@@ -111,27 +114,102 @@ class StemController extends Controller
       public function storeContactQuery(Request $request) {
         $validator =  Validator::make($request->all(),[
           'name' => 'required|string|max:255',
-          'email' => 'required|email|max:255|unique:contact_query',
-          'phone' => 'required|numeric|regex:/^[0-9]{10}$/|unique:contact_query',
+          'email' => 'required|email|max:255',
+          'phone' => 'required|numeric|regex:/^[0-9]{10}$/',
           'message' => 'required',
           
-        ], [
-          'phone.unique' => 'The Pnone Number field has already been taken.',
-          'email.unique' => 'The Email field has already been taken.',
-      ]);
+        ]);
 
         if($validator->fails()){
           return back()->withErrors($validator)->withInput();
         };
 
-          $contact = new ContactQuery;
-          $contact->name = $request->name;
-          $contact->email = $request->email;
-          $contact->phone = $request->phone;
-          $contact->message = $request->message;
-          $contact->status = '0';
-          $contact->save();
-          return back();
+      //     $contact = new ContactQuery;
+      //     $contact->name = $request->name;
+      //     $contact->email = $request->email;
+      //     $contact->phone = $request->phone;
+      //     $contact->message = $request->message;
+      //     $contact->status = '0';
+      //     $contact->save();
+
+
+
+          $currentLang = Language::where('is_default', 1)->first();
+          $be = $currentLang->basic_extended;
+          $bs = $currentLang->basic_setting;
+          
+          $url = url('/');
+          $name = $request->name;
+          $message = $request->message;
+          $phone = $request->phone;
+          $email = $request->email;
+          $website_title = $bs->website_title;
+          $logo = $bs->logo;
+          
+          $view =view('mail/stem_contact',compact('url','name','email','phone','message','website_title','logo'));
+          $subject = "Contact Us - WATER STEM";
+
+          $mail = new PHPMailer(true);
+          try {
+              //Recipients
+              $mail->isSMTP();                                            // Send using SMTP
+              $mail->Host       = $be->smtp_host;                    // Set the SMTP server to send through
+              $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
+              $mail->Username   = $be->smtp_username;                     // SMTP username
+              $mail->Password   = $be->smtp_password;                               // SMTP password
+              $mail->SMTPSecure = $be->encryption;         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
+              $mail->Port       = $be->smtp_port;
+
+              //Recipients
+              $mail->setFrom($be->from_mail, $be->from_name);
+              // $mail->addAddress($request->email);     // Add a recipient
+              $mail->addAddress($be->to_mail);     // Add a recipient
+              $mail->addCC('krushna.muthal@encureit.com');
+              // $mail->addBCC('bcc@example.com');
+              // Content
+              $mail->isHTML(true);
+              $mail->Subject =  $subject;
+              // $mail->Body    = $msg;
+              $mail->MsgHTML($view);
+              $mail->send();
+          } catch (Exception $e) {
+              dd($e->getMessage());
+              session()->flash('error', $e->getMessage());
+          }
+
+
+          $view1 =view('mail/stem_contact_user',compact('url','name','email','phone','website_title','logo'));
+          $subject1 = "Contact Us - WATER STEM";
+
+          $mail = new PHPMailer(true);
+          try {
+              //Recipients
+              $mail->isSMTP();                                            // Send using SMTP
+              $mail->Host       = $be->smtp_host;                    // Set the SMTP server to send through
+              $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
+              $mail->Username   = $be->smtp_username;                     // SMTP username
+              $mail->Password   = $be->smtp_password;                               // SMTP password
+              $mail->SMTPSecure = $be->encryption;         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
+              $mail->Port       = $be->smtp_port;
+
+              //Recipients
+              $mail->setFrom($be->from_mail, $be->from_name);
+              $mail->addAddress($request->email);     // Add a recipient
+              $mail->addCC('krushna.muthal@encureit.com');
+              // $mail->addAddress($be->to_mail);     // Add a recipient
+              // Content
+              $mail->isHTML(true);
+              $mail->Subject =  $subject1;
+              // $mail->Body    = $msg;
+              $mail->MsgHTML($view1);
+              $mail->send();
+          } catch (Exception $e) {
+              dd($e->getMessage());
+              session()->flash('error', $e->getMessage());
+          }
+
+
+          return back()->with('success','Query send successfully');
       }
       public function contactUs()
       {
@@ -164,12 +242,12 @@ class StemController extends Controller
         {
             $document = Document::select('id','document_category_id','name_mr as name','files')
             ->where('status','1')->where('document_category_id', $category->id)
-            ->paginate(5);
+            ->paginate(10);
             $variable=$category->name_mr;
         }else{
             $document = Document::select('id','document_category_id','name','files')
             ->where('status','1')->where('document_category_id', $category->id)
-            ->paginate(5);
+            ->paginate(10);
             
             $variable=$category->name;
         }
@@ -225,7 +303,7 @@ class StemController extends Controller
         }
         $lang_code = isset($currentLang->code) ?  $currentLang->code : 'en';
         $language = Language::where('code', $lang_code)->first();
-        $egovernance=EGovernanceModel::where('language_id', $language->id)->where('status',1)->paginate(3);
+        $egovernance=EGovernanceModel::where('language_id', $language->id)->where('status',1)->paginate(6);
         
 
         return view('front.stem.egoverance',compact('egovernance'));
@@ -248,7 +326,7 @@ class StemController extends Controller
               $category = GalleryCategory::select('id','gallery_categories.name as name')->where('status','1')->where('slug', $slug)->firstOrFail();
               $name = $category->name;
           }
-            $gallery = Gallery::where('category_id', $category->id)->paginate(6);
+            $gallery = Gallery::where('category_id', $category->id)->paginate(9);
            
             return view('front.stem.gallery',compact('gallery','name'));
         }

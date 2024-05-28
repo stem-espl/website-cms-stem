@@ -20,6 +20,7 @@
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="index.html">{{__('common.Home')}}</a></li>
               <li class="breadcrumb-item active" aria-current="page">{{__('common.News Details')}}</li>
+              <li class="breadcrumb-item active" aria-current="page">{{ $data->title}}</li>
             </ol>
           </nav>
         </div>

@@ -52,7 +52,7 @@ return [
     'Submit Now' =>'आता सबमिट करा',
     'Download' =>'डाउनलोड',
     'Profit in Last Years' =>'गेल्या 6 वर्षात नफा',
-    'Sr No' =>'अनु. क्र',
+    'Sr.No.' =>'अनु. क्र.',
     'Circulars'=>'परिपत्रके',
     'Gallery'=>'गॅलरी',
     'e-Governance'=>'ई-शासन',
