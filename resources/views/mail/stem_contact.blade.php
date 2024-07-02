@@ -39,7 +39,7 @@
                                 <tr>
                                     <td style="padding:0 35px;">
                                         <h1 style="color:#1e1e2d; font-weight:600; margin:0;font-size:23px;font-family:'Rubik',sans-serif;">
-                                            We have recevied new query from user</h1>
+                                            We have recevied new feedback from user</h1>
                                         <span
                                             style="display:inline-block; vertical-align:middle; margin:29px 0 26px; border-bottom:1px solid #cecece; width:100px;"></span>
                                         <p style="color:#455056; font-size:15px;line-height:24px; margin:0; text-align: left;">
